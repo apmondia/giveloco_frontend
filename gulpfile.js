@@ -16,6 +16,7 @@ var gulp 		 	= require('gulp'),
     notify 			= require('gulp-notify'),
     angularTplCache = require('gulp-angular-templatecache'),
     browserify   	= require('browserify'),
+    watchify        = require('watchify'),
     source       	= require('vinyl-source-stream'),
     buffer 			= require('vinyl-buffer'),
     runSequence 	= require('run-sequence');
@@ -116,14 +117,21 @@ gulp.task('lint', function() {
 // Browserify
 // =======================================================================  
 gulp.task('browserify', function() {
-    return browserify(filePath.browserify.src)
-        .bundle({ debug: true })
-        .pipe(source('bundle.js'))
-        .pipe(buffer())
-    //    .pipe(streamify(uglify()))
-        .pipe(gulp.dest(filePath.build.dest))
-        .pipe(notify({ message: 'Browserify task complete' }))
-        .pipe(refresh(lrserver));
+    var bundler = watchify(filePath.browserify.src);
+
+    bundler.on('update', rebundle)
+
+    function rebundle () {
+        return bundler.bundle({ debug: true })
+            .pipe(source('bundle.js'))
+            .pipe(buffer())
+        //    .pipe(streamify(uglify()))
+            .pipe(gulp.dest(filePath.build.dest))
+            .pipe(notify({ message: 'Browserify task complete' }))
+            .pipe(refresh(lrserver));
+    }
+
+    return rebundle()
 });
 
 
