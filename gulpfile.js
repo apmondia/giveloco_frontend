@@ -33,7 +33,7 @@ var filePath = {
     },
     browserify: { 
     	src: './app/app.js',
-    	watch: ['!./app/assets/libs/*.js','./app/*.js','./app/**/*.js'] 
+    	watch: ['!./app/assets/libs/*.js','./app/*.js','./app/**/*.js', '/app/**/*.html'] 
     },
     styles: { 
     	src: './app/app.less', 
