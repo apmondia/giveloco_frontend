@@ -89,6 +89,7 @@ server.all('/*', function(req, res) {
 gulp.task('dev', function() {
 	server.listen(serverport);
 	lrserver.listen(livereloadport);
+    console.log('Server running at http://localhost:5000');
 });
 
 
@@ -96,7 +97,7 @@ gulp.task('dev', function() {
 // Clean out dist folder contents on build
 // =======================================================================  
 gulp.task('clean', function () {
-	gulp.src(filePath.build.dest, {read: false})
+	return gulp.src(filePath.build.dest, {read: false})
     	.pipe(clean());
 });
 
@@ -130,7 +131,7 @@ gulp.task('browserify', function() {
 // Styles Task
 // =======================================================================  
 gulp.task('styles', function () {
-    gulp.src(filePath.styles.src)
+    return gulp.src(filePath.styles.src)
         .pipe(less())
 		.pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
 		.pipe(minifyCSS())
@@ -198,6 +199,7 @@ gulp.task('watch', function () {
     gulp.watch(filePath.vendorJS.src, ['vendorJS']);
     gulp.watch(filePath.vendorCSS.src, ['vendorCSS']);
     gulp.watch(filePath.copyIndex.watch, ['copyIndex']);
+    console.log('Watching...');
 });
 
 
