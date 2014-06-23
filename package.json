@@ -1,0 +1,52 @@
+{
+  "name": "Taliflo",
+  "version": "1.0.0",
+  "description": "Taliflo Front End Application",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Taliflo/taliflo_front_end"
+  },
+  "private": true,
+  "browserify": {
+    "transform": [
+      "html2js-browserify",
+      "debowerify"
+    ]
+  },
+  "browser": {},
+  "devDependencies": {
+    "browserify": "*",
+    "browserify-shim": "*",
+    "html2js-browserify": "*",
+    "debowerify": "*",
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-jshint": "*",
+    "jshint-stylish": "*",
+    "gulp-angular-templatecache": "*",
+    "gulp-util": "*",
+    "gulp-notify": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-less-sourcemap": "*",
+    "gulp-minify-css": "*",
+    "gulp-streamify": "*",
+    "gulp-uglify": "*",
+    "gulp-clean": "*",
+    "gulp-embedlr": "*",
+    "gulp-livereload": "*",
+    "connect-livereload": "*",
+    "tiny-lr": "*",
+    "express": "*",
+    "karma": "*",
+    "karma-jasmine": "*",
+    "karma-chrome-launcher": "*",
+    "vinyl-source-stream": "*",
+    "run-sequence": "*",
+    "vinyl-buffer": "*"
+  },
+  "dependencies": {
+    "gulp": "*"
+  }
+}

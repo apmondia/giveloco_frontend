@@ -1,0 +1,28 @@
+{
+  "name": "Taliflo",
+  "version": "1.0.0",
+  "description": "Taliflo Front End Application",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Taliflo/taliflo_front_end"
+  },
+  "private": true,
+  "devDependencies": {},
+  "dependencies": {
+    "jquery": "latest",
+    "bootstrap": "latest",
+    "font-awesome": "latest",
+    "animate.css": "latest",
+    "angular": "latest",
+    "angular-bootstrap": "latest",
+    "angular-ui-utils": "latest",
+    "angular-ui-router": "latest",
+    "angular-animate": "latest",
+    "angular-cookies": "latest",
+    "angular-resource": "latest",
+    "angular-sanitize": "latest",
+    "domready": "latest",
+    "alertify.js": "latest"
+  }
+}
