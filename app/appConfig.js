@@ -12,10 +12,12 @@ function appRoutes($stateProvider, $urlRouterProvider) {
 		name: 'home', // state name
 		url: '/', // url path that activates this state
 		template: '<div home-view></div>', // generate the Directive "homeView" - when calling the directive in HTML, the name must not be camelCased
-		moduleClasses: 'page', // assign a module class to the <body> tag
-		pageClasses: 'home', // assign a page-specific class to the <body> tag
-		title: 'Home', // set the title in the <head> section of the index.html file
-		description: 'With Taliflo you can support local businesses and good causes with a single purchase.' // meta description in <head>
+		data: {
+			moduleClasses: 'page', // assign a module class to the <body> tag
+			pageClasses: 'home', // assign a page-specific class to the <body> tag
+			pageTitle: 'Home', // set the title in the <head> section of the index.html file
+			pageDescription: 'With Taliflo you can support local businesses and good causes with a single purchase.' // meta description in <head>
+		}
 	};
 
 	$stateProvider.state(home);

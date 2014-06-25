@@ -9,10 +9,12 @@ function pageRoutes($stateProvider, $urlRouterProvider) {
       name: 'about',
       url: '/how-it-works',
       template: '<div about-view></div>',
-      moduleClasses: 'page',
-      pageClasses: 'about',
-      title: 'How it Works',
-      description: 'Find your favourite cause, donate and receive vouchers of equal value that are redeemable at participating businesses.'
+      data: {
+        moduleClasses: 'page',
+        pageClasses: 'about',
+        pageTitle: 'How it Works',
+        pageDescription: 'Find your favourite cause, donate and receive vouchers of equal value that are redeemable at participating businesses.'
+      }
   };
 
 $stateProvider.state(about);
