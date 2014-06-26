@@ -17,20 +17,24 @@
 
         <ul class="nav navbar-nav">
           <li ui-sref-active="active"><a ui-sref="about">How It Works</a></li>
-          <li ui-sref-active="active"><a ui-sref="causes">Explore Causes</a></li>
+          <li ui-sref-active="active"><a ui-sref="exploreCauses">Explore Causes</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Link</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
+            <div dropdown is-open="status.isopen">
+              <a class="dropdown-toggle">
+                Dropdown <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div>
           </li>
         </ul>
 
