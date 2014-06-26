@@ -5,6 +5,7 @@ require('angular');
 module.exports = angular.module('taliflo',
 	[
 		require('./common/common.js').name,
+		require('./modules/causes').name,
 		require('./modules/home').name,
 		require('./modules/pages').name
 	])

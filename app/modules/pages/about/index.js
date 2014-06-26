@@ -1,5 +1,5 @@
 'use strict';
-// Home View
-module.exports = angular.module('about', [])
+// About (How it Works) View
+module.exports = angular.module('pages.about', [])
 	.directive('aboutView', require('./aboutDirective'))
-	.controller('AboutViewCtrl', require('./AboutController'));
+	.controller('AboutCtrl', require('./AboutController'));

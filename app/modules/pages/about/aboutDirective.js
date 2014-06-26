@@ -2,7 +2,7 @@
 
 module.exports = function aboutDirective() {
 	return {
-		controller: 'AboutViewCtrl',
+		controller: 'AboutCtrl',
 		template: require('./about.html'),
 		restrict: 'A',
 		scope: true
