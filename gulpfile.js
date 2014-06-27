@@ -57,8 +57,11 @@ var filePath = {
     	src: ['./libs/bootstrap/dist/css/bootstrap.css']
     },
     copyIndex: { 
-    	src: './app/index.html', 
-    	watch: './app/index.html' 
+        src: './app/index.html', 
+        watch: './app/index.html' 
+    },
+    copyFavicon: { 
+        src: './app/favicon.png' 
     }
 };
 
@@ -192,10 +195,20 @@ gulp.task('vendorCSS', function () {
 // Copy index.html
 // =======================================================================  
 gulp.task('copyIndex', function () {
-	return gulp.src(filePath.copyIndex.src)
-		.pipe(gulp.dest(filePath.build.dest))
-		.pipe(notify({ message: 'index.html successfully copied' }))
-		.pipe(refresh(lrserver));
+    return gulp.src(filePath.copyIndex.src)
+        .pipe(gulp.dest(filePath.build.dest))
+        .pipe(notify({ message: 'index.html successfully copied' }))
+        .pipe(refresh(lrserver));
+});
+
+
+// =======================================================================
+// Copy Favicon
+// =======================================================================  
+gulp.task('copyFavicon', function () {
+    return gulp.src(filePath.copyFavicon.src)
+        .pipe(gulp.dest(filePath.build.dest))
+        .pipe(notify({ message: 'favicon successfully copied' }));
 });
 
 
@@ -219,7 +232,7 @@ gulp.task('watch', function () {
 gulp.task('build', function(callback) {
 	runSequence(
 	  	['clean', 'lint'],
-		['browserify', 'styles', 'images', 'vendorJS', 'vendorCSS', 'copyIndex'],
+		['browserify', 'styles', 'images', 'vendorJS', 'vendorCSS', 'copyIndex', 'copyFavicon'],
 		['dev', 'watch'],
 		callback
 	);
