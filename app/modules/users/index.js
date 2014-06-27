@@ -2,6 +2,7 @@
 
 module.exports = angular.module('users',
 	[
+		require('./account').name,
 		require('./auth').name,
-		require('./account').name
+		require('./profile').name
 	]);
