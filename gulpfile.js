@@ -130,7 +130,7 @@ gulp.task('browserify', function() {
             .pipe(buffer())
             // Comment out the next line if you don't want to minify your app in your dev environment. 
             // However, it can be useful to minify your app periodically to debug any problems with minification.
-            .pipe(streamify(uglify()))
+        //    .pipe(streamify(uglify()))
             .pipe(gulp.dest(filePath.build.dest))
             .pipe(notify({ message: 'Browserify task complete' }))
             .pipe(refresh(lrserver));
