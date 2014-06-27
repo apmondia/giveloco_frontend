@@ -19,9 +19,9 @@ To understand how this application is structured, have a look at the README for 
 ###Application Modules
 The following is the file structure found inside of ```app/modules```
 ```
-Home Page
+Home
 
-Static Pages
+Pages (static)
 ——— About Page (how it works)
 ——— Privacy Policy
 ——— Terms of Service
