@@ -15,3 +15,37 @@ To understand how this application is structured, have a look at the README for 
 ```npm install``` and ```bower install```
 
 2) Once everything is installed all you have to do is navigate to this folder on your computer in terminal and run ```gulp```. Your new server will be running at ```http://localhost:5000```.
+
+###Application Modules
+The following is the file structure found inside of ```app/modules```
+```
+Home Page
+
+Static Pages
+——— About Page (how it works)
+——— Privacy Policy
+——— Terms of Service
+
+Explore
+——— Causes (grid)
+——— Businesses (grid)
+
+Forms
+——— Donate
+——— Pledge
+——— Claim Vouchers
+——— Redeem Vouchers
+
+Users
+——— Auth
+—————— Registration
+—————— Login
+——— Account
+—————— Vouchers List
+—————— Transaction History (Account History)
+—————— Basic Info
+——— Profile
+—————— Cause
+—————— Business
+————————— Vouchers List
+```
