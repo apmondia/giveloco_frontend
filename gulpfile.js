@@ -49,8 +49,8 @@ var filePath = {
         // These files will be bundled into a single vendor.js file that's called at the bottom of index.html
     	src: 
         [
-            './libs/jquery/dist/jquery.min.js',
-            './libs/bootstrap/dist/js/bootstrap.min.js'
+            './libs/jquery/dist/jquery.js', // v2.1.1
+            './libs/bootstrap/dist/js/bootstrap.js' // v3.1.1
         ]
 	},
     vendorCSS: { 
