@@ -1,0 +1,95 @@
+http://www.json-generator.com/
+
+USERS
+[
+  '{{repeat(20, 20)}}',
+  {
+    id: '{{index()}}',
+    type: '{{random("person", "business", "cause")}}',
+    first_name: '{{firstName()}}',
+    last_name: '{{surname()}}',
+    company: '{{company()}}',
+    email: '{{email([random])}}',
+    street_address: '{{integer([100], [9999])}} {{street()}}',
+    city: '{{city()}}',
+    state: '{{state()}}',
+    country: '{{country()}}',
+    zip: '{{integer([12345], [98765])}}',
+    tags: [
+      '{{repeat(7)}}',
+      '{{lorem(1, "words")}}'
+    ],
+    summary: '{{lorem(2, "sentences")}}',
+    description: '{{lorem(2, "paragraphs")}}',
+    website: 'http://www.website.com',
+    is_authenticated: '{{bool()}}',
+    created_on: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}',
+    last_login: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}',
+    balance: '{{floating(1000, 4000, 2, "0.00")}}',
+    total_debits: '{{integer([0], [100])}}',
+    total_debits_value: '{{floating(1000, 4000, 2, "0.00")}}',
+    total_credits: '{{integer([0], [100])}}',
+    total_credits_value: '{{floating(1000, 4000, 2, "0.00")}}',
+    profile_picture: 'http://placehold.it/128x128'
+  }
+]
+
+
+TRANSACTIONS
+[
+  '{{repeat(20, 20)}}',
+  {
+    id: '{{index()}}',
+    type: '{{random("donation", "pledge")}}',
+    from_user_id: '{{integer([0], [19])}}',
+    to_user_id: '{{integer([0], [19])}}',
+    recipient_name: '{{firstName()}}',
+    donor_name: '{{firstName()}}',
+    amount: '{{floating(1000, 4000, 2, "0.00")}}',
+    remaining_amount: '{{floating(1000, 4000, 2, "0.00")}}',
+    max_voucher_value: '{{floating(1000, 4000, 2, "0.00")}}',
+    credit_card: '{{integer([1000000000000000], [9000000000000000])}}',
+    expiry_year: '{{integer([2014], [2020])}}',
+    expiry_month: '{{integer([1], [12])}}',
+    cvc: '{{integer([000], [999])}}',
+    billing_address: '{{integer([100], [9999])}} {{street()}}',
+    city: '{{city()}}',
+    state: '{{state()}}',
+    country: '{{country()}}',
+    zip: '{{integer([12345], [98765])}}',
+    status: '{{random("pending", "confirmed", "cancelled")}}',
+    active: '{{bool()}}'
+  }
+]
+
+
+VOUCHERS
+[
+  '{{repeat(20, 20)}}',
+  {
+    id: '{{index()}}',
+    distributor_id: '{{integer([0], [19])}}',
+    recipient_id: '{{integer([0], [19])}}',
+    distributor_name: '{{company()}}',
+    recipient_name: '{{firstName()}} {{surname()}}',
+    redeemed: '{{bool()}}',
+    value: '{{floating(1000, 4000, 2, "0.00")}}',
+    date_redeemed: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}'
+  }
+]
+
+
+REDEMPTIONS
+[
+  '{{repeat(20, 20)}}',
+  {
+    id: '{{index()}}',
+    voucher_id: '{{integer([0], [19])}}',
+    redeemer_id: '{{integer([0], [19])}}',
+    vendor_id: '{{integer([0], [19])}}',
+    redeemer_name: '{{firstName()}} {{surname()}}',
+    vendor_name: '{{company()}}',
+    value: '{{floating(1000, 4000, 2, "0.00")}}',
+    date_redeemed: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}'
+  }
+]
