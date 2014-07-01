@@ -1,7 +1,7 @@
 'use strict';
 
 function ExploreBusinessesCtrl($rootScope, $scope) {
-	$scope.causeList = 'List of Causes goes here.';
+	$scope.bizList = 'List of Businesses goes here.';
 }
 
 ExploreBusinessesCtrl.$inject = ['$rootScope', '$scope'];

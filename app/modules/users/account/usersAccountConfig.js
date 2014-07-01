@@ -1,9 +1,6 @@
 'use strict';
 
-function userAccountRoutes($stateProvider, $urlRouterProvider) {
-
-  // For any unmatched url, redirect to /
-  $urlRouterProvider.otherwise('/');
+function userAccountRoutes($stateProvider) {
 
   var accountHistory = {
       name: 'accountHistory',
@@ -45,5 +42,5 @@ $stateProvider.state(accountVouchers);
 
 }
 
-userAccountRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
+userAccountRoutes.$inject = ['$stateProvider'];
 module.exports = userAccountRoutes;

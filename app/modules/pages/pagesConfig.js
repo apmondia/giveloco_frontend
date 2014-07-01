@@ -1,9 +1,6 @@
 'use strict';
 
-function pageRoutes($stateProvider, $urlRouterProvider) {
-
-  // For any unmatched url, redirect to /
-  $urlRouterProvider.otherwise('/');
+function pageRoutes($stateProvider) {
 
   var about = {
       name: 'about',
@@ -45,5 +42,5 @@ $stateProvider.state(terms);
 
 }
 
-pageRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
+pageRoutes.$inject = ['$stateProvider'];
 module.exports = pageRoutes;

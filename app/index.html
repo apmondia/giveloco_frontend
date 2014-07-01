@@ -9,8 +9,11 @@
     <meta name="description" content="{{pageDescription}}">
 
     <link rel="icon" type="image/png" href="app/favicon.png">
-    <link href="app/vendor.css" rel="stylesheet">
-    <link href="app/app.css" rel="stylesheet">
+    <link href="/vendor.css" rel="stylesheet">
+    <link href="/app.css" rel="stylesheet">
+
+    <base href="/">
+
   </head>
   <body ng-class="bodyClasses">
 
@@ -24,7 +27,7 @@
       <common-footer></common-footer>
     </div>
 
-    <script src="app/vendor.js"></script>
-    <script src="app/bundle.js"></script>
+    <script src="vendor.js"></script>
+    <script src="bundle.js"></script>
   </body>
 </html>

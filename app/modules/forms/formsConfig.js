@@ -1,9 +1,6 @@
 'use strict';
 
-function formRoutes($stateProvider, $urlRouterProvider) {
-
-  // For any unmatched url, redirect to /
-  $urlRouterProvider.otherwise('/');
+function formRoutes($stateProvider) {
 
   var formClaim = {
       name: 'formClaim',
@@ -57,5 +54,5 @@ $stateProvider.state(formRedeem);
 
 }
 
-formRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
+formRoutes.$inject = ['$stateProvider'];
 module.exports = formRoutes;

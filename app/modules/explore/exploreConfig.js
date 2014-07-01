@@ -1,13 +1,10 @@
 'use strict';
 
-function exploreRoutes($stateProvider, $urlRouterProvider) {
-
-  // For any unmatched url, redirect to /
-  $urlRouterProvider.otherwise('/');
+function exploreRoutes($stateProvider) {
 
   var exploreBusinesses = {
       name: 'exploreBusinesses',
-      url: '/claim',
+      url: '/explore-businesses',
       template: '<div explore-businesses></div>',
       data: {
         moduleClasses: 'explore',
@@ -33,5 +30,5 @@ $stateProvider.state(exploreCauses);
 
 }
 
-exploreRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
+exploreRoutes.$inject = ['$stateProvider'];
 module.exports = exploreRoutes;

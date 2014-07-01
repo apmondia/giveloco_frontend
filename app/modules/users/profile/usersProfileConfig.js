@@ -1,9 +1,6 @@
 'use strict';
 
-function userProfileRoutes($stateProvider, $urlRouterProvider) {
-
-  // For any unmatched url, redirect to /
-  $urlRouterProvider.otherwise('/');
+function userProfileRoutes($stateProvider) {
 
   var profileBusiness = {
       name: 'profileBusiness',
@@ -33,5 +30,5 @@ $stateProvider.state(profileCause);
 
 }
 
-userProfileRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
+userProfileRoutes.$inject = ['$stateProvider'];
 module.exports = userProfileRoutes;

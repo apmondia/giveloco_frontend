@@ -1,9 +1,6 @@
 'use strict';
 
-function userAuthRoutes($stateProvider, $urlRouterProvider) {
-
-  // For any unmatched url, redirect to /
-  $urlRouterProvider.otherwise('/');
+function userAuthRoutes($stateProvider) {
 
   var signup = {
       name: 'signup',
@@ -33,5 +30,5 @@ $stateProvider.state(login);
 
 }
 
-userAuthRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
+userAuthRoutes.$inject = ['$stateProvider'];
 module.exports = userAuthRoutes;
