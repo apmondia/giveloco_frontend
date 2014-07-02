@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="taliflo">
   <head>
+    <base href="/">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, maximum-scale = 1.0">
     <meta name="fragment" content="!" />
@@ -11,17 +12,15 @@
     <link rel="icon" type="image/png" href="app/favicon.png">
     <link href="/vendor.css" rel="stylesheet">
     <link href="/app.css" rel="stylesheet">
-
-    <base href="/">
-
   </head>
+  
   <body ng-class="bodyClasses">
 
     <div class="page">
       <common-header></common-header>
 
       <section class="main">
-        <div ui-view></div>
+        <div ui-view autoscroll="true"></div>
       </section>
 
       <common-footer></common-footer>

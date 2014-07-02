@@ -12,6 +12,7 @@ function commonInit($rootScope, $state) {
 			$rootScope.bodyClasses = toState.data.moduleClasses + ' ' + toState.data.pageClasses;
 		}
 	});
+	
 }
 
 commonInit.$inject = ['$rootScope', '$state'];

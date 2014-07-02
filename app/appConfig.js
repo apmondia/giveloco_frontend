@@ -3,7 +3,7 @@
 
 'use strict';
 
-function appRoutes($stateProvider, $urlRouterProvider, $locationProvider) {
+function appRoutes($stateProvider, $urlRouterProvider, $locationProvider, $provide) {
 
 	// Add hasbang prefix for SEO and HTML5 mode to remove #! from the URL.
 	// Html5 mode requires server-side configuration. See http://bit.ly/1qLuJ0v
@@ -25,6 +25,13 @@ function appRoutes($stateProvider, $urlRouterProvider, $locationProvider) {
 	};
 
 	$stateProvider.state(home);
+
+	// Make sure the page scrolls to the top on state transition
+	$provide.decorator('$uiViewScroll', function () {
+		return function () {
+		   window.scrollTo(0, 0);
+		}; 
+	});
 
 }
 

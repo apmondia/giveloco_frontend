@@ -10,8 +10,9 @@
 	Base Elements
 ======================================================================= */
 body {
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-	line-height: 20px;
+	font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 200;
+    line-height: 20px;
 }
 
 
@@ -22,6 +23,7 @@ a, a:hover {
     text-decoration: none;
 }
 a {
+    cursor: pointer;
     color: @brand-teal;
     &:hover {
         color: @brand-orange;
@@ -44,9 +46,13 @@ a {
 }
 .page {
     .main {
-        .container();
         margin-top:50px;
-        /*min-height: 300px;*/
+        min-height: 300px;
+    }
+}
+.jumbotron {
+    h1 {
+        text-align: center;
     }
 }
 
@@ -67,9 +73,6 @@ a {
     .navbar-brand {
         font-size: 0;
         padding: 0 15px;
-    }
-    a {
-        cursor: pointer;
     }
     .navbar-right {
         li.dropdown {

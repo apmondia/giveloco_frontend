@@ -34,7 +34,13 @@ var filePath = {
     },
     browserify: { 
     	src: './app/app.js',
-    	watch: ['!./app/assets/libs/*.js','./app/*.js','./app/**/*.js', '/app/**/*.html'] 
+    	watch: 
+        [
+            '!./app/assets/libs/*.js',
+            '!./app/assets/libs/**/*.js',
+            './app/*.js','./app/**/*.js', 
+            '/app/**/*.html'
+        ] 
     },
     styles: { 
     	src: './app/app.less', 
@@ -114,7 +120,7 @@ gulp.task('dev', function() {
 // Clean out dist folder contents on build
 // =======================================================================  
 gulp.task('clean', function () {
-	return gulp.src(filePath.build.dest, {read: false})
+	return gulp.src(['!./dist/assets', './dist/*'], {read: false})
     	.pipe(clean());
 });
 
@@ -176,9 +182,9 @@ gulp.task('styles', function () {
 // =======================================================================  
 gulp.task('images', function() {
     return gulp.src(filePath.images.src)
-    //    .on("error", handleError)
+        .on("error", handleError)
         .pipe(gulp.dest(filePath.images.dest))
-        .pipe(notify({ message: 'Images task complete' }))
+        .pipe(notify({ message: 'Images copied' }))
         .pipe(refresh(lrserver));
 });
 
