@@ -41,8 +41,8 @@ var filePath = {
     	watch: ['./app/app.less','./app/**/*.less'] 
     },
     images: { 
-    	src: './app/assets/images/*', 
-    	watch: './app/assets/images/*', 
+    	src: './app/assets/images/*/**', 
+    	watch: ['./app/assets/images/*', './app/assets/images/*/**'],
     	dest: './dist/images/' 
     },
     vendorJS: { 
@@ -54,7 +54,11 @@ var filePath = {
         ]
 	},
     vendorCSS: { 
-    	src: ['./libs/bootstrap/dist/css/bootstrap.css']
+    	src: 
+        [
+            './libs/bootstrap/dist/css/bootstrap.css', // v3.1.1
+            './libs/font-awesome/css/font-awesome.css' // v4.1.0
+        ]
     },
     copyIndex: { 
         src: './app/index.html', 
@@ -64,6 +68,15 @@ var filePath = {
         src: './app/favicon.png' 
     }
 };
+
+
+// =======================================================================
+// Error Handling
+// =======================================================================
+function handleError(err) {
+    console.log(err.toString());
+    this.emit('end');
+}
 
 
 // =======================================================================
@@ -127,6 +140,7 @@ gulp.task('browserify', function() {
     function rebundle () {
         return bundler.bundle({ debug: true })
             .pipe(source('bundle.js'))
+            .on("error", handleError)
             .pipe(buffer())
             // Comment out the next line if you don't want to minify your app in your dev environment. 
             // However, it can be useful to minify your app periodically to debug any problems with minification.
@@ -146,9 +160,11 @@ gulp.task('browserify', function() {
 gulp.task('styles', function () {
     return gulp.src(filePath.styles.src)
         .pipe(less())
+        .on("error", handleError)
 		.pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
 		.pipe(minifyCSS())
         .pipe(gulp.dest(filePath.build.dest))
+        .on("error", handleError)
         // This next line will be displayed twice - once for the CSS file and once for the source map
         .pipe(notify({ message: 'Styles task complete' }))
         .pipe(refresh(lrserver));
@@ -160,9 +176,10 @@ gulp.task('styles', function () {
 // =======================================================================  
 gulp.task('images', function() {
     return gulp.src(filePath.images.src)
-    .pipe(gulp.dest(filePath.images.dest))
-    .pipe(notify({ message: 'Images task complete' }))
-    .pipe(refresh(lrserver));
+        .on("error", handleError)
+        .pipe(gulp.dest(filePath.images.dest))
+        .pipe(notify({ message: 'Images task complete' }))
+        .pipe(refresh(lrserver));
 });
 
 
@@ -172,6 +189,7 @@ gulp.task('images', function() {
 gulp.task('vendorJS', function () {
     return gulp.src(filePath.vendorJS.src)
         .pipe(concat("vendor.js"))
+        .on("error", handleError)
         .pipe(uglify())
         .pipe(gulp.dest(filePath.build.dest))
         .pipe(notify({ message: 'VendorJS task complete' }))
@@ -184,6 +202,7 @@ gulp.task('vendorJS', function () {
 gulp.task('vendorCSS', function () {
     return gulp.src(filePath.vendorCSS.src)
         .pipe(concat("vendor.css"))
+        .on("error", handleError)
         .pipe(minifyCSS())
         .pipe(gulp.dest(filePath.build.dest))
         .pipe(notify({ message: 'VendorCSS task complete' }))

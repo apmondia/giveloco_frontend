@@ -3,31 +3,155 @@
 ======================================================================= */
 @import (reference) "./styles/custom_mixins.less";
 @import (reference) "./styles/custom_variables.less";
+@import (reference) "../../libs/bootstrap/less/bootstrap.less";
+
 
 /* =======================================================================
 	Base Elements
 ======================================================================= */
 body {
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	line-height: 20px;
 }
+
 
 /* ==========================================================================
     Manual Resets
 ========================================================================== */
-
-
-
-/* ==========================================================================
-    Fonts
-========================================================================== */
-
+a, a:hover {
+    text-decoration: none;
+}
+a {
+    color: @brand-teal;
+    &:hover {
+        color: @brand-orange;
+    }
+}
+.open>a,
+.active a {
+    color: @brand-orange;
+}
 
 
 /* ==========================================================================
     Core Layout
 ========================================================================== */
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.page {
+    .main {
+        .container();
+        margin-top:50px;
+        min-height: 300px;
+    }
+}
 
+
+/* ==========================================================================
+    Header & Navbar
+========================================================================== */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.navbar {
+    text-transform: uppercase;
+    background-color: #fff;
+    border-bottom: solid 1px #eee;
+    border-radius: 0;
+    .navbar-brand {
+        font-size: 0;
+        padding: 0 15px;
+    }
+    a {
+        cursor: pointer;
+    }
+    .navbar-right {
+        li.dropdown {
+            padding: 15px;
+        }
+    }
+    .nav>li>a:hover,
+    .nav .open>a, 
+    .nav .open>a:focus, 
+    .nav .open>a:hover {
+        background-color: transparent;
+        border: none;
+    }
+}
+
+
+/* ==========================================================================
+    Footer
+========================================================================== */
+.footer {
+    margin-top: 40px;
+    color: #fff;
+    background-color: @brand-purple;
+    a {
+        color:#fff;
+        &:hover {
+            color: @brand-orange;
+        }
+    }
+    .top {
+        .container();
+        .clearfix();
+        padding-top: 40px;
+        .left {
+            .make-md-column(7);
+        }
+        .right {
+            margin-top: 20px;
+            .make-md-column(3);
+            .make-md-column-offset(2);
+            font-size: 18px;
+            .footer-links {
+                li {
+                    margin-bottom: 5px;
+                }
+            }
+            .social-links {
+                li {
+                    float: left;
+                    a {
+                        font-size: 0;
+                        margin: 15px;
+                        display: block;
+                        &:before {
+                            font-size:36px;
+                            font-family: 'FontAwesome';
+                        }
+                        &.facebook:before {
+                            content: "\f09a";
+                        }
+                        &.twitter:before {
+                            content: "\f099";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .bottom {
+        .container();
+        text-align: center;
+        padding: 40px 0;
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+        li {
+            list-style: none;
+            margin: 0;
+        }
+    }
+}
 
 
 /* ==========================================================================
@@ -43,17 +167,7 @@ body {
 
 
 /* ==========================================================================
-    Component Elements
-========================================================================== */
-
-
-
-/* ==========================================================================
     Notifications
 ========================================================================== */
 
 
-
-/* ==========================================================================
-    Sub-module Style Imports
-========================================================================== */
