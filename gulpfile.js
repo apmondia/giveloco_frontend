@@ -41,8 +41,8 @@ var filePath = {
     	watch: ['./app/app.less','./app/**/*.less'] 
     },
     images: { 
-    	src: './app/assets/images/*/**', 
-    	watch: ['./app/assets/images/*', './app/assets/images/*/**'],
+    	src: './app/assets/images/**/*', 
+    	watch: ['./app/assets/images', './app/assets/images/**/*'],
     	dest: './dist/images/' 
     },
     vendorJS: { 
@@ -176,7 +176,7 @@ gulp.task('styles', function () {
 // =======================================================================  
 gulp.task('images', function() {
     return gulp.src(filePath.images.src)
-        .on("error", handleError)
+    //    .on("error", handleError)
         .pipe(gulp.dest(filePath.images.dest))
         .pipe(notify({ message: 'Images task complete' }))
         .pipe(refresh(lrserver));
