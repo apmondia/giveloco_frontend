@@ -1,8 +1,8 @@
 'use strict';
 
-function HomeSectionStoriesCtrl($rootScope, $scope) {
+function HomeSectionStoriesCtrl() {
 	
 }
 
-HomeSectionStoriesCtrl.$inject = ['$rootScope', '$scope'];
+HomeSectionStoriesCtrl.$inject = [];
 module.exports = HomeSectionStoriesCtrl;

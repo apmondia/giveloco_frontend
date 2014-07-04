@@ -8,7 +8,6 @@ require('angular-resource');
 require('angular-sanitize');
 require('gsap');
 require('domready/ready');
-require('bootstrap');
 
 module.exports = angular.module('common',
 	[

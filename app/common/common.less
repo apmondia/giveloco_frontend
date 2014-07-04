@@ -55,6 +55,13 @@ a {
         text-align: center;
     }
 }
+.module-view {
+    padding-top: 20px;
+}
+#ui-view.ng-enter {
+    .animated(@duration: 0.3s, @fill: both);
+    .fadeIn();
+}
 
 
 /* ==========================================================================
@@ -64,12 +71,16 @@ a {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 2;
+    .animated();
+    .fadeInDown();
 }
 .navbar {
     text-transform: uppercase;
     background-color: #fff;
     border-bottom: solid 1px #eee;
     border-radius: 0;
+    margin-bottom: 0;
     .navbar-brand {
         font-size: 0;
         padding: 0 15px;
@@ -85,6 +96,14 @@ a {
     .nav .open>a:hover {
         background-color: transparent;
         border: none;
+    }
+    .navbar-toggle {
+        .icon-bar {
+            background-color: #333;
+        }
+    }
+    #mobile-menu-nav {
+
     }
 }
 
@@ -107,19 +126,35 @@ a {
         .clearfix();
         padding-top: 40px;
         .left {
+            .make-xs-column(12);
             .make-md-column(7);
         }
         .right {
-            margin-top: 20px;
+            .make-xs-column(12);
             .make-md-column(3);
             .make-md-column-offset(2);
+            margin-top: 20px;
             font-size: 18px;
+            ul {
+                li {
+                    text-align: center;
+                    @media @breakpoint-md {
+                        text-align: left;
+                    }
+                }
+            }
             .footer-links {
                 li {
                     margin-bottom: 5px;
                 }
             }
             .social-links {
+                display: block;
+                width: 110px;
+                margin: auto;
+                @media @breakpoint-md {
+                    margin: 0;
+                }
                 li {
                     float: left;
                     a {
@@ -160,13 +195,109 @@ a {
 /* ==========================================================================
     Forms
 ========================================================================== */
-
+.small-form {
+    .make-xs-column(12);
+    .make-xs-column-offset(0);
+    .make-sm-column(6);
+    .make-sm-column-offset(3);
+    .make-md-column(5);
+    .make-md-column-offset(3.5);
+    .make-lg-column(4);
+    .make-lg-column-offset(4);
+}
+.medium-form {
+    .make-xs-column(12);
+    .make-xs-column-offset(0);
+    .make-sm-column(9);
+    .make-sm-column-offset(1.5);
+    .make-md-column(6);
+    .make-md-column-offset(3);
+}
+.form-buttons {
+    text-align: center;
+    margin-top: 25px;
+}
+.form-group {
+    position: relative;
+    &:after {
+        font-size:20px;
+        font-family:"FontAwesome";
+        position: absolute;
+        right: 10px;
+        top: 11px;
+    }
+    &.valid {
+        &:after {
+            content:"\f00c";
+            color: @brand-teal;
+        }
+    }
+    &.invalid {
+        &:after {
+            content:"\f00d";
+            color: red;
+        }
+    }
+    label.inline {
+        position: absolute;
+        left: 1px;
+        top: 1px;
+        display: block;
+        padding: 10px 6px;
+        border-right: solid 1px #ccc;
+        border-radius: 4px 0 0 4px;
+        text-align: center;
+        font-weight: 200;
+        color:#333;
+        background-color: #fcfcfc;
+    }
+    input {
+        padding: 20px 0;
+    }
+}
+.form-control {
+    .transition(@property: all, @duration: 0.15s, @function: ease-in-out, @delay: 0.1s);
+    box-shadow: none;
+}
+.ng-invalid {
+    &.ng-dirty {
+        border-color: red;
+        &:focus {
+            .box-shadow (@properties: 0 0 8px, @color: @light-red);
+        }
+    }
+}
+.ng-valid {
+    border-color:@brand-teal;
+}
+.form-helper {
+    font-size: 12px;
+    color:red;
+    font-weight: 400;
+}
 
 
 /* ==========================================================================
     Buttons
 ========================================================================== */
-
+.button {
+    color: #fff;
+    &:hover {
+        color: #fff;
+    }
+}
+.button-primary {
+    background-color: @brand-orange;
+    &:hover {
+        background-color: darken(@brand-orange, 10%);
+    }
+}
+.button-secondary {
+    background-color: @brand-teal;
+    &:hover {
+        background-color: darken(@brand-teal, 10%);
+    }
+}
 
 
 /* ==========================================================================

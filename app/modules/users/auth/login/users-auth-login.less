@@ -3,20 +3,21 @@
 ======================================================================= */
 @import (reference) "../../../../common/styles/custom_mixins.less";
 @import (reference) "../../../../common/styles/custom_variables.less";
+@import (reference) "../../../../common/styles/custom_animations.less";
 
 
 /* ***********************************************************************
 	Login Form - Module Styles
 *********************************************************************** */
-body.login {
-	.users-auth-login {
-		padding-top: 40px;
+body.users.auth.login {
+	.module-view {
+		@media @breakpoint-md {
+	        padding-top: 80px;
+	        padding-bottom: 40px;
+	    }
 	}
-	.login-form {
-		border: solid 1px #ccc;
-		border-radius: 5px;
-		background-color: #f9f9f9;
-		padding: 0 20px 10px;
-		box-shadow: 0px 0px 8px #ccc;
-	}
+}
+[users-auth-login] {
+	.animated(@duration: 0.7s, @fill: both);
+	.fadeInLeft();
 }

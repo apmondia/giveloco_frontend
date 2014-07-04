@@ -63,7 +63,8 @@ var filePath = {
     	src: 
         [
             './libs/bootstrap/dist/css/bootstrap.css', // v3.1.1
-            './libs/font-awesome/css/font-awesome.css' // v4.1.0
+            './libs/font-awesome/css/font-awesome.css', // v4.1.0
+            './libs/animate.css/animate.css' // v3.1.1
         ]
     },
     copyIndex: { 
@@ -215,7 +216,6 @@ gulp.task('styles-prod', function () {
         .pipe(gulp.dest(filePath.build.dest))
         .on("error", handleError)
         .pipe(notify({ message: 'Styles task complete' }))
-        .pipe(refresh(lrserver));
 });
 
 
