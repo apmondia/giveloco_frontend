@@ -28,21 +28,38 @@ body.users.auth {
 			display: block;
 			margin: 0 -20px;
 			padding: 20px 0;
-			border-radius: 5px 5px 0 0;
+			border-radius: 4px 4px 0 0;
 			border-bottom: solid 1px #fff;
 			background-color: @brand-teal;
 		}
 	}
 	form {
 		margin: 40px 0;
+		text-align: center;
 		label.inline {
 			width: 80px;
 		}
 		input {
 	        padding: 20px 0 20px 90px;
 	    }
-		.button-primary {
+		.button {
 			text-transform: uppercase;
+		}
+	}
+	.facebook-signup {
+		background-color: @facebook-blue;
+		padding: 10px;
+		width: 75%;
+		.fa-facebook {
+			font-size: 24px;
+			margin: 0 20px 0 10px;
+			display: block;
+			float: left;
+		}
+		span {
+			position: relative;
+			top: 1px;
+			margin-left: -20px;
 		}
 	}
 }
@@ -52,4 +69,5 @@ body.users.auth {
 	Sub-Module LESS file imports
 ======================================================================= */
 @import "login/users-auth-login.less";
+@import "password-reset/users-auth-password-reset.less";
 @import "registration/users-auth-registration.less";

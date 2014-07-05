@@ -16,5 +16,6 @@ module.exports = angular.module('common',
         'ngAnimate',
         'ngResource',
         require('./components/header').name,
-        require('./components/footer').name
+        require('./components/footer').name,
+        require('./directives').name
 	]);

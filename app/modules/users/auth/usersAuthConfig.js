@@ -13,6 +13,11 @@ function userAuthRoutes($stateProvider) {
         pageDescription: 'User Registration.'
       }
   },
+  signupOrg = { // Nested View for Signing up Businesses and Causes
+      name: 'signup.org',
+      url: '/organization',
+      parent: signup
+  },
   login = {
       name: 'login',
       url: '/user/login',
@@ -23,10 +28,23 @@ function userAuthRoutes($stateProvider) {
         pageTitle: 'Sign In',
         pageDescription: 'Log into your account.'
       }
+  },
+  passwordReset = {
+      name: 'passwordReset',
+      url: '/user/password-reset',
+      template: '<div users-auth-password-reset></div>',
+      data: {
+        moduleClasses: 'users auth',
+        pageClasses: 'password-reset',
+        pageTitle: 'Reset Password',
+        pageDescription: 'Reset your account password.'
+      }
   };
 
 $stateProvider.state(signup);
+$stateProvider.state(signupOrg);
 $stateProvider.state(login);
+$stateProvider.state(passwordReset);
 
 }
 

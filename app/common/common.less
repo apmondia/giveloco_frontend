@@ -272,8 +272,36 @@ a {
 }
 .form-helper {
     font-size: 12px;
-    color:red;
     font-weight: 400;
+    color:red;
+    @media @breakpoint-sm {
+        .animated(@duration: 0.5s, @fill: both);
+        display: block;
+        width: 165px;
+        padding: 10px;
+        background-color: @light-red;
+        color: #fff;
+        position: absolute;
+        left: 104%;
+        top: 1px;
+        border-radius: 5px;
+        &.ng-enter {
+            .fadeInRight();
+        }
+        &.ng-leave {
+            .fadeOutRight();
+        }
+    }
+    &:before {
+        &:extend(.arrow.left);
+        top: 12px;
+        border: 8px solid transparent;
+        border-right-color: @light-red;
+        display: none;
+        @media @breakpoint-sm {
+            display: block;
+        }
+    }
 }
 
 
@@ -282,7 +310,8 @@ a {
 ========================================================================== */
 .button {
     color: #fff;
-    &:hover {
+    &:hover,
+    &:focus {
         color: #fff;
     }
 }

@@ -1,7 +1,19 @@
 'use strict';
 
 function UsersAuthRegistrationCtrl($rootScope, $scope) {
-	$scope.form = 'Signup Form goes here.';
+	
+	$scope.signup = function() {
+		if ($scope.signupForm.$valid) {
+			console.log('Sending request to server.');
+		}
+	};
+
+	$scope.standardForm = true;
+
+	$scope.toggleForm = function() {
+		$scope.donorForm = ! $scope.donorForm;
+	};
+
 }
 
 UsersAuthRegistrationCtrl.$inject = ['$rootScope', '$scope'];

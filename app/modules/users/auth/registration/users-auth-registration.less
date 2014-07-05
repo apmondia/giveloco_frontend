@@ -8,3 +8,26 @@
 /* ***********************************************************************
 	Module Styles
 *********************************************************************** */
+body.users.auth.signup {
+	[users-auth-registration] {
+		.animated(@duration: 0.5s, @fill: both);
+		.fadeInLeft();
+	}
+	.toggle-form.ng-hide-remove {
+		.animated(@duration: 0.5s, @fill: both);
+		.flipInY();
+	}
+	h1 {
+		background-color: @brand-orange;
+	}
+	h5 {
+		margin: 0 0 15px;
+		color: @brand-purple;
+		text-transform: uppercase;
+	}
+	.switch-form {
+		display: block;
+		margin-top: 10px;
+	}
+
+}
