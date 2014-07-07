@@ -4,6 +4,11 @@
 
 		<h5>Register Your Business or Cause</h5>
 
+		<div class="form-group">
+			<label for="org-type">Register as a:</label>
+			<select ng-options=""></select>
+		</div>
+
 		<div class="form-group" ng-class="{'invalid' : signupFormOrg.email.$invalid && signupFormOrg.email.$dirty, 'valid' : signupFormOrg.email.$valid && signupFormOrg.email.$dirty}">
 			<label for="email" class="inline">Email</label>
 			<input type="email" name="email" id="email" class="form-control" placeholder="email@address.com" ng-model="user.email" ng-pattern="emailRegex" required auto-focus show-form-errors />

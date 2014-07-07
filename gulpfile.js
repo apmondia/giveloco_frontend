@@ -33,7 +33,8 @@ var filePath = {
     	src: ['./app/*.js', './app/**/*.js'] 
     },
     browserify: { 
-    	src: './app/app.js',
+    	DEVsrc: './app/appDev.js',
+        PRODsrc: './app/app.js',
     	watch: 
         [
             '!./app/assets/libs/*.js',
@@ -147,7 +148,7 @@ gulp.task('lint', function() {
 // Browserify Bundle
 // =======================================================================  
 gulp.task('bundle-dev', function() {
-    var bundler = watchify(filePath.browserify.src);
+    var bundler = watchify(filePath.browserify.DEVsrc);
 
     bundler.on('update', rebundle)
 
@@ -170,7 +171,7 @@ gulp.task('bundle-dev', function() {
 });
 
 gulp.task('bundle-prod', function() {
-    var bundler = watchify(filePath.browserify.src);
+    var bundler = watchify(filePath.browserify.PRODsrc);
 
     bundler.on('update', rebundle)
 

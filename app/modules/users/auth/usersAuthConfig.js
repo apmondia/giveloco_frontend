@@ -13,10 +13,10 @@ function userAuthRoutes($stateProvider) {
         pageDescription: 'User Registration.'
       }
   },
-  signupOrg = { // Nested View for Signing up Businesses and Causes
-      name: 'signup.org',
-      url: '/organization',
-      parent: signup
+      signupOrg = { // Nested View for Signing up Businesses and Causes
+          name: 'signup.org',
+          url: '/organization',
+          parent: signup
   },
   login = {
       name: 'login',

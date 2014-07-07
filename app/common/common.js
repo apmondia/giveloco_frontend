@@ -14,8 +14,12 @@ module.exports = angular.module('common',
         'ui.bootstrap',
         'ui.router',
         'ngAnimate',
+        'ngCookies',
         'ngResource',
+        'ngSanitize',
         require('./components/header').name,
         require('./components/footer').name,
-        require('./directives').name
+        require('./directives').name,
+        require('./resources').name,
+        require('./services').name
 	]);
