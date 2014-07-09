@@ -72,8 +72,8 @@ a {
     top: 0;
     width: 100%;
     z-index: 2;
-    .animated();
-    .fadeInDown();
+    .animated (@duration: 0.5s, @fill: both);
+    .slideInDown();
 }
 .navbar {
     text-transform: uppercase;
@@ -102,8 +102,32 @@ a {
             background-color: #333;
         }
     }
-    #mobile-menu-nav {
-
+    .dropdown-menu {
+        margin-top: 0;
+        border-radius: 0 0 5px 5px;
+        border: solid 1px #eee;
+        &:before {
+            border: 9px solid transparent;
+            .arrow.up();
+            border-bottom-color: #eee;
+            left: auto;
+            right: 9px;
+        }
+        &:after {
+            border: 8px solid transparent;
+            .arrow.up();
+            left: auto;
+            right: 10px;
+        }
+        li {
+            text-transform: capitalize;
+            a {
+                color: @brand-teal;
+                &:hover {
+                    color: @brand-orange;
+                }
+            }
+        }
     }
 }
 

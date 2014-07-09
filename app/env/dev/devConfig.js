@@ -1,8 +1,8 @@
 'use strict';
 
-function devConfig($provide) {
-	$provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
+function devConfig(RestangularProvider) {
+	RestangularProvider.setBaseUrl('http://localhost:3000/');
 }
 
-devConfig.$inject = ['$provide'];
+devConfig.$inject = ['RestangularProvider'];
 module.exports = devConfig;

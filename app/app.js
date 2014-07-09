@@ -7,6 +7,7 @@ require('angular');
 module.exports = angular.module('taliflo',
 	[
 		require('./common/common').name,
+		require('./env/prod').name, // Production Environment Configuration
 		require('./modules/explore').name,
 		require('./modules/forms').name,
 		require('./modules/home').name,

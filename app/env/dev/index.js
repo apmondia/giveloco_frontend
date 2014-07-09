@@ -1,10 +1,5 @@
-'use strict'
+'use strict';
 
-require('angular-mocks');
-
-module.exports = angular.module('env.dev',
-	[
-        'ngMockE2E'
-	])
+module.exports = angular.module('env.dev', [])
         .config(require('./devConfig'))
         .run(require('./dev-init'));

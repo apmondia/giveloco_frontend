@@ -1,8 +1,8 @@
 'use strict';
 
-var Auth = function() {
-	
+var AuthService = function(User) {
+	return User;
 };
 
-Auth.$inject = [''];
-module.exports = Auth;
+AuthService.$inject = ['User'];
+module.exports = AuthService;

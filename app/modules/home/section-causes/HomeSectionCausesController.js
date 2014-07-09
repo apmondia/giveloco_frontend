@@ -1,8 +1,14 @@
 'use strict';
 
-function HomeSectionCausesCtrl($rootScope, $scope) {
-	$scope.testVar = 'Causes Carousel goes here!';
+function HomeSectionCausesCtrl($rootScope, $scope, Restangular, User) {
+
+	$scope.users = User.getList().$object;
+
+	console.log($scope.users);
+
+//	ng-if="user.type == 'cause'" 
+	
 }
 
-HomeSectionCausesCtrl.$inject = ['$rootScope', '$scope'];
+HomeSectionCausesCtrl.$inject = ['$rootScope', '$scope', 'Restangular', 'User'];
 module.exports = HomeSectionCausesCtrl;

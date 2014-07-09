@@ -1,4 +1,5 @@
 window.jQuery = window.$ = require('jquery');
+window._ = require('lodash');
 
 require('angular-bootstrap');
 require('angular-ui-router');
@@ -8,6 +9,8 @@ require('angular-resource');
 require('angular-sanitize');
 require('gsap');
 require('domready/ready');
+require('lodash');
+require('restangular');
 
 module.exports = angular.module('common',
 	[
@@ -17,9 +20,10 @@ module.exports = angular.module('common',
         'ngCookies',
         'ngResource',
         'ngSanitize',
+        'restangular',
         require('./components/header').name,
         require('./components/footer').name,
         require('./directives').name,
         require('./resources').name,
-        require('./services').name
+        require('./services').name,
 	]);

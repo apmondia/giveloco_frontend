@@ -36,10 +36,23 @@ body.page.home {
 
 	.section-causes {
 		background-color: @brand-teal;
+		padding: 30px 30px;
 		h2 {
 			color: #fff;
 			text-align: center;
 			font-weight: 500;
+			margin: 0 0 10px;
+		}
+		.cause.block {
+			background-color: #fff;
+			float: left;
+			.make-md-column(6);
+			@media @breakpoint-sm {
+                .make-md-column(4);
+            }
+			@media @breakpoint-md {
+                .make-md-column(3);
+            }
 		}
 	}
 

@@ -4,7 +4,7 @@ function userProfileRoutes($stateProvider) {
 
   var profileBusiness = {
       name: 'profileBusiness',
-      url: '/user/business/id/profile',
+      url: '/users/business/:id',
       template: '<div users-profile-business></div>',
       data: {
         moduleClasses: 'users profile',
@@ -15,7 +15,7 @@ function userProfileRoutes($stateProvider) {
   },
   profileCause = {
       name: 'profileCause',
-      url: '/user/cause/id/profile',
+      url: '/users/cause/:id',
       template: '<div users-profile-cause></div>',
       data: {
         moduleClasses: 'users profile',

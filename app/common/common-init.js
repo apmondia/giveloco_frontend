@@ -12,6 +12,14 @@ function commonInit($rootScope, $state) {
 		}
 	});
 
+    // Make sure the page scrolls to the top on all state transitions
+	$rootScope.$on('$viewContentLoaded', function(){
+		if (document.readyState == "complete") {
+			window.scrollTo(0, 0);
+			clearInterval(interval);
+		}
+	});
+
     // Proper Regex Pattern for email input form validation
 	$rootScope.emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	
