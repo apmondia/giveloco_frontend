@@ -48,9 +48,14 @@ var filePath = {
     	watch: ['./app/app.less','./app/**/*.less'] 
     },
     images: { 
-    	src: './app/assets/images/**/*', 
-    	watch: ['./app/assets/images', './app/assets/images/**/*'],
-    	dest: './dist/images/' 
+        src: './app/assets/images/**/*', 
+        watch: ['./app/assets/images', './app/assets/images/**/*'],
+        dest: './dist/images/' 
+    },
+    icons: { 
+        src: './app/assets/icons/fonts/*', 
+        watch: ['./app/assets/icons/fonts/*'],
+        dest: './dist/fonts/'
     },
     vendorJS: { 
         // These files will be bundled into a single vendor.js file that's called at the bottom of index.html
@@ -65,6 +70,7 @@ var filePath = {
         [
             './libs/bootstrap/dist/css/bootstrap.css', // v3.1.1
             './libs/font-awesome/css/font-awesome.css', // v4.1.0
+            './app/assets/icons/styles.css',
             './libs/animate.css/animate.css' // v3.1.1
         ]
     },
@@ -238,6 +244,18 @@ gulp.task('images', function() {
 
 
 // =======================================================================
+// Icons Task
+// =======================================================================  
+gulp.task('icons', function() {
+    return gulp.src(filePath.icons.src)
+        .on("error", handleError)
+        .pipe(gulp.dest(filePath.icons.dest))
+        .pipe(notify({ message: 'Icons copied' }))
+        .pipe(refresh(lrserver));
+});
+
+
+// =======================================================================
 // Vendor JS Task
 // =======================================================================  
 gulp.task('vendorJS', function () {
@@ -292,6 +310,7 @@ gulp.task('watch', function () {
 	gulp.watch(filePath.browserify.watch, ['bundle-dev']);
     gulp.watch(filePath.styles.watch, ['styles-dev']);
     gulp.watch(filePath.images.watch, ['images']);
+    gulp.watch(filePath.icons.watch, ['icons']);
     gulp.watch(filePath.vendorJS.src, ['vendorJS']);
     gulp.watch(filePath.vendorCSS.src, ['vendorCSS']);
     gulp.watch(filePath.copyIndex.watch, ['copyIndex']);
@@ -318,7 +337,7 @@ gulp.task('build-dev', function(callback) {
 gulp.task('build-prod', function(callback) {
     runSequence(
         ['clean-full', 'lint'],
-        ['bundle-prod', 'styles-prod', 'images', 'vendorJS', 'vendorCSS', 'copyIndex', 'copyFavicon'],
+        ['bundle-prod', 'styles-prod', 'images', 'icons', 'vendorJS', 'vendorCSS', 'copyIndex', 'copyFavicon'],
         ['stage'],
         callback
     );
@@ -328,7 +347,7 @@ gulp.task('build-prod', function(callback) {
 gulp.task('build', function(callback) {
     runSequence(
         ['clean-full', 'lint'],
-        ['bundle-dev', 'styles-dev', 'images', 'vendorJS', 'vendorCSS', 'copyIndex', 'copyFavicon'],
+        ['bundle-dev', 'styles-dev', 'images', 'icons', 'vendorJS', 'vendorCSS', 'copyIndex', 'copyFavicon'],
         ['dev', 'watch'],
         callback
     );

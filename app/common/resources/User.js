@@ -4,7 +4,7 @@ var UserProvider = function($rootScope, Restangular) {
 
 	var userData = Restangular.all('users');
 
-	this.getUsers = function() {
+	this.getAllUsers = function() {
 		return userData.getList().$object;
 	};
 

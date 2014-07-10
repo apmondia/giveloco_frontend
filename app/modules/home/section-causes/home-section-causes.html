@@ -1,11 +1,17 @@
 <div id="causes-carousel" class="section-causes">
 	<div class="container">
-		<h2 class="section-title">Contribute to your Cause</h2>
-		<div ng-repeat="user in users | filter: {type:'cause'}" class="cause block">
-			<a class="" ui-sref="profileCause({id:user.id})">
-				<div class="profile-picture"><img ng-src="{{user.profile_picture}}"></div>
-				<div class="company-name">{{user.company}}</div>
-			</a>
+		<div class="row">
+			<h2 class="section-title">Featured Causes</h2>
+			<div ng-repeat="user in users | filter: {type:'cause', is_featured:'true'} | limitTo : 4" class="cause block">
+				<div class="cause-item">
+					<a ui-sref="profileCause({id:user.id})">
+						<div class="profile-picture"><img ng-src="{{user.profile_picture}}"></div>
+						<div class="company-name">{{user.company_name}}</div>
+					</a>
+					<div class="user-summary">{{user.summary | characters:140}}</div>
+					<div class="supporters">{{user.supporters.length}} Supporting Businesses</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

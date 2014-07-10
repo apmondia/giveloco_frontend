@@ -11,6 +11,12 @@ function userProfileRoutes($stateProvider) {
         pageClasses: 'business',
         pageTitle: 'Sign Up',
         pageDescription: 'Profile Page for Businesses'
+      },
+      resolve: {
+        business: function(User, Restangular, $stateParams){
+          var uid = $stateParams.id;
+          return User.getOneUser(uid);
+        }
       }
   },
   profileCause = {
@@ -28,7 +34,6 @@ function userProfileRoutes($stateProvider) {
         cause: function(User, Restangular, $stateParams){
           var uid = $stateParams.id;
           return User.getOneUser(uid);
-        //  return Restangular.one('users', $stateParams.id).get();
         }
       }
   };

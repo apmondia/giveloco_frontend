@@ -2,7 +2,7 @@
 
 function UsersAuthRegistrationCtrl($rootScope, $scope) {
 
-//	$scope.donorForm = true;
+	$scope.donorForm = true;
 
 	$scope.toggleForm = function() {
 		$scope.donorForm = ! $scope.donorForm;

@@ -7,6 +7,7 @@ require('angular-animate');
 require('angular-cookies');
 require('angular-resource');
 require('angular-sanitize');
+require('angular-truncate');
 require('gsap');
 require('domready/ready');
 require('lodash');

@@ -27,6 +27,7 @@
     "gsap": "~1.12.1",
     "angular-mocks": "~1.2.19",
     "lodash": "~2.4.1",
-    "restangular": "~1.4.0"
+    "restangular": "~1.4.0",
+    "angular-truncate": "~0.1.0"
   }
 }

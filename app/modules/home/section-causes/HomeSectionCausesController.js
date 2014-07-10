@@ -2,9 +2,7 @@
 
 function HomeSectionCausesCtrl($rootScope, $scope, Restangular, User) {
 
-	$scope.users = User.getUsers();
-
-	$scope.testUser = User.getOneUser('4');
+	$scope.users = User.getAllUsers();
 
 	console.log($scope.users);
 

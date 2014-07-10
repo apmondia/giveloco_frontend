@@ -2,13 +2,13 @@ http://www.json-generator.com/
 
 USERS
 [
-  '{{repeat(20, 20)}}',
+  '{{repeat(40, 40)}}',
   {
     id: '{{index()}}',
     type: '{{random("person", "business", "cause")}}',
     first_name: '{{firstName()}}',
     last_name: '{{surname()}}',
-    company: '{{company()}}',
+    company_name: '{{company()}}',
     email: '{{email([random])}}',
     street_address: '{{integer([100], [9999])}} {{street()}}',
     city: '{{city()}}',
@@ -19,7 +19,7 @@ USERS
       '{{repeat(7)}}',
       '{{lorem(1, "words")}}'
     ],
-    summary: '{{lorem(2, "sentences")}}',
+    summary: '{{lorem(25, "words")}}',
     description: '{{lorem(2, "paragraphs")}}',
     website: 'http://www.website.com',
     is_authenticated: '{{bool()}}',
@@ -30,7 +30,12 @@ USERS
     total_debits_value: '{{floating(1000, 4000, 2, "0.00")}}',
     total_credits: '{{integer([0], [100])}}',
     total_credits_value: '{{floating(1000, 4000, 2, "0.00")}}',
-    profile_picture: 'http://placehold.it/128x128'
+    profile_picture: 'http://placehold.it/256x196',
+    supporters: [
+      '{{repeat(0, 20)}}',
+      '{{integer(0, 19)}}'
+    ],
+    is_featured: '{{bool()}}'
   }
 ]
 
