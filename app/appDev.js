@@ -8,11 +8,7 @@ module.exports = angular.module('taliflo',
 	[
 		require('./common/common').name,
 		require('./env/dev').name, // Development Environment Configuration
-		require('./modules/explore').name,
-		require('./modules/forms').name,
-		require('./modules/home').name,
-		require('./modules/pages').name,
-		require('./modules/users').name
+		require('./modules').name
 	])
 	.config(require('./appConfig'))
 	.constant('version', require('../package.json').version)
