@@ -6,4 +6,5 @@ module.exports = angular.module('pages',
 		require('./policy').name,
 		require('./terms').name
 	])
-	.config(require('./pagesConfig'));
+	.config(require('./pagesConfig'))
+	.controller('PagesCtrl', require('./PagesController'));

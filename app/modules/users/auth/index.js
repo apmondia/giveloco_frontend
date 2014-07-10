@@ -6,4 +6,5 @@ module.exports = angular.module('users.auth',
 		require('./password-reset').name,
 		require('./registration').name
 	])
-	.config(require('./usersAuthConfig'));
+	.config(require('./usersAuthConfig'))
+	.controller('UsersAuthCtrl', require('./UsersAuthController'));

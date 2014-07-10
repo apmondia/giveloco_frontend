@@ -17,11 +17,19 @@ function userProfileRoutes($stateProvider) {
       name: 'profileCause',
       url: '/users/cause/:id',
       template: '<div users-profile-cause></div>',
+      controller: 'UsersProfileCtrl',
       data: {
         moduleClasses: 'users profile',
         pageClasses: 'cause',
         pageTitle: 'Profile',
         pageDescription: 'Profile Page for Causes'
+      },
+      resolve: {
+        cause: function(User, Restangular, $stateParams){
+          var uid = $stateParams.id;
+          return User.getOneUser(uid);
+        //  return Restangular.one('users', $stateParams.id).get();
+        }
       }
   };
 

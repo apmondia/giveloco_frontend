@@ -5,4 +5,5 @@ module.exports = angular.module('users.profile',
 		require('./business').name,
 		require('./cause').name
 	])
-	.config(require('./usersProfileConfig'));
+	.config(require('./usersProfileConfig'))
+	.controller('UsersProfileCtrl', require('./UsersProfileController'));

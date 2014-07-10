@@ -7,4 +7,5 @@ module.exports = angular.module('forms',
 		require('./pledge').name,
 		require('./redeem').name
 	])
-	.config(require('./formsConfig'));
+	.config(require('./formsConfig'))
+	.controller('FormsCtrl', require('./FormsController'));

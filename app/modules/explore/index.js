@@ -5,4 +5,5 @@ module.exports = angular.module('explore',
 		require('./businesses').name,
 		require('./causes').name
 	])
-	.config(require('./exploreConfig'));
+	.config(require('./exploreConfig'))
+	.controller('ExploreCtrl', require('./ExploreController'));

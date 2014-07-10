@@ -2,9 +2,7 @@
 // Controller naming conventions should start with an uppercase letter
 function MainCtrl($rootScope, $scope) {
 
-	$scope.test = function (){
-		
-	};
+	$scope.currentUser = null;
 	
 }
 
