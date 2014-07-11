@@ -1,4 +1,26 @@
 <div class="causeGrid module-view">
-	<h1>Explore Causes</h1>
-    <p>{{causeList}}</p>
+	<div class="row">
+		<div class="page-header">
+			<div class="left title">
+				<h1 class="page-title">Explore Causes</h1>
+			</div>
+			<div class="right utils search-wrapper">
+				<i class="icon fa fa-search"></i>
+				<input type="search" class="search" ng-model="search" placeholder="Search Causes" typeahead="user.company_name for user in users | filter:$viewValue | filter: {type:'cause'} | limitTo:8">
+			</div>
+		</div>
+		<div class="page-content">
+		    <div ng-repeat="user in causes = (users | filter: search | filter: {type:'cause'})" class="cause block">
+		    	<div class="cause-item">
+			    	<a ui-sref="profileCause({id:user.id})">
+						<div class="profile-picture"><img ng-src="{{user.profile_picture}}"></div>
+						<div class="company-name">{{user.company_name}}</div>
+					</a>
+					<div class="user-summary">{{user.summary | characters:140}}</div>
+					<div class="supporters">{{user.supporters.length}} Supporting Businesses</div>
+				</div>
+		    </div>
+		    <p ng-hide="causes.length">No Results</p>
+		</div>
+	</div>
 </div>

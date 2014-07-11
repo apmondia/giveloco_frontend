@@ -1,8 +1,8 @@
 'use strict';
 
-function ExploreCausesCtrl($rootScope, $scope) {
-	$scope.causeList = 'List of Causes goes here.';
+function ExploreCausesCtrl($rootScope, $scope, User) {
+	$scope.users = User.getAllUsers();
 }
 
-ExploreCausesCtrl.$inject = ['$rootScope', '$scope'];
+ExploreCausesCtrl.$inject = ['$rootScope', '$scope', 'User'];
 module.exports = ExploreCausesCtrl;

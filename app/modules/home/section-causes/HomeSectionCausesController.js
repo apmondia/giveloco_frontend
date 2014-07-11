@@ -5,8 +5,6 @@ function HomeSectionCausesCtrl($rootScope, $scope, Restangular, User) {
 	$scope.users = User.getAllUsers();
 
 	console.log($scope.users);
-
-//	ng-if="user.type == 'cause'" 
 	
 }
 

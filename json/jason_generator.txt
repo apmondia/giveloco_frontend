@@ -30,7 +30,7 @@ USERS
     total_debits_value: '{{floating(1000, 4000, 2, "0.00")}}',
     total_credits: '{{integer([0], [100])}}',
     total_credits_value: '{{floating(1000, 4000, 2, "0.00")}}',
-    profile_picture: 'http://placehold.it/256x196',
+    profile_picture: 'http://placehold.it/256x192',
     supporters: [
       '{{repeat(0, 20)}}',
       '{{integer(0, 19)}}'
