@@ -1,7 +1,7 @@
 'use strict';
 
 function UsersProfileBusinessCtrl($rootScope, $scope) {
-	$scope.profile = 'Business Profile goes here.';
+	$scope.test = '';
 }
 
 UsersProfileBusinessCtrl.$inject = ['$rootScope', '$scope'];

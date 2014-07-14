@@ -4,7 +4,7 @@ function prodInit($rootScope, Restangular) {
 
 	$rootScope.$broadcast('ENV_PROD');
 
-	Restangular.setBaseUrl('api.taliflo.com');
+	Restangular.setBaseUrl('http://api.taliflo.com');
 	
 }
 

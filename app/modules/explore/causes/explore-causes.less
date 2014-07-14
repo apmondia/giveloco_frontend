@@ -8,35 +8,3 @@
 /* ***********************************************************************
 	Module Styles
 *********************************************************************** */
-body.explore.causes {
-	.causeGrid {
-		.container();
-		.page-header {
-			margin-bottom: 30px;
-			.left {
-				.make-xs-column(6);
-			}
-			.right {
-				.make-xs-column(6);
-			}
-		}
-		.page-content {
-			.cause.block {
-				.ng-enter {
-					-webkit-transition: 1s linear all;
-					transition: 1s linear all;
-					opacity:0;
-				}
-				&.ng-enter-stagger {
-					-webkit-transition-delay: 0.1s;
-					transition-delay: 0.1s;
-					-webkit-transition-duration: 0s;
-					transition-duration: 0s;
-				}
-				&.ng-enter.ng-enter-active {
-					opacity:1;
-				}
-			}
-		}
-	}
-}

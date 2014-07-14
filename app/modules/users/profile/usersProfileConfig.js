@@ -1,20 +1,24 @@
 'use strict';
 
+// NOTE: Specifying the Controller is required for "resolve" to work correctly.
+
 function userProfileRoutes($stateProvider) {
 
   var profileBusiness = {
       name: 'profileBusiness',
       url: '/users/business/:id',
       template: '<div users-profile-business></div>',
+      controller: 'UsersProfileCtrl',
       data: {
         moduleClasses: 'users profile',
         pageClasses: 'business',
-        pageTitle: 'Sign Up',
+        pageTitle: 'Profile',
         pageDescription: 'Profile Page for Businesses'
       },
       resolve: {
-        business: function(User, Restangular, $stateParams){
+        user: function(User, Restangular, $stateParams){
           var uid = $stateParams.id;
+          console.log(uid);
           return User.getOneUser(uid);
         }
       }
@@ -31,7 +35,7 @@ function userProfileRoutes($stateProvider) {
         pageDescription: 'Profile Page for Causes'
       },
       resolve: {
-        cause: function(User, Restangular, $stateParams){
+        user: function(User, Restangular, $stateParams){
           var uid = $stateParams.id;
           return User.getOneUser(uid);
         }

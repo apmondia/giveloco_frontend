@@ -1,7 +1,7 @@
 'use strict';
 
 function UsersProfileCauseCtrl($rootScope, $scope) {
-	$scope.profile = 'Cause Profile goes here.';
+	$scope.test = '';
 }
 
 UsersProfileCauseCtrl.$inject = ['$rootScope', '$scope'];

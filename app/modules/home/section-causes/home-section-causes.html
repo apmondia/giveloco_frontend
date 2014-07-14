@@ -2,8 +2,8 @@
 	<div class="container">
 		<div class="row">
 			<h2 class="section-title">Featured Causes</h2>
-			<div ng-repeat="user in users | filter: {type:'cause', is_featured:'true'} | limitTo : 4" class="cause block">
-				<div class="cause-item">
+			<div ng-repeat="user in users | filter: {type:'cause', is_featured:'true'} | limitTo : 4" class="cause grid block">
+				<div class="grid-item">
 					<a ui-sref="profileCause({id:user.id})">
 						<div class="profile-picture"><img ng-src="{{user.profile_picture}}"></div>
 						<div class="company-name">{{user.company_name}}</div>

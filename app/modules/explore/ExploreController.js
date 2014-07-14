@@ -1,8 +1,8 @@
 'use strict';
 
-function ExploreCtrl() {
-	
+function ExploreCtrl($rootScope, $scope, users) {
+	$scope.users = users;
 }
 
-ExploreCtrl.$inject = [''];
+ExploreCtrl.$inject = ['$rootScope', '$scope', 'users'];
 module.exports = ExploreCtrl;

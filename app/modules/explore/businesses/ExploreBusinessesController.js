@@ -1,8 +1,8 @@
 'use strict';
 
-function ExploreBusinessesCtrl($rootScope, $scope) {
-	$scope.bizList = 'List of Businesses goes here.';
+function ExploreBusinessesCtrl($rootScope, $scope, User) {
+	$scope.users = User.getAllUsers();
 }
 
-ExploreBusinessesCtrl.$inject = ['$rootScope', '$scope'];
+ExploreBusinessesCtrl.$inject = ['$rootScope', '$scope', 'User'];
 module.exports = ExploreBusinessesCtrl;
