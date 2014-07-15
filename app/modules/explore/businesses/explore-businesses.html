@@ -6,21 +6,24 @@
 			</div>
 			<div class="right utils search-wrapper">
 				<i class="icon fa fa-search"></i>
-				<input type="search" class="search" ng-model="search" placeholder="Search Businesses" typeahead="user.company_name for user in users | filter:$viewValue | filter: {type:'business'} | limitTo:8">
+				<input type="search" class="search" ng-model="search" placeholder="Search Businesses" typeahead="user.company_name for user in businesses | filter:$viewValue | limitTo:8">
 			</div>
 		</div>
 		<div class="page-content">
-		    <div ng-repeat="user in businesses = (users | filter: search | filter: {type:'business'})" class="business grid block">
+			<div ng-repeat="user in filteredBusinesses | filter: search" class="business grid block">
 		    	<div class="grid-item">
 			    	<a ui-sref="profileBusiness({id:user.id})">
 						<div class="profile-picture"><img ng-src="{{user.profile_picture}}"></div>
 						<div class="company-name">{{user.company_name}}</div>
 					</a>
 					<div class="user-summary">{{user.summary | characters:140}}</div>
-					<div class="supporters">{{user.supporters.length}} Supporting Businesses</div>
+					<div class="supporters">{{user.supported_causes.length}} Causes Supported</div>
 				</div>
 		    </div>
-		    <p ng-hide="businesses.length" ng-cloak="ng-cloak" class="no-results">Sorry, No Results</p>
+		    <p ng-hide="(businesses | filter: search).length" class="no-results">Sorry, No Results</p>
+		</div>
+		<div class="pagination-wrapper">
+			<div pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" max-size="maxSize" ng-change="pageChanged()"></div>
 		</div>
 	</div>
 </div>

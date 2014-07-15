@@ -4,7 +4,7 @@ function exploreRoutes($stateProvider) {
 
   var exploreBusinesses = {
       name: 'exploreBusinesses',
-      url: '/explore-businesses',
+      url: '/explore/businesses',
       template: '<div explore-businesses></div>',
       data: {
         moduleClasses: 'explore',
@@ -15,7 +15,7 @@ function exploreRoutes($stateProvider) {
   },
   exploreCauses = {
       name: 'exploreCauses',
-      url: '/explore-causes',
+      url: '/explore/causes',
       template: '<div explore-causes></div>',
       data: {
         moduleClasses: 'explore',

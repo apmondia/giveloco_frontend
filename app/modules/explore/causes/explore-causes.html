@@ -6,11 +6,11 @@
 			</div>
 			<div class="right utils search-wrapper">
 				<i class="icon fa fa-search"></i>
-				<input type="search" class="search" ng-model="search" placeholder="Search Causes" typeahead="user.company_name for user in users | filter:$viewValue | filter: {type:'cause'} | limitTo:8">
+				<input type="search" class="search" ng-model="search" placeholder="Search Causes" typeahead="user.company_name for user in causes | filter:$viewValue | limitTo:8">
 			</div>
 		</div>
 		<div class="page-content">
-		    <div ng-repeat="user in causes = (users | filter: search | filter: {type:'cause'})" class="cause grid block">
+			<div ng-repeat="user in filteredCauses | filter: search" class="cause grid block">
 		    	<div class="grid-item">
 			    	<a ui-sref="profileCause({id:user.id})">
 						<div class="profile-picture"><img ng-src="{{user.profile_picture}}"></div>
@@ -20,7 +20,10 @@
 					<div class="supporters">{{user.supporters.length}} Supporting Businesses</div>
 				</div>
 		    </div>
-		    <p ng-hide="causes.length" class="no-results">Sorry, No Results</p>
+		    <p ng-hide="(causes | filter: search).length" class="no-results">Sorry, No Results</p>
+		</div>
+		<div class="pagination-wrapper">
+			<div pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" max-size="maxSize" ng-change="pageChanged()"></div>
 		</div>
 	</div>
 </div>

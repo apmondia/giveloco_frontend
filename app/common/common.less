@@ -147,6 +147,9 @@ a {
     margin: 0;
     .clearfix();
 }
+.page-content {
+    .clearfix();
+}
 .search-wrapper {
     position: relative;
     .icon {
@@ -435,7 +438,8 @@ a {
             padding: 20px 0 0;
         }
         .user-summary {
-            padding: 15px 10px 30px;
+            padding: 15px 10px;
+            height: 130px;
             &:first-letter {
                 text-transform: capitalize;
             }
@@ -464,4 +468,12 @@ p.no-results {
     text-align: center;
     margin-top: 60px;
     color: #999;
+}
+
+
+/* ==========================================================================
+    Pagination
+========================================================================== */
+.pagination-wrapper {
+    .container();
 }
