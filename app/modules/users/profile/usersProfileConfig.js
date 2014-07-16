@@ -1,49 +1,46 @@
 'use strict';
 
-// NOTE: Specifying the Controller is required for "resolve" to work correctly.
-
 function userProfileRoutes($stateProvider) {
 
-  var profileBusiness = {
-      name: 'profileBusiness',
-      url: '/users/business/:id',
-      template: '<div users-profile-business></div>',
-      controller: 'UsersProfileCtrl',
-      data: {
-        moduleClasses: 'users profile',
-        pageClasses: 'business',
-        pageTitle: 'Profile',
-        pageDescription: 'Profile Page for Businesses'
-      },
-      resolve: {
-        user: function(User, Restangular, $stateParams){
-          var uid = $stateParams.id;
-          console.log(uid);
-          return User.getOneUser(uid);
-        }
-      }
-  },
-  profileCause = {
-      name: 'profileCause',
-      url: '/users/cause/:id',
-      template: '<div users-profile-cause></div>',
-      controller: 'UsersProfileCtrl',
-      data: {
-        moduleClasses: 'users profile',
-        pageClasses: 'cause',
-        pageTitle: 'Profile',
-        pageDescription: 'Profile Page for Causes'
-      },
-      resolve: {
-        user: function(User, Restangular, $stateParams){
-          var uid = $stateParams.id;
-          return User.getOneUser(uid);
-        }
-      }
-  };
+    var profile = {
+            name: 'profile',
+            abstract: true,
+            url: '/user/:id',
+            template: '<div ui-view></div>',
+            controller: 'UsersProfileCtrl',
+            resolve: {
+                user: function(User, $stateParams){
+                    console.log($stateParams.id);
+                    return User.getOneUser($stateParams.id);
+                }
+            }
+        },
+        profileBusiness = {
+            name: 'profile.business',
+            url: '/business',
+            template: '<div users-profile-business></div>',
+            data: {
+                moduleClasses: 'users profile',
+                pageClasses: 'business',
+                pageTitle: 'Profile',
+                pageDescription: 'Profile Page for Businesses'
+            }
+        },
+        profileCause = {
+            name: 'profile.cause',
+            url: '/cause',
+            template: '<div users-profile-cause></div>',
+            data: {
+                moduleClasses: 'users profile',
+                pageClasses: 'cause',
+                pageTitle: 'Profile',
+                pageDescription: 'Profile Page for Causes'
+            }
+        };
 
-$stateProvider.state(profileBusiness);
-$stateProvider.state(profileCause);
+    $stateProvider.state(profile);
+    $stateProvider.state(profileBusiness);
+    $stateProvider.state(profileCause);
 
 }
 

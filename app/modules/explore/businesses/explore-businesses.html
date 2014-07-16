@@ -10,9 +10,9 @@
 			</div>
 		</div>
 		<div class="page-content">
-			<div ng-repeat="user in filteredBusinesses | filter: search" class="business grid block">
+			<div ng-repeat="user in filteredItems | filter: search" class="business grid block">
 		    	<div class="grid-item">
-			    	<a ui-sref="profileBusiness({id:user.id})">
+			    	<a ui-sref="profile.business({id:user.id})">
 						<div class="profile-picture"><img ng-src="{{user.profile_picture}}"></div>
 						<div class="company-name">{{user.company_name}}</div>
 					</a>

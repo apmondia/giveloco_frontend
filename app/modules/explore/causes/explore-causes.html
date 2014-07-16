@@ -10,9 +10,9 @@
 			</div>
 		</div>
 		<div class="page-content">
-			<div ng-repeat="user in filteredCauses | filter: search" class="cause grid block">
+			<div ng-repeat="user in filteredItems | filter: search" class="cause grid block">
 		    	<div class="grid-item">
-			    	<a ui-sref="profileCause({id:user.id})">
+			    	<a ui-sref="profile.cause({id:user.id})">
 						<div class="profile-picture"><img ng-src="{{user.profile_picture}}"></div>
 						<div class="company-name">{{user.company_name}}</div>
 					</a>
