@@ -9,7 +9,9 @@
 	Module Styles
 *********************************************************************** */
 body.users.auth.signup {
-	[users-auth-registration] {
+	[users-auth-registration-donor],
+	[users-auth-registration-business],
+	[users-auth-registration-cause] {
 		.animated(@duration: 0.5s, @fill: both);
 		.fadeInLeft();
 	}
@@ -25,7 +27,7 @@ body.users.auth.signup {
 		color: @brand-purple;
 		text-transform: uppercase;
 	}
-	.switch-form {
+	.choose-form {
 		display: block;
 		margin-top: 10px;
 	}

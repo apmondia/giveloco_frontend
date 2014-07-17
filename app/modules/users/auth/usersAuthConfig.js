@@ -4,6 +4,7 @@ function userAuthRoutes($stateProvider) {
 
   var signup = {
       name: 'signup',
+      abstract: true,
       url: '/user/signup',
       template: '<div users-auth-registration></div>',
       data: {
@@ -13,10 +14,20 @@ function userAuthRoutes($stateProvider) {
         pageDescription: 'User Registration.'
       }
   },
-      signupOrg = { // Nested View for Signing up Businesses and Causes
-          name: 'signup.org',
-          url: '/organization',
-          parent: signup
+      signupDonor = {
+        name: 'signup.donor',
+        url: '',
+        template: '<div users-auth-registration-donor></div>',
+  },
+      signupCause = {
+        name: 'signup.cause',
+        url: '/cause',
+        template: '<div users-auth-registration-cause></div>',
+  },
+      signupBusiness = {
+        name: 'signup.business',
+        url: '/business',
+        template: '<div users-auth-registration-business></div>',
   },
   login = {
       name: 'login',
@@ -42,7 +53,9 @@ function userAuthRoutes($stateProvider) {
   };
 
 $stateProvider.state(signup);
-$stateProvider.state(signupOrg);
+$stateProvider.state(signupDonor);
+$stateProvider.state(signupCause);
+$stateProvider.state(signupBusiness);
 $stateProvider.state(login);
 $stateProvider.state(passwordReset);
 

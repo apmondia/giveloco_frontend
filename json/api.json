@@ -895,7 +895,7 @@
       "total_credits": 28,
       "total_credits_value": 3243.54,
       "profile_picture": "http://placehold.it/256x192",
-      "is_featured": false,
+      "is_featured": true,
       "supporters": [
         11,
         2

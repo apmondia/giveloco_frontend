@@ -1,9 +1,10 @@
 'use strict';
 
-module.exports = function usersAuthRegistrationDirective() {
+module.exports = function UsersAuthRegistrationDirective() {
 	return {
 		controller: 'UsersAuthRegistrationCtrl',
 		template: require('./users-auth-registration.html'),
-		restrict: 'A'
+		restrict: 'A',
+		scope: true
 	};
 };

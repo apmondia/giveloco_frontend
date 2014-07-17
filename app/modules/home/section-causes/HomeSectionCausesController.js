@@ -1,12 +1,11 @@
 'use strict';
 
-function HomeSectionCausesCtrl($rootScope, $scope, Restangular, User) {
+function HomeSectionCausesCtrl($rootScope, $scope, User) {
 
-	$scope.users = User.getAllUsers();
-
-	console.log($scope.users);
+	$scope.featuredCauses = User.getAllFeaturedCauses();
+	$scope.slides = User.getAllFeaturedCauses();
 	
 }
 
-HomeSectionCausesCtrl.$inject = ['$rootScope', '$scope', 'Restangular', 'User'];
+HomeSectionCausesCtrl.$inject = ['$rootScope', '$scope', 'User'];
 module.exports = HomeSectionCausesCtrl;

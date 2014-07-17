@@ -27,4 +27,5 @@ module.exports = angular.module('common',
         require('./directives').name,
         require('./resources').name,
         require('./services').name,
+        require('./templates').name
 	]);
