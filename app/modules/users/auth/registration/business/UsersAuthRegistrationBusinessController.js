@@ -1,8 +1,6 @@
 'use strict';
 
 function UsersAuthRegistrationBusinessCtrl($rootScope, $scope) {
-
-	$scope.businessForm = true;
 	
 	$scope.signupBusiness = function() {
 		if ($scope.signupFormBusiness.$valid) {

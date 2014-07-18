@@ -1,24 +1,81 @@
-<div class="signup-form small-form toggle-form" ng-show="causeForm">
-	<h1>Register Your Cause</h1>
+<div class="signup-form medium-form toggle-form">
+	<h1>Register <span class="company_name">{{user.company || "Your Cause"}}</span></h1>
 	<form class="form" name="signupFormCause" ng-submit="signupCause()" novalidate>
 
-		<div class="form-group" ng-class="{'invalid' : signupFormCause.email.$invalid && signupFormCause.email.$dirty, 'valid' : signupFormCause.email.$valid && signupFormCause.email.$dirty}">
-			<label for="email" class="inline">Email</label>
-			<input type="email" name="email" id="email" class="form-control" placeholder="email@address.com" ng-model="user.email" ng-pattern="emailRegex" required auto-focus show-form-errors />
-			<p class="form-helper" ng-if="signupFormCause.email.$error.pattern && !signupFormCause.email.$focused">Invalid Email Address</p>
-			<p class="form-helper" ng-if="signupFormCause.email.$dirty && signupFormCause.email.$error.required && !signupFormCause.email.$focused">Email Address is required!</p>
+		<div class="form-section">
+			<h4 class="section-title">Basic Information</h4>
+			<div class="form-group company" ng-class="{'invalid' : signupFormCause.company.$invalid && signupFormCause.company.$dirty, 'valid' : signupFormCause.company.$valid && signupFormCause.company.$dirty}">
+				<label for="causeName" class="inline">Cause Name</label>
+				<input type="company" name="company" id="causeName" class="form-control" placeholder="Organization or Cause name" ng-model="user.company" required auto-focus show-form-errors />
+				<p class="form-helper" ng-if="signupFormCause.company.$dirty && signupFormCause.company.$error.required && !signupFormCause.company.$focused">Cause Name is required!</p>
+			</div>
+
+			<div class="form-group email" ng-class="{'invalid' : signupFormCause.email.$invalid && signupFormCause.email.$dirty, 'valid' : signupFormCause.email.$valid && signupFormCause.email.$dirty}">
+				<label for="causeEmail" class="inline">Email</label>
+				<input type="email" name="email" id="causeEmail" class="form-control" placeholder="email@address.com" ng-model="user.email" ng-pattern="emailRegex" required show-form-errors />
+				<p class="form-helper" ng-if="signupFormCause.email.$error.pattern && !signupFormCause.email.$focused">Invalid Email Address</p>
+				<p class="form-helper" ng-if="signupFormCause.email.$dirty && signupFormCause.email.$error.required && !signupFormCause.email.$focused">Email Address is required!</p>
+			</div>
+
+			<div class="form-group password" ng-class="{'invalid' : signupFormCause.password.$invalid && signupFormCause.password.$dirty, 'valid' : signupFormCause.password.$valid && signupFormCause.password.$dirty}">
+				<label for="causePassword" class="inline">Password</label>
+				<input type="password" name="password" id="causePassword" class="form-control" placeholder="password" ng-model="user.password" ng-minlength=8 required show-form-errors />
+				<p class="form-helper" ng-if="signupFormCause.password.$dirty && signupFormCause.password.$error.required && !signupFormCause.password.$focused">Password is required!</p>
+				<p class="form-helper" ng-if="signupFormCause.password.$dirty && signupFormCause.password.$error.minlength && !signupFormCause.password.$focused">Password must contain at least 8 characters.</p>
+			</div>
+
+			<div class="form-group website" ng-class="{'invalid' : signupFormCause.website.$invalid && signupFormCause.website.$dirty, 'valid' : signupFormCause.website.$valid && signupFormCause.website.$dirty}">
+				<label for="causeWebsite" class="inline">Website</label>
+				<input type="website" name="website" id="causeWebsite" class="form-control" placeholder="www.website.com" ng-model="user.website" ng-pattern="websiteRegex" required show-form-errors />
+				<p class="form-helper" ng-if="signupFormCause.website.$error.pattern && !signupFormCause.website.$focused">Invalid Website</p>
+				<p class="form-helper" ng-if="signupFormCause.website.$dirty && signupFormCause.website.$error.required && !signupFormCause.website.$focused">This field is required!</p>
+			</div>
 		</div>
 
-		<div class="form-group" ng-class="{'invalid' : signupFormCause.password.$invalid && signupFormCause.password.$dirty, 'valid' : signupFormCause.password.$valid && signupFormCause.password.$dirty}">
-			<label for="password" class="inline">Password</label>
-			<input type="password" name="password" id="password" class="form-control" placeholder="password" ng-model="user.password" ng-minlength=8 required show-form-errors />
-			<p class="form-helper" ng-if="signupFormCause.password.$dirty && signupFormCause.password.$error.required && !signupFormCause.password.$focused">Password is required!</p>
-			<p class="form-helper" ng-if="signupFormCause.password.$dirty && signupFormCause.password.$error.minlength && !signupFormCause.password.$focused">Password must contain at least 8 characters.</p>
+		<div class="form-section">
+			<h4 class="section-title">Location Information</h4>
+			<div class="form-group street" ng-class="{'invalid' : signupFormCause.street.$invalid && signupFormCause.street.$dirty, 'valid' : signupFormCause.street.$valid && signupFormCause.street.$dirty}">
+				<label for="causeStreetAddress" class="inline">Street Address</label>
+				<input type="text" name="street" id="causeStreetAddress" class="form-control" placeholder="123 Address Street" ng-model="user.street" ng-minlength=4 required show-form-errors />
+				<p class="form-helper" ng-if="signupFormCause.street.$dirty && signupFormCause.street.$error.required && !signupFormCause.street.$focused">This field is required!</p>
+			</div>
+			<div class="sub-section">
+				<div class="form-group country">
+					<select name="country" 
+						id="causeCountry" 
+						ng-model="selectedCountry" 
+						ng-change="countryChange(selectedCountry)" 
+						ng-options="c.value as c.name for c in countryList"
+						required>
+					</select>
+					{{selectedCountry}}
+				</div>
+				<div class="form-group state">
+					<select name="state" 
+						id="causeState" 
+						ng-model="selectedState" 
+						ng-options="s.value as s.name for s in states"
+						required>
+					</select>
+				</div>
+			</div>
+			<div class="sub-section">
+				<div class="form-group city" ng-class="{'invalid' : signupFormCause.city.$invalid && signupFormCause.city.$dirty, 'valid' : signupFormCause.city.$valid && signupFormCause.city.$dirty}">
+					<label for="causeCity" class="inline">City</label>
+					<input type="text" name="city" id="causeCity" class="form-control" placeholder="City" ng-model="user.city" required show-form-errors />
+					<p class="form-helper" ng-if="signupFormCause.city.$dirty && signupFormCause.city.$error.required && !signupFormCause.city.$focused">This field is required!</p>
+				</div>
+				<div class="form-group zip" ng-class="{'invalid' : signupFormCause.zip.$invalid && signupFormCause.zip.$dirty, 'valid' : signupFormCause.zip.$valid && signupFormCause.zip.$dirty}">
+					<label for="causeZip" class="inline">Postal Code / Zip</label>
+					<input type="text" name="zip" id="causeZip" class="form-control" placeholder="A1A2B2 or 12345" ng-model="user.zip" ng-minlength=5 required show-form-errors />
+					<p class="form-helper" ng-if="signupFormCause.zip.$dirty && signupFormCause.zip.$error.required && !signupFormCause.zip.$focused">This field is required!</p>
+				</div>
+			</div>
 		</div>
 
 		<div class="form-group form-buttons">
 			<button class="btn button button-primary" type="submit" ng-disabled="signupFormCause.$invalid">Sign Up</button>
-			<a class="choose-form" ui-sref="signup.donor">Sign up as a Donor</a>
+			<p class="choose-form">Sign up as a <a ui-sref="signup.donor">Donor</a> or a <a ui-sref="signup.business">Business</a></p>
 		</div>
 
 	</form>

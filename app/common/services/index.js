@@ -5,7 +5,6 @@
 
 module.exports = angular.module('common.services', [])
 	.service('apiConfig', require('./ApiConfig.js'))
+	.service('formValidation', require('./formValidation.js'))
+	.service('regions', require('./regions.js'))
 	.factory('Auth', require('./Auth.js'));
-
-// NOTE: Services and Factories MUST be injected with a resource or another service
-// in order to be injected into other modules.

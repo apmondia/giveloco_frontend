@@ -18,16 +18,25 @@ function userAuthRoutes($stateProvider) {
         name: 'signup.donor',
         url: '',
         template: '<div users-auth-registration-donor></div>',
+        data: {
+          moduleClasses: 'users auth donor'
+        }
   },
       signupCause = {
         name: 'signup.cause',
         url: '/cause',
         template: '<div users-auth-registration-cause></div>',
+        data: {
+          moduleClasses: 'users auth cause'
+        }
   },
       signupBusiness = {
         name: 'signup.business',
         url: '/business',
         template: '<div users-auth-registration-business></div>',
+        data: {
+          moduleClasses: 'users auth business'
+        }
   },
   login = {
       name: 'login',

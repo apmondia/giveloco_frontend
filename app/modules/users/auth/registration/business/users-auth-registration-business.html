@@ -1,4 +1,4 @@
-<div class="signup-form small-form toggle-form" ng-show="businessForm">
+<div class="signup-form small-form toggle-form">
 	<h1>Register Your Business</h1>
 	<form class="form" name="signupFormBusiness" ng-submit="signupBusiness()" novalidate>
 
@@ -18,7 +18,7 @@
 
 		<div class="form-group form-buttons">
 			<button class="btn button button-primary" type="submit" ng-disabled="signupFormBusiness.$invalid">Sign Up</button>
-			<a class="choose-form" ui-sref="signup.donor">Sign up as a Donor</a>
+			<p class="choose-form">Sign up as a <a ui-sref="signup.donor">Donor</a> or a <a ui-sref="signup.cause">Cause</a></p>
 		</div>
 
 	</form>

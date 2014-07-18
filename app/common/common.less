@@ -37,10 +37,15 @@ a {
 :active {
     outline: 0;
 }
-:focus::-webkit-input-placeholder { opacity: 0.5; }
-:focus:-moz-placeholder { opacity: 0.5; } /* Firefox 18- */
-:focus::-moz-placeholder { opacity: 0.5; } /* Firefox 19+ */
-:focus:-ms-input-placeholder { opacity: 0.5; }
+::-webkit-input-placeholder { opacity: 0.75; }
+:-moz-placeholder { opacity: 0.75; } /* Firefox 18- */
+::-moz-placeholder { opacity: 0.75; } /* Firefox 19+ */
+:-ms-input-placeholder { opacity: 0.75; }
+
+:focus::-webkit-input-placeholder { opacity: 0.25; }
+:focus:-moz-placeholder { opacity: 0.25; } /* Firefox 18- */
+:focus::-moz-placeholder { opacity: 0.25; } /* Firefox 19+ */
+:focus:-ms-input-placeholder { opacity: 0.25; }
 
 
 /* ==========================================================================
