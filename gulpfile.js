@@ -30,7 +30,7 @@ var filePath = {
     	dest: './dist' 
     },
     lint: { 
-    	src: ['./app/*.js', './app/**/*.js'] 
+    	src: ['!./app/assets/vendor/**/*.js', './app/*.js', './app/**/*.js'] 
     },
     browserify: { 
     	DEVsrc: './app/appDev.js',
@@ -62,7 +62,9 @@ var filePath = {
     	src: 
         [
             './libs/jquery/dist/jquery.js', // v2.1.1
-            './libs/bootstrap/dist/js/bootstrap.js' // v3.1.1
+            './libs/bootstrap/dist/js/bootstrap.js', // v3.1.1
+            './app/assets/vendor/modernizr.js',
+            './app/assets/vendor/webshim/js-webshim/dev/polyfiller.js' // v1.14.5
         ]
 	},
     vendorCSS: { 
@@ -326,8 +328,8 @@ gulp.task('watch', function () {
 gulp.task('build-dev', function(callback) {
     runSequence(
         ['clean-dev', 'lint'],
-        // images task is removed to speed up build time. Use "gulp build" to do a full re-build of the dev app.
-        ['bundle-dev', 'styles-dev', 'vendorJS', 'vendorCSS', 'copyIndex', 'copyFavicon'],
+        // images and vendor tasks are removed to speed up build time. Use "gulp build" to do a full re-build of the dev app.
+        ['bundle-dev', 'styles-dev', 'copyIndex', 'copyFavicon'],
         ['dev', 'watch'],
         callback
     );
