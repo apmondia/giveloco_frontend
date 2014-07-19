@@ -1,55 +1,63 @@
 'use strict';
 
-function UsersAuthRegistrationCtrl($rootScope, $scope, formValidation, regions) {
+function UsersAuthRegistrationCtrl($scope, $timeout, formValidation, regions) {
 
 	/* =======================================================================
 		Form Validation
 	======================================================================= */
+	$scope.nameRegex = formValidation.alphaNum;
 	$scope.emailRegex = formValidation.emailRegex;
 	$scope.websiteRegex = formValidation.websiteRegex;
-
-
-	/* =======================================================================
-		Country Dropdowns
-	======================================================================= */
-	$scope.countryList = [];
-	// List only the first 2 items in the list of countries - Canada and U.S.
-	for (var i=0; i < 2; i++) {
-		$scope.countryList.push(regions.countries[i]);
-	}
-
-	// Default Country is Canada
-	$scope.selectedCountry = $scope.countryList[0].value;
-
+	$scope.$watch('selectedCountry', function() {
+		if ($scope.selectedCountry.code === 'CA') {
+			$scope.zipRegex = formValidation.postalCodeRegex;
+		} 
+		if ($scope.selectedCountry.code === 'US') {
+			$scope.zipRegex = formValidation.zipCodeRegex;
+		}
+	});
+	
 
 	/* =======================================================================
-		State / Province Dropdowns
+		Country & State Menus
 	======================================================================= */
-	// Default is Canadian Provinces
-	$scope.states = regions.states.CA;
-	$scope.selectedState = regions.states.CA[0].value;
+
+	var statesList = regions.states;
+
+	$scope.init = function() {
+		$scope.countryList = [];
+
+		// List only the first 2 items in the list of countries - Canada and U.S.
+		for (var i=0; i < 2; i++) {
+			$scope.countryList.push(regions.countries[i]);
+		}
+
+		// Default Country is Canada
+		$scope.selectedCountry = $scope.countryList[0];
+		
+		// Default set of states is Canadian Provinces
+		$scope.states = statesList[$scope.selectedCountry.code];
+		$scope.selectedState = $scope.states[0];
+	};
+
+	$scope.init();
 
 	$scope.countryChange = function(selectedCountry) {
-
 		$scope.selectedCountry = selectedCountry;
-
-		if ($scope.selectedCountry === 'CA') {
-			console.log('CANADA')
-			$scope.selectedState = regions.states.CA[0].value;
-			$scope.states = regions.states.CA;
-			
-		};
-		if ($scope.selectedCountry === 'US') {
-			console.log('USA')
-			$scope.selectedState = [];
-			$scope.selectedState = regions.states.US[0].value;
-			$scope.states = regions.states.US;
-			
-		};
-
+		$scope.states = statesList[selectedCountry.code];
+		$scope.selectedState = $scope.states[0];
+		console.log('Switched to: ' + $scope.selectedCountry.name);
+		console.log($scope.selectedState.name);
 	};
+
+	$scope.stateChange = function(selectedState) {
+		$scope.selectedState = selectedState;
+		console.log($scope.selectedState.name);
+	};
+
+	console.log($scope.selectedState.name);
 
 }
 
-UsersAuthRegistrationCtrl.$inject = ['$rootScope', '$scope', 'formValidation', 'regions'];
+UsersAuthRegistrationCtrl.$inject = ['$scope', '$timeout', 'formValidation', 'regions'];
 module.exports = UsersAuthRegistrationCtrl;

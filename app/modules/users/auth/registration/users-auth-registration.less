@@ -31,6 +31,16 @@ body.users.auth.signup {
 		display: block;
 		margin-top: 10px;
 	}
+	.sub-section {
+		.clearfix();
+	}
+	select {
+		width: 100%;
+		height: 42px;
+		line-height: 42px;
+		text-indent: 75px;
+		background-color: #fff;
+	}
 
 
 	/* =======================================================================
@@ -39,14 +49,62 @@ body.users.auth.signup {
 	&.business,
 	&.cause {
 		h1 {
-			color:darken(@brand-orange, 50%);
-			span.company_name {
-				color:#fff;
+			color:#fff;
+			&.active {
+				span {
+					opacity:0.75;
+				}
+				span.company_name {
+					opacity:1;
+				}
 			}
+		}
+		.form-section.location-info {
+			margin-top: 30px;
 		}
 		.form-group {
 			label { width: 125px; }
 			input { padding-left: 135px; }
+			@media @breakpoint-md {
+				&.country,
+				&.state,
+				&.city,
+				&.zip {
+					label { width: 75px; }
+					width: 49%;
+					float: left;
+				}
+				&.country,
+				&.city {
+					margin-right: 2%;
+				}
+				&.city {
+					label { width: 50px; }
+					input { padding-left: 60px; }
+				}
+				&.zip {
+					label { width: 100px; }
+					input { padding-left: 110px; }
+				}
+			}
+		}
+		.form-group.output {
+			.icon {
+				float: left;
+				font-size: 36px;
+				padding: 22px 30px;
+				color:@brand-teal;
+			}
+			.address_output {
+				border: solid 1px #ccc;
+				background-color: #fff;
+				padding: 10px;
+				text-align: left;
+				.complete_address_label {
+					font-weight: bold;
+					color:@brand-teal;
+				}
+			}
 		}
 	}
 	&.business {

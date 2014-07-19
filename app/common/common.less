@@ -375,6 +375,12 @@ a {
         }
     }
 }
+select {
+    &:focus {
+        border-color:@focus-blue;
+        .box-shadow (@properties: 0 0 8px, @color: @focus-blue)
+    }
+}
 
 
 /* ==========================================================================
