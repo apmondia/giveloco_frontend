@@ -29,7 +29,7 @@
 				<label for="causeWebsite" class="inline">Website</label>
 				<input type="website" name="website" id="causeWebsite" class="form-control" placeholder="www.website.com" ng-model="user.website" ng-pattern="websiteRegex" required show-form-errors />
 				<p class="form-helper" ng-if="signupFormCause.website.$error.pattern && !signupFormCause.website.$focused">Invalid Website</p>
-				<p class="form-helper" ng-if="signupFormCause.website.$dirty && signupFormCause.website.$error.required && !signupFormCause.website.$focused">This field is required!</p>
+				<p class="form-helper" ng-if="signupFormCause.website.$dirty && signupFormCause.website.$error.required && !signupFormCause.website.$focused">A website is required so users can learn more about your organization</p>
 			</div>
 		</div>
 
@@ -45,18 +45,18 @@
 					<label for="causeCountry" class="inline">Country</label>
 					<select name="country" 
 						id="causeCountry" 
-						ng-model="selectedCountry" 
-						ng-change="countryChange(selectedCountry)" 
+						ng-model="user.country" 
+						ng-change="countryChange(user.country)" 
 						ng-options="c.name for c in countryList"
 						required>
 					</select>
 				</div>
 				<div class="form-group state">
-					<label for="causeState" class="inline"><span ng-if="selectedCountry.code == 'US'">State</span><span ng-if="selectedCountry.code == 'CA'">Province</span></label>
+					<label for="causeState" class="inline"><span ng-if="user.country.code == 'US'">State</span><span ng-if="selectedCountry.code == 'CA'">Province</span></label>
 					<select name="state" 
 						id="causeState" 
-						ng-model="selectedState" 
-						ng-change="stateChange(selectedState)" 
+						ng-model="user.state" 
+						ng-change="stateChange(user.state)" 
 						ng-options="s.name for s in states"
 						required>
 					</select>
@@ -70,13 +70,13 @@
 				</div>
 				<div class="form-group zip" ng-class="{'invalid' : signupFormCause.zip.$invalid && signupFormCause.zip.$dirty, 'valid' : signupFormCause.zip.$valid && signupFormCause.zip.$dirty}">
 					<label for="causeZip" class="inline"><span ng-if="selectedCountry.code == 'US'">Zip</span><span ng-if="selectedCountry.code == 'CA'">Postal Code</span></label>
-					<input type="text" name="zip" id="causeZip" class="form-control" placeholder="1A2 B3C" ng-model="user.zip" ng-minlength=5 maxlength=7 ng-pattern="zipRegex" required show-form-errors />
+					<input type="text" name="zip" id="causeZip" class="form-control" placeholder="{{zipPlaceholder}}" ng-model="user.zip" ng-minlength=5 maxlength=7 ng-pattern="zipRegex" required show-form-errors />
 					<p class="form-helper" ng-if="signupFormCause.zip.$error.pattern && !signupFormCause.zip.$focused">Invalid <span ng-if="selectedCountry.code == 'US'">Zip Code</span><span ng-if="selectedCountry.code == 'CA'">Postal Code</span></p>
 					<p class="form-helper" ng-if="signupFormCause.zip.$dirty && signupFormCause.zip.$error.required && !signupFormCause.zip.$focused">This field is required!</p>
 				</div>
 			</div>
 			<div class="form-group output">
-				<i class="fa fa-map-marker icon"></i>
+				<i class="icon icon-mark-map"></i>
 				<div class="address_output">
 					<div class="complete_address_label">Complete Address</div>
 					<div class="complete_street_address">{{user.street || "Street Address"}}, {{user.city || "City"}}, {{selectedState.code}}</div>

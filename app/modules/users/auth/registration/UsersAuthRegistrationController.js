@@ -5,21 +5,30 @@ function UsersAuthRegistrationCtrl($scope, $timeout, formValidation, regions) {
 	/* =======================================================================
 		Form Validation
 	======================================================================= */
+	// Cause Name
 	$scope.nameRegex = formValidation.alphaNum;
+
+	// Email Address
 	$scope.emailRegex = formValidation.emailRegex;
+
+	// Website
 	$scope.websiteRegex = formValidation.websiteRegex;
-	$scope.$watch('selectedCountry', function() {
-		if ($scope.selectedCountry.code === 'CA') {
+
+	// Zip / Postal Code
+	$scope.$watch('user.country', function() {
+		if ($scope.user.country.code === 'CA') {
 			$scope.zipRegex = formValidation.postalCodeRegex;
+			$scope.zipPlaceholder = 'A1B 2C3';
 		} 
-		if ($scope.selectedCountry.code === 'US') {
+		if ($scope.user.country.code === 'US') {
 			$scope.zipRegex = formValidation.zipCodeRegex;
+			$scope.zipPlaceholder = '98765';
 		}
 	});
 	
 
 	/* =======================================================================
-		Country & State Menus
+		Country & State Select Menus
 	======================================================================= */
 
 	var statesList = regions.states;
@@ -33,29 +42,24 @@ function UsersAuthRegistrationCtrl($scope, $timeout, formValidation, regions) {
 		}
 
 		// Default Country is Canada
-		$scope.selectedCountry = $scope.countryList[0];
+		$scope.user.country = $scope.countryList[0];
 		
 		// Default set of states is Canadian Provinces
-		$scope.states = statesList[$scope.selectedCountry.code];
-		$scope.selectedState = $scope.states[0];
+		$scope.states = statesList[$scope.user.country.code];
+		$scope.user.state = $scope.states[0];
 	};
 
 	$scope.init();
 
-	$scope.countryChange = function(selectedCountry) {
-		$scope.selectedCountry = selectedCountry;
-		$scope.states = statesList[selectedCountry.code];
-		$scope.selectedState = $scope.states[0];
-		console.log('Switched to: ' + $scope.selectedCountry.name);
-		console.log($scope.selectedState.name);
+	$scope.countryChange = function(user.country) {
+		$scope.user.country = user.country;
+		$scope.states = statesList[user.country.code];
+		$scope.user.state = $scope.states[0];
 	};
 
-	$scope.stateChange = function(selectedState) {
-		$scope.selectedState = selectedState;
-		console.log($scope.selectedState.name);
+	$scope.stateChange = function(user.state) {
+		$scope.user.state = user.state;
 	};
-
-	console.log($scope.selectedState.name);
 
 }
 
