@@ -35,7 +35,7 @@ a {
 }
 :focus,
 :active {
-    outline: 0;
+    outline: 0 !important;
 }
 ::-webkit-input-placeholder { opacity: 0.75; }
 :-moz-placeholder { opacity: 0.75; } /* Firefox 18- */
@@ -231,17 +231,19 @@ a {
                     float: left;
                     a {
                         font-size: 0;
-                        margin: 15px;
+                        margin: 0 8px;
                         display: block;
+                        height: 36px;
+                        line-height: 36px;
                         &:before {
                             font-size:36px;
-                            font-family: 'FontAwesome';
+                            font-family: 'Taliflo';
                         }
                         &.facebook:before {
-                            content: "\f09a";
+                            content: "T";
                         }
                         &.twitter:before {
-                            content: "\f099";
+                            content: "\e03d";
                         }
                     }
                 }
@@ -293,20 +295,20 @@ a {
     position: relative;
     &:after {
         font-size:20px;
-        font-family:"FontAwesome";
+        font-family:"Taliflo";
         position: absolute;
         right: 10px;
         top: 11px;
     }
     &.valid {
         &:after {
-            content:"\f00c";
+            content:"\e077";
             color: @brand-teal;
         }
     }
     &.invalid {
         &:after {
-            content:"\f00d";
+            content:"\e078";
             color: red;
         }
     }
@@ -487,4 +489,13 @@ p.no-results {
 ========================================================================== */
 .pagination-wrapper {
     .container();
+}
+.pagination>.active>a, 
+.pagination>.active>a:focus, 
+.pagination>.active>a:hover, 
+.pagination>.active>span, 
+.pagination>.active>span:focus, 
+.pagination>.active>span:hover {
+    background-color: @brand-teal;
+    border-color: @brand-teal;
 }

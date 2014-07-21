@@ -71,7 +71,6 @@ var filePath = {
     	src: 
         [
             './libs/bootstrap/dist/css/bootstrap.css', // v3.1.1
-            './libs/font-awesome/css/font-awesome.css', // v4.1.0
             './app/assets/icons/styles.css',
             './libs/animate.css/animate.css' // v3.1.1
         ]
