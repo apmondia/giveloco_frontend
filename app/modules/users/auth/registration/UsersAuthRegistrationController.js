@@ -3,6 +3,14 @@
 function UsersAuthRegistrationCtrl($scope, $timeout, formValidation, regions) {
 
 	/* =======================================================================
+		Registration Form Data Definitions
+	======================================================================= */
+	$scope.user = {
+		country: null,
+		state: null
+	};
+
+	/* =======================================================================
 		Form Validation
 	======================================================================= */
 	// Cause Name
@@ -31,9 +39,9 @@ function UsersAuthRegistrationCtrl($scope, $timeout, formValidation, regions) {
 		Country & State Select Menus
 	======================================================================= */
 
-	var statesList = regions.states;
+	$scope.statesList = regions.states;
 
-	$scope.init = function() {
+	$scope.countries = function() {
 		$scope.countryList = [];
 
 		// List only the first 2 items in the list of countries - Canada and U.S.
@@ -43,21 +51,20 @@ function UsersAuthRegistrationCtrl($scope, $timeout, formValidation, regions) {
 
 		// Default Country is Canada
 		$scope.user.country = $scope.countryList[0];
-		
 		// Default set of states is Canadian Provinces
-		$scope.states = statesList[$scope.user.country.code];
+		$scope.states = $scope.statesList[$scope.user.country.code];
 		$scope.user.state = $scope.states[0];
 	};
 
-	$scope.init();
+	$scope.countries();
 
-	$scope.countryChange = function(user.country) {
+	$scope.countryChange = function(user) {
 		$scope.user.country = user.country;
-		$scope.states = statesList[user.country.code];
+		$scope.states = $scope.statesList[$scope.user.country.code];
 		$scope.user.state = $scope.states[0];
 	};
 
-	$scope.stateChange = function(user.state) {
+	$scope.stateChange = function(user) {
 		$scope.user.state = user.state;
 	};
 
