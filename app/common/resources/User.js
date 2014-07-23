@@ -12,16 +12,16 @@ var UserProvider = function($rootScope, Restangular) {
 		return Restangular.one('users', uid).get();
 	};
 
-	this.getAllUsersOfType = function(userType) {
-		return userData.getList({'type': userType}).$object;
+	this.getAllUsersOfType = function(userRole) {
+		return userData.getList({'role': userRole}).$object;
 	};
 
 	this.getAllFeaturedCauses = function() {
-		return userData.getList({'type': 'cause', 'is_featured':'true'}).$object;
+		return userData.getList({'role': 'cause', 'is_featured':'true'}).$object;
 	};
 
 	this.getAllFeaturedBusinesses = function() {
-		return userData.getList({'type': 'business', 'is_featured':'true'}).$object;
+		return userData.getList({'role': 'business', 'is_featured':'true'}).$object;
 	};
 
 	return this;

@@ -1,7 +1,7 @@
 {
   "users": [{
       "id": 0,
-      "type": "cause",
+      "role": "cause",
       "first_name": "Clarke",
       "last_name": "Tucker",
       "company_name": "Shepard",
@@ -80,7 +80,7 @@
     },
     {
       "id": 1,
-      "type": "person",
+      "role": "person",
       "first_name": "Alba",
       "last_name": "Wolf",
       "company_name": "Turnabout",
@@ -169,7 +169,7 @@
     },
     {
       "id": 2,
-      "type": "person",
+      "role": "person",
       "first_name": "Berta",
       "last_name": "Gross",
       "company_name": "Acrodance",
@@ -249,7 +249,7 @@
     },
     {
       "id": 3,
-      "type": "business",
+      "role": "business",
       "first_name": "Wilma",
       "last_name": "Humphrey",
       "company_name": "Bristo",
@@ -327,7 +327,7 @@
     },
     {
       "id": 4,
-      "type": "person",
+      "role": "person",
       "first_name": "Duke",
       "last_name": "Cochran",
       "company_name": "Emtrac",
@@ -411,7 +411,7 @@
     },
     {
       "id": 5,
-      "type": "cause",
+      "role": "cause",
       "first_name": "Sadie",
       "last_name": "Hoffman",
       "company_name": "Realmo",
@@ -489,7 +489,7 @@
     },
     {
       "id": 6,
-      "type": "cause",
+      "role": "cause",
       "first_name": "Deirdre",
       "last_name": "Juarez",
       "company_name": "Gushkool",
@@ -573,7 +573,7 @@
     },
     {
       "id": 7,
-      "type": "person",
+      "role": "person",
       "first_name": "Merle",
       "last_name": "Vega",
       "company_name": "Matrixity",
@@ -642,7 +642,7 @@
     },
     {
       "id": 8,
-      "type": "business",
+      "role": "business",
       "first_name": "Luann",
       "last_name": "Blevins",
       "company_name": "Digial",
@@ -715,7 +715,7 @@
     },
     {
       "id": 9,
-      "type": "business",
+      "role": "business",
       "first_name": "Osborn",
       "last_name": "Porter",
       "company_name": "Digiprint",
@@ -791,7 +791,7 @@
     },
     {
       "id": 10,
-      "type": "business",
+      "role": "business",
       "first_name": "Elaine",
       "last_name": "Burnett",
       "company_name": "Deepends",
@@ -864,7 +864,7 @@
     },
     {
       "id": 11,
-      "type": "cause",
+      "role": "cause",
       "first_name": "Walsh",
       "last_name": "Carter",
       "company_name": "Kiggle",
@@ -927,7 +927,7 @@
     },
     {
       "id": 12,
-      "type": "person",
+      "role": "person",
       "first_name": "Ginger",
       "last_name": "Caldwell",
       "company_name": "Hotcakes",
@@ -999,7 +999,7 @@
     },
     {
       "id": 13,
-      "type": "cause",
+      "role": "cause",
       "first_name": "Carson",
       "last_name": "Mooney",
       "company_name": "Pyramia",
@@ -1099,7 +1099,7 @@
     },
     {
       "id": 14,
-      "type": "person",
+      "role": "person",
       "first_name": "Beck",
       "last_name": "Stokes",
       "company_name": "Digigen",
@@ -1185,7 +1185,7 @@
     },
     {
       "id": 15,
-      "type": "person",
+      "role": "person",
       "first_name": "Jean",
       "last_name": "Guerra",
       "company_name": "Organica",
@@ -1248,7 +1248,7 @@
     },
     {
       "id": 16,
-      "type": "person",
+      "role": "person",
       "first_name": "Christian",
       "last_name": "Craig",
       "company_name": "Diginetic",
@@ -1310,7 +1310,7 @@
     },
     {
       "id": 17,
-      "type": "person",
+      "role": "person",
       "first_name": "Rosa",
       "last_name": "Merritt",
       "company_name": "Qaboos",
@@ -1376,7 +1376,7 @@
     },
     {
       "id": 18,
-      "type": "business",
+      "role": "business",
       "first_name": "Doris",
       "last_name": "Melton",
       "company_name": "Comtext",
@@ -1468,7 +1468,7 @@
     },
     {
       "id": 19,
-      "type": "person",
+      "role": "person",
       "first_name": "Camille",
       "last_name": "Stanley",
       "company_name": "Quiltigen",
@@ -1542,7 +1542,7 @@
     },
     {
       "id": 20,
-      "type": "person",
+      "role": "person",
       "first_name": "Marie",
       "last_name": "Nguyen",
       "company_name": "Futurize",
@@ -1620,7 +1620,7 @@
     },
     {
       "id": 21,
-      "type": "person",
+      "role": "person",
       "first_name": "Hall",
       "last_name": "White",
       "company_name": "Geeky",
@@ -1709,7 +1709,7 @@
     },
     {
       "id": 22,
-      "type": "business",
+      "role": "business",
       "first_name": "Morgan",
       "last_name": "Guy",
       "company_name": "Scentric",
@@ -1773,7 +1773,7 @@
     },
     {
       "id": 23,
-      "type": "person",
+      "role": "person",
       "first_name": "Claudine",
       "last_name": "Hanson",
       "company_name": "Norali",
@@ -1835,7 +1835,7 @@
     },
     {
       "id": 24,
-      "type": "business",
+      "role": "business",
       "first_name": "Latoya",
       "last_name": "Ramsey",
       "company_name": "Earthmark",
@@ -1889,7 +1889,7 @@
     },
     {
       "id": 25,
-      "type": "cause",
+      "role": "cause",
       "first_name": "Ida",
       "last_name": "Gregory",
       "company_name": "Zensor",
@@ -1967,7 +1967,7 @@
     },
     {
       "id": 26,
-      "type": "business",
+      "role": "business",
       "first_name": "Mia",
       "last_name": "Gomez",
       "company_name": "Temorak",
@@ -2045,7 +2045,7 @@
     },
     {
       "id": 27,
-      "type": "business",
+      "role": "business",
       "first_name": "Kelley",
       "last_name": "Sandoval",
       "company_name": "Exiand",
@@ -2120,7 +2120,7 @@
     },
     {
       "id": 28,
-      "type": "cause",
+      "role": "cause",
       "first_name": "Estelle",
       "last_name": "Rojas",
       "company_name": "Electonic",
@@ -2198,7 +2198,7 @@
     },
     {
       "id": 29,
-      "type": "cause",
+      "role": "cause",
       "first_name": "Naomi",
       "last_name": "Mccray",
       "company_name": "Netbook",
@@ -2294,7 +2294,7 @@
     },
     {
       "id": 30,
-      "type": "business",
+      "role": "business",
       "first_name": "Bertie",
       "last_name": "Horne",
       "company_name": "Norsul",
@@ -2370,7 +2370,7 @@
     },
     {
       "id": 31,
-      "type": "business",
+      "role": "business",
       "first_name": "Guerra",
       "last_name": "Fischer",
       "company_name": "Slax",
@@ -2464,7 +2464,7 @@
     },
     {
       "id": 32,
-      "type": "cause",
+      "role": "cause",
       "first_name": "Rochelle",
       "last_name": "Morrison",
       "company_name": "Supportal",
@@ -2539,7 +2539,7 @@
     },
     {
       "id": 33,
-      "type": "business",
+      "role": "business",
       "first_name": "Deanna",
       "last_name": "Koch",
       "company_name": "Savvy",
@@ -2623,7 +2623,7 @@
     },
     {
       "id": 34,
-      "type": "business",
+      "role": "business",
       "first_name": "Peters",
       "last_name": "Beasley",
       "company_name": "Ultrasure",
@@ -2702,7 +2702,7 @@
     },
     {
       "id": 35,
-      "type": "person",
+      "role": "person",
       "first_name": "Hinton",
       "last_name": "Le",
       "company_name": "Rocklogic",
@@ -2757,7 +2757,7 @@
     },
     {
       "id": 36,
-      "type": "person",
+      "role": "person",
       "first_name": "Patterson",
       "last_name": "Reese",
       "company_name": "Isostream",
@@ -2833,7 +2833,7 @@
     },
     {
       "id": 37,
-      "type": "business",
+      "role": "business",
       "first_name": "Jensen",
       "last_name": "Langley",
       "company_name": "Kage",
@@ -2916,7 +2916,7 @@
     },
     {
       "id": 38,
-      "type": "cause",
+      "role": "cause",
       "first_name": "Kathleen",
       "last_name": "Atkinson",
       "company_name": "Metroz",
@@ -2982,7 +2982,7 @@
     },
     {
       "id": 39,
-      "type": "cause",
+      "role": "cause",
       "first_name": "Sexton",
       "last_name": "Snider",
       "company_name": "Knowlysis",
@@ -3267,7 +3267,7 @@
 
     "transactions": [{
         "id": 0,
-        "type": "pledge",
+        "role": "pledge",
         "from_user_id": 10,
         "to_user_id": 14,
         "recipient_name": "Romero",
@@ -3289,7 +3289,7 @@
       },
       {
         "id": 1,
-        "type": "pledge",
+        "role": "pledge",
         "from_user_id": 11,
         "to_user_id": 17,
         "recipient_name": "Arlene",
@@ -3311,7 +3311,7 @@
       },
       {
         "id": 2,
-        "type": "donation",
+        "role": "donation",
         "from_user_id": 6,
         "to_user_id": 2,
         "recipient_name": "Antonia",
@@ -3333,7 +3333,7 @@
       },
       {
         "id": 3,
-        "type": "donation",
+        "role": "donation",
         "from_user_id": 10,
         "to_user_id": 0,
         "recipient_name": "Bender",
@@ -3355,7 +3355,7 @@
       },
       {
         "id": 4,
-        "type": "donation",
+        "role": "donation",
         "from_user_id": 10,
         "to_user_id": 15,
         "recipient_name": "Jean",
@@ -3377,7 +3377,7 @@
       },
       {
         "id": 5,
-        "type": "donation",
+        "role": "donation",
         "from_user_id": 6,
         "to_user_id": 1,
         "recipient_name": "Helene",
@@ -3399,7 +3399,7 @@
       },
       {
         "id": 6,
-        "type": "donation",
+        "role": "donation",
         "from_user_id": 6,
         "to_user_id": 17,
         "recipient_name": "Lupe",
@@ -3421,7 +3421,7 @@
       },
       {
         "id": 7,
-        "type": "pledge",
+        "role": "pledge",
         "from_user_id": 8,
         "to_user_id": 11,
         "recipient_name": "Stephens",
@@ -3443,7 +3443,7 @@
       },
       {
         "id": 8,
-        "type": "donation",
+        "role": "donation",
         "from_user_id": 10,
         "to_user_id": 13,
         "recipient_name": "Gladys",
@@ -3465,7 +3465,7 @@
       },
       {
         "id": 9,
-        "type": "pledge",
+        "role": "pledge",
         "from_user_id": 5,
         "to_user_id": 19,
         "recipient_name": "Janice",
@@ -3487,7 +3487,7 @@
       },
       {
         "id": 10,
-        "type": "donation",
+        "role": "donation",
         "from_user_id": 2,
         "to_user_id": 5,
         "recipient_name": "Benjamin",
@@ -3509,7 +3509,7 @@
       },
       {
         "id": 11,
-        "type": "pledge",
+        "role": "pledge",
         "from_user_id": 12,
         "to_user_id": 2,
         "recipient_name": "Park",
@@ -3531,7 +3531,7 @@
       },
       {
         "id": 12,
-        "type": "pledge",
+        "role": "pledge",
         "from_user_id": 13,
         "to_user_id": 7,
         "recipient_name": "Sims",
@@ -3553,7 +3553,7 @@
       },
       {
         "id": 13,
-        "type": "pledge",
+        "role": "pledge",
         "from_user_id": 1,
         "to_user_id": 14,
         "recipient_name": "Skinner",
@@ -3575,7 +3575,7 @@
       },
       {
         "id": 14,
-        "type": "pledge",
+        "role": "pledge",
         "from_user_id": 11,
         "to_user_id": 4,
         "recipient_name": "Melody",
@@ -3597,7 +3597,7 @@
       },
       {
         "id": 15,
-        "type": "donation",
+        "role": "donation",
         "from_user_id": 12,
         "to_user_id": 13,
         "recipient_name": "Beth",
@@ -3619,7 +3619,7 @@
       },
       {
         "id": 16,
-        "type": "pledge",
+        "role": "pledge",
         "from_user_id": 4,
         "to_user_id": 11,
         "recipient_name": "Fran",
@@ -3641,7 +3641,7 @@
       },
       {
         "id": 17,
-        "type": "donation",
+        "role": "donation",
         "from_user_id": 19,
         "to_user_id": 11,
         "recipient_name": "Howard",
@@ -3663,7 +3663,7 @@
       },
       {
         "id": 18,
-        "type": "pledge",
+        "role": "pledge",
         "from_user_id": 9,
         "to_user_id": 7,
         "recipient_name": "Blanche",
@@ -3685,7 +3685,7 @@
       },
       {
         "id": 19,
-        "type": "donation",
+        "role": "donation",
         "from_user_id": 19,
         "to_user_id": 8,
         "recipient_name": "Estrada",
