@@ -1,11 +1,12 @@
 'use strict';
 
-function devInit($rootScope, Restangular) {
+function devInit($rootScope, Restangular, apiConfig) {
 
 	$rootScope.$broadcast('ENV_DEV');
 
-	Restangular.setBaseUrl('http://localhost:3000/');
+	Restangular.setBaseUrl(apiConfig.API.dev);
+	
 }
 
-devInit.$inject = ['$rootScope', 'Restangular'];
+devInit.$inject = ['$rootScope', 'Restangular', 'apiConfig'];
 module.exports = devInit;

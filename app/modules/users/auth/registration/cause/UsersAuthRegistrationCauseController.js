@@ -3,7 +3,7 @@
 function UsersAuthRegistrationCauseCtrl($rootScope, $scope) {
 	
 	$scope.signupCause = function() {
-		data = $scope.user;
+		var user = $scope.user;
 		if ($scope.signupFormCause.$valid) {
 			console.log('Sending request to server.');
 			console.log(
