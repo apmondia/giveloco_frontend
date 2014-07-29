@@ -25,6 +25,7 @@ module.exports = angular.module('common',
         require('./components/footer').name,
         require('./constants').name,
         require('./directives').name,
+        require('./plugins').name,
         require('./resources').name,
         require('./services').name,
         require('./templates').name

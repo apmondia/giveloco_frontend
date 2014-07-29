@@ -2,19 +2,19 @@
 	<div class="row">
 		<div class="page-header">
 			<div class="left title">
-				<h1 class="page-title">Explore Causes</h1>
+				<h1 class="page-title"><i class="icon icon-cause"></i>Explore Causes</h1>
 			</div>
 			<div class="right utils search-wrapper">
-				<i class="icon fa fa-search"></i>
+				<i class="icon icon-search-2"></i>
 				<input type="search" class="search" ng-model="search" placeholder="Search Causes" typeahead="user.company_name for user in causes | filter:$viewValue | limitTo:8">
 			</div>
 		</div>
 		<div class="page-content">
-			<div ng-repeat="user in filteredItems | filter: search" class="cause grid block">
+			<div dir-paginate="user in causes | filter: search | itemsPerPage: 12" class="cause grid block">
 		    	<div class="grid-item">
-			    	<a ui-sref="profile.cause({id:user.id})">
+			    	<a ui-sref="profile.cause({id:user.id})" title="{{user.company_name}}">
 						<div class="profile-picture"><img ng-src="{{user.profile_picture}}"></div>
-						<div class="company-name">{{user.company_name}}</div>
+						<div class="company-name">{{user.company_name | characters:25}}</div>
 					</a>
 					<div class="user-summary">{{user.summary | characters:140}}</div>
 					<div class="supporters">{{user.supporters.length}} Supporting Businesses</div>
@@ -22,8 +22,6 @@
 		    </div>
 		    <p ng-hide="(causes | filter: search).length" class="no-results">Sorry, No Results</p>
 		</div>
-		<div class="pagination-wrapper">
-			<div pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" max-size="maxSize" ng-change="pageChanged()"></div>
-		</div>
+		<div dir-pagination-controls></div>
 	</div>
 </div>

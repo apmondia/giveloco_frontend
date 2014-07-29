@@ -4,9 +4,9 @@
 			<h2 class="section-title">Featured Causes</h2>
 			<div ng-repeat="user in featuredCauses | limitTo:4" class="cause grid block">
 				<div class="grid-item">
-					<a ui-sref="profile.cause({id:user.id})">
+					<a ui-sref="profile.cause({id:user.id})" title="{{user.company_name}}">
 						<div class="profile-picture"><img ng-src="{{user.profile_picture}}"></div>
-						<div class="company-name">{{user.company_name}}</div>
+						<div class="company-name">{{user.company_name | characters:25}}</div>
 					</a>
 					<div class="user-summary">{{user.summary | characters:140}}</div>
 					<div class="supporters">{{user.supporters.length}} Supporting Businesses</div>

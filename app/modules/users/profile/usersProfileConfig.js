@@ -9,9 +9,9 @@ function userProfileRoutes($stateProvider) {
             template: '<div ui-view></div>',
             controller: 'UsersProfileCtrl',
             resolve: {
-                user: function(User, $stateParams){
+                user: function(Restangular, $stateParams){
                     console.log($stateParams.id);
-                    return User.getOneUser($stateParams.id);
+                    return Restangular.one('users', $stateParams.id).get();
                 }
             }
         },

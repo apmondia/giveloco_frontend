@@ -1,27 +1,19 @@
 'use strict';
 
-function ExploreCausesCtrl($rootScope, $scope, $timeout, User) {
+function ExploreCausesCtrl($rootScope, $scope, $timeout, Restangular, User) {
+	// Get all users from server
+	var users = Restangular.all('users');
 
-	$scope.causes = User.getAllUsersOfType('cause');
-
-/* =======================================================================
-	Pagination
-======================================================================= */
-	$timeout (function() {
-		$scope.totalItems = $scope.causes.length;
-
-		$scope.pageCount = function () {
-			return Math.ceil($scope.causes.length / $scope.itemsPerPage);
-		};
-
-		$scope.$watch('currentPage + itemsPerPage', function() {
-			var begin = (($scope.currentPage - 1) * $scope.itemsPerPage), 
-				end = begin + $scope.itemsPerPage;
-
-			$scope.filteredItems = $scope.causes.slice(begin, end);
+	// Populate List of Causes
+	users.getList().then(function(users) {
+		$scope.causes = [];
+		angular.forEach(users, function(user) {
+			if (user.role === 'cause') {
+				$scope.causes.push(user);
+			}
 		});
-	}, 250);
+	});
 }
 
-ExploreCausesCtrl.$inject = ['$rootScope', '$scope', '$timeout', 'User'];
+ExploreCausesCtrl.$inject = ['$rootScope', '$scope', '$timeout', 'Restangular', 'User'];
 module.exports = ExploreCausesCtrl;

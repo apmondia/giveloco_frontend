@@ -1,27 +1,19 @@
 'use strict';
 
-function ExploreBusinessesCtrl($rootScope, $scope, $timeout, User) {
+function ExploreBusinessesCtrl($rootScope, $scope, $timeout, Restangular) {
+    // Get all users from server
+    var users = Restangular.all('users');
 
-    $scope.businesses = User.getAllUsersOfType('business');
-
-    /* =======================================================================
-     Pagination
-     ======================================================================= */
-    $timeout(function () {
-        $scope.totalItems = $scope.businesses.length;
-
-        $scope.pageCount = function () {
-            return Math.ceil($scope.businesses.length / $scope.itemsPerPage);
-        };
-
-        $scope.$watch('currentPage + itemsPerPage', function () {
-            var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
-                end = begin + $scope.itemsPerPage;
-
-            $scope.filteredItems = $scope.businesses.slice(begin, end);
+    // Populate List of Businesses
+    users.getList().then(function(users) {
+        $scope.businesses = [];
+        angular.forEach(users, function(user) {
+            if (user.role === 'business') {
+                $scope.businesses.push(user);
+            }
         });
-    }, 250);
+    });
 }
 
-ExploreBusinessesCtrl.$inject = ['$rootScope', '$scope', '$timeout', 'User'];
+ExploreBusinessesCtrl.$inject = ['$rootScope', '$scope', '$timeout', 'Restangular'];
 module.exports = ExploreBusinessesCtrl;

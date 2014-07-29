@@ -1,6 +1,6 @@
 'use strict';
 
-function prodInit($rootScope, Restangular) {
+function prodInit($rootScope, Restangular, apiConfig) {
 
 	$rootScope.$broadcast('ENV_PROD');
 
@@ -8,5 +8,5 @@ function prodInit($rootScope, Restangular) {
 	
 }
 
-prodInit.$inject = ['$rootScope'];
+prodInit.$inject = ['$rootScope', 'Restangular', 'apiConfig'];
 module.exports = prodInit;
