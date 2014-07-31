@@ -6,7 +6,7 @@ var gulp 		 	= require('gulp'),
     jshint 		 	= require('gulp-jshint'),
     stylish 		= require('jshint-stylish'),
     concat 		 	= require('gulp-concat'),
-    clean 		 	= require('gulp-clean'),
+    rimraf          = require('gulp-rimraf'),
     streamify		= require('gulp-streamify'),
     uglify 			= require('gulp-uglify'),
     sourcemaps		= require('gulp-sourcemaps'),
@@ -137,12 +137,12 @@ gulp.task('stage', function() {
 // =======================================================================  
 gulp.task('clean-dev', function () {
     return gulp.src(['!./dist/vendor.js', '!./dist/vendor.css', './dist/*.js', './dist/*.css', './dist/*.html', './dist/*.png', './dist/*.ico'], {read: false})
-        .pipe(clean());
+        .pipe(rimraf());
 });
 
 gulp.task('clean-full', function () {
     return gulp.src(['./dist/*'], {read: false})
-        .pipe(clean());
+        .pipe(rimraf());
 });
 
 
