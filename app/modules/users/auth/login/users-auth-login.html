@@ -3,6 +3,11 @@
 
 		<div class="login-form small-form">
 			<h1>Sign in to your Account</h1>
+
+			<a class="facebook-signup button btn" ng-click="facebookSignup()"><i class="icon icon-facebook"></i><span>Log in with Facebook</span></a>
+
+			<p>or...</p>
+
 		    <form class="form" name="loginForm" ng-submit="login(credentials)" novalidate>
 
 		    	<div class="form-group" ng-class="{'invalid' : loginForm.email.$invalid && loginForm.email.$dirty, 'valid' : loginForm.email.$valid && loginForm.email.$dirty}">
@@ -18,10 +23,6 @@
 		    		<p class="form-helper" ng-if="loginForm.password.$dirty && loginForm.password.$error.required && !loginForm.password.$focused">Password is required!</p>
 		    		<p class="form-helper" ng-if="loginForm.password.$dirty && loginForm.password.$error.minlength && !loginForm.password.$focused">Password must contain at least 8 characters.</p>
 		    	</div>
-
-		    	<p>or...</p>
-
-		    	<a class="facebook-signup button btn" ng-click="facebookSignup()"><i class="fa fa-facebook"></i><span>Log in with Facebook</span></a>
 
 		    	<div class="form-group form-buttons">
 		    		<button class="btn button button-secondary" type="submit" ng-disabled="loginForm.$invalid">Log In</button>

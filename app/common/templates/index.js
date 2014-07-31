@@ -2,5 +2,6 @@
 
 module.exports = angular.module('common.templates',
 	[
-        require('./bootstrap').name
+        // Template requirements go here. 
+        // Use templates to override external template files, such as Angular Bootstrap template files.
 	]);

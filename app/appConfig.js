@@ -27,7 +27,7 @@ function appRoutes($stateProvider, $urlRouterProvider, $locationProvider, $httpP
 	$stateProvider.state(home);
 
 	$httpProvider.defaults.useXDomain = true;
-	delete $httpProvider.defaults.headers.common["X-Requested-With"];    
+	delete $httpProvider.defaults.headers.common['X-Requested-With'];    
 
 }
 

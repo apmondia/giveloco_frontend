@@ -1,5 +1,10 @@
 <div class="signup-form small-form toggle-form">
     <h1>Create a New Account</h1>
+
+    <a class="facebook-signup button btn" ng-click="facebookSignup()"><i class="fa fa-facebook"></i><span>Sign up with Facebook</span></a>
+
+    <p>or...</p>
+
     <form class="form" name="signupForm" ng-submit="signup()" novalidate>
 
         <div class="form-group" ng-class="{'invalid' : signupForm.email.$invalid && signupForm.email.$dirty, 'valid' : signupForm.email.$valid && signupForm.email.$dirty}">
@@ -15,10 +20,6 @@
             <p class="form-helper" ng-if="signupForm.password.$dirty && signupForm.password.$error.required && !signupForm.password.$focused">Password is required!</p>
             <p class="form-helper" ng-if="signupForm.password.$dirty && signupForm.password.$error.minlength && !signupForm.password.$focused">Password must contain at least 8 characters.</p>
         </div>
-
-        <p>or...</p>
-
-        <a class="facebook-signup button btn" ng-click="facebookSignup()"><i class="fa fa-facebook"></i><span>Sign up with Facebook</span></a>
 
         <div class="form-group form-buttons">
             <button class="btn button button-primary" type="submit" ng-disabled="signupForm.$invalid">Sign Up</button>
