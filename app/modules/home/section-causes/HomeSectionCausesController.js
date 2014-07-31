@@ -8,6 +8,7 @@ function HomeSectionCausesCtrl($rootScope, $scope, Restangular) {
     users.getList().then(function(users) {
         $scope.featuredCauses = [];
         angular.forEach(users, function(user) {
+            /* jshint camelcase: false */
             if (user.role === 'cause' && user.is_featured === true) {
                 $scope.featuredCauses.push(user);
             }

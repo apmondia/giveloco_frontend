@@ -6,5 +6,4 @@
 module.exports = angular.module('common.services', [])
 	.service('apiConfig', require('./ApiConfig.js'))
 	.service('formValidation', require('./formValidation.js'))
-	.service('regions', require('./regions.js'))
-	.factory('Auth', require('./Auth.js'));
+	.service('regions', require('./regions.js'));

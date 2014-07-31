@@ -13,15 +13,6 @@ function UsersAuthRegistrationCtrl($scope, $timeout, formValidation, regions) {
 	/* =======================================================================
 		Form Validation
 	======================================================================= */
-	// Cause Name
-	$scope.nameRegex = formValidation.alphaNum;
-
-	// Email Address
-	$scope.emailRegex = formValidation.emailRegex;
-
-	// Website
-	$scope.websiteRegex = formValidation.websiteRegex;
-
 	// Zip / Postal Code
 	$scope.$watch('user.country', function() {
 		if ($scope.user.country.code === 'CA') {

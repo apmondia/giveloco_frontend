@@ -1,6 +1,6 @@
 'use strict';
 
-var AUTH_EVENTS = function() {
+var AUTH_EVENTS = (function() {
     return {
         loginSuccess: 'auth-login-success',
 		loginFailed: 'auth-login-failed',
@@ -9,7 +9,7 @@ var AUTH_EVENTS = function() {
 		notAuthenticated: 'auth-not-authenticated',
 		notAuthorized: 'auth-not-authorized'
     };
-};
+}());
 
-AUTH_EVENTS.$inject = [''];
+AUTH_EVENTS.$inject = [];
 module.exports = AUTH_EVENTS;

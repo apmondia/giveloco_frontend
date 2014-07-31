@@ -21,12 +21,13 @@
     "angular-cookies": "~1.2.19",
     "angular-resource": "~1.2.19",
     "angular-sanitize": "~1.2.19",
+    "angular-devise": "~0.5.0",
     "domready": "~1.0.5",
     "alertify.js": "~0.3.11",
     "gsap": "~1.12.1",
     "angular-mocks": "~1.2.19",
     "lodash": "~2.4.1",
     "restangular": "~1.4.0",
-    "angular-truncate": "~0.1.0"
+    "angular-truncate": "*"
   }
 }

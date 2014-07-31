@@ -1,6 +1,6 @@
 'use strict';
 
-var USER_ROLES = function() {
+var USER_ROLES = (function() {
     return {
 		all: '*',
 		admin: 'admin',
@@ -9,7 +9,7 @@ var USER_ROLES = function() {
 		business: 'business',
 		guest: 'guest'
     };
-};
+}());
 
-USER_ROLES.$inject = [''];
+USER_ROLES.$inject = [];
 module.exports = USER_ROLES;

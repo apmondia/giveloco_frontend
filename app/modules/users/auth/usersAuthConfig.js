@@ -37,8 +37,8 @@ function userAuthRoutes($stateProvider) {
         data: {
           moduleClasses: 'users auth business'
         }
-  },
-  login = {
+  };
+  var login = {
       name: 'login',
       url: '/user/login',
       template: '<div users-auth-login></div>',
@@ -61,12 +61,12 @@ function userAuthRoutes($stateProvider) {
       }
   };
 
-$stateProvider.state(signup);
-$stateProvider.state(signupDonor);
-$stateProvider.state(signupCause);
-$stateProvider.state(signupBusiness);
-$stateProvider.state(login);
-$stateProvider.state(passwordReset);
+  $stateProvider.state(signup);
+  $stateProvider.state(signupDonor);
+  $stateProvider.state(signupCause);
+  $stateProvider.state(signupBusiness);
+  $stateProvider.state(login);
+  $stateProvider.state(passwordReset);
 
 }
 

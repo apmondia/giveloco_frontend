@@ -1,6 +1,6 @@
 'use strict';
 
-function ExploreCausesCtrl($rootScope, $scope, $timeout, Restangular, User) {
+function ExploreCausesCtrl($rootScope, $scope, $timeout, Restangular) {
 	// Get all users from server
 	var users = Restangular.all('users');
 
@@ -15,5 +15,5 @@ function ExploreCausesCtrl($rootScope, $scope, $timeout, Restangular, User) {
 	});
 }
 
-ExploreCausesCtrl.$inject = ['$rootScope', '$scope', '$timeout', 'Restangular', 'User'];
+ExploreCausesCtrl.$inject = ['$rootScope', '$scope', '$timeout', 'Restangular'];
 module.exports = ExploreCausesCtrl;

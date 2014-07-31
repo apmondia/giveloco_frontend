@@ -1,8 +1,16 @@
 'use strict';
 
-function UsersAuthCtrl($rootScope, $scope) {
-	$scope.test = null;
+function UsersAuthCtrl($scope, formValidation) {
+	/* =======================================================================
+		Form Validation
+	======================================================================= */
+	// Cause Name
+	$scope.nameRegex = formValidation.alphaNum;
+	// Email Address
+	$scope.emailRegex = formValidation.emailRegex;
+	// Website
+	$scope.websiteRegex = formValidation.websiteRegex;
 }
 
-UsersAuthCtrl.$inject = ['$rootScope', '$scope'];
+UsersAuthCtrl.$inject = ['$scope', 'formValidation'];
 module.exports = UsersAuthCtrl;

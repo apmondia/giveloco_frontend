@@ -3,7 +3,7 @@
 
 'use strict';
 
-function appRoutes($stateProvider, $urlRouterProvider, $locationProvider) {
+function appRoutes($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
 	// Add hasbang prefix for SEO and HTML5 mode to remove #! from the URL.
 	// Html5 mode requires server-side configuration. See http://bit.ly/1qLuJ0v
@@ -26,7 +26,10 @@ function appRoutes($stateProvider, $urlRouterProvider, $locationProvider) {
 
 	$stateProvider.state(home);
 
+	$httpProvider.defaults.useXDomain = true;
+	delete $httpProvider.defaults.headers.common["X-Requested-With"];    
+
 }
 
-appRoutes.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+appRoutes.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider'];
 module.exports = appRoutes;
