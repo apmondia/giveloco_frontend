@@ -2,18 +2,16 @@
 
 function UsersAuthLoginCtrl($scope, $state, $cookieStore, Auth, AUTH_EVENTS, alertService) {
 	
-	var success = function(response) {
-		$scope.currentUser = response;
-		$cookieStore.put('uid', response.data.uid);
-		$cookieStore.put('auth_token', response.data.auth_token);
+	var success = function(user) {
+		$rootScope.$broadcast('logged-in');
 		alertService.showAlert(AUTH_EVENTS.loginSuccess, 'alert-success');
-		$state.go('profile', {id:$scope.currentUser.id});
+		$state.go('profile', {id:user.data.uid});
 	};
 
 	var error = function() {
 		alertService.showAlert(AUTH_EVENTS.loginFailed, 'alert-danger');
 	};
-	
+
 	$scope.credentials = {
 		email: '',
 		password: ''

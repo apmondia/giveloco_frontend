@@ -16,9 +16,14 @@ function MainCtrl($rootScope, $scope, $state, $cookieStore, Restangular, Auth, A
 //	$scope.isAuthorized = Auth.isAuthorized;
 	$scope.userRoles = USER_ROLES;
 
-	Restangular.one('users', $cookieStore.get('uid')).get().then(function(currentUser){
-		$scope.currentUser = currentUser;
-	});
+	var setCurrentUser = function() {
+		Restangular.one('users', $cookieStore.get('uid')).get().then(function(currentUser){
+			$scope.currentUser = currentUser;
+		});
+	}
+	
+	setCurrentUser();
+	$rootScope.$on('logged-in', setCurrentUser);
 
 
 /* =======================================================================
