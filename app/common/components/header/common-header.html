@@ -27,14 +27,15 @@
             <li class="dropdown">
               <div dropdown is-open="status.isopen">
                 <a class="dropdown-toggle">
-                  Dropdown <span class="caret"></span>
+                  <!-- First Name needs to have its own function that changes based on user role --> 
+                  Hi, {{currentUser.first_name}} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                  <li ui-sref-active="active"><a href="#">Action</a></li>
-                  <li ui-sref-active="active"><a href="#">Another action</a></li>
+                  <li ui-sref-active="active"><a ui-sref="profile({id:currentUser.id})">My Profile</a></li>
+                  <li ui-sref-active="active"><a href="#">Account Settings</a></li>
                   <li ui-sref-active="active"><a href="#">Something else here</a></li>
                   <li class="divider"></li>
-                  <li ui-sref-active="active"><a href="#">Separated link</a></li>
+                  <li><a ng-click="logout()">Log Out</a></li>
                 </ul>
               </div>
             </li>

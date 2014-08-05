@@ -2,4 +2,5 @@
 
 module.exports = angular.module('common.directives', [])
 	.directive('autoFocus', require('./autoFocus.js'))
-	.directive('showFormErrors', require('./showFormErrors.js'));
+	.directive('showFormErrors', require('./showFormErrors.js'))
+	.directive('systemNotifications', require('./systemNotifications.js'));

@@ -1,16 +1,37 @@
+/*jshint camelcase: false */
 'use strict';
 
-var Auth = function($rootScope, $http) {
+var Auth = function($http, $cookieStore, AUTH_EVENTS, alertService) {
 
-	var loginPath = 'api/user/login';
+	var authService = {
 
-	this.login = function(credentials) {
-		return $http.post(loginPath, {email: credentials.email, password: credentials.password});
+		login: function(credentials) {
+			return $http.post('api/user/login', credentials);
+		},
+
+		isLoggedIn: function() {
+			return ($cookieStore.get('auth_token')) ? true : false;
+		},
+
+		logout: function() {
+			return $http.delete('user/logout').then(function() {
+				$cookieStore.remove('auth_token');
+				$cookieStore.remove('uid');
+				alertService.showAlert(AUTH_EVENTS.logoutSuccess, 'alert-success');
+			});
+		},
+
+	    currentUser: null,
+
+	    isAuthenticated: function(){
+	        return !!authService.currentUser;
+	    }
+
 	};
 
-	return this;
+	return authService;
 
 };
 
-Auth.$inject = ['$rootScope', '$http'];
+Auth.$inject = ['$http', '$cookieStore', 'AUTH_EVENTS', 'alertService'];
 module.exports = Auth;

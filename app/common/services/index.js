@@ -4,6 +4,7 @@
 // Factories have first letter capitalized like Controllers
 
 module.exports = angular.module('common.services', [])
+	.service('alertService', require('./alertService.js'))
 	.service('apiConfig', require('./ApiConfig.js'))
 	.factory('Auth', require('./Auth.js'))
 	.factory('AuthInterceptor', require('./AuthInterceptor.js'))
