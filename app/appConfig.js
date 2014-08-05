@@ -5,13 +5,22 @@
 
 function appRoutes($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
-	// Add hasbang prefix for SEO and HTML5 mode to remove #! from the URL.
+/* ==========================================================================
+    Include AuthInterceptor for token-based authentication
+========================================================================== */
+	$httpProvider.interceptors.push('AuthInterceptor');
+
+/* ==========================================================================
+    Add hasbang prefix for SEO and HTML5 mode to remove #! from the URL
+========================================================================== */
 	// Html5 mode requires server-side configuration. See http://bit.ly/1qLuJ0v
 	$locationProvider.html5Mode(true).hashPrefix('!');
 	// For any unmatched url, redirect to /
 	$urlRouterProvider.otherwise('/');
 
-	// Now set up the states
+/* ==========================================================================
+    Location States (Home)
+========================================================================== */
 	var home = {
 		name: 'home', // state name
 		url: '/', // url path that activates this state
@@ -20,14 +29,11 @@ function appRoutes($stateProvider, $urlRouterProvider, $locationProvider, $httpP
 			moduleClasses: 'page', // assign a module class to the <body> tag
 			pageClasses: 'home', // assign a page-specific class to the <body> tag
 			pageTitle: 'Home', // set the title in the <head> section of the index.html file
-			pageDescription: 'With Taliflo you can support local businesses and good causes with a single purchase.' // meta description in <head>
+			pageDescription: 'Meta Description goes here' // meta description in <head>
 		}
 	};
 
 	$stateProvider.state(home);
-
-	$httpProvider.defaults.useXDomain = true;
-	delete $httpProvider.defaults.headers.common['X-Requested-With'];    
 
 }
 

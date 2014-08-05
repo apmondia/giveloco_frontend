@@ -8,7 +8,6 @@ require('angular-cookies');
 require('angular-resource');
 require('angular-sanitize');
 require('angular-truncate');
-require('angular-devise');
 require('lodash');
 require('restangular');
 require('gsap');
@@ -22,7 +21,6 @@ module.exports = angular.module('common',
         'ngCookies',
         'ngSanitize',
         'restangular',
-        'Devise',
         require('./components/header').name,
         require('./components/footer').name,
         require('./constants').name,

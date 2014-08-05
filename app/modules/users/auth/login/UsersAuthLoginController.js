@@ -1,35 +1,22 @@
 'use strict';
 
 function UsersAuthLoginCtrl($rootScope, $scope, Auth, AUTH_EVENTS) {
-
-	$scope.credentials = {
-		email: '',
-		password: ''
-	};
 	
-	$scope.login = function(credentials) {
-		$scope.$watch('loginForm.$valid', function() {
-			console.log(credentials);
-        
-			Auth.login(credentials).then(function(user) {
-				$scope.setCurrentUser(user);
-		        console.log($scope.currentUser); // => {id: 1, ect: '...'}
-		        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-		    }, function(error) {
-		    	console.log(error);
-		        $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
-		    });
+	$scope.login = function() {
+		if ($scope.loginForm.$valid) {
+			var promise = Auth.login($scope.credentials);
+			promise.then(success, error);
+		}
+	};
 
-		    $scope.$on('devise:login', function(event, currentUser) {
-		        // after a login, a hard refresh, a new tab
-		        console.log(currentUser.id);
-		    });
+	var success = function(response) {
+		// Change this so that it uses cookies later
+		localStorage.setItem('auth_token', response.data.auth_token);
+		$location.path('/');
+	};
 
-		    $scope.$on('devise:new-session', function(event, currentUser) {
-		        // user logged in by Auth.login({...})
-		        console.log('Logged in as ' + currentUser.id);
-		    });
-		});	
+	var error = function(response) {
+		$scope.wrongCredentials = true;
 	};
 
 }

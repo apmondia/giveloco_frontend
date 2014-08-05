@@ -1,25 +1,25 @@
 // =======================================================================
 // Gulp Plugins
 // =======================================================================
-var gulp 		 	= require('gulp'),
-    gutil 		 	= require('gulp-util'),
-    jshint 		 	= require('gulp-jshint'),
-    stylish 		= require('jshint-stylish'),
-    concat 		 	= require('gulp-concat'),
+var gulp            = require('gulp'),
+    connect         = require('gulp-connect'),
+    gutil           = require('gulp-util'),
+    jshint          = require('gulp-jshint'),
+    stylish         = require('jshint-stylish'),
+    concat          = require('gulp-concat'),
     rimraf          = require('gulp-rimraf'),
-    streamify		= require('gulp-streamify'),
-    uglify 			= require('gulp-uglify'),
-    sourcemaps		= require('gulp-sourcemaps'),
-    less 			= require('gulp-less'),
-    prefix			= require('gulp-autoprefixer'),
-    minifyCSS 		= require('gulp-minify-css'),
-    notify 			= require('gulp-notify'),
-    angularTplCache = require('gulp-angular-templatecache'),
-    browserify   	= require('browserify'),
+    streamify       = require('gulp-streamify'),
+    uglify          = require('gulp-uglify'),
+    sourcemaps      = require('gulp-sourcemaps'),
+    less            = require('gulp-less'),
+    prefix          = require('gulp-autoprefixer'),
+    minifyCSS       = require('gulp-minify-css'),
+    notify          = require('gulp-notify'),
+    browserify      = require('browserify'),
     watchify        = require('watchify'),
-    source       	= require('vinyl-source-stream'),
-    buffer 			= require('vinyl-buffer'),
-    runSequence 	= require('run-sequence');
+    source          = require('vinyl-source-stream'),
+    buffer          = require('vinyl-buffer'),
+    runSequence     = require('run-sequence');
 
 
 // =======================================================================
@@ -95,40 +95,45 @@ function handleError(err) {
 
 
 // =======================================================================
-// Server Settings for local development (Express Server)
-// =======================================================================
-var embedlr 		= require('gulp-embedlr'),
-    refresh 		= require('gulp-livereload'),
-    lrserver 		= require('tiny-lr')(),
-    express 		= require('express'),
-    livereload 		= require('connect-livereload'),
-    livereloadport 	= 35729,
-    serverportDev   = 5000,
-    serverportProd  = 5050,
-    server 			= express();
-
-server.use(livereload({port: livereloadport}));
-// Use our 'dist' folder as rootfolder
-server.use(express.static('./dist'));
-// Redirects everything back to our index.html
-server.all('/*', function(req, res) {
-    res.sendfile('/', { root: './dist' });
-});
-
-
-// =======================================================================
-// Dev Server Task
+// Server Task
 // =======================================================================  
-gulp.task('dev', function() {
-    server.listen(serverportDev);
-    lrserver.listen(livereloadport);
-    console.log('Server running at http://localhost:5000');
+var express = require('express'),
+    server  = express();
+
+gulp.task('devServer', function() {
+  connect.server({
+    root: './dist',
+    fallback: './dist/index.html',
+    port: 5000,
+    livereload: true,
+    middleware: function(connect, o) {
+        return [ (function() {
+            var url = require('url');
+            var proxy = require('proxy-middleware');
+            var options = url.parse('http://localhost:3000/');
+            options.route = '/api';
+            return proxy(options);
+        })() ];
+    }
+  });
 });
 
-gulp.task('stage', function() {
-    server.listen(serverportProd);
-    lrserver.listen(livereloadport);
-    console.log('Server running at http://localhost:5050');
+gulp.task('stageServer', function() {
+  connect.server({
+    root: './dist',
+    fallback: './dist/index.html',
+    port: 5050,
+    livereload: true,
+    middleware: function(connect, o) {
+        return [ (function() {
+            var url = require('url');
+            var proxy = require('proxy-middleware');
+            var options = url.parse('http://api.taliflo.com/');
+            options.route = '/api';
+            return proxy(options);
+        })() ];
+    }
+  });
 });
 
 
@@ -329,7 +334,7 @@ gulp.task('build-dev', function(callback) {
         ['clean-dev', 'lint'],
         // images and vendor tasks are removed to speed up build time. Use "gulp build" to do a full re-build of the dev app.
         ['bundle-dev', 'styles-dev', 'copyIndex', 'copyFavicon'],
-        ['dev', 'watch'],
+        ['devServer', 'watch'],
         callback
     );
 });
@@ -339,7 +344,7 @@ gulp.task('build-prod', function(callback) {
     runSequence(
         ['clean-full', 'lint'],
         ['bundle-prod', 'styles-prod', 'images', 'icons', 'vendorJS', 'vendorCSS', 'copyIndex', 'copyFavicon'],
-        ['stage'],
+        ['stageServer'],
         callback
     );
 });
@@ -349,7 +354,7 @@ gulp.task('build', function(callback) {
     runSequence(
         ['clean-full', 'lint'],
         ['bundle-dev', 'styles-dev', 'images', 'icons', 'vendorJS', 'vendorCSS', 'copyIndex', 'copyFavicon'],
-        ['dev', 'watch'],
+        ['devServer', 'watch'],
         callback
     );
 });
