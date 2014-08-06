@@ -1,11 +1,11 @@
 <div class="signup-form small-form toggle-form">
     <h1>Create a New Account</h1>
 
-    <a class="facebook-signup button btn" ng-click="facebookSignup()"><i class="fa fa-facebook"></i><span>Sign up with Facebook</span></a>
+    <a class="facebook-signup button btn" ng-click="facebookSignup()"><i class="icon icon-facebook"></i><span>Sign up with Facebook</span></a>
 
-    <p>or...</p>
+    <p class="orManual">or...</p>
 
-    <form class="form" name="signupForm" ng-submit="signup()" novalidate>
+    <form class="form" name="signupForm" ng-submit="signup(signupForm.$valid)" novalidate>
 
         <div class="form-group" ng-class="{'invalid' : signupForm.email.$invalid && signupForm.email.$dirty, 'valid' : signupForm.email.$valid && signupForm.email.$dirty}">
             <label for="email" class="inline">Email</label>

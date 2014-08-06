@@ -10,9 +10,6 @@
 	Common Module Styles
 *********************************************************************** */
 body.users.auth {
-	.module-view {
-		padding-top: 40px;
-	}
 	.login-form,
 	.signup-form {
 		border: solid 1px #ccc;
@@ -34,7 +31,7 @@ body.users.auth {
 		}
 	}
 	form {
-		margin: 40px 0;
+		margin: 0 0 40px;
 		text-align: center;
 		label.inline {
 			width: 80px;
@@ -50,17 +47,25 @@ body.users.auth {
 		background-color: @facebook-blue;
 		padding: 10px;
 		width: 75%;
-		.fa-facebook {
-			font-size: 24px;
+		display: block;
+		margin: 40px auto 10px;
+		.icon-facebook {
+			font-size: 30px;
 			margin: 0 20px 0 10px;
 			display: block;
 			float: left;
+			height: 30px;
+			line-height: 30px;
+			margin-top: -5px;
 		}
 		span {
 			position: relative;
 			top: 1px;
-			margin-left: -20px;
+			left: -20px;
 		}
+	}
+	p.orManual {
+		text-align: center;	
 	}
 }
 

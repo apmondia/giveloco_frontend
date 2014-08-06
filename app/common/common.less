@@ -418,10 +418,16 @@ select {
     Notifications
 ========================================================================== */
 .system-notification {
+    margin-top: 70px;
+    text-align: center;
     .container();
     .animated();
-    .fadeIn();
-    text-align: center;
+    &.ng-enter {
+        .fadeIn();
+    }
+    &.ng-leave {
+        .fadeOut();
+    }
 }
 
 

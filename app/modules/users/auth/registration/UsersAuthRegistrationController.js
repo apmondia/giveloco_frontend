@@ -1,14 +1,15 @@
 'use strict';
 
-function UsersAuthRegistrationCtrl($scope, $timeout, formValidation, regions) {
+function UsersAuthRegistrationCtrl($rootScope, $scope, $state, $cookieStore, Restangular, Auth, AUTH_EVENTS, alertService, formValidation, regions) {
 
 	/* =======================================================================
-		Registration Form Data Definitions
+		User Data for Form Submission
 	======================================================================= */
 	$scope.user = {
 		country: null,
 		state: null
 	};
+
 
 	/* =======================================================================
 		Form Validation
@@ -59,7 +60,27 @@ function UsersAuthRegistrationCtrl($scope, $timeout, formValidation, regions) {
 		$scope.user.state = user.state;
 	};
 
+
+	/* =======================================================================
+		Form Submission
+	======================================================================= */
+	var success = function(user) {
+		$rootScope.$broadcast('logged-in');
+		alertService.showAlert(AUTH_EVENTS.signupSuccess, 'alert-success');
+		$state.go('profile', {id:user.data.uid});
+	};
+
+	var error = function() {
+		alertService.showAlert(AUTH_EVENTS.signupFailed, 'alert-danger');
+	};
+
+	$scope.signup = function(isValid) {
+		if (isValid) {
+			Auth.signup($scope.user).then(success, error);
+		}
+	};
+
 }
 
-UsersAuthRegistrationCtrl.$inject = ['$scope', '$timeout', 'formValidation', 'regions'];
+UsersAuthRegistrationCtrl.$inject = ['$rootScope', '$scope', '$state', '$cookieStore', 'Restangular', 'Auth', 'AUTH_EVENTS', 'alertService', 'formValidation', 'regions'];
 module.exports = UsersAuthRegistrationCtrl;

@@ -1,6 +1,6 @@
 <div class="signup-form medium-form toggle-form">
 	<h1 ng-class="{'active' : signupFormCause.company.$dirty}"><span>Register</span> <span class="company_name">{{user.company || "Your Cause"}}</span></h1>
-	<form class="form" name="signupFormCause" ng-submit="signupCause()" novalidate>
+	<form class="form" name="signupFormCause" ng-submit="signupCause(signupFormCause.$valid)" novalidate>
 
 		<div class="form-section basic-info">
 			<h4 class="section-title">Basic Information</h4>

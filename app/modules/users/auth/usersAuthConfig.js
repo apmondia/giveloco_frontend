@@ -11,8 +11,9 @@ function userAuthRoutes($stateProvider) {
     signup = {
       name: 'auth.signup',
       abstract: true,
+      replace: true,
       url: '/user/signup',
-      template: '<div class="module-view registration container"><div ui-view></div></div>',
+      template: '<div class="registration container"><div ui-view></div></div>',
       controller: 'UsersAuthRegistrationCtrl',
       data: {
         moduleClasses: 'users auth',
