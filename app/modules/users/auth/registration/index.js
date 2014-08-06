@@ -5,5 +5,4 @@ module.exports = angular.module('users.auth.registration', [
 		require('./cause').name,
 		require('./donor').name
 	])
-	.directive('usersAuthRegistration', require('./usersAuthRegistrationDirective'))
 	.controller('UsersAuthRegistrationCtrl', require('./UsersAuthRegistrationController'));

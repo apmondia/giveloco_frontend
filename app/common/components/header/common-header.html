@@ -22,9 +22,9 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li ui-sref-active="active"><a ui-sref="login">Log In</a></li>
-            <li ui-sref-active="active"><a ui-sref="signup.donor">Sign Up</a></li>
-            <li class="dropdown">
+            <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.login">Log In</a></li>
+            <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.signup.donor">Sign Up</a></li>
+            <li class="dropdown" ng-if="isLoggedIn()">
               <div dropdown is-open="status.isopen">
                 <a class="dropdown-toggle">
                   <!-- First Name needs to have its own function that changes based on user role --> 

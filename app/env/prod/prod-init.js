@@ -3,7 +3,7 @@
 function prodInit($rootScope, Restangular, apiConfig, ENV) {
 
 	$rootScope.$broadcast('ENV_PROD');
-	$rootScope.serverUrl = ENV.PROD.url;
+	$rootScope.serverUrl = ENV.PROD.serverUrl;
 	// Restangular BaseURL Config
 	Restangular.setBaseUrl(apiConfig.API.prod);
 	

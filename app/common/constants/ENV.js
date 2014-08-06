@@ -3,10 +3,10 @@
 var ENV = (function() {
     return {
         DEV: {
-        	url: 'http://localhost:3000/'
+        	serverUrl: 'http://localhost:3000/'
         },
         PROD: {
-        	url: 'http://api.taliflo.com/'
+        	serverUrl: 'http://api.taliflo.com/'
         }
     };
 }());

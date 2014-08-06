@@ -27,15 +27,15 @@ var gulp            = require('gulp'),
 // =======================================================================
 var filePath = {
     build: { 
-    	dest: './dist' 
+        dest: './dist' 
     },
     lint: { 
-    	src: ['!./app/assets/vendor/**/*.js', './app/*.js', './app/**/*.js'] 
+        src: ['!./app/assets/vendor/**/*.js', './app/*.js', './app/**/*.js'] 
     },
     browserify: { 
-    	DEVsrc: './app/appDev.js',
+        DEVsrc: './app/appDev.js',
         PRODsrc: './app/app.js',
-    	watch: 
+        watch: 
         [
             '!./app/assets/libs/*.js',
             '!./app/assets/libs/**/*.js',
@@ -44,8 +44,8 @@ var filePath = {
         ] 
     },
     styles: { 
-    	src: './app/app.less', 
-    	watch: ['./app/app.less','./app/**/*.less'] 
+        src: './app/app.less', 
+        watch: ['./app/app.less','./app/**/*.less'] 
     },
     images: { 
         src: './app/assets/images/**/*', 
@@ -59,16 +59,16 @@ var filePath = {
     },
     vendorJS: { 
         // These files will be bundled into a single vendor.js file that's called at the bottom of index.html
-    	src: 
+        src: 
         [
             './libs/jquery/dist/jquery.js', // v2.1.1
             './libs/bootstrap/dist/js/bootstrap.js', // v3.1.1
             './app/assets/vendor/modernizr.js',
             './app/assets/vendor/webshim/js-webshim/dev/polyfiller.js' // v1.14.5
         ]
-	},
+    },
     vendorCSS: { 
-    	src: 
+        src: 
         [
             './libs/bootstrap/dist/css/bootstrap.css', // v3.1.1
             './app/assets/icons/styles.css',
@@ -99,6 +99,13 @@ function handleError(err) {
 // =======================================================================  
 var express = require('express'),
     server  = express();
+
+// Server settings
+server.use(express.static('./dist'));
+// Redirects everything back to our index.html
+server.all('/*', function(req, res) {
+    res.sendfile('/', { root: './dist' });
+});
 
 gulp.task('devServer', function() {
   connect.server({
@@ -155,9 +162,9 @@ gulp.task('clean-full', function () {
 // JSHint
 // =======================================================================
 gulp.task('lint', function() {
-	return gulp.src(filePath.lint.src)
-	.pipe(jshint())
-	.pipe(jshint.reporter(stylish));
+    return gulp.src(filePath.lint.src)
+    .pipe(jshint())
+    .pipe(jshint.reporter(stylish));
 });
 
 
@@ -181,7 +188,7 @@ gulp.task('bundle-dev', function() {
             .pipe(sourcemaps.write())
             .pipe(gulp.dest(filePath.build.dest))
             .pipe(notify({ message: 'Browserify task complete' }))
-            .pipe(refresh(lrserver));
+            .pipe(connect.reload());
     }
 
     return rebundle()
@@ -201,7 +208,7 @@ gulp.task('bundle-prod', function() {
             .pipe(streamify(uglify()))
             .pipe(gulp.dest(filePath.build.dest))
             .pipe(notify({ message: 'Browserify task complete' }))
-            .pipe(refresh(lrserver));
+            .pipe(connect.reload());
     }
 
     return rebundle()
@@ -222,7 +229,7 @@ gulp.task('styles-dev', function () {
         .pipe(gulp.dest(filePath.build.dest))
         .on("error", handleError)
         .pipe(notify({ message: 'Styles task complete' }))
-        .pipe(refresh(lrserver));
+        .pipe(connect.reload());
 });
 
 gulp.task('styles-prod', function () {
@@ -245,7 +252,7 @@ gulp.task('images', function() {
         .on("error", handleError)
         .pipe(gulp.dest(filePath.images.dest))
         .pipe(notify({ message: 'Images copied' }))
-        .pipe(refresh(lrserver));
+        .pipe(connect.reload());
 });
 
 
@@ -257,7 +264,7 @@ gulp.task('icons', function() {
         .on("error", handleError)
         .pipe(gulp.dest(filePath.icons.dest))
         .pipe(notify({ message: 'Icons copied' }))
-        .pipe(refresh(lrserver));
+        .pipe(connect.reload());
 });
 
 
@@ -284,7 +291,7 @@ gulp.task('vendorCSS', function () {
         .pipe(minifyCSS())
         .pipe(gulp.dest(filePath.build.dest))
         .pipe(notify({ message: 'VendorCSS task complete' }))
-        .pipe(refresh(lrserver));
+        .pipe(connect.reload());
 });
 
 
@@ -295,7 +302,7 @@ gulp.task('copyIndex', function () {
     return gulp.src(filePath.copyIndex.src)
         .pipe(gulp.dest(filePath.build.dest))
         .pipe(notify({ message: 'index.html successfully copied' }))
-        .pipe(refresh(lrserver));
+        .pipe(connect.reload());
 });
 
 
@@ -313,7 +320,7 @@ gulp.task('copyFavicon', function () {
 // Watch for changes
 // =======================================================================  
 gulp.task('watch', function () {
-	gulp.watch(filePath.browserify.watch, ['bundle-dev']);
+    gulp.watch(filePath.browserify.watch, ['bundle-dev']);
     gulp.watch(filePath.styles.watch, ['styles-dev']);
     gulp.watch(filePath.images.watch, ['images']);
     gulp.watch(filePath.icons.watch, ['icons']);

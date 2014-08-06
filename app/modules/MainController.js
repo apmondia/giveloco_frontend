@@ -1,6 +1,6 @@
 'use strict';
 // Controller naming conventions should start with an uppercase letter
-function MainCtrl($rootScope, $scope, $state, $cookieStore, Restangular, Auth, AUTH_EVENTS, USER_ROLES, alertService) {
+function MainCtrl($rootScope, $scope, $timeout, $state, $cookieStore, Restangular, Auth, USER_ROLES) {
 
 /* =======================================================================
 	Session Control
@@ -8,7 +8,7 @@ function MainCtrl($rootScope, $scope, $state, $cookieStore, Restangular, Auth, A
 	$scope.logout = function() {
 		Auth.logout().then(function() {
 			$state.go('auth.login');
-		}).then(alertService.showAlert(AUTH_EVENTS.logoutSuccess, 'alert-success'));
+		});
 	};
 
 	$scope.currentUser = null;
@@ -20,7 +20,7 @@ function MainCtrl($rootScope, $scope, $state, $cookieStore, Restangular, Auth, A
 		Restangular.one('users', $cookieStore.get('uid')).get().then(function(currentUser){
 			$scope.currentUser = currentUser;
 		});
-	}
+	};
 	
 	setCurrentUser();
 	$rootScope.$on('logged-in', setCurrentUser);
@@ -34,5 +34,5 @@ function MainCtrl($rootScope, $scope, $state, $cookieStore, Restangular, Auth, A
 }
 
 // $inject is necessary for minification. See http://bit.ly/1lNICde for explanation.
-MainCtrl.$inject = ['$rootScope', '$scope', '$state', '$cookieStore', 'Restangular', 'Auth', 'AUTH_EVENTS', 'USER_ROLES', 'alertService'];
+MainCtrl.$inject = ['$rootScope', '$scope', '$timeout', '$state', '$cookieStore', 'Restangular', 'Auth', 'USER_ROLES'];
 module.exports = MainCtrl;

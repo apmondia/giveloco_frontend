@@ -1,6 +1,6 @@
 'use strict';
 
-function UsersAuthLoginCtrl($scope, $state, $cookieStore, Auth, AUTH_EVENTS, alertService) {
+function UsersAuthLoginCtrl($rootScope, $scope, $state, $cookieStore, Auth, AUTH_EVENTS, alertService) {
 	
 	var success = function(user) {
 		$rootScope.$broadcast('logged-in');
@@ -17,8 +17,8 @@ function UsersAuthLoginCtrl($scope, $state, $cookieStore, Auth, AUTH_EVENTS, ale
 		password: ''
 	};
 
-	$scope.login = function() {
-		if ($scope.loginForm.$valid) {
+	$scope.login = function(isValid) {
+		if (isValid) {
 			Auth.login($scope.credentials).then(success, error);
 		}
 	};
@@ -27,5 +27,5 @@ function UsersAuthLoginCtrl($scope, $state, $cookieStore, Auth, AUTH_EVENTS, ale
 
 }
 
-UsersAuthLoginCtrl.$inject = ['$scope', '$state', '$cookieStore', 'Auth', 'AUTH_EVENTS', 'alertService'];
+UsersAuthLoginCtrl.$inject = ['$rootScope', '$scope', '$state', '$cookieStore', 'Auth', 'AUTH_EVENTS', 'alertService'];
 module.exports = UsersAuthLoginCtrl;
