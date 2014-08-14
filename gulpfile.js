@@ -117,7 +117,8 @@ gulp.task('devServer', function() {
         return [ (function() {
             var url = require('url');
             var proxy = require('proxy-middleware');
-            var options = url.parse('http://localhost:3000/');
+            var options = url.parse('http://api-dev.taliflo.com/');
+            // var options = url.parse('http://localhost:3000/');
             options.route = '/api';
             return proxy(options);
         })() ];
@@ -135,7 +136,7 @@ gulp.task('stageServer', function() {
         return [ (function() {
             var url = require('url');
             var proxy = require('proxy-middleware');
-            var options = url.parse('http://api.taliflo.com/');
+            var options = url.parse('https://api.taliflo.com/');
             options.route = '/api';
             return proxy(options);
         })() ];
