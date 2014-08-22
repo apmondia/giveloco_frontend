@@ -25,17 +25,17 @@
             <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.login">Log In</a></li>
             <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.signup.donor">Sign Up</a></li>
             <li class="dropdown" ng-if="isLoggedIn()">
-              <div dropdown is-open="status.isopen">
+              <div dropdown is-open="status.isopen" class="dropdown-wrapper">
                 <a class="dropdown-toggle">
                   <!-- First Name needs to have its own function that changes based on user role --> 
                   Hi, {{currentUser.first_name}} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                  <li ui-sref-active="active"><a ui-sref="profile({id:currentUser.id})">My Profile</a></li>
-                  <li ui-sref-active="active"><a href="#">Account Settings</a></li>
-                  <li ui-sref-active="active"><a href="#">Something else here</a></li>
+                  <li class="first" ui-sref-active="active" ng-if="currentUser.role == 'cause'"><a ui-sref="profile.cause({id:currentUser.id})"><i class="icon icon-user-circle-outline"></i>My Profile</a></li>
+                  <li class="first" ui-sref-active="active" ng-if="currentUser.role == 'business'"><a ui-sref="profile.business({id:currentUser.id})"><i class="icon icon-user-circle-outline"></i>My Profile</a></li>
+                  <li ui-sref-active="active"><a href="#"><i class="icon icon-mixer-horizontal"></i>Account Settings</a></li>
                   <li class="divider"></li>
-                  <li><a ng-click="logout()">Log Out</a></li>
+                  <li class="last"><a ng-click="logout()"><i class="icon icon-log-out icon-flip-horizontal"></i>Log Out</a></li>
                 </ul>
               </div>
             </li>

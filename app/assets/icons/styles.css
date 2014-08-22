@@ -38,9 +38,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-cause:before {
-  content: "a";
-}
 .icon-users:before {
   content: "b";
 }
@@ -476,10 +473,10 @@
 .icon-star-outline:before {
   content: "\e038";
 }
-.icon-tag:before {
+.icon-tag-single:before {
   content: "\e039";
 }
-.icon-tag-outline:before {
+.icon-tag-single-outline:before {
   content: "\e03a";
 }
 .icon-tumblr:before {
@@ -587,10 +584,10 @@
 .icon-talk-chat-2:before {
   content: "\e05b";
 }
-.icon-tag-2:before {
+.icon-tag:before {
   content: "\e05c";
 }
-.icon-tags-1:before {
+.icon-tags:before {
   content: "\e05d";
 }
 .icon-rocket:before {
@@ -617,7 +614,7 @@
 .icon-vimeo-circled:before {
   content: "\e063";
 }
-.icon-tag-1:before {
+.icon-sale-tag:before {
   content: "\e064";
 }
 .icon-suitcase:before {
@@ -682,4 +679,22 @@
 }
 .icon-x:before {
   content: "\e078";
+}
+.icon-donate:before {
+  content: "\e079";
+}
+.icon-business:before {
+  content: "\e07a";
+}
+.icon-shopping-bag:before {
+  content: "\e07b";
+}
+.icon-cash:before {
+  content: "\e07c";
+}
+.icon-store:before {
+  content: "\e07d";
+}
+.icon-ribbon:before {
+  content: "a";
 }
