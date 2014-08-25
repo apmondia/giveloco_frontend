@@ -1,3 +1,4 @@
+/*jshint camelcase: false */
 'use strict';
 
 function UsersAuthRegistrationCtrl($rootScope, $scope, $state, $cookieStore, Restangular, Auth, AUTH_EVENTS, alertService, formValidation, regions) {
@@ -17,6 +18,7 @@ function UsersAuthRegistrationCtrl($rootScope, $scope, $state, $cookieStore, Res
 		country: null,
 		state: null,
 		zip: null,
+		phone: null,
 		tags: [],
 		description: null,
 		summary: null
@@ -82,6 +84,16 @@ function UsersAuthRegistrationCtrl($rootScope, $scope, $state, $cookieStore, Res
 		user.summary = user.description.match(/[^.!?]*/i)[0] + '.';
 	};
 
+
+	/* =======================================================================
+		Parse Phone Number
+	======================================================================= */
+	$scope.formatNumber = function() {
+		if ($scope.user.phone !== null && $scope.user.phone !== undefined) {
+			var phoneNum = $scope.user.phone.match(formValidation.phoneRegex);
+			$scope.user.phone = '+1 ' + '(' + phoneNum[1] + ') ' + phoneNum[2] + '-' + phoneNum[3];
+		}
+	};
 }
 
 UsersAuthRegistrationCtrl.$inject = ['$rootScope', '$scope', '$state', '$cookieStore', 'Restangular', 'Auth', 'AUTH_EVENTS', 'alertService', 'formValidation', 'regions'];

@@ -1,6 +1,6 @@
 'use strict';
 
-function UsersAuthRegistrationCauseCtrl($rootScope, $scope) {
+function UsersAuthRegistrationCauseCtrl($rootScope, $scope, $state, Auth, AUTH_EVENTS, alertService) {
 
 	/* =======================================================================
 		User Data for Form Submission
@@ -29,5 +29,5 @@ function UsersAuthRegistrationCauseCtrl($rootScope, $scope) {
 
 }
 
-UsersAuthRegistrationCauseCtrl.$inject = ['$rootScope', '$scope'];
+UsersAuthRegistrationCauseCtrl.$inject = ['$rootScope', '$scope', '$state', 'Auth', 'AUTH_EVENTS', 'alertService'];
 module.exports = UsersAuthRegistrationCauseCtrl;

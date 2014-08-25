@@ -10,6 +10,8 @@ function UsersAuthCtrl($scope, formValidation) {
 	$scope.companyRegex = formValidation.alphaNum;
 	// Email Address
 	$scope.emailRegex = formValidation.emailRegex;
+	// Phone Number
+	$scope.phoneRegex = formValidation.phoneRegex;
 	// Website
 	$scope.websiteRegex = formValidation.websiteRegex;
 	// Tags
