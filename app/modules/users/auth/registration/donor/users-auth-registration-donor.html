@@ -6,15 +6,30 @@
     <p class="orManual">or...</p>
 
     <form class="form" name="signupForm" ng-submit="signup(signupForm.$valid)" novalidate>
+        
+        <div class="form-section name">
+            <div class="form-group first-name" ng-class="{'invalid' : signupForm.first_name.$invalid && signupForm.first_name.$dirty, 'valid' : signupForm.first_name.$valid && signupForm.first_name.$dirty}">
+                <label for="first_name" class="inline">First Name</label>
+                <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Given Name" ng-model="user.first_name" ng-pattern="nameRegex" required auto-focus show-form-errors />
+                <p class="form-helper" ng-if="signupForm.first_name.$error.pattern && !signupForm.first_name.$focused">Your name can only contain letters.</p>
+                <p class="form-helper" ng-if="signupForm.first_name.$dirty && signupForm.first_name.$error.required && !signupForm.first_name.$focused">First Name is required!</p>
+            </div>
+            <div class="form-group last-name" ng-class="{'invalid' : signupForm.last_name.$invalid && signupForm.last_name.$dirty, 'valid' : signupForm.last_name.$valid && signupForm.last_name.$dirty}">
+                <label for="last_name" class="inline">Last Name</label>
+                <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Surname" ng-model="user.last_name" ng-pattern="nameRegex" required show-form-errors />
+                <p class="form-helper" ng-if="signupForm.last_name.$error.pattern && !signupForm.last_name.$focused">Your name can only contain letters.</p>
+                <p class="form-helper" ng-if="signupForm.last_name.$dirty && signupForm.last_name.$error.required && !signupForm.last_name.$focused">Last Name is required!</p>
+            </div>
+        </div>
 
-        <div class="form-group" ng-class="{'invalid' : signupForm.email.$invalid && signupForm.email.$dirty, 'valid' : signupForm.email.$valid && signupForm.email.$dirty}">
+        <div class="form-group email" ng-class="{'invalid' : signupForm.email.$invalid && signupForm.email.$dirty, 'valid' : signupForm.email.$valid && signupForm.email.$dirty}">
             <label for="email" class="inline">Email</label>
-            <input type="email" name="email" id="email" class="form-control" placeholder="email@address.com" ng-model="user.email" ng-pattern="emailRegex" required auto-focus show-form-errors />
+            <input type="email" name="email" id="email" class="form-control" placeholder="email@address.com" ng-model="user.email" ng-pattern="emailRegex" required show-form-errors />
             <p class="form-helper" ng-if="signupForm.email.$error.pattern && !signupForm.email.$focused">Invalid Email Address</p>
             <p class="form-helper" ng-if="signupForm.email.$dirty && signupForm.email.$error.required && !signupForm.email.$focused">Email Address is required!</p>
         </div>
 
-        <div class="form-group" ng-class="{'invalid' : signupForm.password.$invalid && signupForm.password.$dirty, 'valid' : signupForm.password.$valid && signupForm.password.$dirty}">
+        <div class="form-group password" ng-class="{'invalid' : signupForm.password.$invalid && signupForm.password.$dirty, 'valid' : signupForm.password.$valid && signupForm.password.$dirty}">
             <label for="password" class="inline">Password</label>
             <input type="password" name="password" id="password" class="form-control" placeholder="password" ng-model="user.password" ng-minlength=8 required show-form-errors />
             <p class="form-helper" ng-if="signupForm.password.$dirty && signupForm.password.$error.required && !signupForm.password.$focused">Password is required!</p>

@@ -6,8 +6,20 @@ function UsersAuthRegistrationCtrl($rootScope, $scope, $state, $cookieStore, Res
 		User Data for Form Submission
 	======================================================================= */
 	$scope.user = {
+		role: null,
+		first_name: null,
+		last_name: null,
+		email: null,
+		password: null,
+		company: null,
+		website: null,
+		street: null,
 		country: null,
-		state: null
+		state: null,
+		zip: null,
+		tags: [],
+		description: null,
+		summary: null
 	};
 
 
@@ -62,22 +74,12 @@ function UsersAuthRegistrationCtrl($rootScope, $scope, $state, $cookieStore, Res
 
 
 	/* =======================================================================
-		Form Submission
+		Set Cause Summary
 	======================================================================= */
-	var success = function(user) {
-		$rootScope.$broadcast('logged-in');
-		alertService.showAlert(AUTH_EVENTS.signupSuccess, 'alert-success');
-		$state.go('profile', {id:user.data.uid});
-	};
-
-	var error = function() {
-		alertService.showAlert(AUTH_EVENTS.signupFailed, 'alert-danger');
-	};
-
-	$scope.signup = function(isValid) {
-		if (isValid) {
-			Auth.signup($scope.user).then(success, error);
-		}
+	$scope.setSummary = function(user) {
+		$scope.user.description = user.description;
+		$scope.user.summary = user.summary;
+		user.summary = user.description.match(/[^.!?]*/i)[0] + '.';
 	};
 
 }

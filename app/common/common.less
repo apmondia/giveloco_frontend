@@ -361,21 +361,49 @@ a {
             color: red;
         }
     }
-    label.inline {
-        position: absolute;
-        left: 1px;
-        top: 1px;
-        display: block;
-        padding: 10px 6px;
-        border-right: solid 1px #ccc;
-        border-radius: 4px 0 0 4px;
-        text-align: center;
-        font-weight: 200;
-        color:#333;
-        background-color: #fcfcfc;
+    .field-label {
+        font-weight: 400;
+    }
+    label {
+        &.inline {
+            position: absolute;
+            left: 1px;
+            top: 1px;
+            display: block;
+            padding: 10px 6px;
+            border-right: solid 1px #ccc;
+            border-radius: 4px 0 0 4px;
+            text-align: center;
+            font-weight: 200;
+            color:#333;
+            background-color: #fcfcfc;
+        }
+        &.block {
+            width: 99% !important; /* fallback for browsers without support for calc() */
+            width: -moz-calc(~'100% - 2px') !important;
+            width: -webkit-calc(~'100% - 2px') !important;
+            width: calc(~'100% - 2px') !important;
+            display: block;
+            position: relative;
+            text-align: center;
+            font-weight: 200;
+            border: none;
+            border-bottom: solid 1px #ccc;
+            margin: 0 1px;
+            padding: 8px 12px;
+            background-color: #fcfcfc;
+            border-radius: 4px 4px 0 0;
+            margin-bottom: -38px;
+        }
     }
     input {
         padding: 20px 0;
+    }
+    textarea {
+        &.with-label-above {
+            height: 150px;
+            padding-top: 45px;
+        }
     }
 }
 .form-control {
@@ -423,6 +451,16 @@ a {
         display: none;
         @media @breakpoint-sm {
             display: block;
+        }
+    }
+    &.info {
+        @media @breakpoint-sm {
+            color: @brand-teal;
+            border: solid 1px @brand-teal;
+            background-color: #fff;
+        }
+        &:before {
+            border-right-color: @brand-teal;
         }
     }
 }

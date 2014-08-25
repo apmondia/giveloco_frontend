@@ -1,25 +1,29 @@
 'use strict';
 
 function UsersAuthRegistrationCauseCtrl($rootScope, $scope) {
-	
-	$scope.signupCause = function() {
-		var user = $scope.user;
-		if ($scope.signupFormCause.$valid) {
-			console.log('Sending request to server.');
-			console.log(
-				user.company
-				);
-		} else {
-			console.log('Some fields are not valid.');
-			console.log(
-				user.company,
-				user.email,
-				user.password,
-				user.website,
-				user.street,
-				user.country,
-				user.state
-				);
+
+	/* =======================================================================
+		User Data for Form Submission
+	======================================================================= */
+	$scope.user.role = 'cause';
+
+
+	/* =======================================================================
+		Form Submission
+	======================================================================= */
+	var success = function(user) {
+		$rootScope.$broadcast('logged-in');
+		alertService.showAlert(AUTH_EVENTS.signupSuccess, 'alert-success');
+		$state.go('profile.cause', {id:user.data.uid});
+	};
+
+	var error = function() {
+		alertService.showAlert(AUTH_EVENTS.signupFailed, 'alert-danger');
+	};
+
+	$scope.signupCause = function(isValid) {
+		if (isValid) {
+			Auth.signup($scope.user).then(success, error);
 		}
 	};
 

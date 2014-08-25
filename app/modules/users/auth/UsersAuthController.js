@@ -4,12 +4,18 @@ function UsersAuthCtrl($scope, formValidation) {
 	/* =======================================================================
 		Form Validation
 	======================================================================= */
-	// Cause Name
-	$scope.nameRegex = formValidation.alphaNum;
+	// Real Name
+	$scope.nameRegex = formValidation.lettersOnly;
+	// Company Name
+	$scope.companyRegex = formValidation.alphaNum;
 	// Email Address
 	$scope.emailRegex = formValidation.emailRegex;
 	// Website
 	$scope.websiteRegex = formValidation.websiteRegex;
+	// Tags
+	$scope.tagsRegex = formValidation.alphaNumComma;
+	// Text Area
+	$scope.textAreaRegex = formValidation.textAreaRegex;
 }
 
 UsersAuthCtrl.$inject = ['$scope', 'formValidation'];
