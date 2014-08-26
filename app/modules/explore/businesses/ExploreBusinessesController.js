@@ -1,6 +1,6 @@
 'use strict';
 
-function ExploreBusinessesCtrl(_, $rootScope, $scope, $timeout, Restangular) {
+function ExploreBusinessesCtrl($rootScope, $scope, $timeout, Restangular) {
     // Get all users from server
     var users = Restangular.all('users');
 
@@ -14,5 +14,5 @@ function ExploreBusinessesCtrl(_, $rootScope, $scope, $timeout, Restangular) {
     });
 }
 
-ExploreBusinessesCtrl.$inject = ['_', '$rootScope', '$scope', '$timeout', 'Restangular'];
+ExploreBusinessesCtrl.$inject = ['$rootScope', '$scope', '$timeout', 'Restangular'];
 module.exports = ExploreBusinessesCtrl;

@@ -12,14 +12,14 @@ function UsersAuthRegistrationCtrl($rootScope, $scope, $state, $cookieStore, Res
 		last_name: null,
 		email: null,
 		password: null,
-		company: null,
+		company_name: null,
 		website: null,
-		street: null,
+		street_address: null,
 		country: null,
 		state: null,
 		zip: null,
 		phone: null,
-		tags: [],
+		tag_list: null,
 		description: null,
 		summary: null
 	};
@@ -76,23 +76,33 @@ function UsersAuthRegistrationCtrl($rootScope, $scope, $state, $cookieStore, Res
 
 
 	/* =======================================================================
+		Format Phone Number
+	======================================================================= */
+	$scope.formatNumber = function() {
+		if ($scope.user.phone !== null && $scope.user.phone !== undefined) {
+			var phoneNum = $scope.user.phone.match(formValidation.phoneRegex);
+			$scope.user.phone = '(' + phoneNum[1] + ') ' + phoneNum[2] + '-' + phoneNum[3];
+		}
+	};
+
+
+	/* =======================================================================
+		Format Tags for Submission
+	======================================================================= */
+	$scope.formatTags = function() {
+		if ($scope.user.tag_list !== null && $scope.user.tag_list !== undefined) {
+			$scope.user.tag_list = $scope.user.tag_list.replace(/\s*[,.!]\s*/g, ', ');
+		}
+	};
+
+
+	/* =======================================================================
 		Set Cause Summary
 	======================================================================= */
 	$scope.setSummary = function(user) {
 		$scope.user.description = user.description;
 		$scope.user.summary = user.summary;
 		user.summary = user.description.match(/[^.!?]*/i)[0] + '.';
-	};
-
-
-	/* =======================================================================
-		Parse Phone Number
-	======================================================================= */
-	$scope.formatNumber = function() {
-		if ($scope.user.phone !== null && $scope.user.phone !== undefined) {
-			var phoneNum = $scope.user.phone.match(formValidation.phoneRegex);
-			$scope.user.phone = '+1 ' + '(' + phoneNum[1] + ') ' + phoneNum[2] + '-' + phoneNum[3];
-		}
 	};
 }
 

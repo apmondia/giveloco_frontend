@@ -36,6 +36,7 @@
     "require": true,
     "$": true,
     "gapi": true,
-    "FB": true
+    "FB": true,
+    "_": false
     }
 }
