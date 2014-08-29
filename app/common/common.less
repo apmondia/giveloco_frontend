@@ -647,6 +647,45 @@ p.no-results {
 
 
 /* ==========================================================================
+    Tags Input
+========================================================================== */
+.tags-input {
+    .clearfix();
+    .tags {
+        .clearfix();
+        background-color: #fff;
+        margin-bottom: 15px;
+        padding: 40px 5px 5px;
+        cursor: text;
+    }
+    ul.tag-list {
+        margin-bottom: 0;
+        padding: 0;
+        .tag-item {
+            float: left;
+            padding: 2px 6px 4px;
+            margin: 1px;
+            list-style: none;
+            .remove-button {
+                color:#fff;
+                opacity:0.5;
+                &:hover {
+                    opacity:0.85;
+                }
+            }
+        }
+    }
+    input {
+        padding: 5px 6px !important;
+        border: none;
+        min-width: 100px;
+        float: left;
+        background-color: transparent;
+    }
+}
+
+
+/* ==========================================================================
     Icons
 ========================================================================== */
 .icon-flip-vertical {

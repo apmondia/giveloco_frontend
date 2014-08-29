@@ -8,6 +8,7 @@ require('angular-cookies');
 require('angular-resource');
 require('angular-sanitize');
 require('angular-truncate');
+require('ng-tags-input');
 require('lodash');
 require('restangular');
 require('gsap');
@@ -21,6 +22,7 @@ module.exports = angular.module('common',
         'ngCookies',
         'ngSanitize',
         'restangular',
+        'ngTagsInput',
         require('./components/header').name,
         require('./components/footer').name,
         require('./constants').name,

@@ -698,3 +698,15 @@
 .icon-ribbon:before {
   content: "a";
 }
+.icon-chevron-circle-up:before {
+  content: "\e07e";
+}
+.icon-chevron-circle-down:before {
+  content: "\e07f";
+}
+.icon-chevron-circle-left:before {
+  content: "\e080";
+}
+.icon-chevron-circle-right:before {
+  content: "\e081";
+}

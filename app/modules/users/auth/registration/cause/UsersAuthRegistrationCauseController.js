@@ -26,17 +26,19 @@ function UsersAuthRegistrationCauseCtrl($rootScope, $scope, $state, Auth, AUTH_E
 	};
 
 	$scope.signupCause = function(isValid) {
+		var tags = $scope.tags.map(function(tag) {return tag.text; });
+
 		if (isValid) {
 			$scope.formSubmitted = true;
 			user.country = $scope.user.country.name;
 			user.state = $scope.user.state.code;
-			user.tag_list = $scope.user.tag_list.replace(/\s?[,]\s?/g, ',').split(',');
+			user.tag_list = tags;
 			Auth.signup($scope.user).then(success, error);
 			console.log($scope.user);
 		} else {
-			user.country = $scope.user.country.name;
-			user.state = $scope.user.state.code;
-			user.tag_list = $scope.user.tag_list.replace(/\s?[,]\s?/g, ',').split(',');
+			// user.country = $scope.user.country.name;
+			// user.state = $scope.user.state.code;
+			user.tag_list = tags;
 			console.log($scope.user);
 		}
 	};

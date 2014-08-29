@@ -72,7 +72,8 @@ var filePath = {
         [
             './libs/bootstrap/dist/css/bootstrap.css', // v3.1.1
             './app/assets/icons/styles.css',
-            './libs/animate.css/animate.css' // v3.1.1
+            './libs/animate.css/animate.css', // v3.1.1
+            './libs/ng-tags-input/ng-tags-input.bootstrap.css'
         ]
     },
     copyIndex: { 
