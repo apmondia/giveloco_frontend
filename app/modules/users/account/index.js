@@ -2,9 +2,8 @@
 
 module.exports = angular.module('users.account',
 	[
-		require('./info').name,
-		require('./history').name,
-		require('./vouchers').name
+		require('./settings').name,
+		require('./history').name
 	])
 	.config(require('./usersAccountConfig'))
 	.controller('UsersAccountCtrl', require('./UsersAccountController'));

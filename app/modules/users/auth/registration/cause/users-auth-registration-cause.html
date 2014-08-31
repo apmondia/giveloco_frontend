@@ -113,10 +113,10 @@
 
 			<div class="form-group tags" ng-class="{'invalid' : signupFormCause.tags.$invalid && signupFormCause.tags.$dirty, 'valid' : signupFormCause.tags.$valid && signupFormCause.tags.$dirty}">
 				<label for="causeTags" class="block">Tags</label>
-				<tags-input ng-model="tags" name="tags" id="causeTags" class="tags-input" allowed-tags-pattern="^[^!@#$%&*:;.?]*$" show-form-errors></tags-input>
+				<tags-input ng-model="tags" name="tags" id="causeTags" class="tags-input" allowed-tags-pattern="^[^!@#$%&*:;.?]*$" min-tags="1" show-form-errors></tags-input>
 				<p class="form-helper info" ng-if="signupFormCause.tags.$focused && signupFormCause.tags.$valid">Please add a few comma-separated tags that describe your business.</p>
-				<p class="form-helper" ng-if="signupFormCause.tags.$dirty && signupFormCause.tags.$invalid">This field only accepts letters, numbers, and commas.</p>
-				<p class="form-helper" ng-if="signupFormCause.tags.$dirty && signupFormCause.tags.$error.required && !signupFormCause.tags.$focused">This field is required!</p>
+				<p class="form-helper" ng-if="signupFormCause.tags.$dirty && signupFormCause.tags.$invalid && !signupFormCause.tags.$error.minTags">This field only accepts letters, numbers, and commas.</p>
+				<p class="form-helper" ng-if="signupFormCause.tags.$dirty && signupFormCause.tags.$error.minTags && !signupFormCause.tags.$focused">This field is required!</p>
 			</div>
 			<div class="form-group company-description" ng-class="{'invalid' : signupFormCause.companyDescription.$invalid && signupFormCause.companyDescription.$dirty, 'valid' : signupFormCause.companyDescription.$valid && signupFormCause.companyDescription.$dirty}">
 				<label for="causeDescription" class="block">Cause Description</label>

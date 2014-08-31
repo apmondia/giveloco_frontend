@@ -2,9 +2,21 @@
 
 function userAccountRoutes($stateProvider) {
 
-  var accountHistory = {
-      name: 'accountHistory',
-      url: '/user/account/history',
+  var account = {
+      name: 'account',
+      abstract: true,
+      url: '/user/:id/account',
+      template: '<div ui-view></div>',
+      controller: 'UsersAccountCtrl',
+      resolve: {
+          user: function(Restangular, $stateParams){
+              return Restangular.one('users', $stateParams.id).get();
+          }
+      }
+  },
+  accountHistory = {
+      name: 'account.history',
+      url: '/history',
       template: '<div users-account-history></div>',
       data: {
         moduleClasses: 'users account',
@@ -13,32 +25,21 @@ function userAccountRoutes($stateProvider) {
         pageDescription: 'User account history.'
       }
   },
-  accountInfo = {
-      name: 'accountInfo',
-      url: '/user/account',
-      template: '<div users-account-info></div>',
+  accountSettings = {
+      name: 'account.settings',
+      url: '',
+      template: '<div users-account-settings></div>',
       data: {
         moduleClasses: 'users account',
-        pageClasses: 'basic-info',
-        pageTitle: 'Account Info',
+        pageClasses: 'settings',
+        pageTitle: 'Account Settings',
         pageDescription: 'Basic account information.'
-      }
-  },
-  accountVouchers = {
-      name: 'accountVouchers',
-      url: '/user/account/vouchers',
-      template: '<div users-account-vouchers></div>',
-      data: {
-        moduleClasses: 'users account',
-        pageClasses: 'vouchers',
-        pageTitle: 'Account Vouchers',
-        pageDescription: 'User account list of vouchers.'
       }
   };
 
+$stateProvider.state(account);
 $stateProvider.state(accountHistory);
-$stateProvider.state(accountInfo);
-$stateProvider.state(accountVouchers);
+$stateProvider.state(accountSettings);
 
 }
 

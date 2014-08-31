@@ -1,18 +1,23 @@
 /*jshint camelcase: false */
 'use strict';
 
-var AuthInterceptor = function() {
+var AuthInterceptor = function($q, $cookies, $injector) {
 	return {
 		request: function(config) {
 			config.headers = config.headers || {};
-			// Change this to use cookies later
-			if (localStorage.auth_token) {
-				config.headers['x-session-token'] = localStorage.auth_token;
+			if ($cookies.auth_token) {
+				config.headers['x-session-token'] = $cookies.auth_token;
 			}
 			return config;
+		},
+		responseError: function(response) {
+			if (response.status === 401) {
+				$injector.get('$state').go('auth.login');
+			}
+			return $q.reject(response);
 		}
 	};
 };
 
-AuthInterceptor.$inject = [];
+AuthInterceptor.$inject = ['$q', '$cookies', '$injector'];
 module.exports = AuthInterceptor;

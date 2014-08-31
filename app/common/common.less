@@ -651,6 +651,10 @@ p.no-results {
 ========================================================================== */
 .tags-input {
     .clearfix();
+    &.ng-invalid.ng-pristine .tags {
+        border-color: #ccc;
+        box-shadow: none;
+    }
     .tags {
         .clearfix();
         background-color: #fff;

@@ -1,6 +1,9 @@
 window.jQuery = window.$ = require('jquery');
 window._ = require('lodash');
 
+require('ng-file-upload-shim');
+require('angular');
+require('ng-file-upload');
 require('angular-bootstrap');
 require('angular-ui-router');
 require('angular-animate');
@@ -23,6 +26,7 @@ module.exports = angular.module('common',
         'ngSanitize',
         'restangular',
         'ngTagsInput',
+        'angularFileUpload',
         require('./components/header').name,
         require('./components/footer').name,
         require('./constants').name,

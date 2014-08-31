@@ -28,6 +28,8 @@
     "lodash": "~2.4.1",
     "restangular": "~1.4.0",
     "angular-truncate": "*",
-    "ng-tags-input": "~2.1.0"
+    "ng-tags-input": "~2.1.0",
+    "ng-file-upload": "~1.6.5",
+    "ng-file-upload-shim": "~1.6.5"
   }
 }

@@ -61,6 +61,9 @@ var filePath = {
         // These files will be bundled into a single vendor.js file that's called at the bottom of index.html
         src: 
         [
+            // './libs/ng-file-upload-shim/ng-file-upload-shim.js',
+            // './libs/angular/angular.js',
+            // './libs/ng-file-upload/ng-file-upload.js',
             './libs/jquery/dist/jquery.js', // v2.1.1
             './libs/bootstrap/dist/js/bootstrap.js', // v3.1.1
             './app/assets/vendor/modernizr.js',
