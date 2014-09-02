@@ -5,11 +5,11 @@ function userProfileRoutes($stateProvider) {
     var profile = {
             name: 'profile',
             abstract: true,
-            url: '/user/:id',
+            url: '/:role/:id',
             template: '<div ui-view></div>',
             controller: 'UsersProfileCtrl',
             resolve: {
-                user: function(Restangular, $stateParams){
+                user: function(Restangular, $stateParams) {
                     return Restangular.one('users', $stateParams.id).get();
                 }
             }
@@ -27,7 +27,7 @@ function userProfileRoutes($stateProvider) {
         },
         profileCause = {
             name: 'profile.cause',
-            url: '',
+            url: '/',
             template: '<div users-profile-cause></div>',
             data: {
                 moduleClasses: 'users profile',

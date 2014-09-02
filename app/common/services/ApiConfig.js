@@ -1,32 +1,25 @@
 'use strict';
 
-var ApiConfig = function() {
+var ApiConfig = function($cookieStore) {
 	
 /* =======================================================================
 	Taliflo API Configuration
 ======================================================================= */
-	var apiProxy = 'api',
-		apiVersion = 'v1';
+	var apiProxy = '/api',
+		apiVersion = '/v1',
+		userID = $cookieStore.get('uid');
 
 	this.API = {
-		DEV: {
-			paths: {
-				baseUrl: apiProxy + '/' + apiVersion + '/',
-				login: apiProxy + '/user/login',
-				signup: apiProxy + '/user/signup'
-			}
-		},
-		PROD: {
-			paths: {
-				baseUrl: apiProxy + '/' + apiVersion + '/',
-				login: apiProxy + '/user/login',
-				signup: apiProxy + '/user/signup'
-			}
+		paths: {
+			baseUrl: apiProxy + apiVersion,
+			login: apiProxy + 'user/login',
+			signup: apiProxy + 'user/signup',
+			currentUser: apiProxy + apiVersion + '/users/' + userID
 		}
 	};
 
 	return this;
 };
 
-ApiConfig.$inject = [];
+ApiConfig.$inject = ['$cookieStore'];
 module.exports = ApiConfig;

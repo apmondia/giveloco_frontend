@@ -9,7 +9,7 @@ var AUTH_EVENTS = (function() {
 		signupFailed: 'Something went wrong. Please try again.',
 		sessionTimeout: 'Your session has timed out.',
 		notAuthenticated: 'You must log in to access this page.',
-		notAuthorized: 'You are not authorized to access this page.'
+		notAuthorized: 'You do not have permission to access that page.'
     };
 }());
 

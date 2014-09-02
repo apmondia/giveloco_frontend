@@ -8,8 +8,11 @@ function userAccountRoutes($stateProvider) {
       url: '/user/:id/account',
       template: '<div ui-view></div>',
       controller: 'UsersAccountCtrl',
+      data: {
+        authRequired: true
+      },
       resolve: {
-          user: function(Restangular, $stateParams){
+          user: function(Restangular, $stateParams) {
               return Restangular.one('users', $stateParams.id).get();
           }
       }

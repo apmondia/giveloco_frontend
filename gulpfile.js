@@ -121,8 +121,8 @@ gulp.task('devServer', function() {
         return [ (function() {
             var url = require('url');
             var proxy = require('proxy-middleware');
-            // var options = url.parse('http://api-dev.taliflo.com/');
-            var options = url.parse('http://localhost:3000/');
+            var options = url.parse('http://api-dev.taliflo.com/');
+            // var options = url.parse('http://localhost:3000/');
             options.route = '/api';
             return proxy(options);
         })() ];
@@ -130,7 +130,7 @@ gulp.task('devServer', function() {
   });
 });
 
-gulp.task('stageServer', function() {
+gulp.task('prodServer', function() {
   connect.server({
     root: './dist',
     fallback: './dist/index.html',
@@ -356,7 +356,7 @@ gulp.task('build-prod', function(callback) {
     runSequence(
         ['clean-full', 'lint'],
         ['bundle-prod', 'styles-prod', 'images', 'icons', 'vendorJS', 'vendorCSS', 'copyIndex', 'copyFavicon'],
-        ['stageServer'],
+        ['prodServer'],
         callback
     );
 });

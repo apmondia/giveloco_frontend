@@ -1,6 +1,7 @@
+/*jshint camelcase: false */
 'use strict';
 // Controller naming conventions should start with an uppercase letter
-function MainCtrl($rootScope, $scope, $timeout, $state, $cookieStore, Restangular, Auth, USER_ROLES) {
+function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_ROLES) {
 
 /* =======================================================================
 	Session Control
@@ -13,16 +14,18 @@ function MainCtrl($rootScope, $scope, $timeout, $state, $cookieStore, Restangula
 
 	$scope.currentUser = null;
 	$scope.isLoggedIn = Auth.isLoggedIn;
-//	$scope.isAuthorized = Auth.isAuthorized;
 	$scope.userRoles = USER_ROLES;
 
 	var setCurrentUser = function() {
-		Restangular.one('users', $cookieStore.get('uid')).get().then(function(currentUser){
-			$scope.currentUser = currentUser;
+		Auth.getCurrentUser().then(function(userData){
+			$scope.currentUser = userData;
+			localStorage.setItem('uname', userData.first_name);
+			$scope.currentUserName = userData.first_name;
 		});
 	};
 	
 	setCurrentUser();
+	$scope.currentUserName = localStorage.getItem('uname');
 	$rootScope.$on('logged-in', setCurrentUser);
 
 
@@ -34,5 +37,5 @@ function MainCtrl($rootScope, $scope, $timeout, $state, $cookieStore, Restangula
 }
 
 // $inject is necessary for minification. See http://bit.ly/1lNICde for explanation.
-MainCtrl.$inject = ['$rootScope', '$scope', '$timeout', '$state', '$cookieStore', 'Restangular', 'Auth', 'USER_ROLES'];
+MainCtrl.$inject = ['$rootScope', '$scope', '$timeout', '$state', 'Restangular', 'Auth', 'USER_ROLES'];
 module.exports = MainCtrl;

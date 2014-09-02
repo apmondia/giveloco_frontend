@@ -4,7 +4,7 @@ var USER_ROLES = (function() {
     return {
 		all: '*',
 		admin: 'admin',
-		person: 'person',
+		individual: 'individual',
 		cause: 'cause',
 		business: 'business',
 		guest: 'guest'
