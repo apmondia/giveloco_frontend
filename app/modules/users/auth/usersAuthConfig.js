@@ -3,6 +3,7 @@
 function userAuthRoutes($stateProvider) {
 
   var auth = {
+      parent: 'user',
       name: 'auth',
       abstract: true,
       template: '<div class="module-view auth"><div ui-view></div></div>',

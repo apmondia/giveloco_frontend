@@ -8,11 +8,22 @@
 /* ***********************************************************************
 	Common Module Styles
 *********************************************************************** */
-
+body.account .main {
+	.container();
+	.module-view {
+		.row();
+	}
+	.form-group {
+		input {
+			padding: 20px 0 20px 90px;
+		}
+	}
+}
 
 
 /* =======================================================================
 	Sub-Module LESS file imports
 ======================================================================= */
+@import "details/users-account-details.less";
 @import "history/users-account-history.less";
 @import "settings/users-account-settings.less";

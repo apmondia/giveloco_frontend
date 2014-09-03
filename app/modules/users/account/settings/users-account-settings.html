@@ -3,15 +3,19 @@
     <p>{{account}}</p>
     <p>{{user.first_name}} {{user.last_name}}</p>
 
+    <div users-account-details></div>
+
     <div>
-		<input type="text" ng-model="myModelObj">
 		<input type="file" ng-file-select="onFileSelect($files)">
-		<input type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*">
-		<div class="button" ng-file-select="onFileSelect($files)" data-multiple="true"></div>
-		<div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class-name-or-function"
+		<div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="dragged-over"
 		    ng-show="dropSupported">drop files here</div>
 		<div ng-file-drop-available="dropSupported=true" 
 		    ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
 		<button ng-click="upload.abort()">Cancel Upload</button>
 	</div>
+
+	<div data-ng-show="item.name">file name: {{item.name}}</div>
+	<div data-ng-show="item.fieldName">name: {{item.fieldName}}</div>
+	<div data-ng-show="item.size">size on the serve: {{item.size}}</div>
+	<div data-ng-show="item.value">value: {{item.value}}</div>
 </div>

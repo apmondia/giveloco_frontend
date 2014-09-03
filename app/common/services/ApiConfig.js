@@ -12,8 +12,8 @@ var ApiConfig = function($cookieStore) {
 	this.API = {
 		paths: {
 			baseUrl: apiProxy + apiVersion,
-			login: apiProxy + 'user/login',
-			signup: apiProxy + 'user/signup',
+			login: apiProxy + '/user/login',
+			signup: apiProxy + '/user/signup',
 			currentUser: apiProxy + apiVersion + '/users/' + userID
 		}
 	};

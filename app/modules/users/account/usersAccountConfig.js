@@ -3,18 +3,14 @@
 function userAccountRoutes($stateProvider) {
 
   var account = {
+      parent: 'user',
       name: 'account',
       abstract: true,
-      url: '/user/:id/account',
+      url: '/account',
       template: '<div ui-view></div>',
       controller: 'UsersAccountCtrl',
       data: {
         authRequired: true
-      },
-      resolve: {
-          user: function(Restangular, $stateParams) {
-              return Restangular.one('users', $stateParams.id).get();
-          }
       }
   },
   accountHistory = {

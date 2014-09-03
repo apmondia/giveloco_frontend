@@ -3,22 +3,18 @@
 function userProfileRoutes($stateProvider) {
 
     var profile = {
+            parent: 'user',
             name: 'profile',
             abstract: true,
-            url: '/:role/:id',
             template: '<div ui-view></div>',
-            controller: 'UsersProfileCtrl',
-            resolve: {
-                user: function(Restangular, $stateParams) {
-                    return Restangular.one('users', $stateParams.id).get();
-                }
-            }
+            controller: 'UsersProfileCtrl'
         },
         profileBusiness = {
             name: 'profile.business',
-            url: '',
+            url: '^/business/:id',
             template: '<div users-profile-business></div>',
             data: {
+                userType: 'business',
                 moduleClasses: 'users profile',
                 pageClasses: 'business',
                 pageTitle: 'Profile',
@@ -27,7 +23,7 @@ function userProfileRoutes($stateProvider) {
         },
         profileCause = {
             name: 'profile.cause',
-            url: '/',
+            url: '^/cause/:id',
             template: '<div users-profile-cause></div>',
             data: {
                 moduleClasses: 'users profile',

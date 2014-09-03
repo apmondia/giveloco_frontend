@@ -42,20 +42,8 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 					$state.go('auth.login');
 					alertService.showAlert(AUTH_EVENTS.notAuthenticated, 'alert-danger');
 				}
-			}
-			
+			}	
 		}
-
-		// if (!Auth.isAuthorized(authorizedUsers)) {
-		// 	event.preventDefault();
-		// 	if (Auth.isAuthenticated) {
-		// 		// user is not allowed
-		// 		$rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
-		// 	} else {
-		// 		// user is not logged in
-		// 		$rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
-		// 	}
-		// }
 	});
 	
 }

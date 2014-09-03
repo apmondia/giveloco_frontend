@@ -1,6 +1,6 @@
 /*jshint camelcase: false */
 'use strict';
-// Controller naming conventions should start with an uppercase letter
+// MainCtrl is set in the index.html file
 function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_ROLES) {
 
 /* =======================================================================
@@ -33,6 +33,8 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	System Notifications
 ======================================================================= */
 	$rootScope.alertVisible = false;
+
+	console.log('Main controller');
 	
 }
 

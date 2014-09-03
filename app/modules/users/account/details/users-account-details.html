@@ -1,0 +1,19 @@
+<div class="users-account-details">
+    <p>Account Details</p>
+	
+	<form class="form" name="updateUserForm" ng-submit="updateUser(updateUserForm.$valid)" novalidate>
+
+	    <div class="form-group first-name" ng-class="{'invalid' : updateUserForm.first_name.$invalid && updateUserForm.first_name.$dirty, 'valid' : updateUserForm.first_name.$valid && updateUserForm.first_name.$dirty}">
+	        <label for="first_name" class="inline">First Name</label>
+	        <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Given Name" ng-model="user.first_name" ng-pattern="nameRegex" required auto-focus show-form-errors />
+	        <p class="form-helper" ng-if="updateUserForm.first_name.$error.pattern && !updateUserForm.first_name.$focused">Your name can only contain letters.</p>
+	        <p class="form-helper" ng-if="updateUserForm.first_name.$dirty && updateUserForm.first_name.$error.required && !updateUserForm.first_name.$focused">First Name is required!</p>
+	    </div>
+
+	    <div class="form-group form-buttons">
+	        <div ajax-spinner class="spinner" ng-show="showSpinner"></div>
+	        <button class="btn button button-primary" type="submit" ng-disabled="updateUserForm.$invalid">Save Changes</button>
+	    </div>
+
+    </form>
+</div>

@@ -19,22 +19,21 @@ function UsersAuthRegistrationDonorCtrl($rootScope, $scope, $state, Auth, AUTH_E
 		Form Submission
 	======================================================================= */
 	var success = function(user) {
-		$scope.formSubmitted = false;
+		$scope.showSpinner = false;
 		$rootScope.$broadcast('logged-in');
 		alertService.showAlert(AUTH_EVENTS.signupSuccess, 'alert-success');
 		$state.go('explore.causes', {id:user.data.uid});
 	};
 
 	var error = function() {
-		$scope.formSubmitted = false;
+		$scope.showSpinner = false;
 		alertService.showAlert(AUTH_EVENTS.signupFailed, 'alert-danger');
 	};
 
 	$scope.signup = function(isValid) {
 		if (isValid) {
-			$scope.formSubmitted = true;
+			$scope.showSpinner = true;
 			Auth.signup($scope.user).then(success, error);
-			console.log($scope.user);
 		}
 	};
 
