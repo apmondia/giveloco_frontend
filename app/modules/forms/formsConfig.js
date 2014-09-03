@@ -2,18 +2,7 @@
 
 function formRoutes($stateProvider) {
 
-  var formClaim = {
-      name: 'formClaim',
-      url: '/claim',
-      template: '<div form-claim></div>',
-      data: {
-        moduleClasses: 'form',
-        pageClasses: 'claim',
-        pageTitle: 'Claim Vouchers',
-        pageDescription: 'Claim vouchers worth the value of your donation that are redeemable at participating businesses.'
-      }
-  },
-  formDonate = {
+  var formDonate = {
       name: 'formDonate',
       url: '/donate',
       template: '<div form-donate></div>',
@@ -47,7 +36,6 @@ function formRoutes($stateProvider) {
       }
   };
 
-$stateProvider.state(formClaim);
 $stateProvider.state(formDonate);
 $stateProvider.state(formPledge);
 $stateProvider.state(formRedeem);
