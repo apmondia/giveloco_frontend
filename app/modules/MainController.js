@@ -33,8 +33,6 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	System Notifications
 ======================================================================= */
 	$rootScope.alertVisible = false;
-
-	console.log('Main controller');
 	
 }
 

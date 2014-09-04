@@ -18,8 +18,6 @@ function UsersCtrl($scope, formValidation) {
 	$scope.tagsRegex = formValidation.alphaNumComma;
 	// Text Area
 	$scope.textAreaRegex = formValidation.textAreaRegex;
-
-	console.log('users controller');
 }
 
 UsersCtrl.$inject = ['$scope', 'formValidation'];
