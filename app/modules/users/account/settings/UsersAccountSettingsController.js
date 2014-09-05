@@ -1,3 +1,4 @@
+/*jshint camelcase: false */
 'use strict';
 
 function UsersAccountSettingsCtrl($rootScope, $scope, $upload, apiConfig) {

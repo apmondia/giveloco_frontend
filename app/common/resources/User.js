@@ -1,8 +1,12 @@
 'use strict';
 
-var UserProvider = function() {
-
+var UserProvider = function(Restangular) {
+	return {
+		update: function(userID, userObj) {
+			
+		}
+	};
 };
 
-UserProvider.$inject = [];
+UserProvider.$inject = ['Restangular'];
 module.exports = UserProvider;

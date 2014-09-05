@@ -7,10 +7,21 @@ function userAccountRoutes($stateProvider) {
       name: 'account',
       abstract: true,
       url: '/account',
-      template: '<div ui-view></div>',
+      template: '<div users-account-layout></div>',
       controller: 'UsersAccountCtrl',
       data: {
         authRequired: true
+      }
+  },
+  accountDetails = {
+      name: 'account.details',
+      url: '/details',
+      template: '<div users-account-details></div>',
+      data: {
+        moduleClasses: 'users account',
+        pageClasses: 'details',
+        pageTitle: 'Account Details',
+        pageDescription: 'Basic account information.'
       }
   },
   accountHistory = {
@@ -26,17 +37,18 @@ function userAccountRoutes($stateProvider) {
   },
   accountSettings = {
       name: 'account.settings',
-      url: '',
+      url: '/settings',
       template: '<div users-account-settings></div>',
       data: {
         moduleClasses: 'users account',
         pageClasses: 'settings',
         pageTitle: 'Account Settings',
-        pageDescription: 'Basic account information.'
+        pageDescription: 'User account settings.'
       }
   };
 
 $stateProvider.state(account);
+$stateProvider.state(accountDetails);
 $stateProvider.state(accountHistory);
 $stateProvider.state(accountSettings);
 
