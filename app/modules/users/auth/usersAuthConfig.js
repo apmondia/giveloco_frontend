@@ -13,7 +13,7 @@ function userAuthRoutes($stateProvider) {
       name: 'auth.signup',
       abstract: true,
       replace: true,
-      url: '/user/signup',
+      url: '/signup',
       template: '<div class="registration container"><div ui-view></div></div>',
       controller: 'UsersAuthRegistrationCtrl',
       data: {
@@ -49,7 +49,7 @@ function userAuthRoutes($stateProvider) {
       },
     login = {
       name: 'auth.login',
-      url: '/user/login',
+      url: '/login',
       template: '<div users-auth-login></div>',
       data: {
         moduleClasses: 'users auth',
@@ -60,7 +60,7 @@ function userAuthRoutes($stateProvider) {
     },
     passwordReset = {
       name: 'auth.passwordReset',
-      url: '/user/password-reset',
+      url: '/password-reset',
       template: '<div users-auth-password-reset></div>',
       data: {
         moduleClasses: 'users auth',

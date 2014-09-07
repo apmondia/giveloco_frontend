@@ -5,7 +5,14 @@ function userRoutes($stateProvider) {
     var user = {
             name: 'user',
             abstract: true,
-            url: '/user/:id',
+            url: '/user',
+            template: '<div ui-view></div>',
+            controller: 'UsersCtrl'
+        },
+        userID = {
+            name: 'user.id',
+            abstract: true,
+            url: '/:id',
             template: '<div ui-view></div>',
             controller: 'UsersCtrl',
             resolve: {
@@ -16,6 +23,7 @@ function userRoutes($stateProvider) {
         };
 
     $stateProvider.state(user);
+    $stateProvider.state(userID);
 
 }
 

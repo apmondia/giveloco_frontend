@@ -1,19 +1,5 @@
 <div class="users-account-settings module-view">
-	<h1>Account Settings</h1>
+	<h1>Settings</h1>
     <p>{{account}}</p>
     <p>{{user.first_name}} {{user.last_name}}</p>
-
-    <div>
-		<input type="file" ng-file-select="onFileSelect($files)">
-		<div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="dragged-over"
-		    ng-show="dropSupported">drop files here</div>
-		<div ng-file-drop-available="dropSupported=true" 
-		    ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
-		<button ng-click="upload.abort()">Cancel Upload</button>
-	</div>
-
-	<div data-ng-show="item.name">file name: {{item.name}}</div>
-	<div data-ng-show="item.fieldName">name: {{item.fieldName}}</div>
-	<div data-ng-show="item.size">size on the serve: {{item.size}}</div>
-	<div data-ng-show="item.value">value: {{item.value}}</div>
 </div>

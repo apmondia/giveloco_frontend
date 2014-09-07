@@ -1,0 +1,16 @@
+<div class="user-profile-picture">
+	<img ng-src="{{userImage}}" />
+</div>
+<div class="image-upload">
+    <input type="file" nv-file-select uploader="uploader" /><br/>
+    <ul class="file-uploads" ng-if="!removeItem">
+        <li ng-repeat="item in uploader.queue">
+            Name: <span ng-bind="item.file.name"></span><br/>
+            <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()">upload</button>
+            <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">Remove</button>
+		    <div class="progress">
+				<div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+			</div>
+        </li>
+    </ul>
+</div>

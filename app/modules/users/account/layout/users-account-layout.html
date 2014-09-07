@@ -1,10 +1,12 @@
-<div class="account-sidebar">
-	<ul>
-		<li><a ui-sref="account.details">Account Details</a></li>
-		<li><a ui-sref="account.history">Transaction History</a></li>
-		<li><a ui-sref="account.settings">Settings</a></li>
-	</ul>
-</div>
-<div class="main-content">
-	<div ui-view></div>
+<div class="account-layout">
+	<div class="account-sidebar">
+		<ul>
+			<li><a ui-sref="account.details">Account Details</a></li>
+			<li><a ui-sref="account.history">Transaction History</a></li>
+			<li><a ui-sref="account.settings">Settings</a></li>
+		</ul>
+	</div>
+	<div class="main-content">
+		<div ui-view></div>
+	</div>
 </div>

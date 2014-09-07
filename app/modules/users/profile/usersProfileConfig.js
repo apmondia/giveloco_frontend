@@ -3,7 +3,7 @@
 function userProfileRoutes($stateProvider) {
 
     var profile = {
-            parent: 'user',
+            parent: 'user.id',
             name: 'profile',
             abstract: true,
             template: '<div ui-view></div>',

@@ -29,7 +29,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 			return $http.delete('user/logout').then(function() {
 				$cookieStore.remove('auth_token');
 				$cookieStore.remove('uid');
-				$cookieStore.remove('uname');
+				localStorage.removeItem('uname');
 				alertService.showAlert(AUTH_EVENTS.logoutSuccess, 'alert-success');
 			});
 		},
@@ -43,22 +43,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 
 	    isAuthenticated: function() {
 	        return !authService.currentUser;
-	    },
-
-	    // Complete authorization check is found in the common/common-init.js file
-	    isAuthorized: function () {
-	    	authService.getCurrentUser().then(function(user) {
-	    		var user_token = user.auth_token;
-	    		var auth_token = $cookieStore.get('auth_token');
-
-	    		// Check if the user's API token matches the auth_token set in the browser's cookies
-	    		if (auth_token === user_token) {
-	    			return true;
-	    		} else {
-	    			return false;
-	    		}
-	    	});
-		}
+	    }
 
 	};
 

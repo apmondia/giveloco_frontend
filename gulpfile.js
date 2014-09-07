@@ -61,9 +61,6 @@ var filePath = {
         // These files will be bundled into a single vendor.js file that's called at the bottom of index.html
         src: 
         [
-            // './libs/ng-file-upload-shim/ng-file-upload-shim.js',
-            // './libs/angular/angular.js',
-            // './libs/ng-file-upload/ng-file-upload.js',
             './libs/jquery/dist/jquery.js', // v2.1.1
             './libs/bootstrap/dist/js/bootstrap.js', // v3.1.1
             './app/assets/vendor/modernizr.js',
@@ -183,7 +180,6 @@ gulp.task('bundle-dev', function() {
 
     function rebundle () {
         return bundler.bundle({ debug: true })
-
             .pipe(source('bundle.js'))
             .on("error", handleError)
             .pipe(buffer())
@@ -206,7 +202,6 @@ gulp.task('bundle-prod', function() {
 
     function rebundle () {
         return bundler.bundle({ debug: true })
-            .pipe(sourcemaps.init())
             .pipe(source('bundle.js'))
             .on("error", handleError)
             .pipe(buffer())

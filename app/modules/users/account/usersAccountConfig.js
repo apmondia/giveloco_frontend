@@ -3,7 +3,7 @@
 function userAccountRoutes($stateProvider) {
 
   var account = {
-      parent: 'user',
+      parent: 'user.id',
       name: 'account',
       abstract: true,
       url: '/account',

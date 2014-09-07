@@ -1,9 +1,7 @@
 window.jQuery = window.$ = require('jquery');
 window._ = require('lodash');
 
-require('ng-file-upload-shim');
 require('angular');
-require('ng-file-upload');
 require('angular-bootstrap');
 require('angular-ui-router');
 require('angular-animate');
@@ -11,6 +9,7 @@ require('angular-cookies');
 require('angular-resource');
 require('angular-sanitize');
 require('angular-truncate');
+require('angular-file-upload');
 require('ng-tags-input');
 require('lodash');
 require('restangular');

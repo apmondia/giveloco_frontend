@@ -14,7 +14,9 @@ var ApiConfig = function($cookieStore) {
 			baseUrl: apiProxy + apiVersion,
 			login: apiProxy + '/user/login',
 			signup: apiProxy + '/user/signup',
-			currentUser: apiProxy + apiVersion + '/users/' + userID
+			currentUser: apiProxy + apiVersion + '/users/' + userID,
+			uploadImage: apiProxy + apiVersion + '/users/' + userID + '/upload_image',
+			deleteImage: apiProxy + apiVersion + '/users/' + userID + '/delete_image'
 		}
 	};
 

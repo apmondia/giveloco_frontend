@@ -1,3 +1,4 @@
+/*jshint camelcase: false */
 'use strict';
 
 function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertService) {
@@ -19,31 +20,55 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 		}
 	});
 
-	// Check if user is authorized to access certain areas of the site
+/* =======================================================================
+	User authentication check on state change
+======================================================================= */
 	$rootScope.$on('$stateChangeStart', function (event, next, toState) {
-		// Check if the user's ID matches the state params' ID (used mainly for user account pages)
-		var userIsAuthorized = function() {
+		Auth.getCurrentUser().then(function(user) {
+
+			// Validate the user's token
+    		var user_token = user.auth_token;
+    		var auth_token = $cookieStore.get('auth_token');
+			var validateAuthToken = (function() {
+				if (auth_token === user_token) {
+	    			console.log('Auth Token is valid');
+	    			return true;
+	    		} else {
+	    			console.log('Auth Token is NOT valid');
+	    			return false;
+	    		}
+			})();
+
+			// Validate the user's ID
 			var uid = $cookieStore.get('uid');
 			var sid = parseInt(toState.id);
-
-			return ((uid === sid) && Auth.isAuthorized) ? true : false;
-		};
-		
-		// Check if authorization is required from state data (defined in module config files)
-		if (next.data.authRequired) {
-			if (!userIsAuthorized()) {
-				event.preventDefault();
-				if (Auth.isLoggedIn() === true) {
-					// user is not allowed
-					$state.go('home');
-					alertService.showAlert(AUTH_EVENTS.notAuthorized, 'alert-danger');
+			var validateUserID = (function() {
+				if (uid === sid) {
+					console.log('User ID is valid');
+					return true;
 				} else {
-					// user is not logged in
-					$state.go('auth.login');
-					alertService.showAlert(AUTH_EVENTS.notAuthenticated, 'alert-danger');
+					console.log('User ID is NOT valid');
+					return false;
 				}
-			}	
-		}
+			})();
+			
+			// Restrict access if authorization is required from state data (defined in module config files)
+			if (next.data.authRequired) {
+				if (validateAuthToken && validateUserID === false) {
+					event.preventDefault();
+					if (Auth.isLoggedIn() === true) {
+						// user is not allowed
+						$state.go('home');
+						alertService.showAlert(AUTH_EVENTS.notAuthorized, 'alert-danger');
+					} else {
+						// user is not logged in
+						$state.go('auth.login');
+						alertService.showAlert(AUTH_EVENTS.notAuthenticated, 'alert-danger');
+					}
+				}	
+			}
+
+    	});
 	});
 	
 }

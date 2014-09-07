@@ -2,9 +2,12 @@
 'use strict';
 
 function UsersAccountDetailsCtrl($rootScope, $scope, USER_EVENTS, alertService) {
+	$scope.showSpinner = false;
+
 	var userData = $scope.user,
-		currentUser = $scope.currentUser,
 		updateSuccess = function() {
+			localStorage.setItem('uname', userData.first_name);
+			$rootScope.$broadcast('user.data.changed');
 			alertService.showAlert(USER_EVENTS.accountUpdateSuccess, 'alert-success');
 		},
 		updateError = function() {
@@ -13,7 +16,7 @@ function UsersAccountDetailsCtrl($rootScope, $scope, USER_EVENTS, alertService) 
 
 	$scope.updateUser = function(isValid) {
 		if (isValid) {
-			$scope.showLoader = true;
+			$scope.showSpinner = true;
 			userData.put().then(updateSuccess, updateError);
 		} else {
 			alertService.showAlert(USER_EVENTS.formContainsErrors, 'alert-danger');

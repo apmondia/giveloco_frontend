@@ -26,6 +26,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	
 	setCurrentUser();
 	$scope.currentUserName = localStorage.getItem('uname');
+	$rootScope.$on('user.data.changed', setCurrentUser);
 	$rootScope.$on('logged-in', setCurrentUser);
 
 
