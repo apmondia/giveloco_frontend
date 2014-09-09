@@ -11,13 +11,73 @@
 body.account {
 	.account-layout {
 		.container();
+		.account-sidebar {
+			.make-xs-column(12);
+			.make-sm-column(3);
+			.make-md-column(3);
+			.make-lg-column(3);
+			margin-top: 20px;
+			ul {
+				padding: 0;
+				li {
+					list-style: none;
+					a {
+						display: block;
+						border: solid 1px #eee;
+						padding: 10px;
+						border-bottom: none;
+					}
+					&:first-child {
+						a {
+							border-radius: 5px 5px 0 0;
+						}
+					}
+					&:last-child {
+						a {
+							border-radius: 0 0 5px 5px;
+							border-bottom: solid 1px #eee;
+						}
+					}
+					&.active {
+						a {
+							background-color: @brand-teal;
+							color: #fff;
+							border-color: @brand-teal;
+							&:after {
+								font-family:"taliflo";
+								content:"L";
+								.icons(@font-size: 20px);
+								float: right;
+							}
+						}
+					}
+				}
+			}
+		}
+		.main-content {
+			.make-xs-column(12);
+			.make-sm-column(9);
+			.make-md-column(9);
+			.make-lg-column(9);
+			.button {
+				.icon {
+					.icons(@font-size: 20px, @top-margin:-2px);
+				}
+			}
+		}
 	}
 	.module-view {
 		.row();
 	}
 	.form-group {
+		label.inline {
+			width: 125px;
+		}
 		input {
-			padding: 20px 0 20px 90px;
+	        padding: 20px 36px 20px 135px;
+	    }
+		.button {
+			text-transform: uppercase;
 		}
 	}
 }

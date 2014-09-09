@@ -1,12 +1,15 @@
 <div class="account-layout">
-	<div class="account-sidebar">
-		<ul>
-			<li><a ui-sref="account.details">Account Details</a></li>
-			<li><a ui-sref="account.history">Transaction History</a></li>
-			<li><a ui-sref="account.settings">Settings</a></li>
-		</ul>
-	</div>
-	<div class="main-content">
-		<div ui-view></div>
+	<div class="module-view">
+		<div class="account-sidebar">
+			<ul>
+				<li ui-sref-active="active"><a ui-sref="account.details.view">Account Details</a></li>
+				<li ui-sref-active="active"><a ui-sref="account.history">Transaction History</a></li>
+				<li ui-sref-active="active"><a ui-sref="account.settings">Settings</a></li>
+				<li ui-sref-active="active"><a ui-sref="account.changePassword">Change Password</a></li>
+			</ul>
+		</div>
+		<div class="main-content">
+			<div ui-view></div>
+		</div>
 	</div>
 </div>

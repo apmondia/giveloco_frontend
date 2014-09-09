@@ -1,9 +1,9 @@
 /*jshint camelcase: false */
 'use strict';
 
-function UsersAccountSettingsCtrl($rootScope, $scope) {
-	$scope.account = 'Basic User Account Settings goes here.';
+function UsersAccountSettingsCtrl() {
+	
 }
 
-UsersAccountSettingsCtrl.$inject = ['$rootScope', '$scope'];
+UsersAccountSettingsCtrl.$inject = [];
 module.exports = UsersAccountSettingsCtrl;

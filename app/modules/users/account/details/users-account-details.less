@@ -8,12 +8,138 @@
 /* ***********************************************************************
 	Module Styles
 *********************************************************************** */
-.file-uploads {
-	.animated();
-    &.ng-enter {
-        .fadeIn();
-    }
-    &.ng-leave {
-        .fadeOut();
-    }
+body.account.details {
+	.details-header {
+		.clearfix();
+		margin: 20px 0 10px;
+		h1 {
+			float: left;
+			margin-top: 0;
+			margin-bottom: 0;
+			@media @breakpoint-xs {
+				width: 100%;
+			}
+		}
+		.button.edit-mode {
+			margin-top: 20px;
+			@media @breakpoint-sm {
+				float: right;
+				margin-top: 5px;
+			}
+		}
+	}
+	.sub-header {
+		margin-bottom: 30px;
+		h5.user-role {
+			color:#999;
+			text-transform: capitalize;
+		}
+	}
+	.users-account-details-view {
+		.left-side {
+			.make-xs-column(12);
+			.make-sm-column(7);
+			.make-md-column(7);
+			.make-lg-column(8);
+			padding-left: 0;
+			@media @breakpoint-xs {
+				padding-right: 0;
+			}
+			@media @breakpoint-sm {
+				padding-left: 0;
+			}
+		}
+		.right-side {
+			display: none;
+			.make-sm-column(5);
+			.make-md-column(5);
+			.make-lg-column(4);
+			@media @breakpoint-sm {
+		        display: block;
+		        padding-right: 0;
+				text-align: right;
+				img {
+					width: 100%;
+					margin-top: 35px;
+					border-radius: 5px;
+				}
+		    }
+		    @media @breakpoint-md {
+		    	img {
+					margin-top: 10px;
+		    	}
+		    }
+		}
+		.section {
+			.clearfix();
+			margin-bottom: 40px;
+		}
+		.user-data {
+			overflow: hidden;
+			border: solid 1px #eee;
+			border-radius: 5px;
+			margin: 0 0 10px;
+			.field-label,
+			.field-data {
+				display: block;
+				padding: 10px;
+			}
+			.field-label {
+				width: 125px;
+				text-align: center;
+				float: left;
+				border-right: solid 1px #eee;
+				background-color: #f7f7f7;
+			}
+			.field-data {
+				text-align: right;
+			}
+		}
+	}
+	.users-account-details-edit {
+		select {
+			width: 100%;
+			height: 42px;
+			line-height: 42px;
+			text-indent: 130px;
+			background-color: #fff;
+		}
+	}
+	.form-helper {
+		@media @breakpoint-sm {
+			right: 102%;
+			left: auto;
+			&.ng-enter {
+	            .fadeInLeft();
+	        }
+	        &.ng-leave {
+	            .fadeOutLeft();
+	        }
+		}
+		&:before {
+	        &:extend(.arrow.right);
+	        top: 12px;
+	        border: 8px solid transparent;
+	        border-left-color: @light-red;
+	        border-right-color: transparent;
+	        @media @breakpoint-sm {
+	            display: block;
+	        }
+	    }
+	    &.info {
+	        &:before {
+	            border-left-color: @brand-teal;
+	        }
+	    }
+	}
+	.file-uploads {
+		.animated();
+	    &.ng-enter {
+	        .fadeIn();
+	    }
+	    &.ng-leave {
+	        .fadeOut();
+	    }
+	}
 }
+

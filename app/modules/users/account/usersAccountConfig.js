@@ -15,13 +15,28 @@ function userAccountRoutes($stateProvider) {
   },
   accountDetails = {
       name: 'account.details',
-      url: '/details',
+      abstract: true,
+      url: '',
       template: '<div users-account-details></div>',
       data: {
         moduleClasses: 'users account',
         pageClasses: 'details',
         pageTitle: 'Account Details',
-        pageDescription: 'Basic account information.'
+        pageDescription: 'Your account information.'
+      }
+  },
+  accountDetailsView = {
+      name: 'account.details.view',
+      url: '/details',
+      template: '<div users-account-details-view></div>'
+  },
+  accountDetailsEdit = {
+      name: 'account.details.edit',
+      url: '/details/edit',
+      template: '<div users-account-details-edit></div>',
+      data: {
+        pageTitle: 'Edit Account Details',
+        pageDescription: 'Edit your account information.'
       }
   },
   accountHistory = {
@@ -45,12 +60,26 @@ function userAccountRoutes($stateProvider) {
         pageTitle: 'Account Settings',
         pageDescription: 'User account settings.'
       }
+  },
+  accountChangePassword = {
+      name: 'account.changePassword',
+      url: '/change-password',
+      template: '<div users-account-change-password></div>',
+      data: {
+        moduleClasses: 'users account',
+        pageClasses: 'change-password',
+        pageTitle: 'Change Account Password',
+        pageDescription: 'User account settings.'
+      }
   };
 
 $stateProvider.state(account);
 $stateProvider.state(accountDetails);
+$stateProvider.state(accountDetailsView);
+$stateProvider.state(accountDetailsEdit);
 $stateProvider.state(accountHistory);
 $stateProvider.state(accountSettings);
+$stateProvider.state(accountChangePassword);
 
 }
 

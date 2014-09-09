@@ -1,0 +1,74 @@
+<div class="users-account-details-view">
+	<div class="basic-info section">
+		<div class="left-side">
+			<h4 class="section-title">Basic Information</h4>
+			<div class="user-data contact-name">
+				<span class="field-label"><span ng-if="userRoleIs('individual')">Full</span><span ng-if="userRoleIsNot('individual')">Contact</span> Name</span>
+				<span class="field-data">{{currentUser.first_name}} {{currentUser.last_name}}</span>
+			</div>
+			<div class="user-data full-name" ng-if="userRoleIsNot('individual')">
+				<span class="field-label" ng-if="userRoleIs('cause')">Cause Name</span>
+				<span class="field-label" ng-if="userRoleIsNot('cause') || userRoleIsNot('individual')">Company Name</span>
+				<span class="field-data">{{currentUser.company_name || "Empty"}}</span>
+			</div>
+			<div class="user-data email">
+				<span class="field-label">Email Address</span>
+				<span class="field-data">{{currentUser.email}}</span>
+			</div>
+			<div class="user-data phone">
+				<span class="field-label">Phone Number</span>
+				<span class="field-data">{{currentUser.phone || "Empty"}}</span>
+			</div>
+		</div>
+		<div class="right-side">
+			<div users-image-upload></div>
+		</div>
+	</div>
+	<div ng-if="userRoleIsNot('individual')">
+		<div class="location-info section">
+			<h4 class="section-title">Location Information</h4>
+			<div class="user-data street">
+				<span class="field-label">Street Address</span>
+				<span class="field-data">{{currentUser.street_address || "Empty"}}</span>
+			</div>
+			<div class="user-data city">
+				<span class="field-label">City</span>
+				<span class="field-data">{{currentUser.city || "Empty"}}</span>
+			</div>
+			<div class="user-data state">
+				<span class="field-label" ng-if="currentUser.country === 'CA' || currentUser.country === null">Province</span>
+				<span class="field-label" ng-if="currentUser.country === 'US'">State</span>
+				<span class="field-data">{{currentUser.state || "Empty"}}</span>
+			</div>
+			<div class="user-data country">
+				<span class="field-label">Country</span>
+				<span class="field-data">{{currentUser.country.name || "Empty"}}</span>
+			</div>
+			<div class="user-data zip">
+				<span class="field-label" ng-if="currentUser.country === 'CA' || currentUser.country === null">Postal Code</span>
+				<span class="field-label" ng-if="currentUser.country === 'US'">Zip</span>
+				<span class="field-data">{{currentUser.zip || "Empty"}}</span>
+			</div>
+		</div>
+		<div class="company-info section">
+			<h4 class="section-title"><span ng-if="userRoleIs('business')">Company </span><span ng-if="userRoleIs('cause')">Cause </span>Details</h4>
+			<div class="user-data website">
+				<span class="field-label">Website</span>
+				<span class="field-data">{{currentUser.website || "Empty"}}</span>
+			</div>
+			<div class="user-data tags">
+				<span class="field-label">Tags</span>
+				<span class="field-data">{{tagList || "No Tags"}}</span>
+			</div>
+			<div class="user-data summary">
+				<span class="field-label">Summary</span>
+				<span class="field-data">{{currentUser.summary || "Empty"}}</span>
+			</div>
+			<div class="user-data description">
+				<span class="field-label">Description</span>
+				<span class="field-data">{{currentUser.description || "Empty"}}</span>
+			</div>
+		</div>		
+	</div>
+	
+</div>
