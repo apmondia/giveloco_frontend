@@ -1,12 +1,7 @@
 'use strict';
 
 function UsersAccountDetailsViewCtrl($rootScope, $scope) {
-	
-	$scope.$parent.toggleEditMode = function() {
-		$scope.$parent.editing = !$scope.$parent.editing;
-	};
-
-	$scope.tagList = $scope.currentUser.tags.toString();
+	$scope.tagList = $scope.currentUser.tags.join(', ');
 }
 
 UsersAccountDetailsViewCtrl.$inject = ['$rootScope', '$scope'];

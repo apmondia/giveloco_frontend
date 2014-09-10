@@ -9,6 +9,21 @@
 	Module Styles
 *********************************************************************** */
 body.account.details {
+	&.edit {
+		.account-sidebar {
+			a.details {
+				color: #fff;
+				background-color: @brand-teal;
+				border-color: @brand-teal;
+				&:after {
+					font-family:"taliflo";
+					content:"L";
+					.icons(@font-size: 20px);
+					float: right;
+				}
+			}
+		}
+	}
 	.details-header {
 		.clearfix();
 		margin: 20px 0 10px;
@@ -20,7 +35,7 @@ body.account.details {
 				width: 100%;
 			}
 		}
-		.button.edit-mode {
+		.button.edit-buttons {
 			margin-top: 20px;
 			@media @breakpoint-sm {
 				float: right;
@@ -35,7 +50,8 @@ body.account.details {
 			text-transform: capitalize;
 		}
 	}
-	.users-account-details-view {
+	.content-area {
+		.clearfix();
 		.left-side {
 			.make-xs-column(12);
 			.make-sm-column(7);
@@ -58,21 +74,26 @@ body.account.details {
 		        display: block;
 		        padding-right: 0;
 				text-align: right;
-				img {
-					width: 100%;
-					margin-top: 35px;
-					border-radius: 5px;
+				float: right;
+				.user-profile-picture {
+					margin-top: 40px;
+					img {
+						width: 100%;
+						border-radius: 5px;
+					}
 				}
 		    }
 		    @media @breakpoint-md {
-		    	img {
-					margin-top: 10px;
+		    	.user-profile-picture {
+					margin-top: 39px;
 		    	}
 		    }
 		}
+	}
+	.users-account-details-view {
 		.section {
 			.clearfix();
-			margin-bottom: 40px;
+			margin-bottom: 30px;
 		}
 		.user-data {
 			overflow: hidden;
@@ -103,6 +124,37 @@ body.account.details {
 			line-height: 42px;
 			text-indent: 130px;
 			background-color: #fff;
+		}
+		.sub-section {
+			.clearfix();
+		}
+		.form-section {
+			.clearfix();
+			margin-bottom: 30px;
+			clear: left;
+			&:not(.basic-info) {
+				width: 100%;
+			}
+		}
+		.form-group {
+			@media @breakpoint-lg {
+				&.first-name,
+				&.last-name {
+					width:49%;
+					float: left;
+				}
+				&.last-name {
+					margin-left: 2%;
+				}
+			}
+			&.summary {
+				label {
+					width: 140px;
+				}
+				input {
+					padding-left: 150px;
+				}
+			}
 		}
 	}
 	.form-helper {

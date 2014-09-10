@@ -87,16 +87,6 @@ function UsersAuthRegistrationCtrl($rootScope, $scope, $state, $cookieStore, Res
 
 
 	/* =======================================================================
-		Format Tags for Submission
-	======================================================================= */
-	$scope.formatTags = function() {
-		if ($scope.user.tag_list !== null && $scope.user.tag_list !== undefined) {
-			$scope.user.tag_list = $scope.user.tag_list.replace(/\s*[,.!]\s*/g, ', ');
-		}
-	};
-
-
-	/* =======================================================================
 		Set Cause Summary
 	======================================================================= */
 	$scope.setSummary = function(user) {

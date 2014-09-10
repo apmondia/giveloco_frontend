@@ -14,8 +14,6 @@ function UsersCtrl($scope, formValidation) {
 	$scope.phoneRegex = formValidation.phoneRegex;
 	// Website
 	$scope.websiteRegex = formValidation.websiteRegex;
-	// Tags
-	$scope.tagsRegex = formValidation.alphaNumComma;
 	// Text Area
 	$scope.textAreaRegex = formValidation.textAreaRegex;
 }

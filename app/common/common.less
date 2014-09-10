@@ -341,6 +341,7 @@ a {
     margin-top: 25px;
 }
 .form-group {
+    margin-bottom: 10px;
     position: relative;
     &:after {
         font-size:20px;
@@ -651,6 +652,9 @@ p.no-results {
 ========================================================================== */
 .tags-input {
     .clearfix();
+    &.ng-valid .tags {
+        border-color: @brand-teal;
+    }
     &.ng-invalid.ng-pristine .tags {
         border-color: #ccc;
         box-shadow: none;
@@ -659,7 +663,7 @@ p.no-results {
         .clearfix();
         background-color: #fff;
         margin-bottom: 15px;
-        padding: 40px 5px 5px;
+        padding: 42px 5px 5px;
         cursor: text;
     }
     ul.tag-list {

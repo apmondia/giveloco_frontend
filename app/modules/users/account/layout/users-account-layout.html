@@ -2,11 +2,19 @@
 	<div class="module-view">
 		<div class="account-sidebar">
 			<ul>
-				<li ui-sref-active="active"><a ui-sref="account.details.view">Account Details</a></li>
-				<li ui-sref-active="active"><a ui-sref="account.history">Transaction History</a></li>
-				<li ui-sref-active="active"><a ui-sref="account.settings">Settings</a></li>
-				<li ui-sref-active="active"><a ui-sref="account.changePassword">Change Password</a></li>
+				<li ui-sref-active="active"><a ui-sref="account.details.view" class="details">Account Details</a></li>
+				<li ui-sref-active="active"><a ui-sref="account.history" class="history">Transaction History</a></li>
+				<li ui-sref-active="active"><a ui-sref="account.settings" class="settings">Settings</a></li>
+				<li ui-sref-active="active"><a ui-sref="account.changePassword" class="password">Change Password</a></li>
 			</ul>
+			<div class="output address" ng-if="$state.current.name.indexOf('account.details') != -1">
+				<i class="icon icon-mark-map"></i>
+				<div class="address_output">
+					<div class="street_address">{{user.street_address || "Street Address"}}</div>
+					<div class="city_state">{{user.city || "City"}}, {{user.state.code}}</div>
+					<div class="complete_country_zip">{{user.country.name}} {{user.zip}}</div>
+				</div>
+			</div>
 		</div>
 		<div class="main-content">
 			<div ui-view></div>

@@ -19,22 +19,25 @@ function userAccountRoutes($stateProvider) {
       url: '',
       template: '<div users-account-details></div>',
       data: {
-        moduleClasses: 'users account',
-        pageClasses: 'details',
-        pageTitle: 'Account Details',
-        pageDescription: 'Your account information.'
+        moduleClasses: 'users account'
       }
   },
   accountDetailsView = {
       name: 'account.details.view',
       url: '/details',
-      template: '<div users-account-details-view></div>'
+      template: '<div users-account-details-view></div>',
+      data: {
+        pageClasses: 'details view',
+        pageTitle: 'Account Details',
+        pageDescription: 'Your account information.'
+      }
   },
   accountDetailsEdit = {
       name: 'account.details.edit',
       url: '/details/edit',
       template: '<div users-account-details-edit></div>',
       data: {
+        pageClasses: 'details edit',
         pageTitle: 'Edit Account Details',
         pageDescription: 'Edit your account information.'
       }
