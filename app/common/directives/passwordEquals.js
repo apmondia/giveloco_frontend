@@ -25,7 +25,7 @@ var passwordEquals = function() {
 
 				// set validity
 				if (val1 && val2) {
-					ngModel.$setValidity('password-equals', val2 === val1);
+					ngModel.$setValidity('password-equals', val1 === val2);
 				}
 			};
 	    }
