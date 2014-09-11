@@ -1,16 +1,25 @@
-<div class="user-profile-picture">
-	<img ng-src="{{userImage}}" />
-</div>
-<div class="image-upload" ng-if="$state.current.name == 'account.details.edit'">
-    <input type="file" nv-file-select uploader="uploader" /><br/>
-    <ul class="file-uploads" ng-if="!removeItem">
-        <li ng-repeat="item in uploader.queue">
-            Name: <span ng-bind="item.file.name"></span><br/>
-            <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()">upload</button>
-            <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">Remove</button>
-		    <div class="progress">
-				<div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
-			</div>
-        </li>
-    </ul>
+<div class="user-profile-image-upload">
+	<div class="user-profile-picture">
+		<div class="default-image" ng-if="currentUser.images.profile_picture.original === ''"><i class="icon icon-user-circle-outline"></i></div>
+		<img ng-src="{{userImage}}" ng-if="currentUser.images.profile_picture.original !== ''" />
+		<ul class="file-uploads" ng-if="!removeItem">
+	        <li ng-repeat="item in uploader.queue">
+	        	<div class="file-actions">
+	        		<div class="file-name" ng-bind="item.file.name"></div>
+		            <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()">upload</button>
+		            <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">Cancel</button>
+	        	</div>
+			    <div class="progress">
+					<div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+				</div>
+	        </li>
+	    </ul>
+	</div>
+	<div class="image-upload" ng-if="$state.current.name == 'account.details.edit'">
+	    <input type="file" class="file-input" nv-file-select uploader="uploader" />
+	    <div class="fake-uploader-container">
+		    <div class="btn button button-primary fake-upload-button">Choose File</div>
+		    <span class="fake-file-input" ng-bind="item.file.name"></span>
+		</div>
+	</div>
 </div>

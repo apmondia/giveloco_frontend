@@ -43,7 +43,18 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 
 	    isAuthenticated: function() {
 	        return !authService.currentUser;
-	    }
+	    },
+
+	    updatePassword: function(data) {
+			return $http({
+						method: 'PUT', 
+						url: apiConfig.API.paths.updatePassword, 
+						data: {user: data}
+					}).then(function(user) {
+						console.log(user);
+						return user;
+					});
+		}
 
 	};
 

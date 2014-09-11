@@ -9,6 +9,13 @@
 	Module Styles
 *********************************************************************** */
 body.account {
+	.sub-header {
+		margin-bottom: 30px;
+		h5.user-role {
+			color:#999;
+			text-transform: capitalize;
+		}
+	}
 	.account-layout {
 		.container();
 		.account-sidebar {
@@ -96,5 +103,32 @@ body.account {
 		.button {
 			text-transform: uppercase;
 		}
+	}
+	.form-helper {
+		@media @breakpoint-sm {
+			right: 102%;
+			left: auto;
+			&.ng-enter {
+	            .fadeInLeft();
+	        }
+	        &.ng-leave {
+	            .fadeOutLeft();
+	        }
+		}
+		&:before {
+	        &:extend(.arrow.right);
+	        top: 12px;
+	        border: 8px solid transparent;
+	        border-left-color: @light-red;
+	        border-right-color: transparent;
+	        @media @breakpoint-sm {
+	            display: block;
+	        }
+	    }
+	    &.info {
+	        &:before {
+	            border-left-color: @brand-teal;
+	        }
+	    }
 	}
 }

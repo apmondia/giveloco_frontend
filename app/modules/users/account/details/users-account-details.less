@@ -43,13 +43,6 @@ body.account.details {
 			}
 		}
 	}
-	.sub-header {
-		margin-bottom: 30px;
-		h5.user-role {
-			color:#999;
-			text-transform: capitalize;
-		}
-	}
 	.content-area {
 		.clearfix();
 		.left-side {
@@ -157,41 +150,95 @@ body.account.details {
 			}
 		}
 	}
-	.form-helper {
-		@media @breakpoint-sm {
-			right: 102%;
-			left: auto;
-			&.ng-enter {
-	            .fadeInLeft();
+	.user-profile-image-upload {
+		.default-image {
+			@media @breakpoint-sm-only {
+	            height: 150px;
 	        }
-	        &.ng-leave {
-	            .fadeOutLeft();
-	        }
+			width: 100%;
+			height: 198px;
+			border-radius: 5px;
+			overflow: hidden;
+			.icon {
+				display: block;
+				float: none;
+				font-size: 230px;
+				height: 230px;
+				width: 230px;
+				margin: -16px auto 0;
+				line-height: 100%;
+				position: relative;
+				color: @brand-teal;
+				@media @breakpoint-sm-only {
+					font-size: 180px;
+					height: 180px;
+					width: 180px;
+				}
+			}
 		}
-		&:before {
-	        &:extend(.arrow.right);
-	        top: 12px;
-	        border: 8px solid transparent;
-	        border-left-color: @light-red;
-	        border-right-color: transparent;
-	        @media @breakpoint-sm {
-	            display: block;
-	        }
-	    }
-	    &.info {
-	        &:before {
-	            border-left-color: @brand-teal;
-	        }
-	    }
-	}
-	.file-uploads {
-		.animated();
-	    &.ng-enter {
-	        .fadeIn();
-	    }
-	    &.ng-leave {
-	        .fadeOut();
-	    }
+		.image-upload {
+			width: 100%;
+			overflow: hidden;
+			margin-top: 5px;
+			.file-input {
+				height: 34px;
+				position: relative;
+				z-index: 2;
+				opacity: 0;
+				cursor: pointer;
+				font-size: 110px;
+			}
+			.fake-upload-button {
+				float: left;
+				border-radius: 5px 0 0 5px;
+			}
+			.fake-file-input {
+				float: left;
+				display: block;
+				border: solid 1px #ccc;
+				border-radius: 0 5px 5px 0;
+				height: 34px;
+				width: calc(~'100% - 100px');
+				padding-left: 6px;
+			}
+			.fake-uploader-container {
+				position: relative;
+				top: -34px;
+			}
+		}
+		ul.file-uploads {
+			padding: 0;
+			position: relative;
+			margin: 0px;
+			bottom: 0px;
+			.animated();
+		    &.ng-enter {
+		        .fadeIn();
+		    }
+		    &.ng-leave {
+		        .fadeOut();
+		    }
+		    li {
+		    	list-style: none;
+		    	.file-actions {
+		    		margin-top: -57px;
+					padding: 5px;
+					border-radius: 0 0 5px 5px;
+					background:url("./images/whites/white75.png");
+					.file-name {
+						margin-bottom: 5px;
+					}
+		    	}
+		    	.progress {
+		    		height: 34px;
+		    		margin: -28px 0 0;
+		    		width: calc(~'100% - 100px');
+		    		float: right;
+		    		position: relative;
+					bottom: -34px;
+		    	}
+		    }
+		}
 	}
 }
 

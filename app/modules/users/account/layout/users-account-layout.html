@@ -11,8 +11,8 @@
 				<i class="icon icon-mark-map"></i>
 				<div class="address_output">
 					<div class="street_address">{{user.street_address || "Street Address"}}</div>
-					<div class="city_state">{{user.city || "City"}}, {{user.state.code}}</div>
-					<div class="complete_country_zip">{{user.country.name}} {{user.zip}}</div>
+					<div class="city_state">{{user.city || "City"}}, {{user.state.code || "State / Province"}}</div>
+					<div class="complete_country_zip">{{user.country.name || "Country"}} {{user.zip || "A1B 2C3"}}</div>
 				</div>
 			</div>
 		</div>

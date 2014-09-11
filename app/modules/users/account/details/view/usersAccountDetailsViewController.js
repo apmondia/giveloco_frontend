@@ -1,7 +1,11 @@
 'use strict';
 
 function UsersAccountDetailsViewCtrl($rootScope, $scope) {
-	$scope.tagList = $scope.currentUser.tags.join(', ');
+	if ($scope.currentUser.tags.length !== 0) {
+		$scope.tagList = $scope.currentUser.tags.join(', ');
+	} else {
+		$scope.tagList = '';
+	}
 }
 
 UsersAccountDetailsViewCtrl.$inject = ['$rootScope', '$scope'];

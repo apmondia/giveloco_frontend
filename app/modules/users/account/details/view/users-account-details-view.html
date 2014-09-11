@@ -36,7 +36,7 @@
 				<span class="field-data">{{currentUser.city || "Empty"}}</span>
 			</div>
 			<div class="user-data state">
-				<span class="field-label" ng-if="currentUser.country === 'Canada' || currentUser.country === 'null'">Province</span>
+				<span class="field-label" ng-if="currentUser.country === 'Canada' || currentUser.country === null">Province</span>
 				<span class="field-label" ng-if="currentUser.country === 'United States'">State</span>
 				<span class="field-data">{{currentUser.state || "Empty"}}</span>
 			</div>
@@ -45,7 +45,7 @@
 				<span class="field-data">{{currentUser.country || "Empty"}}</span>
 			</div>
 			<div class="user-data zip">
-				<span class="field-label" ng-if="currentUser.country === 'Canada' || currentUser.country === 'null'">Postal Code</span>
+				<span class="field-label" ng-if="currentUser.country === 'Canada' || currentUser.country === null">Postal Code</span>
 				<span class="field-label" ng-if="currentUser.country === 'United States'">Zip</span>
 				<span class="field-data">{{currentUser.zip || "Empty"}}</span>
 			</div>
