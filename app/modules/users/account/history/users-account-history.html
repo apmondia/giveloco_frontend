@@ -1,3 +1,61 @@
 <div class="users-account-history">
-	<h1>Transaction History</h1>
+	<div class="page-header">
+		<div class="left-side">
+			<h1>Transaction History</h1>
+			<div class="sub-header">
+				<h5 class="username">for <span>{{currentUser.company_name || currentUser.first_name + '  ' + currentUser.last_name}}</span></h5>
+			</div>
+		</div>
+		<div class="right-side">
+			<div class="balance-label">Current Balance: </div>
+			<div class="user-balance">{{user.balance | currency: ''}}<span>credits</span></div>
+		</div>
+	</div>
+	<div class="transactions">
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th class="transaction-header date">Date</th>
+					<th class="transaction-header details">Taliflo Transactions</th>
+					<th class="transaction-header debit">Debit</th>
+					<th class="transaction-header credit">Credit</th>
+					<th class="transaction-header balance">Balance</th>
+					<th class="transaction-header status">Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr dir-paginate="t in transactions | orderBy: 'created_at' : true | itemsPerPage: 25" class="transaction {{t.status}}">
+					<td class="transaction-field date">
+						<div class="trans-type">{{t.trans_type}}</div>
+						<div class="date">{{t.created_at | date : medium}}</div>
+					</td>
+					<td class="transaction-field details">
+						<div class="from_to_user">
+							<div class="from_user_name" ng-if="fromUserRoleIs(t, 'individual')">From: {{t.from_name}} ({{t.from_user_role}})</div>
+							<div class="from_user_name" ng-if="fromUserRoleIsNot(t, 'individual')">
+								<span class="field-label">From:</span> <a ui-sref="profile.{{t.from_user_role}}({id:t.from_user_id, role:t.from_user_role})">{{t.from_name}}</a> ({{t.from_user_role}})
+							</div>
+							<div class="to_user_name" ng-if="toUserRoleIs(t, 'individual')">To: {{t.to_name}} ({{t.to_user_role}})</div>
+							<div class="to_user_name" ng-if="toUserRoleIsNot(t, 'individual')">
+								<span class="field-label">To:</span> <a ui-sref="profile.{{t.to_user_role}}({id:t.to_user_id, role:t.to_user_role})">{{t.to_name}}</a> ({{t.to_user_role}})
+							</div>
+						</div>
+						<div class="transaction_id"><span class="field-label">ID:</span> {{t.trans_id}}</div>
+					</td>
+					<td class="transaction-field debit">
+						<span ng-if="fromUserRoleAndTransType(t, 'business', 'pledge')">{{t.amount}}</span>
+						<span ng-if="fromUserRoleAndTransType(t, 'individual', 'redemption')">{{t.amount}}</span>
+						<span ng-if="toUserRoleAndTransType(t, 'cause', 'donation')">{{t.amount}}</span>
+					</td>
+					<td class="transaction-field credit">
+						<span ng-if="fromUserRoleAndTransType(t, 'individual', 'donation')">{{t.amount}}</span>
+						<span ng-if="toUserRoleAndTransType(t, 'business', 'redemption')">{{t.amount}}</span>
+					</td>
+					<td class="transaction-field running-balance"></td>
+					<td class="transaction-field status"><div class="status-color">{{t.status}}</div></td>
+				</tr>
+			</tbody>
+		</table>
+		<div dir-pagination-controls></div>
+	</div>
 </div>

@@ -8,3 +8,87 @@
 /* ***********************************************************************
 	Module Styles
 *********************************************************************** */
+body.account.history {
+	.users-account-history {
+		.page-header {
+			.row();
+			.clearfix();
+			border-bottom: none;
+			.left-side {
+				.make-xs-column(12);
+				.make-sm-column(8);
+				.make-md-column(8);
+				.make-lg-column(8);
+				h1 {
+					margin-bottom: 0;
+				}
+			}
+			.right-side {
+				text-align: center;
+				margin-top: 20px;
+				.make-xs-column(12);
+				.make-sm-column(4);
+				.make-md-column(4);
+				.make-lg-column(4);
+				.balance-label {
+					border-bottom: solid 1px #eee;
+					margin-bottom: 8px;
+					padding-bottom: 3px;
+				}
+				.user-balance {
+					font-size: 30px;
+					font-weight: 400;
+					color: @brand-teal;
+					span {
+						font-size: 14px;
+						margin-left: 3px;
+						font-weight: 200;
+					}
+				}
+			}
+		}
+	}
+	.transactions {
+		.debit,
+		.credit,
+		.balance, 
+		.status {
+			vertical-align: middle;
+			text-align: center;
+		}
+		.transaction {
+			.transaction-field.status {
+				padding: 0;
+				.status-color {
+					border-bottom: solid 5px transparent;
+				}
+			}
+			&.cancelled {
+				.status {
+					.status-color {
+						border-color: red;
+					}
+				}
+			}
+			&.complete {
+				.status {
+					.status-color {
+						border-color: green;
+					}
+				}
+			}
+			.transaction-field {
+				&.date {
+					.trans-type {
+						text-transform: uppercase;
+					}
+				}
+				&.details {
+					.transaction_id {
+
+					}
+				}
+			}
+		}
+	}
+}
