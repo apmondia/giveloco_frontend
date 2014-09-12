@@ -179,7 +179,7 @@ body.account.details {
 		.image-upload {
 			width: 100%;
 			overflow: hidden;
-			margin-top: 5px;
+			margin-top: 6px;
 			.file-input {
 				height: 34px;
 				position: relative;
@@ -200,6 +200,9 @@ body.account.details {
 				height: 34px;
 				width: calc(~'100% - 100px');
 				padding-left: 6px;
+				text-align: left;
+				line-height: 32px;
+				color: #ccc;
 			}
 			.fake-uploader-container {
 				position: relative;
@@ -207,10 +210,11 @@ body.account.details {
 			}
 		}
 		ul.file-uploads {
-			padding: 0;
-			position: relative;
+			padding: 0px;
 			margin: 0px;
 			bottom: 0px;
+			position: relative;
+			z-index: 3;
 			.animated();
 		    &.ng-enter {
 		        .fadeIn();
@@ -236,6 +240,7 @@ body.account.details {
 		    		float: right;
 		    		position: relative;
 					bottom: -34px;
+					border-radius: 0 5px 5px 0;
 		    	}
 		    }
 		}

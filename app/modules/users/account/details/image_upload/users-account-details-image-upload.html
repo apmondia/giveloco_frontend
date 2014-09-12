@@ -1,6 +1,6 @@
 <div class="user-profile-image-upload">
 	<div class="user-profile-picture">
-		<div class="default-image" ng-if="currentUser.images.profile_picture.original === ''"><i class="icon icon-user-circle-outline"></i></div>
+		<div class="default-image" ng-if="currentUser.images.profile_picture.original === ''"><i class="icon icon-photos-pictures"></i></div>
 		<img ng-src="{{userImage}}" ng-if="currentUser.images.profile_picture.original !== ''" />
 		<ul class="file-uploads" ng-if="!removeItem">
 	        <li ng-repeat="item in uploader.queue">
@@ -16,10 +16,10 @@
 	    </ul>
 	</div>
 	<div class="image-upload" ng-if="$state.current.name == 'account.details.edit'">
-	    <input type="file" class="file-input" nv-file-select uploader="uploader" />
+	    <input type="file" class="file-input" nv-file-select uploader="uploader" multiple />
 	    <div class="fake-uploader-container">
 		    <div class="btn button button-primary fake-upload-button">Choose File</div>
-		    <span class="fake-file-input" ng-bind="item.file.name"></span>
+		    <span class="fake-file-input">Upload Photo</span>
 		</div>
 	</div>
 </div>

@@ -2,6 +2,7 @@
 
 module.exports = angular.module('users.account',
 	[
+		require('./billing-info').name,
 		require('./change-password').name,
 		require('./details').name,
 		require('./history').name,

@@ -13,6 +13,17 @@ function userAccountRoutes($stateProvider) {
         authRequired: true
       }
   },
+  accountBilling = {
+      name: 'account.billing',
+      url: '/billing-info',
+      template: '<div users-account-billing-info></div>',
+      data: {
+        moduleClasses: 'users account',
+        pageClasses: 'billing',
+        pageTitle: 'Account Billing Information',
+        pageDescription: 'Add and update billing and credit card information.'
+      }
+  },
   accountDetails = {
       name: 'account.details',
       abstract: true,
@@ -53,17 +64,17 @@ function userAccountRoutes($stateProvider) {
         pageDescription: 'User account history.'
       }
   },
-  accountSettings = {
-      name: 'account.settings',
-      url: '/settings',
-      template: '<div users-account-settings></div>',
-      data: {
-        moduleClasses: 'users account',
-        pageClasses: 'settings',
-        pageTitle: 'Account Settings',
-        pageDescription: 'User account settings.'
-      }
-  },
+  // accountSettings = {
+  //     name: 'account.settings',
+  //     url: '/settings',
+  //     template: '<div users-account-settings></div>',
+  //     data: {
+  //       moduleClasses: 'users account',
+  //       pageClasses: 'settings',
+  //       pageTitle: 'Account Settings',
+  //       pageDescription: 'User account settings.'
+  //     }
+  // },
   accountChangePassword = {
       name: 'account.changePassword',
       url: '/change-password',
@@ -77,11 +88,12 @@ function userAccountRoutes($stateProvider) {
   };
 
 $stateProvider.state(account);
+$stateProvider.state(accountBilling);
 $stateProvider.state(accountDetails);
 $stateProvider.state(accountDetailsView);
 $stateProvider.state(accountDetailsEdit);
 $stateProvider.state(accountHistory);
-$stateProvider.state(accountSettings);
+// $stateProvider.state(accountSettings);
 $stateProvider.state(accountChangePassword);
 
 }
