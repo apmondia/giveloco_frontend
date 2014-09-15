@@ -24,6 +24,14 @@
 				</tr>
 			</thead>
 			<tbody>
+				<tr ng-if="transactions.length === 0">
+					<td class="transaction-field date">N/A</td>
+					<td class="transaction-field details">No Transactions</td>
+					<td class="transaction-field debit">N/A</td>
+					<td class="transaction-field credit">N/A</td>
+					<td class="transaction-field balance">N/A</td>
+					<td class="transaction-field status">N/A</td>
+				</tr>
 				<tr dir-paginate="t in transactions | orderBy: 'created_at' : true | itemsPerPage: 25" class="transaction {{t.status}}">
 					<td class="transaction-field date">
 						<div class="trans-type">{{t.trans_type}}</div>
@@ -51,9 +59,10 @@
 						<span ng-if="fromUserRoleAndTransType(t, 'individual', 'donation')">{{t.amount}}</span>
 						<span ng-if="toUserRoleAndTransType(t, 'business', 'redemption')">{{t.amount}}</span>
 					</td>
-					<td class="transaction-field running-balance"></td>
+					<td class="transaction-field balance"></td>
 					<td class="transaction-field status"><div class="status-color">{{t.status}}</div><div class="icon"></div></td>
 				</tr>
+				
 			</tbody>
 		</table>
 		<div dir-pagination-controls></div>

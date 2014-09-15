@@ -1,6 +1,7 @@
 <div class="users-account-details">
 	<div class="details-header">
-		<h1>Account Details</h1>
+		<h1 ng-if="$state.current.name == 'account.details.view'">Account Details</h1>
+		<h1 ng-if="$state.current.name == 'account.details.edit'"><span class="edit">Editing</span> Account Details</h1>
     	<a class="btn button button-secondary edit-buttons" ui-sref="account.details.edit" ng-if="$state.current.name == 'account.details.view'"><i class="icon icon-pencil"></i>Edit Details</a>
     	<a class="btn button button-secondary edit-buttons" ui-sref="account.details.view" ng-if="$state.current.name == 'account.details.edit'"><i class="icon icon-eye-view"></i>View Details</a>
 	</div>

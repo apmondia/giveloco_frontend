@@ -1,11 +1,13 @@
 <div class="users-account-details-edit content-area">
 
-    <div users-image-upload class="right-side"></div>
+    <div class="right-side">
+		<div users-image-upload ng-if="userRoleIsNot('individual')"></div>
+	</div>
 	
 	<form class="form" name="updateUserForm" ng-submit="updateUser(updateUserForm.$valid)" novalidate>
 
 	    <div class="form-section basic-info left-side">
-			<h4 class="section-title">Basic Information</h4>
+			<h4 class="section-title"><span class="edit">Edit</span> Basic Information</h4>
 
 			<div class="sub-section name">
 	            <div class="form-group first-name" ng-class="{'invalid' : updateUserForm.first_name.$invalid && updateUserForm.first_name.$dirty, 'valid' : updateUserForm.first_name.$valid && updateUserForm.first_name.$dirty}">

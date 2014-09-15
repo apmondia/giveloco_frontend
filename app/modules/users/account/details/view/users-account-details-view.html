@@ -8,20 +8,20 @@
 			</div>
 			<div class="user-data full-name" ng-if="userRoleIsNot('individual')">
 				<span class="field-label" ng-if="userRoleIs('cause')">Cause Name</span>
-				<span class="field-label" ng-if="userRoleIsNot('cause') || userRoleIsNot('individual')">Company Name</span>
+				<span class="field-label" ng-if="userRoleIsNot('cause') && userRoleIsNot('individual')">Company Name</span>
 				<span class="field-data">{{currentUser.company_name}}</span>
 			</div>
 			<div class="user-data email">
 				<span class="field-label">Email Address</span>
 				<span class="field-data">{{currentUser.email}}</span>
 			</div>
-			<div class="user-data phone">
+			<div class="user-data phone" ng-if="userRoleIsNot('individual')">
 				<span class="field-label">Phone Number</span>
 				<span class="field-data">{{currentUser.phone}}</span>
 			</div>
 		</div>
 		<div class="right-side">
-			<div users-image-upload></div>
+			<div users-image-upload ng-if="userRoleIsNot('individual')"></div>
 		</div>
 	</div>
 	<div ng-if="userRoleIsNot('individual')">

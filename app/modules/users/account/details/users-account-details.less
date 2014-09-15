@@ -16,6 +16,7 @@ body.account.details {
 				background-color: @brand-teal;
 				border-color: @brand-teal;
 				&:after {
+					width: 12px;
 					font-family:"taliflo";
 					content:"L";
 					.icons(@font-size: 20px);
@@ -68,6 +69,7 @@ body.account.details {
 		        padding-right: 0;
 				text-align: right;
 				float: right;
+				min-height: 200px;
 				.user-profile-picture {
 					margin-top: 40px;
 					img {
@@ -111,6 +113,9 @@ body.account.details {
 		}
 	}
 	.users-account-details-edit {
+		.form {
+			.clearfix();
+		}
 		select {
 			width: 100%;
 			height: 42px;
