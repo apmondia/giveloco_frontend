@@ -1,3 +1,4 @@
+/*jshint camelcase: false */
 'use strict';
 
 function UsersAccountDetailsCtrl($rootScope, $scope) {
@@ -8,6 +9,14 @@ function UsersAccountDetailsCtrl($rootScope, $scope) {
 
 	$scope.userRoleIs = function(userRole) {
 		return ($scope.currentUser.role === userRole) ? true : false;
+	};
+
+	$scope.accountStatus = function() {
+		if ($scope.currentUser.confirmed_at === null) {
+			return 'unconfirmed';
+		} else {
+			return 'confirmed';
+		}
 	};
 }
 

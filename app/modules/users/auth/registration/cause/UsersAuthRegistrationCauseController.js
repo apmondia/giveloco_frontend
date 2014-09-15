@@ -17,7 +17,7 @@ function UsersAuthRegistrationCauseCtrl($rootScope, $scope, $state, Auth, AUTH_E
 		$scope.showSpinner = false;
 		$rootScope.$broadcast('logged-in');
 		alertService.showAlert(AUTH_EVENTS.signupSuccess, 'alert-success');
-		$state.go('profile.cause', {id:user.data.uid});
+		$state.go('account.details.view', {id:user.data.uid});
 	};
 
 	var error = function() {
@@ -26,20 +26,9 @@ function UsersAuthRegistrationCauseCtrl($rootScope, $scope, $state, Auth, AUTH_E
 	};
 
 	$scope.signupCause = function(isValid) {
-		var tags = $scope.tags.map(function(tag) {return tag.text; });
-
 		if (isValid) {
 			$scope.showSpinner = true;
-			user.country = $scope.user.country.name;
-			user.state = $scope.user.state.code;
-			user.tag_list = tags;
 			Auth.signup($scope.user).then(success, error);
-			console.log($scope.user);
-		} else {
-			// user.country = $scope.user.country.name;
-			// user.state = $scope.user.state.code;
-			user.tag_list = tags;
-			console.log($scope.user);
 		}
 	};
 

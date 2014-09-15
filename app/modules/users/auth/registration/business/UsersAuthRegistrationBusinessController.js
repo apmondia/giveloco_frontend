@@ -6,27 +6,28 @@ function UsersAuthRegistrationBusinessCtrl($rootScope, $scope, $state, Auth, AUT
 	/* =======================================================================
 		User Data for Form Submission
 	======================================================================= */
-	$scope.user.role = 'business';
+	var user = $scope.user;
+	user.role = 'business';
 	
 	
 	/* =======================================================================
 		Form Submission
 	======================================================================= */
 	var success = function(user) {
-		$scope.formSubmitted = false;
+		$scope.showSpinner = false;
 		$rootScope.$broadcast('logged-in');
 		alertService.showAlert(AUTH_EVENTS.signupSuccess, 'alert-success');
-		$state.go('profile.business', {id:user.data.uid});
+		$state.go('account.details.view', {id:user.data.uid});
 	};
 
 	var error = function() {
-		$scope.formSubmitted = false;
+		$scope.showSpinner = false;
 		alertService.showAlert(AUTH_EVENTS.signupFailed, 'alert-danger');
 	};
 
 	$scope.signupBusiness = function(isValid) {
 		if (isValid) {
-			$scope.formSubmitted = true;
+			$scope.showSpinner = true;
 			Auth.signup($scope.user).then(success, error);
 		}
 	};

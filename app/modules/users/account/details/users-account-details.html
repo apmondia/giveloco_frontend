@@ -5,7 +5,8 @@
     	<a class="btn button button-secondary edit-buttons" ui-sref="account.details.view" ng-if="$state.current.name == 'account.details.edit'"><i class="icon icon-eye-view"></i>View Details</a>
 	</div>
 	<div class="sub-header">
-		<h5>Account Type: <span>{{currentUser.role}}</span></h5>
+		<h5>User Type: <span>{{currentUser.role}}</span></h5>
+		<h5>Account Status: <span class="status {{accountStatus()}}">{{accountStatus()}}</span></h5>
 	</div>
 
     <div ui-view></div>

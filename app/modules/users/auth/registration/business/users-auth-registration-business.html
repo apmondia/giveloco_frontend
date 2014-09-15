@@ -1,22 +1,47 @@
-<div class="signup-form small-form toggle-form">
-	<h1>Register Your Business</h1>
+<div class="signup-form medium-form toggle-form">
+	<h1 ng-class="{'active' : signupFormCause.company.$dirty}"><span>Register</span> <span class="company_name">{{user.company_name || "Your Business"}}</span></h1>
 	<form class="form" name="signupFormBusiness" ng-submit="signupBusiness(signupFormBusiness.$valid)" novalidate>
 
-		<div class="form-group" ng-class="{'invalid' : signupFormBusiness.email.$invalid && signupFormBusiness.email.$dirty, 'valid' : signupFormBusiness.email.$valid && signupFormBusiness.email.$dirty}">
-			<label for="email" class="inline">Email</label>
-			<input type="email" name="email" id="email" class="form-control" placeholder="email@address.com" ng-model="user.email" ng-pattern="emailRegex" required auto-focus show-form-errors />
-			<p class="form-helper" ng-if="signupFormBusiness.email.$error.pattern && !signupFormBusiness.email.$focused">Invalid Email Address</p>
-			<p class="form-helper" ng-if="signupFormBusiness.email.$dirty && signupFormBusiness.email.$error.required && !signupFormBusiness.email.$focused">Email Address is required!</p>
-		</div>
+		<div class="form-section basic-info">
+			<div class="form-group company" ng-class="{'invalid' : signupFormBusiness.company.$invalid && signupFormBusiness.company.$dirty, 'valid' : signupFormBusiness.company.$valid && signupFormBusiness.company.$dirty}">
+				<label for="companyName" class="inline">Business Name</label>
+				<input type="company" name="company" id="companyName" class="form-control" placeholder="Business name" ng-model="user.company_name" ng-pattern="companyRegex" required auto-focus show-form-errors />
+				<p class="form-helper" ng-if="signupFormBusiness.company.$error.pattern">This field only accepts letters, numbers, and periods.</p>
+				<p class="form-helper" ng-if="signupFormBusiness.company.$dirty && signupFormBusiness.company.$error.required && !signupFormBusiness.company.$focused">Business Name is required!</p>
+			</div>
 
-		<div class="form-group" ng-class="{'invalid' : signupFormBusiness.password.$invalid && signupFormBusiness.password.$dirty, 'valid' : signupFormBusiness.password.$valid && signupFormBusiness.password.$dirty}">
-			<label for="password" class="inline">Password</label>
-			<input type="password" name="password" id="password" class="form-control" placeholder="password" ng-model="user.password" ng-minlength=8 required show-form-errors />
-			<p class="form-helper" ng-if="signupFormBusiness.password.$dirty && signupFormBusiness.password.$error.required && !signupFormBusiness.password.$focused">Password is required!</p>
-			<p class="form-helper" ng-if="signupFormBusiness.password.$dirty && signupFormBusiness.password.$error.minlength && !signupFormBusiness.password.$focused">Password must contain at least 8 characters.</p>
+			<div class="sub-section name">
+	            <div class="form-group first-name" ng-class="{'invalid' : signupForm.first_name.$invalid && signupForm.first_name.$dirty, 'valid' : signupForm.first_name.$valid && signupForm.first_name.$dirty}">
+	                <label for="first_name" class="inline">Contact Name</label>
+	                <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Given Name" ng-model="user.first_name" ng-pattern="nameRegex" required show-form-errors />
+	                <p class="form-helper" ng-if="signupForm.first_name.$error.pattern && !signupForm.first_name.$focused">Your name can only contain letters.</p>
+	                <p class="form-helper" ng-if="signupForm.first_name.$dirty && signupForm.first_name.$error.required && !signupForm.first_name.$focused">First Name is required!</p>
+	            </div>
+	            <div class="form-group last-name" ng-class="{'invalid' : signupForm.last_name.$invalid && signupForm.last_name.$dirty, 'valid' : signupForm.last_name.$valid && signupForm.last_name.$dirty}">
+	                <label for="last_name" class="inline">Last Name</label>
+	                <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Surname" ng-model="user.last_name" ng-pattern="nameRegex" required show-form-errors />
+	                <p class="form-helper" ng-if="signupForm.last_name.$error.pattern && !signupForm.last_name.$focused">Your name can only contain letters.</p>
+	                <p class="form-helper" ng-if="signupForm.last_name.$dirty && signupForm.last_name.$error.required && !signupForm.last_name.$focused">Last Name is required!</p>
+	            </div>
+	        </div>
+
+			<div class="form-group email" ng-class="{'invalid' : signupFormBusiness.email.$invalid && signupFormBusiness.email.$dirty, 'valid' : signupFormBusiness.email.$valid && signupFormBusiness.email.$dirty}">
+				<label for="companyEmail" class="inline">Email</label>
+				<input type="email" name="email" id="companyEmail" class="form-control" placeholder="email@address.com" ng-model="user.email" ng-pattern="emailRegex" required show-form-errors />
+				<p class="form-helper" ng-if="signupFormBusiness.email.$error.pattern && !signupFormBusiness.email.$focused">Invalid Email Address</p>
+				<p class="form-helper" ng-if="signupFormBusiness.email.$dirty && signupFormBusiness.email.$error.required && !signupFormBusiness.email.$focused">Email Address is required!</p>
+			</div>
+
+			<div class="form-group password" ng-class="{'invalid' : signupFormBusiness.password.$invalid && signupFormBusiness.password.$dirty, 'valid' : signupFormBusiness.password.$valid && signupFormBusiness.password.$dirty}">
+				<label for="businessPassword" class="inline">Password</label>
+				<input type="password" name="password" id="businessPassword" class="form-control" placeholder="password" ng-model="user.password" ng-minlength=8 required show-form-errors />
+				<p class="form-helper" ng-if="signupFormBusiness.password.$dirty && signupFormBusiness.password.$error.required && !signupFormBusiness.password.$focused">Password is required!</p>
+				<p class="form-helper" ng-if="signupFormBusiness.password.$dirty && signupFormBusiness.password.$error.minlength && !signupFormBusiness.password.$focused">Password must contain at least 8 characters.</p>
+			</div>
 		</div>
 
 		<div class="form-group form-buttons">
+			<div ajax-spinner class="spinner" ng-show="showSpinner"></div>
 			<button class="btn button button-primary" type="submit" ng-disabled="signupFormBusiness.$invalid">Sign Up</button>
 			<p class="choose-form">Sign up as a <a ui-sref="auth.signup.donor">Donor</a> or a <a ui-sref="auth.signup.cause">Cause</a></p>
 		</div>

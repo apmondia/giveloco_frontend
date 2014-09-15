@@ -16,6 +16,12 @@ body.account {
 				color: @brand-teal;
 				text-transform: capitalize;
 			}
+			.status {
+				text-transform: capitalize;
+				&.unconfirmed {
+					color: red;
+				}
+			}
 		}
 	}
 	.account-layout {
@@ -53,6 +59,7 @@ body.account {
 							color: #fff;
 							border-color: @brand-teal;
 							&:after {
+								width: 12px;
 								font-family:"taliflo";
 								content:"L";
 								.icons(@font-size: 20px);

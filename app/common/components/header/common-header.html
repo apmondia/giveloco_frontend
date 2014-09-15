@@ -33,7 +33,7 @@
                 <ul class="dropdown-menu" role="menu">
                   <li class="first" ui-sref-active="active" ng-if="currentUser.role == 'cause'"><a ui-sref="profile.cause({id:currentUser.id})"><i class="icon icon-user-circle-outline"></i>My Profile</a></li>
                   <li class="first" ui-sref-active="active" ng-if="currentUser.role == 'business'"><a ui-sref="profile.business({id:currentUser.id})"><i class="icon icon-user-circle-outline"></i>My Profile</a></li>
-                  <li ui-sref-active="active"><a ui-sref="account.details.view({id:currentUser.id})"><i class="icon icon-mixer-horizontal"></i>My Account</a></li>
+                  <li ui-sref-active="active"><a ui-sref="account.details.view({id:currentUser.id})"><i class="icon icon-account"></i>My Account</a></li>
                   <li class="divider"></li>
                   <li class="last"><a ng-click="logout()"><i class="icon icon-power-off"></i>Log Out</a></li>
                 </ul>

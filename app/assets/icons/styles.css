@@ -710,3 +710,24 @@
 .icon-chevron-circle-right:before {
   content: "\e081";
 }
+.icon-clock:before {
+  content: "\e082";
+}
+.icon-back-in-time:before {
+  content: "\e083";
+}
+.icon-issue-reopened:before {
+  content: "\e084";
+}
+.icon-globe:before {
+  content: "\e085";
+}
+.icon-clock-outline:before {
+  content: "\e086";
+}
+.icon-account:before {
+  content: "\e087";
+}
+.icon-wallet:before {
+  content: "\e088";
+}
