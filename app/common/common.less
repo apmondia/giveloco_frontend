@@ -230,6 +230,9 @@ a {
         }
     }
 }
+span.edit {
+    color: red;
+}
 
 
 /* ==========================================================================
@@ -550,6 +553,14 @@ select {
     @media @breakpoint-lg {
         padding-left: 15px;
         padding-right: 15px;
+    }
+    &.small-grid {
+        @media @breakpoint-xs {
+            .make-xs-column(6);
+        }
+        @media @breakpoint-md {
+            .make-md-column(4);
+        }
     }
     .grid-item {
         background-color: #fff;

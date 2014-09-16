@@ -41,7 +41,7 @@
 
 				<div class="form-group phone" ng-class="{'invalid' : updateUserForm.phone.$invalid && updateUserForm.phone.$dirty, 'valid' : updateUserForm.phone.$valid && updateUserForm.phone.$dirty}" ng-if="userRoleIsNot('individual')">
 					<label for="userPhone" class="inline">Phone</label>
-					<input type="text" name="phone" id="userPhone" class="form-control" placeholder="604-321-1234" ng-model="user.phone" ng-pattern="phoneRegex" ng-change="formatNumber()" maxlength=14 required show-form-errors />
+					<input type="text" name="phone" id="userPhone" class="form-control" placeholder="604-321-1234" ng-model="user.phone" ng-pattern="phoneRegex" ng-change="formatNumber()" maxlength=14 show-form-errors />
 					<p class="form-helper" ng-if="updateUserForm.phone.$error.pattern && !updateUserForm.phone.$focused">Invalid Phone Number</p>
 					<p class="form-helper" ng-if="updateUserForm.phone.$dirty && updateUserForm.phone.$error.required && !updateUserForm.phone.$focused">A Phone Number is required so users can learn more about your organization</p>
 				</div>
@@ -49,10 +49,10 @@
 		</div>
 
 		<div class="form-section location-info" ng-if="userRoleIsNot('individual')">
-			<h4 class="section-title"><span ng-if="userRoleIs('cause')">Cause</span><span ng-if="userRoleIsNot('cause')">Company</span> Location</h4>
+			<h4 class="section-title"><span class="edit">Edit</span> <span ng-if="userRoleIs('cause')">Cause</span><span ng-if="userRoleIsNot('cause')">Company</span> Location</h4>
 			<div class="form-group street" ng-class="{'invalid' : updateUserForm.street.$invalid && updateUserForm.street.$dirty, 'valid' : updateUserForm.street.$valid && updateUserForm.street.$dirty}">
 				<label for="userStreetAddress" class="inline">Street Address</label>
-				<input type="text" name="street" id="userStreetAddress" class="form-control" placeholder="123 Address Street" ng-model="user.street_address" ng-minlength=4 required show-form-errors />
+				<input type="text" name="street" id="userStreetAddress" class="form-control" placeholder="123 Address Street" ng-model="user.street_address" ng-minlength=4 show-form-errors />
 				<p class="form-helper" ng-if="updateUserForm.street.$dirty && updateUserForm.street.$error.required && !updateUserForm.street.$focused">This field is required!</p>
 			</div>
 			<div class="sub-section region">
@@ -62,8 +62,7 @@
 						id="userCountry" 
 						ng-model="user.country" 
 						ng-change="countryChange(user)" 
-						ng-options="c.name for c in countryList"
-						required>
+						ng-options="c.name for c in countryList">
 					</select>
 				</div>
 				<div class="form-group state">
@@ -72,20 +71,19 @@
 						id="userState" 
 						ng-model="user.state" 
 						ng-change="stateChange(user)" 
-						ng-options="s.name for s in states"
-						required>
+						ng-options="s.name for s in states">
 					</select>
 				</div>
 			</div>
 			<div class="sub-section city-zip">
 				<div class="form-group city" ng-class="{'invalid' : updateUserForm.city.$invalid && updateUserForm.city.$dirty, 'valid' : updateUserForm.city.$valid && updateUserForm.city.$dirty}">
 					<label for="userCity" class="inline">City</label>
-					<input type="text" name="city" id="userCity" class="form-control" placeholder="ex: Vancouver" ng-model="user.city" required show-form-errors />
+					<input type="text" name="city" id="userCity" class="form-control" placeholder="ex: Vancouver" ng-model="user.city" show-form-errors />
 					<p class="form-helper" ng-if="updateUserForm.city.$dirty && updateUserForm.city.$error.required && !updateUserForm.city.$focused">This field is required!</p>
 				</div>
 				<div class="form-group zip" ng-class="{'invalid' : updateUserForm.zip.$invalid && updateUserForm.zip.$dirty, 'valid' : updateUserForm.zip.$valid && updateUserForm.zip.$dirty}">
 					<label for="userZip" class="inline"><span ng-if="user.country.code == 'US'">Zip</span><span ng-if="user.country.code == 'CA'">Postal Code</span></label>
-					<input type="text" name="zip" id="userZip" class="form-control" placeholder="{{zipPlaceholder}}" ng-model="user.zip" ng-minlength=5 maxlength=7 ng-pattern="zipRegex" required show-form-errors />
+					<input type="text" name="zip" id="userZip" class="form-control" placeholder="{{zipPlaceholder}}" ng-model="user.zip" ng-minlength=5 maxlength=7 ng-pattern="zipRegex" show-form-errors />
 					<p class="form-helper" ng-if="updateUserForm.zip.$error.pattern && !updateUserForm.zip.$focused">Invalid <span ng-if="selectedCountry.code == 'US'">Zip Code</span><span ng-if="selectedCountry.code == 'CA'">Postal Code</span></p>
 					<p class="form-helper" ng-if="updateUserForm.zip.$dirty && updateUserForm.zip.$error.required && !updateUserForm.zip.$focused">This field is required!</p>
 				</div>
@@ -93,30 +91,30 @@
 		</div>
 
 		<div class="form-section company-details" ng-if="userRoleIsNot('individual')">
-			<h4 class="section-title"><span ng-if="userRoleIs('cause')">Cause</span><span ng-if="userRoleIsNot('cause')">Company</span> Details</h4>
+			<h4 class="section-title"><span class="edit">Edit</span> <span ng-if="userRoleIs('cause')">Cause</span><span ng-if="userRoleIsNot('cause')">Company</span> Details</h4>
 			<div class="form-group website" ng-class="{'invalid' : updateUserForm.website.$invalid && updateUserForm.website.$dirty, 'valid' : updateUserForm.website.$valid && updateUserForm.website.$dirty}">
 				<label for="userWebsite" class="inline">Website</label>
-				<input type="website" name="website" id="userWebsite" class="form-control" placeholder="www.website.com" ng-model="user.website" ng-pattern="websiteRegex" required show-form-errors />
+				<input type="website" name="website" id="userWebsite" class="form-control" placeholder="www.website.com" ng-model="user.website" ng-pattern="websiteRegex" show-form-errors />
 				<p class="form-helper" ng-if="updateUserForm.website.$error.pattern && !updateUserForm.website.$focused">Invalid Website</p>
 				<p class="form-helper" ng-if="updateUserForm.website.$dirty && updateUserForm.website.$error.required && !updateUserForm.website.$focused">A website is required so users can learn more about your organization</p>
 			</div>
 
 			<div class="form-group tags" ng-class="{'invalid' : updateUserForm.tags.$invalid && updateUserForm.tags.$dirty, 'valid' : updateUserForm.tags.$valid && updateUserForm.tags.$dirty}">
 				<label for="userTags" class="block">Tags</label>
-				<tags-input ng-model="user.tags" name="tags" id="userTags" class="tags-input" allowed-tags-pattern="^[^!@#$%&*:;.?]*$" min-tags="1" show-form-errors></tags-input>
+				<tags-input ng-model="user.tags" name="tags" id="userTags" class="tags-input" allowed-tags-pattern="^[^!@#$%&*:;.?]*$" show-form-errors></tags-input>
 				<p class="form-helper info" ng-if="updateUserForm.tags.$focused">Please add a few comma-separated tags that describe your business. Only letters, numbers, and commas are accepted.</p>
 				<p class="form-helper" ng-if="updateUserForm.tags.$dirty && updateUserForm.tags.$error.minTags && !updateUserForm.tags.$focused">This field is required!</p>
 			</div>
 			<div class="form-group company-description" ng-class="{'invalid' : updateUserForm.companyDescription.$invalid && updateUserForm.companyDescription.$dirty, 'valid' : updateUserForm.companyDescription.$valid && updateUserForm.companyDescription.$dirty}">
 				<label for="userDescription" class="block"><span ng-if="userRoleIs('cause')">Cause</span><span ng-if="userRoleIsNot('cause')">Company</span> Description</label>
-				<textarea name="description" id="userDescription" class="form-control with-label-above" placeholder="The first 140 characters will be used as your summary." ng-model="user.description" ng-change="setSummary(user)" ng-pattern="textAreaRegex" required show-form-errors></textarea>
+				<textarea name="description" id="userDescription" class="form-control with-label-above" placeholder="The first 140 characters will be used as your summary." ng-model="user.description" ng-change="setSummary(user)" ng-pattern="textAreaRegex" show-form-errors></textarea>
 				<p class="form-helper info" ng-if="updateUserForm.description.$focused && !updateUserForm.description.$error.pattern">Please add a description for your business. It can be as long as you want, but the first sentence will be used as your company summary.</p>
 				<p class="form-helper" ng-if="updateUserForm.description.$dirty && updateUserForm.description.$error.pattern">This field only accepts letters, numbers, punctuation, and some special characters.</p>
 				<p class="form-helper" ng-if="updateUserForm.description.$dirty && updateUserForm.description.$error.required && !updateUserForm.description.$focused">This field is required!</p>
 			</div>
 			<div class="form-group summary" ng-class="{'invalid' : updateUserForm.summary.$invalid && updateUserForm.summary.$dirty, 'valid' : updateUserForm.summary.$valid && updateUserForm.summary.$dirty}">
 				<label for="userSummary" class="inline"><span ng-if="userRoleIs('cause')">Cause</span><span ng-if="userRoleIsNot('cause')">Company</span> Summary</label>
-				<input type="text" name="summary" id="userSummary" class="form-control" placeholder="" ng-model="user.summary" ng-maxlength="140" ng-pattern="textAreaRegex" required show-form-errors />
+				<input type="text" name="summary" id="userSummary" class="form-control" placeholder="" ng-model="user.summary" ng-maxlength="140" ng-pattern="textAreaRegex" show-form-errors />
 				<p class="form-helper info" ng-if="updateUserForm.summary.$focused && !updateUserForm.summary.$error.pattern && !updateUserForm.summary.$error.maxlength">Please add a summary for your business in 140 characters or less.</p>
 				<p class="form-helper" ng-if="updateUserForm.summary.$dirty && updateUserForm.summary.$error.pattern">This field only accepts letters, numbers, punctuation, and some special characters.</p>
 				<p class="form-helper" ng-if="updateUserForm.summary.$dirty && updateUserForm.summary.$error.required && !updateUserForm.summary.$focused">This field is required!</p>
@@ -125,7 +123,7 @@
 		</div>
 
 	    <div class="form-group form-buttons">
-	        <button class="btn button button-primary" type="submit" ng-disabled="updateUserForm.$invalid">Save Changes</button>
+	        <button class="btn button button-primary" type="submit">Save Changes</button>
 	    </div>
 
     </form>

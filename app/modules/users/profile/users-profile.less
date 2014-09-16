@@ -12,6 +12,83 @@ body.users.profile {
 	.module-view {
 		.container();
 	}
+	.sidebar {
+		.make-xs-column(12);
+		.make-sm-column(3);
+		.make-md-column(3);
+		.make-lg-column(3);
+	}
+	.main-content {
+		.make-xs-column(12);
+		.make-sm-column(9);
+		.make-md-column(9);
+		.make-lg-column(9);
+		.contact-info {
+			margin: 10px 0;
+			overflow: hidden;
+			background-color: #f5f5f5;
+			border-radius: 5px;
+			padding: 5px;
+			.info {
+				.make-xs-column(4);
+				overflow: hidden;
+				padding-right: 0;
+				.icon {
+					.icons(@font-size: 20px, @top-margin:0px);
+					&:before {
+						width: 20px;
+						padding: 3px;
+						margin-right: 5px;
+						border: solid 1px #ccc;
+						border-radius: 100%;
+						background-color: #fff;
+					}
+				}
+				.details {
+					&.address {
+						float: left;
+						widows: 85%;
+					}
+				}
+				&.website,
+				&.phone {
+					line-height: 40px;
+				}
+				&.website {
+					.icon {
+						top: 3px;
+					}
+				}
+				&.address {
+					.icon {
+						top: 10px;
+					}
+				}
+				&.phone {
+					.icon {
+						top: 4px;
+					}
+				}
+			}
+		}
+		ul.tagList {
+			margin: 0;
+			padding: 0;
+			.clearfix();
+			li {
+				list-style: none;
+				float: left;
+				margin-right: 5px;
+				.tag {
+					font-size: 12px;
+					padding: 2px 7px;
+					border-radius: 3px;
+					color: #fff;
+					background-color: @brand-teal;
+				}
+			}
+		}
+	}
 }
 
 

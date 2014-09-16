@@ -731,3 +731,6 @@
 .icon-wallet:before {
   content: "\e088";
 }
+.icon-link:before {
+  content: "\e089";
+}

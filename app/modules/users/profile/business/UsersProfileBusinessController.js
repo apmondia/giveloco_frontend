@@ -1,8 +1,8 @@
 'use strict';
 
-function UsersProfileBusinessCtrl($rootScope, $scope) {
-	$scope.test = null;
+function UsersProfileBusinessCtrl() {
+	
 }
 
-UsersProfileBusinessCtrl.$inject = ['$rootScope', '$scope'];
+UsersProfileBusinessCtrl.$inject = [];
 module.exports = UsersProfileBusinessCtrl;

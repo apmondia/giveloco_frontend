@@ -1,4 +1,43 @@
 /* =======================================================================
+	Style References
+======================================================================= */
+@import (reference) "../../common/styles/custom_mixins.less";
+@import (reference) "../../common/styles/custom_variables.less";
+
+
+/* ***********************************************************************
+	Common Module Styles
+*********************************************************************** */
+.user-profile-picture {
+	.default-image {
+		@media @breakpoint-sm-only {
+            height: 150px;
+        }
+		width: 100%;
+		height: 198px;
+		border-radius: 5px;
+		overflow: hidden;
+		.icon {
+			display: block;
+			float: none;
+			font-size: 230px;
+			height: 230px;
+			width: 230px;
+			margin: -16px auto 0;
+			line-height: 100%;
+			position: relative;
+			color: @brand-teal;
+			@media @breakpoint-sm-only {
+				font-size: 180px;
+				height: 180px;
+				width: 180px;
+			}
+		}
+	}
+}
+
+
+/* =======================================================================
 	Sub-Module LESS file imports
 ======================================================================= */
 @import "account/users-account.less";

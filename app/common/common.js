@@ -11,6 +11,7 @@ require('angular-sanitize');
 require('angular-truncate');
 require('angular-file-upload');
 require('ng-tags-input');
+require('ng-idle');
 require('lodash');
 require('restangular');
 require('gsap');
@@ -26,6 +27,7 @@ module.exports = angular.module('common',
         'restangular',
         'ngTagsInput',
         'angularFileUpload',
+        'ngIdle',
         require('./components/header').name,
         require('./components/footer').name,
         require('./constants').name,
