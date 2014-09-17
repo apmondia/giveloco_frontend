@@ -1,6 +1,6 @@
 'use strict';
 
-function UsersCtrl($scope, formValidation, Restangular) {
+function UsersCtrl($scope, formValidation) {
 	/* =======================================================================
 		Form Validation Regex
 	======================================================================= */
@@ -18,5 +18,5 @@ function UsersCtrl($scope, formValidation, Restangular) {
 	$scope.textAreaRegex = formValidation.textAreaRegex;
 }
 
-UsersCtrl.$inject = ['$scope', 'formValidation', 'Restangular'];
+UsersCtrl.$inject = ['$scope', 'formValidation'];
 module.exports = UsersCtrl;

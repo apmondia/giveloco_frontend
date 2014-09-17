@@ -48,11 +48,6 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
         $scope.causes = _.filter(user, function(user){
             return user.role === 'cause';
         });
-        $scope.loading = false;
-    });
-
-    // Filter users to populate list of Businesses
-	users.getList().then(function(user) {
         $scope.businesses = _.filter(user, function(user){
             return user.role === 'business';
         });

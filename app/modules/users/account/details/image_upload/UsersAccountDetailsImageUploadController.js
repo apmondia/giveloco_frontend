@@ -1,16 +1,10 @@
 /*jshint camelcase: false */
 'use strict';
 
-function UsersAccountDetailsImageUploadCtrl($rootScope, $scope, apiConfig, FileUploader, alertService, USER_EVENTS, $timeout, Restangular) {
-	var user = $scope.currentUser;
-
+function UsersAccountDetailsImageUploadCtrl($rootScope, $scope, apiConfig, FileUploader, alertService, USER_EVENTS, $timeout) {
     $scope.uploader = new FileUploader();
 	$scope.removeItem = false;
-	$scope.userImage = $rootScope.serverUrl + $scope.user.images.profile_picture.medium;
-
-    $scope.deleteImage = function() {
-        Restangular.one('users', user.id).customDELETE('delete_image');
-    };
+	$scope.userImage = $scope.user.images.profile_picture.medium;
 
 	var uploader = $scope.uploader = new FileUploader({
         url: apiConfig.API.paths.uploadImage,
@@ -30,5 +24,5 @@ function UsersAccountDetailsImageUploadCtrl($rootScope, $scope, apiConfig, FileU
     };
 }
 
-UsersAccountDetailsImageUploadCtrl.$inject = ['$rootScope', '$scope', 'apiConfig', 'FileUploader', 'alertService', 'USER_EVENTS', '$timeout', 'Restangular'];
+UsersAccountDetailsImageUploadCtrl.$inject = ['$rootScope', '$scope', 'apiConfig', 'FileUploader', 'alertService', 'USER_EVENTS', '$timeout'];
 module.exports = UsersAccountDetailsImageUploadCtrl;

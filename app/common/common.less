@@ -233,6 +233,19 @@ a {
 span.edit {
     color: red;
 }
+.main-content {
+    .content-header {
+        .clearfix();
+        h1 {
+            float: left;
+        }
+        .content-header-buttons {
+            float: right;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+    }
+}
 
 
 /* ==========================================================================
@@ -715,6 +728,7 @@ p.no-results {
 .button .icon {
     margin-right: 5px;
     margin-left: -5px;
+    .icons(@font-size: 20px, @top-margin: -2px);
 }
 .icon {
     .icons();

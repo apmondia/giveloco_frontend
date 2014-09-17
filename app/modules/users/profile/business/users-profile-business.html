@@ -1,12 +1,17 @@
 <div class="users-profile business module-view">
 	<div class="sidebar">
 		<div class="user-profile-picture">
-			<div class="default-image" ng-if="currentUser.images.profile_picture.original === ''"><i class="icon icon-photos-pictures"></i></div>
-			<img ng-src="{{userImage}}" ng-if="currentUser.images.profile_picture.original !== ''" />
+			<div class="default-image" ng-if="user.images.profile_picture.original === ''"><i class="icon icon-photos-pictures"></i></div>
+			<img ng-src="{{userImage}}" ng-if="user.images.profile_picture.original !== ''" />
 		</div>
 	</div>
 	<div class="main-content">
-		<h1>{{user.company_name}}</h1>
+		<div class="content-header">
+			<h1>{{user.company_name}}</h1>
+			<div class="content-header-buttons" ng-if="currentUser.id === user.id">
+				<a ui-sref="account.details.edit" class="edit-profile btn button button-secondary"><i class="icon icon-pencil"></i>Edit Profile</a>
+			</div>
+		</div>
 		<div class="tags" ng-if="user.tags.length > 0">
 			<ul class="tagList">
 				<li class="list-tag" ng-repeat="tag in user.tags"><a class="tag">#{{tag}}</a></li>
@@ -29,9 +34,9 @@
 				<div class="details phone">{{user.phone || "Phone Number"}}</div>
 			</div>
 		</div>
-	    <p>{{user.description}}</p>
+	    <div class="user-description">{{user.description}}</div>
 	    <div>{{user.id}}</div>
-	    {{user.type}}
+	    {{user.role}}
 
 	    <div users-profile-business-supported-causes></div>
 	</div>

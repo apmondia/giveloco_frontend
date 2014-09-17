@@ -24,38 +24,38 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 	User authentication check on state change
 ======================================================================= */
 	$rootScope.$on('$stateChangeStart', function (event, next, toState) {
-		Auth.getCurrentUser().then(function(user) {
+		if (next.data.authRequired) {
+			Auth.getCurrentUser().then(function(user) {
 
-			// Validate the user's token
-    		var user_token = user.auth_token;
-    		var auth_token = $cookieStore.get('auth_token');
-			var validateAuthToken = (function() {
-				return (auth_token === user_token) ? true : false;
-				// if (auth_token === user_token) {
-	   //  			console.log('Auth Token is valid');
-	   //  			return true;
-	   //  		} else {
-	   //  			console.log('Auth Token is NOT valid');
-	   //  			return false;
-	   //  		}
-			})();
+				// Validate the user's token
+	    		var user_token = user.auth_token;
+	    		var auth_token = $cookieStore.get('auth_token');
+				var validateAuthToken = (function() {
+					return (auth_token === user_token) ? true : false;
+					// if (auth_token === user_token) {
+		   //  			console.log('Auth Token is valid');
+		   //  			return true;
+		   //  		} else {
+		   //  			console.log('Auth Token is NOT valid');
+		   //  			return false;
+		   //  		}
+				})();
 
-			// Validate the user's ID
-			var uid = $cookieStore.get('uid');
-			var sid = parseInt(toState.id);
-			var validateUserID = (function() {
-				return (uid === sid) ? true : false;
-				// if (uid === sid) {
-				// 	console.log('User ID is valid');
-				// 	return true;
-				// } else {
-				// 	console.log('User ID is NOT valid');
-				// 	return false;
-				// }
-			})();
-			
-			// Restrict access if authorization is required from state data (defined in module config files)
-			if (next.data.authRequired) {
+				// Validate the user's ID
+				var uid = $cookieStore.get('uid');
+				var sid = parseInt(toState.id);
+				var validateUserID = (function() {
+					return (uid === sid) ? true : false;
+					// if (uid === sid) {
+					// 	console.log('User ID is valid');
+					// 	return true;
+					// } else {
+					// 	console.log('User ID is NOT valid');
+					// 	return false;
+					// }
+				})();
+				
+				// Restrict access if authorization is required from state data (defined in module config files)
 				if (validateAuthToken && validateUserID === false) {
 					event.preventDefault();
 					if (Auth.isLoggedIn() === true) {
@@ -68,9 +68,8 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 						alertService.showAlert(AUTH_EVENTS.notAuthenticated, 'alert-danger');
 					}
 				}	
-			}
-
-    	});
+	    	});
+		}
 	});
 	
 }
