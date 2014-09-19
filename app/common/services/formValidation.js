@@ -9,7 +9,7 @@ var FormValidation = function() {
 	this.lettersOnly = /^[a-zA-Z]+$/;
 	this.phoneRegex = /^\(?\+?\d?\)?\s?\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
 	this.postalCodeRegex = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
-	this.textAreaRegex = /^([\w\d \-_.,;:!?"'@#$%&/\(\)]\s?)*$/;
+	this.textAreaRegex = /^([\w\d \-_.,;:!?"'@#$%&/\(\)\n]\s?)*$/;
 	this.websiteRegex = /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 	this.zipCodeRegex = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
 

@@ -233,19 +233,6 @@ a {
 span.edit {
     color: red;
 }
-.main-content {
-    .content-header {
-        .clearfix();
-        h1 {
-            float: left;
-        }
-        .content-header-buttons {
-            float: right;
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
-    }
-}
 
 
 /* ==========================================================================
@@ -749,6 +736,35 @@ p.no-results {
     -o-transform: scale(-1, 1);
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1);
+}
+.loading-spinner {
+    font-size: 150px;
+    height: 150px;
+    width: 150px;
+    line-height: 120px;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    opacity: 0.3;
+    @-webkit-keyframes miniSpinner {
+        from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        to { 
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    &:before {
+        position: absolute;
+        left: 0px; right: -1px;
+        font-family: "taliflo";
+        content: "\e000";
+        .animation(@name: miniSpinner, @duration: 1s, @timing-function: linear, @delay: 0s, @iteration: infinite, @direction: normal);
+    }
 }
 
 

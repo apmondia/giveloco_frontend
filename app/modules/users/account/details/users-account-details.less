@@ -72,6 +72,7 @@ body.account.details {
 				min-height: 200px;
 				.user-profile-picture {
 					margin-top: 40px;
+					overflow: hidden;
 					img {
 						width: 100%;
 						border-radius: 5px;
@@ -81,6 +82,8 @@ body.account.details {
 		    @media @breakpoint-md {
 		    	.user-profile-picture {
 					margin-top: 39px;
+					height: 200px;
+					overflow: hidden;
 		    	}
 		    }
 		}
@@ -190,10 +193,11 @@ body.account.details {
 			}
 		}
 		ul.file-uploads {
-			padding: 0px;
+			width: 100%;
+			padding: 0 15px 0 0;
 			margin: 0px;
-			bottom: 0px;
-			position: relative;
+			bottom: 68px;
+			position: absolute;
 			z-index: 3;
 			.animated();
 		    &.ng-enter {
@@ -204,8 +208,9 @@ body.account.details {
 		    }
 		    li {
 		    	list-style: none;
+		    	border-top: solid 1px #eee;
 		    	.file-actions {
-		    		margin-top: -57px;
+		    		margin-top: 0px;
 					padding: 5px;
 					border-radius: 0 0 5px 5px;
 					background:url("./images/whites/white75.png");

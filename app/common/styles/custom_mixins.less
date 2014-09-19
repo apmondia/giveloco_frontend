@@ -77,3 +77,10 @@
   -o-transition: @property @duration @function @delay;
   transition: @property @duration @function @delay;
 }
+
+.animation(@name, @duration: 0.5s, @timing-function, @delay, @iteration, @direction) {
+  -webkit-animation: @name @duration @timing-function @delay @iteration @direction;
+  -moz-animation: @name @duration @timing-function @delay @iteration @direction;
+  -o-animation: @name @duration @timing-function @delay @iteration @direction;
+  animation: @name @duration @timing-function @delay @iteration @direction;
+}

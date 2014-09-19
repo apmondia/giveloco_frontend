@@ -1,7 +1,7 @@
 /*jshint camelcase: false */
 'use strict';
 
-function UsersAccountDetailsEditCtrl($rootScope, $scope, Auth, formValidation, regions, USER_EVENTS, alertService) {
+function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth, formValidation, regions, USER_EVENTS, alertService) {
 
 	var user = $scope.user;
 
@@ -104,8 +104,11 @@ function UsersAccountDetailsEditCtrl($rootScope, $scope, Auth, formValidation, r
 		updateSuccess = function() {
 			localStorage.setItem('uname', userData.first_name); // Sets the new username for use around the site
 			$rootScope.$broadcast('user.data.changed'); // Updates username on the fly via MainCtrl
-			alertService.showAlert(USER_EVENTS.accountUpdateSuccess, 'alert-success');
 			$scope.countries();
+			alertService.showAlert(USER_EVENTS.accountUpdateSuccess, 'alert-success');
+			$timeout(function() {
+				location.reload();
+			}, 2000);
 		},
 		updateError = function() {
 			alertService.showAlert(USER_EVENTS.accountUpdateFailure, 'alert-danger');
@@ -126,5 +129,5 @@ function UsersAccountDetailsEditCtrl($rootScope, $scope, Auth, formValidation, r
 
 }
 
-UsersAccountDetailsEditCtrl.$inject = ['$rootScope', '$scope', 'Auth', 'formValidation', 'regions', 'USER_EVENTS', 'alertService'];
+UsersAccountDetailsEditCtrl.$inject = ['$rootScope', '$scope', '$timeout', '$state', 'Auth', 'formValidation', 'regions', 'USER_EVENTS', 'alertService'];
 module.exports = UsersAccountDetailsEditCtrl;
