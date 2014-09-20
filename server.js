@@ -1,28 +1,14 @@
-// var express = require("express");
-// var logfmt = require("logfmt");
-// var app = express();
-
-// app.use(logfmt.requestLogger());
-
-// app.get('/', function(req, res) {
-//   res.send('Hello World!');
-// });
-
-// var port = Number(process.env.PORT || 5000);
-// app.listen(port, function() {
-//   console.log("Listening on " + port);
-// });
-var gzippo = require('gzippo');
-var express = require('express');
+var express = require("express");
 var logfmt = require("logfmt");
 var app = express();
 
-
 app.use(logfmt.requestLogger());
-app.use(express.logger('dev'));
+
+app.get('/', function(req, res) {
+  res.send('./dist');
+});
 
 var port = Number(process.env.PORT || 5000);
-app.use(gzippo.staticGzip("" + './dist' + "/index.html"));
 app.listen(port, function() {
-	console.log("Listening on " + port);
+  console.log("Listening on " + port);
 });
