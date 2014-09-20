@@ -118,8 +118,8 @@ gulp.task('devServer', function() {
         return [ (function() {
             var url = require('url');
             var proxy = require('proxy-middleware');
-            // var options = url.parse('http://api-dev.taliflo.com/');
-            var options = url.parse('http://localhost:3000/');
+            var options = url.parse('http://api-dev.taliflo.com/');
+            // var options = url.parse('http://localhost:3000/');
             options.route = '/api';
             return proxy(options);
         })() ];
@@ -214,6 +214,41 @@ gulp.task('bundle-prod', function() {
     return rebundle()
 });
 
+gulp.task('heroku:bundle:dev', function() {
+    var bundler = watchify(filePath.browserify.DEVsrc);
+
+    bundler.on('update', rebundle)
+
+    function rebundle () {
+        return bundler.bundle({ debug: true })
+            .pipe(source('bundle.js'))
+            .pipe(buffer())
+            .pipe(streamify(uglify()))
+            .pipe(sourcemaps.write())
+            .pipe(gulp.dest(filePath.build.dest))
+            .pipe(connect.reload());
+    }
+
+    return rebundle()
+});
+
+gulp.task('heroku:bundle:prod', function() {
+    var bundler = watchify(filePath.browserify.PRODsrc);
+
+    bundler.on('update', rebundle)
+
+    function rebundle () {
+        return bundler.bundle({ debug: true })
+            .pipe(source('bundle.js'))
+            .pipe(buffer())
+            .pipe(streamify(uglify()))
+            .pipe(gulp.dest(filePath.build.dest))
+            .pipe(connect.reload());
+    }
+
+    return rebundle()
+});
+
 
 // =======================================================================
 // Styles Task
@@ -237,7 +272,14 @@ gulp.task('styles-prod', function () {
         .pipe(minifyCSS())
         .pipe(gulp.dest(filePath.build.dest))
         .on("error", handleError)
-        .pipe(notify({ message: 'Styles task complete' }))
+        .pipe(notify({ message: 'Styles task complete' }));
+});
+
+gulp.task('heroku:styles', function () {
+    return gulp.src(filePath.styles.src)
+        .pipe(less())
+        .pipe(minifyCSS())
+        .pipe(gulp.dest(filePath.build.dest));
 });
 
 
@@ -252,6 +294,12 @@ gulp.task('images', function() {
         .pipe(connect.reload());
 });
 
+gulp.task('heroku:images', function() {
+    return gulp.src(filePath.images.src)
+        .pipe(gulp.dest(filePath.images.dest))
+        .pipe(connect.reload());
+});
+
 
 // =======================================================================
 // Icons Task
@@ -261,6 +309,12 @@ gulp.task('icons', function() {
         .on("error", handleError)
         .pipe(gulp.dest(filePath.icons.dest))
         .pipe(notify({ message: 'Icons copied' }))
+        .pipe(connect.reload());
+});
+
+gulp.task('heroku:icons', function() {
+    return gulp.src(filePath.icons.src)
+        .pipe(gulp.dest(filePath.icons.dest))
         .pipe(connect.reload());
 });
 
@@ -277,6 +331,13 @@ gulp.task('vendorJS', function () {
         .pipe(notify({ message: 'VendorJS task complete' }))
 });
 
+gulp.task('heroku:vendorJS', function () {
+    return gulp.src(filePath.vendorJS.src)
+        .pipe(concat("vendor.js"))
+        .pipe(uglify())
+        .pipe(gulp.dest(filePath.build.dest))
+});
+
 
 // =======================================================================
 // Vendor CSS Task
@@ -291,6 +352,14 @@ gulp.task('vendorCSS', function () {
         .pipe(connect.reload());
 });
 
+gulp.task('heroku:vendorCSS', function () {
+    return gulp.src(filePath.vendorCSS.src)
+        .pipe(concat("vendor.css"))
+        .pipe(minifyCSS())
+        .pipe(gulp.dest(filePath.build.dest))
+        .pipe(connect.reload());
+});
+
 
 // =======================================================================
 // Copy index.html
@@ -302,6 +371,12 @@ gulp.task('copyIndex', function () {
         .pipe(connect.reload());
 });
 
+gulp.task('heroku:copyIndex', function () {
+    return gulp.src(filePath.copyIndex.src)
+        .pipe(gulp.dest(filePath.build.dest))
+        .pipe(connect.reload());
+});
+
 
 // =======================================================================
 // Copy Favicon
@@ -310,6 +385,11 @@ gulp.task('copyFavicon', function () {
     return gulp.src(filePath.copyFavicon.src)
         .pipe(gulp.dest(filePath.build.dest))
         .pipe(notify({ message: 'favicon successfully copied' }));
+});
+
+gulp.task('heroku:copyFavicon', function () {
+    return gulp.src(filePath.copyFavicon.src)
+        .pipe(gulp.dest(filePath.build.dest));
 });
 
 
@@ -363,8 +443,26 @@ gulp.task('build', function(callback) {
     );
 });
 
+// Heroku Dev Build
+gulp.task('heroku:dev', function(callback) {
+    runSequence(
+        ['clean-full'],
+        ['heroku:bundle:dev', 'heroku:styles', 'heroku:images', 'heroku:icons', 'heroku:vendorJS', 'heroku:vendorCSS', 'heroku:copyIndex', 'heroku:copyFavicon'],
+        ['devServer'],
+        callback
+    );
+});
+
+// Heroku Prod Build
+gulp.task('heroku:prod', function(callback) {
+    runSequence(
+        ['clean-full'],
+        ['heroku:bundle:prod', 'heroku:styles', 'heroku:images', 'heroku:icons', 'heroku:vendorJS', 'heroku:vendorCSS', 'heroku:copyIndex', 'heroku:copyFavicon'],
+        ['prodServer'],
+        callback
+    );
+});
+
 
 gulp.task('default',['build-dev']); 
 gulp.task('prod',['build-prod']);
-gulp.task('heroku:dev',['build']);
-gulp.task('heroku:prod',['build-prod']); 
