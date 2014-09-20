@@ -12,7 +12,7 @@
     "node": "0.10.32"
   },
   "scripts": {
-    "postinstall": "bower install && gulp heroku:dev"
+    "start": "node server.js"
   },
   "browserify": {
     "transform": [
