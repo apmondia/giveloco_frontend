@@ -1,6 +1,6 @@
 'use strict';
 
-var ApiConfig = function($cookieStore) {
+var apiConfig = function($cookieStore) {
 	
 /* =======================================================================
 	Taliflo API Configuration
@@ -25,5 +25,5 @@ var ApiConfig = function($cookieStore) {
 	return this;
 };
 
-ApiConfig.$inject = ['$cookieStore'];
-module.exports = ApiConfig;
+apiConfig.$inject = ['$cookieStore'];
+module.exports = apiConfig;
