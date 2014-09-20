@@ -365,4 +365,6 @@ gulp.task('build', function(callback) {
 
 
 gulp.task('default',['build-dev']); 
-gulp.task('prod',['build-prod']); 
+gulp.task('prod',['build-prod']);
+gulp.task('heroku:dev',['build']);
+gulp.task('heroku:prod',['build-prod']); 

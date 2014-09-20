@@ -49,7 +49,6 @@
     "watchify": "^0.10.2"
   },
   "scripts": {
-    "start": "node app",
-    "postinstall": "bower install"
+    "postinstall": "bower install && gulp heroku:dev"
   }
 }
