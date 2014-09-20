@@ -11,7 +11,7 @@
 			</div>
 			<div class="website info">
 				<i class="icon icon-link"></i>
-				<a href="{{user.website}}" class="details website" target="_blank">{{user.website || "www.yourwebsite.com"}}</a>
+				<a href="{{user.website}}" class="details website" target="_blank">{{shortURL || "www.yourwebsite.com"}}</a>
 			</div>
 			<div class="address info">
 				<i class="icon icon-mark-map"></i>
@@ -34,7 +34,12 @@
 			</div>
 			<div class="user-actions">
 				<div class="action-buttons">
-					<a ui-sref="account.details.edit" class="edit-profile btn button button-secondary" ng-if="currentUser.id === user.id"><i class="icon icon-pencil"></i>Edit Profile</a>
+					<ul class="my-profile-buttons" ng-if="currentUser.id === user.id">
+						<li><a ui-sref="account.details.edit" class="edit-profile btn button button-secondary"><i class="icon icon-pencil"></i>Edit Profile</a></li>
+					</ul>
+					<ul class="redeem-buttons" ng-if="redeemCredits()">
+						<li><a ui-sref="#" class="donate btn button button-secondary"><i class="icon icon-shopping-cart"></i>Redeem Credits</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -51,7 +56,7 @@
 			</div>
 		</div>
 		
-	    <div class="user-description">{{user.description}}</div>
+	    <div class="user-description" ng-bind-html="user.description | linky:'_blank'"></div>
 
 	    <div users-profile-business-supported-causes></div>
 	</div>

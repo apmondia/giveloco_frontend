@@ -24,14 +24,16 @@ body.users.profile {
 			.contact-info {
 				margin: 15px 0;
 				overflow: hidden;
-				background-color: #f7f7f7;
-				border: solid 10px #f7f7f7;
+				background-color: @lightest-grey;
+				padding-bottom: 10px;
+				border: solid 1px #eee;
 				border-radius: 5px;
 				.contact-info-title {
 					margin: 0 0 15px 0;
-					padding: 5px 0 15px 0;
-					border-bottom: solid 1px #ccc;
+					padding: 15px 0;
+					border-bottom: solid 1px #eee;
 					text-align: center;
+					background-color: #fff;
 					.title {
 						margin: 0;
 						text-transform: uppercase;
@@ -42,6 +44,8 @@ body.users.profile {
 					.clearfix();
 					margin-bottom: 15px;
 					text-align: center;
+					border-left: solid 10px @lightest-grey;
+					border-right: solid 10px @lightest-grey;
 					.icon {
 						display: block;
 						color: #999;
@@ -93,6 +97,14 @@ body.users.profile {
 				.user-actions {
 					float: right;
 					margin-top: 25px;
+					ul {
+						margin: 0;
+						li {
+							float: left;
+							margin: 0;
+							list-style: none;
+						}
+					}
 				}
 			}
 			.meta {
@@ -129,7 +141,7 @@ body.users.profile {
 							padding: 2px 7px;
 							border-radius: 3px;
 							color: #fff;
-							background-color: @brand-teal;
+							background-color: @brand-purple;
 						}
 					}
 				}
@@ -140,6 +152,11 @@ body.users.profile {
 		}
 		&.my-profile {
 			
+		}
+		.supporters {
+			.supporters-title {
+				margin: 30px 0 20px;
+			}
 		}
 	}
 }

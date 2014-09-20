@@ -6,13 +6,14 @@
 				<div class="grid-item">
 					<a ui-sref="profile.cause({id:user.id})" title="{{user.company_name}}">
 						<div class="profile-picture"><img ng-src="{{user.profile_picture}}"></div>
-						<div class="company-name">{{user.company_name | characters:25}}</div>
+						<div class="company-name">{{user.company_name | characters:20}}</div>
 					</a>
 					<div class="user-summary">{{user.summary | characters:140}}</div>
 					<div class="supporters">{{user.supporters.length}} Supporting Businesses</div>
 				</div>
 			</div>
 		</div>
+		<div ajax-spinner class="spinner" ng-show="loading"></div>
 		<div class="register-cause">
 			<a class="btn button button-primary" ui-sref="auth.signup.cause">Register Your Cause</a>
 		</div>

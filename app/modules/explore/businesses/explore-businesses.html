@@ -12,9 +12,9 @@
 		<div class="page-content">
 			<div dir-paginate="user in businesses | filter: search | itemsPerPage: 12" class="business grid block">
 		    	<div class="grid-item">
-			    	<a ui-sref="profile.business({id:user.id, role:user.role})" title="{{user.company_name}}">
+			    	<a ui-sref="profile.business({id:user.id})" title="{{user.company_name}}">
 						<div class="profile-picture"><img ng-src="{{user.profile_picture}}"></div>
-						<div class="company-name">{{user.company_name | characters:25}}</div>
+						<div class="company-name">{{user.company_name | characters:20}}</div>
 					</a>
 					<div class="user-summary">{{user.summary | characters:140}}</div>
 					<div class="supporters">{{user.supported_causes.length}} Cause<span ng-if="user.supported_causes.length != 1">s</span> Supported</div>

@@ -44,8 +44,17 @@ body.account.details {
 			}
 		}
 	}
-	.content-area {
+	.content-header {
 		.clearfix();
+		.content-title {
+			float: left;
+		}
+		.user-actions {
+			float: right;
+			margin-top: 25px;
+		}
+	}
+	.content-area {
 		.left-side {
 			.make-xs-column(12);
 			.make-sm-column(7);
@@ -113,6 +122,17 @@ body.account.details {
 			.field-data {
 				text-align: right;
 			}
+			&.description {
+				.field-label {
+					width: 100%;
+					margin-bottom: 10px;
+					border-bottom: solid 1px #eee;
+					border-right: none;
+				}
+				.field-data {
+					text-align: left;
+				}
+			}
 		}
 	}
 	.users-account-details-edit {
@@ -146,6 +166,12 @@ body.account.details {
 				}
 				&.last-name {
 					margin-left: 2%;
+				}
+			}
+			&.company-description {
+				textarea {
+					height: 250px;
+					resize: vertical;
 				}
 			}
 			&.summary {

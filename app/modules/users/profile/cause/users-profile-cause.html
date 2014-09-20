@@ -1,6 +1,66 @@
-<div class="users-profile cause module-view">
-	<h1>{{user.company_name}}</h1>
-    <p>{{user.description}}</p>
-    <div>{{user.id}}</div>
-    {{user.type}}
+<div class="users-profile cause module-view" ng-class="{'my-profile': user.id === currentUser.id}">
+	<div class="sidebar">
+		<div class="user-profile-picture">
+			<div class="default-image" ng-if="user.images.profile_picture.original === ''"><i class="icon icon-photos-pictures"></i></div>
+			<img ng-src="{{userImage}}" ng-if="user.images.profile_picture.original !== ''" />
+		</div>
+
+		<div class="contact-info">
+			<div class="contact-info-title">
+				<h5 class="title">Contact Info</h5>
+			</div>
+			<div class="website info">
+				<i class="icon icon-link"></i>
+				<a href="{{user.website}}" class="details website" target="_blank">{{shortURL || "www.yourwebsite.com"}}</a>
+			</div>
+			<div class="address info">
+				<i class="icon icon-mark-map"></i>
+				<div class="details address">
+					<div class="street">{{user.street_address || "Street Address"}}</div>
+					<div class="city-state">{{user.city || "City"}}, {{user.state || "State"}}</div>
+				</div>
+			</div>
+			<div class="phone info">
+				<i class="icon icon-telephone"></i>
+				<div class="details phone">{{user.phone || "Phone Number"}}</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="main-content">
+		<div class="content-header">
+			<div class="content-title">
+				<h1>{{user.company_name}}</h1>
+			</div>
+			<div class="user-actions">
+				<div class="action-buttons">
+					<ul class="my-profile-buttons" ng-if="currentUser.id === user.id">
+						<li><a ui-sref="account.details.edit" class="edit-profile btn button button-secondary"><i class="icon icon-pencil"></i>Edit Profile</a></li>
+					</ul>
+					<ul class="donate-buttons" ng-if="currentUser.role === 'individual' && currentUser.id !== user.id">
+						<li><a ui-sref="#" class="donate btn button button-primary"><i class="icon icon-donate"></i>Donate Now</a></li>
+					</ul>
+					<ul class="pledge-buttons" ng-if="currentUser.role === 'business' && currentUser.id !== user.id">
+						<li><a ui-sref="#" class="pledge btn button button-secondary"><i class="icon icon-donate"></i>Pledge</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="meta">
+			<div class="user-role">
+				<i class="icon icon-ribbon"></i>
+				<span>{{user.role}}</span>
+			</div>
+			<div class="tags" ng-if="user.tags.length > 0">
+				<ul class="tagList">
+					<li class="list-tag" ng-repeat="tag in user.tags"><a class="tag">#{{tag}}</a></li>
+				</ul>
+			</div>
+		</div>
+		
+	    <div class="user-description" ng-bind-html="user.description | linky:'_blank'"></div>
+
+	    <div users-profile-cause-supporting-businesses></div>
+	</div>
 </div>

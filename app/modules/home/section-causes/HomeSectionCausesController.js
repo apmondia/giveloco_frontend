@@ -4,6 +4,8 @@ function HomeSectionCausesCtrl($rootScope, $scope, Restangular) {
 	// Get all users from server
     var users = Restangular.all('users');
 
+    $scope.loading = true;
+
     // Populate List of Featured Causes
     users.getList().then(function(users) {
         $scope.featuredCauses = [];
@@ -13,6 +15,7 @@ function HomeSectionCausesCtrl($rootScope, $scope, Restangular) {
                 $scope.featuredCauses.push(user);
             }
         });
+        $scope.loading = false;
     });
 	
 }

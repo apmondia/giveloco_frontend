@@ -1,8 +1,10 @@
 <div class="users-account-details">
 	<div class="content-header">
-		<h1 ng-if="$state.current.name == 'account.details.view'">Account Details</h1>
-		<h1 ng-if="$state.current.name == 'account.details.edit'"><span class="edit">Editing</span> Account Details</h1>
-		<div class="content-header-buttons">
+		<div class="content-title">
+			<h1 ng-if="$state.current.name == 'account.details.view'">{{currentUser.company_name || currentUser.first_name + ' ' + currentUser.last_name}}</h1>
+			<h1 ng-if="$state.current.name == 'account.details.edit'"><span class="edit">Editing</span> {{currentUser.company_name || currentUser.first_name + ' ' + currentUser.last_name}}</h1>
+		</div>
+		<div class="user-actions">
 			<a class="btn button button-secondary edit-buttons" ui-sref="profile.{{currentUser.role}}({id:currentUser.id})"><i class="icon icon-user-circle-outline"></i>My Profile</a>
 			<a class="btn button button-secondary edit-buttons" ui-sref="account.details.edit" ng-if="$state.current.name == 'account.details.view'"><i class="icon icon-pencil"></i>Edit Details</a>
     		<a class="btn button button-secondary edit-buttons" ui-sref="account.details.view" ng-if="$state.current.name == 'account.details.edit'"><i class="icon icon-eye-view"></i>View Details</a>

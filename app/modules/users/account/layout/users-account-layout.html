@@ -10,9 +10,9 @@
 			<div class="output address" ng-if="$state.current.name.indexOf('account.details') != -1">
 				<i class="icon icon-mark-map"></i>
 				<div class="address_output">
-					<div class="street_address">{{user.street_address || "Street Address"}}</div>
-					<div class="city_state">{{user.city || "City"}}, {{user.state.code || "State / Province"}}</div>
-					<div class="complete_country_zip">{{user.country.name || "Country"}} {{user.zip || "A1B 2C3"}}</div>
+					<div class="street_address">{{currentUser.street_address || "Street Address"}}</div>
+					<div class="city_state">{{currentUser.city || "City"}}, {{chosenState() || "State / Province"}}</div>
+					<div class="complete_country_zip">{{chosenCountry() || "Country"}} {{currentUser.zip || "A1B 2C3"}}</div>
 				</div>
 			</div>
 		</div>
