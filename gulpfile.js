@@ -180,6 +180,7 @@ gulp.task('bundle-dev', function() {
 
     function rebundle () {
         return bundler.bundle({ debug: true })
+            .pipe(sourcemaps.init())
             .pipe(source('bundle.js'))
             .on("error", handleError)
             .pipe(buffer())
@@ -224,7 +225,6 @@ gulp.task('heroku:bundle:dev', function() {
             .pipe(source('bundle.js'))
             .pipe(buffer())
             .pipe(streamify(uglify()))
-            .pipe(sourcemaps.write())
             .pipe(gulp.dest(filePath.build.dest))
             .pipe(connect.reload());
     }
