@@ -185,7 +185,7 @@ gulp.task('bundle-dev', function() {
             .pipe(buffer())
             // Comment out the "Uglify" task if you don't want to minify your app in your dev environment. 
             // However, it can be useful to minify your app periodically to debug any problems with minification.
-            // .pipe(streamify(uglify()))
+            .pipe(streamify(uglify()))
             .pipe(sourcemaps.write())
             .pipe(gulp.dest(filePath.build.dest))
             .pipe(notify({ message: 'Browserify task complete' }))
@@ -215,7 +215,7 @@ gulp.task('bundle-prod', function() {
 });
 
 gulp.task('heroku:bundle:dev', function() {
-    var bundler = watchify(filePath.browserify.DEVsrc);
+    var bundler = watchify('./appDev.js');
 
     bundler.on('update', rebundle)
 
