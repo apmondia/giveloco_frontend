@@ -215,7 +215,7 @@ gulp.task('bundle-prod', function() {
 });
 
 gulp.task('heroku:bundle:dev', function() {
-    var bundler = watchify('./appDev.js');
+    var bundler = watchify(filePath.browserify.DEVsrc);
 
     bundler.on('update', rebundle)
 
