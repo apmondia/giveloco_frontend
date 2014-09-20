@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="taliflo">
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, maximum-scale = 1.0">
+    <meta name="fragment" content="!" />
+
+    <title ng-bind="'Taliflo - ' + pageTitle"></title>
+    <meta name="description" content="{{pageDescription}}">
+
+    <link rel="icon" type="image/png" href="app/favicon.png">
+    <link href="/vendor.css" rel="stylesheet">
+    <link href="/app.css" rel="stylesheet">
+  </head>
+
+  <body ng-class="bodyClasses" ng-controller="MainCtrl" flow-prevent-drop>
+
+    <div class="page">
+      <common-header></common-header>
+
+      <div system-notifications></div>
+      
+      <section class="main">
+        <div ui-view autoscroll="false" id="ui-view"></div>
+      </section>
+
+      <common-footer></common-footer>
+    </div>
+
+    <script src="vendor.js"></script>
+    <script src="bundle.js"></script>
+  </body>
+</html>
