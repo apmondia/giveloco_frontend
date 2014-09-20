@@ -11,6 +11,9 @@
   "engines": {
     "node": "0.10.32"
   },
+  "scripts": {
+    "postinstall": "bower install && gulp heroku:dev"
+  },
   "browserify": {
     "transform": [
       "html2js-browserify",
@@ -49,8 +52,5 @@
     "vinyl-buffer": "^0.0.0",
     "vinyl-source-stream": "^0.1.1",
     "watchify": "^0.10.2"
-  },
-  "scripts": {
-    "postinstall": "bower install && gulp heroku:dev"
   }
 }
