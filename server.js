@@ -1,29 +1,15 @@
 var express = require('express');
+var url = require('url');
+var proxy = require('proxy-middleware');
 var server = express();
 
 server.set('port', (process.env.PORT || 5000));
 server.use(express.static(__dirname + '/dist'));
 
-server.get('/', function(request, response) {
-  response.send('Hello World!');
-});
-
 server.listen(server.get('port'), function() {
-  console.log("Node app is running at localhost:" + app.get('port'));
+  console.log("Node app is running at localhost:" + server.get('port'));
 });
 
-// To be implemented...
-
-// var connect = require('connect');
-// var url = require('url');
-// var proxy = require('proxy-middleware');
-
-// var app = connect();
-// app.use('/api', proxy(url.parse('https://example.com/endpoint')));
-
-// var connect = require('connect');
-// var url = require('url');
-// var proxy = require('proxy-middleware');
-
-// var app = connect();
-// app.use('/api', proxy(url.parse('http://api-dev.taliflo.com/')));
+// Proxy settings for connecting to API
+// process.env.API_URL is an environment variable set on heroku
+server.use('/api', proxy(url.parse(process.env.API_URL)));
