@@ -5,9 +5,9 @@ var path = require('path');
 
 app.use(logfmt.requestLogger());
 
-// app.get('/', function(req, res) {
-//   res.send('./dist');
-// });
+app.get('/', function(req, res) {
+  res.send('./dist');
+});
 
 app.configure(function(){
     app.use(express.bodyParser());
