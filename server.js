@@ -21,9 +21,9 @@ server.listen(server.get('port'), function() {
 // var app = connect();
 // app.use('/api', proxy(url.parse('https://example.com/endpoint')));
 
-var connect = require('connect');
-var url = require('url');
-var proxy = require('proxy-middleware');
+// var connect = require('connect');
+// var url = require('url');
+// var proxy = require('proxy-middleware');
 
-var app = connect();
-app.use('/api', proxy(url.parse('http://api-dev.taliflo.com/')));
+// var app = connect();
+// app.use('/api', proxy(url.parse('http://api-dev.taliflo.com/')));
