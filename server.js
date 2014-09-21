@@ -26,7 +26,8 @@ var app = express();
 app.use(logfmt.requestLogger());
 
 app.get('/', function(req, res) {
-  res.send('./dist');
+  // res.send('./dist');
+  express.static(__dirname + './dist');
 });
 
 var port = Number(process.env.PORT || 5000);

@@ -12,8 +12,7 @@
     "node": "0.10.32"
   },
   "scripts": {
-    "start": "node server.js",
-    "postinstall": "bower cache clean && bower install"
+    "start": "node server.js"
   },
   "browserify": {
     "transform": [
