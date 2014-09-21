@@ -1,20 +1,13 @@
-var express = require("express");
-var logfmt = require("logfmt");
+var express = require('express');
 var app = express();
-var path = require('path');
 
-app.use(logfmt.requestLogger());
+app.set('port', (process.env.PORT || 5000));
+app.use(express.static(__dirname + '/dist'));
 
-app.get('/', function(req, res) {
-  res.send('./dist');
+app.get('/', function(request, response) {
+  response.send('Hello World!');
 });
 
-app.configure(function(){
-    app.use(express.bodyParser());
-    app.use(express.static(path.join(__dirname, './dist')));
-});
-
-var port = Number(process.env.PORT || 5000);
-app.listen(port, function() {
-  console.log("Server started on " + port);
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'));
 });
