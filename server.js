@@ -2,6 +2,7 @@ var express = require('express');
 var url = require('url');
 var proxy = require('proxy-middleware');
 var server = express();
+var API_URL = process.env.API_URL || 'http://localhost:3000/';
 
 server.set('port', (process.env.PORT || 5000));
 server.use(express.static(__dirname + '/dist'));
@@ -11,5 +12,5 @@ server.listen(server.get('port'), function() {
 });
 
 // Proxy settings for connecting to API
-// process.env.API_URL is an environment variable set on heroku
-server.use('/api', proxy(url.parse(process.env.API_URL)));
+// process.env.API_URL is an environment variable set on Heroku
+server.use('/api', proxy(url.parse(API_URL)));

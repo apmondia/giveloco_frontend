@@ -26,7 +26,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 		},
 
 		logout: function() {
-			return $http.delete('user/logout').then(function() {
+			return $http.delete(apiConfig.API.paths.logout).then(function() {
 				$cookieStore.remove('auth_token');
 				$cookieStore.remove('uid');
 				localStorage.removeItem('uname');
