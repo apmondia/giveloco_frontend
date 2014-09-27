@@ -1,4 +1,3 @@
-/*jshint camelcase: false */
 'use strict';
 
 var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, alertService, apiConfig) {
@@ -6,7 +5,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 	var authService = {
 
 		signup: function(data) {
-			return $http.post(apiConfig.API.paths.signup, {user:data}).then(function(user){
+			return $http.post(apiConfig.API.user.signup, {user:data}).then(function(user){
 				$cookieStore.put('uid', user.data.uid);
 				$cookieStore.put('auth_token', user.data.auth_token);
 				return user;
@@ -14,7 +13,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 		},
 
 		login: function(credentials) {
-			return $http.post(apiConfig.API.paths.login, credentials).then(function(user){
+			return $http.post(apiConfig.API.user.login, credentials).then(function(user){
 				$cookieStore.put('uid', user.data.uid);
 				$cookieStore.put('auth_token', user.data.auth_token);
 				return user;
@@ -26,7 +25,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 		},
 
 		logout: function() {
-			return $http.delete(apiConfig.API.paths.logout).then(function() {
+			return $http.delete(apiConfig.API.user.logout).then(function() {
 				$cookieStore.remove('auth_token');
 				$cookieStore.remove('uid');
 				localStorage.removeItem('uname');
@@ -48,7 +47,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 	    updatePassword: function(data) {
 			return $http({
 						method: 'PUT', 
-						url: apiConfig.API.paths.updatePassword, 
+						url: apiConfig.API.user.updatePassword, 
 						data: {user: data}
 					}).then(function(user) {
 						console.log(user);

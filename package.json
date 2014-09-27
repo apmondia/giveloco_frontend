@@ -29,7 +29,6 @@
     "protractor": "^1.2.0"
   },
   "dependencies": {
-    "braintree": "^1.18.1",
     "browserify": "^4.1.11",
     "browserify-shim": "^3.6.0",
     "connect": "^3.2.0",

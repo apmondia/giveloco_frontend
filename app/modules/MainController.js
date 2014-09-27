@@ -53,7 +53,13 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
         });
         $scope.loading = false;
     });
-	
+
+
+/* =======================================================================
+	Braintree Configuration
+======================================================================= */
+	var braintree = Braintree.create('MIIBCgKCAQEApqjiQ/+tjwXip1IEUxVb+rFsNQYbtDBwvldS6OkTj1SUwPprrg9Tf4FghLsQzgnQSq22Iyhl1GEToY66Z2xY4uZnnjQ5y+q+UhKNZX6dsUt2FkDbeGq3eqNBqiinEPMZXGqJaDWF/YTm4XwaeFx3hdJiLicHmxTUJNDBiN46IY4OF01eb2RA4dRlWV8VC6MCHqdB1KiUSQbCPGQuj3Dx34tDkTsUp32r51WD+gDFWWwwNn9RiY57Orm+8XE957v3Bb/f0MjvMoNcBZ1Ed1f3WpFkb2MGeXNaQFQE62u1/XxbLPJEgCc0+A2lofodhnDTTvISiqOUhWayVRJD4r/DIQIDAQAB');
+
 }
 
 // $inject is necessary for minification. See http://bit.ly/1lNICde for explanation.

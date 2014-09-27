@@ -8,7 +8,7 @@
 		</div>
 		<div class="right-side">
 			<div class="balance-label">Current Balance: </div>
-			<div class="user-balance">{{user.balance | currency: ''}}<span>credits</span></div>
+			<div class="user-balance">{{user.balance | customCurrency: ''}}<span>credits</span></div>
 		</div>
 	</div>
 	<div class="transactions">
@@ -17,9 +17,8 @@
 				<tr>
 					<th class="transaction-header date">Date</th>
 					<th class="transaction-header details">Taliflo Transactions</th>
-					<th class="transaction-header debit">Debit</th>
-					<th class="transaction-header credit">Credit</th>
-					<th class="transaction-header balance">Balance</th>
+					<th class="transaction-header amount">Amount</th>
+					<th class="transaction-header balance">Running Balance</th>
 					<th class="transaction-header status">Status</th>
 				</tr>
 			</thead>
@@ -27,8 +26,7 @@
 				<tr ng-if="transactions.length === 0">
 					<td class="transaction-field date">N/A</td>
 					<td class="transaction-field details">No Transactions</td>
-					<td class="transaction-field debit">N/A</td>
-					<td class="transaction-field credit">N/A</td>
+					<td class="transaction-field amount">N/A</td>
 					<td class="transaction-field balance">N/A</td>
 					<td class="transaction-field status">N/A</td>
 				</tr>
@@ -50,16 +48,28 @@
 						</div>
 						<div class="transaction_id"><span class="field-label">ID:</span> {{t.trans_id}}</div>
 					</td>
-					<td class="transaction-field debit">
-						<span ng-if="fromUserRoleAndTransType(t, 'business', 'pledge')">{{t.amount}}</span>
-						<span ng-if="fromUserRoleAndTransType(t, 'individual', 'redemption')">{{t.amount}}</span>
-						<span ng-if="toUserRoleAndTransType(t, 'cause', 'donation')">{{t.amount}}</span>
+					<td class="transaction-field amount">
+						<div ng-if="currentUserRoleIs('cause')">
+							<span ng-if="transTypeIs(t, 'donation')" class="debit">-{{t.amount | customCurrency: ''}}</span>
+							<span ng-if="transTypeIs(t, 'pledge')" class="credit">{{t.amount | customCurrency: ''}}</span>
+						</div>
+						<div ng-if="currentUserRoleIs('business')">
+							<span ng-if="transTypeIs(t, 'pledge')" class="debit">-{{t.amount | customCurrency: ''}}</span>
+							<span ng-if="transTypeIs(t, 'redemption')" class="credit">{{t.amount | customCurrency: ''}}</span>
+						</div>
+						<div ng-if="currentUserRoleIs('individual')">
+							<span ng-if="transTypeIs(t, 'redemption')" class="debit">-{{t.amount | customCurrency: ''}}</span>
+							<span ng-if="transTypeIs(t, 'donation')" class="credit">{{t.amount | customCurrency: ''}}</span>
+						</div>
 					</td>
-					<td class="transaction-field credit">
-						<span ng-if="fromUserRoleAndTransType(t, 'individual', 'donation')">{{t.amount}}</span>
-						<span ng-if="toUserRoleAndTransType(t, 'business', 'redemption')">{{t.amount}}</span>
+					<td class="transaction-field balance">
+						<div ng-if="t.from_user_id === currentUser.id">
+							{{t.from_user_balance | customCurrency: ''}}
+						</div>
+						<div ng-if="t.to_user_id === currentUser.id">
+							{{t.to_user_balance | customCurrency: ''}}
+						</div>
 					</td>
-					<td class="transaction-field balance"></td>
 					<td class="transaction-field status"><div class="status-color">{{t.status}}</div><div class="icon"></div></td>
 				</tr>
 				

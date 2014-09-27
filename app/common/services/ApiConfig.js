@@ -10,12 +10,16 @@ var apiConfig = function($cookieStore) {
 		userID = $cookieStore.get('uid');
 
 	this.API = {
-		paths: {
-			baseUrl: apiProxy + apiVersion,
+		baseUrl: apiProxy + apiVersion,
+		transaction: {
+			donation: apiProxy + '/transactions/donation',
+			pledge: apiProxy + '/transactions',
+			redemption: apiProxy + '/transactions'
+		},
+		user: {
 			login: apiProxy + '/user/login',
 			signup: apiProxy + '/user/signup',
 			logout: apiProxy + '/user/logout',
-			// updatePassword: apiProxy + '/user/password',
 			updatePassword: apiProxy + '/user/' + userID + '/change_password',
 			currentUser: apiProxy + apiVersion + '/users/' + userID,
 			uploadImage: apiProxy + apiVersion + '/users/' + userID + '/upload_image',

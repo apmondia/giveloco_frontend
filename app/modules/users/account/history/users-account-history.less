@@ -49,8 +49,7 @@ body.account.history {
 		}
 	}
 	.transactions {
-		.debit,
-		.credit,
+		.amount,
 		.balance, 
 		.status {
 			vertical-align: middle;
@@ -135,6 +134,12 @@ body.account.history {
 				&.details {
 					.transaction_id {
 
+					}
+				}
+				&.amount {
+					font-weight: bold;
+					.debit {
+						color: red;
 					}
 				}
 			}

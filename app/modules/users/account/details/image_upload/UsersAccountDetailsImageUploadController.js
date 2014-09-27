@@ -9,7 +9,7 @@ function UsersAccountDetailsImageUploadCtrl($rootScope, $scope, $cookies, apiCon
     var uid = $scope.currentUser.id;
 
 	var uploader = $scope.uploader = new FileUploader({
-        url: apiConfig.API.paths.uploadImage,
+        url: apiConfig.API.user.uploadImage,
         alias: 'profile_picture',
         queueLimit: 1,
         removeAfterUpload: true,

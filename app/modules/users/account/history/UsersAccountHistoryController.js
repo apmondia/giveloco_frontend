@@ -10,6 +10,11 @@ function UsersAccountHistoryCtrl($rootScope, $scope) {
 // =======================================================================
 //	View Configurations
 // =======================================================================
+	// Current User Role...
+	$scope.currentUserRoleIs = function(userRole) {
+		return ($scope.currentUser.role === userRole) ? true : false;
+	};
+
 	// From User Role...
 	$scope.fromUserRoleIs = function(t, userRole) {
 		return (t.from_user_role === userRole) ? true : false;
@@ -32,14 +37,6 @@ function UsersAccountHistoryCtrl($rootScope, $scope) {
 	};
 	$scope.transTypeIsNot = function(t, transType) {
 		return (t.trans_type !== transType) ? true : false;
-	};
-
-	// From and To User Role and Transaction Type
-	$scope.fromUserRoleAndTransType = function(t, userRole, transType) {
-		return ((t.from_user_role === userRole) && (t.trans_type === transType) && (t.from_user_id === $scope.currentUser.id)) ? true : false;
-	};
-	$scope.toUserRoleAndTransType = function(t, userRole, transType) {
-		return ((t.to_user_role === userRole) && (t.trans_type === transType) && (t.to_user_id === $scope.currentUser.id)) ? true : false;
 	};
 }
 

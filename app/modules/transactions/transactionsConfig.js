@@ -3,7 +3,6 @@
 function transactionRoutes($stateProvider) {
 
   var transaction = {
-      parent: 'user',
       name: 'transaction',
       abstract: true,
       url: '/transaction',
