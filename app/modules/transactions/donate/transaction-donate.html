@@ -1,119 +1,32 @@
 <div class="transaction-donate module-view">
-	<h1>Donate to {{cause.company_name}}</h1>
-    <form class="form" id="donationForm" name="donationForm" ng-submit="donate(donationForm.$valid)" novalidate autocomplete="off">
+	<h1>Donate to {{user.company_name}}</h1>
+    <form class="form" id="donationForm" name="donationForm" stripe-form="stripeCallBack" novalidate autocomplete="off">
 
-    	<div id="BraintreeDropin"></div>
-
-	    <div class="form-section basic-info left-side">
-			<div class="form-group amount" ng-class="{'invalid' : donationForm.amount.$invalid && donationForm.amount.$dirty, 'valid' : donationForm.amount.$valid && donationForm.amount.$dirty}" ng-if="userRoleIsNot('individual')">
+	    <div class="form-section basic-info">
+			<div class="form-group amount" ng-class="{'invalid' : donationForm.amount.$invalid && donationForm.amount.$dirty, 'valid' : donationForm.amount.$valid && donationForm.amount.$dirty}">
 				<label for="amount_name" class="inline">Donation Amount</label>
-				<input type="amount" name="amount" id="amount" class="form-control" placeholder="20.00" ng-model="donation.amount" required show-form-errors />
+				<input type="text" name="amount" id="amount" class="form-control" placeholder="20.00" ng-model="amount" required show-form-errors />
 				<p class="form-helper" ng-if="donationForm.amount.$dirty && donationForm.amount.$error.required && !donationForm.amount.$focused">You must add an amount to donate is required!</p>
 			</div>
-<!--
-			<div class="sub-section name">
-	            <div class="form-group first-name" ng-class="{'invalid' : donationForm.first_name.$invalid && donationForm.first_name.$dirty, 'valid' : donationForm.first_name.$valid && donationForm.first_name.$dirty}">
-	                <label for="first_name" class="inline">First Name</label>
-	                <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Given Name" ng-model="user.first_name" ng-pattern="nameRegex" maxlength="26" required show-form-errors auto-focus />
-	                <p class="form-helper" ng-if="donationForm.first_name.$error.pattern && !donationForm.first_name.$focused">Your name can only contain letters.</p>
-	                <p class="form-helper" ng-if="donationForm.first_name.$dirty && donationForm.first_name.$error.required && !donationForm.first_name.$focused">First Name is required!</p>
-	            </div>
-	            <div class="form-group last-name" ng-class="{'invalid' : donationForm.last_name.$invalid && donationForm.last_name.$dirty, 'valid' : donationForm.last_name.$valid && donationForm.last_name.$dirty}">
-	                <label for="last_name" class="inline">Last Name</label>
-	                <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Surname" ng-model="user.last_name" ng-pattern="nameRegex" maxlength="26" required show-form-errors />
-	                <p class="form-helper" ng-if="donationForm.last_name.$error.pattern && !donationForm.last_name.$focused">Your name can only contain letters.</p>
-	                <p class="form-helper" ng-if="donationForm.last_name.$dirty && donationForm.last_name.$error.required && !donationForm.last_name.$focused">Last Name is required!</p>
-	            </div>
-	        </div>
-
-			<div class="form-group company" ng-class="{'invalid' : donationForm.company.$invalid && donationForm.company.$dirty, 'valid' : donationForm.company.$valid && donationForm.company.$dirty}" ng-if="userRoleIsNot('individual')">
-				<label for="company_name" class="inline"><span ng-if="userRoleIs('cause')">Cause</span><span ng-if="userRoleIsNot('cause')">Company</span> Name</label>
-				<input type="company" name="company" id="company_name" class="form-control" placeholder="Organization or Cause name" ng-model="user.company_name" maxlength="50" ng-pattern="companyRegex" required show-form-errors />
-				<p class="form-helper" ng-if="donationForm.company.$error.pattern">This field only accepts letters and numbers</p>
-				<p class="form-helper" ng-if="donationForm.company.$dirty && donationForm.company.$error.required && !donationForm.company.$focused">Cause Name is required!</p>
-			</div>
-			
-			<div class="sub-section billing-info">
-				<div class="form-group email" ng-class="{'invalid' : donationForm.email.$invalid && donationForm.email.$dirty, 'valid' : donationForm.email.$valid && donationForm.email.$dirty}">
-					<label for="userEmail" class="inline">Email</label>
-					<input type="email" name="email" id="userEmail" class="form-control" placeholder="email@address.com" ng-model="user.email" ng-pattern="emailRegex" required show-form-errors />
-					<p class="form-helper" ng-if="donationForm.email.$error.pattern && !donationForm.email.$focused">Invalid Email Address</p>
-					<p class="form-helper" ng-if="donationForm.email.$dirty && donationForm.email.$error.required && !donationForm.email.$focused">Email Address is required!</p>
-				</div>
-
-				<div class="form-group phone" ng-class="{'invalid' : donationForm.phone.$invalid && donationForm.phone.$dirty, 'valid' : donationForm.phone.$valid && donationForm.phone.$dirty}" ng-if="userRoleIsNot('individual')">
-					<label for="userPhone" class="inline">Phone</label>
-					<input type="text" name="phone" id="userPhone" class="form-control" placeholder="604-321-1234" ng-model="user.phone" ng-pattern="phoneRegex" ng-change="formatNumber()" maxlength=14 show-form-errors />
-					<p class="form-helper" ng-if="donationForm.phone.$error.pattern && !donationForm.phone.$focused">Invalid Phone Number</p>
-					<p class="form-helper" ng-if="donationForm.phone.$dirty && donationForm.phone.$error.required && !donationForm.phone.$focused">A Phone Number is required so users can learn more about your organization</p>
-				</div>
-			</div>
 		</div>
-
-		<div class="form-section location-info" ng-if="userRoleIsNot('individual')">
-			<h4 class="section-title"><span class="edit">Edit</span> <span ng-if="userRoleIs('cause')">Cause</span><span ng-if="userRoleIsNot('cause')">Company</span> Location</h4>
-			<div class="form-group street" ng-class="{'invalid' : donationForm.street.$invalid && donationForm.street.$dirty, 'valid' : donationForm.street.$valid && donationForm.street.$dirty}">
-				<label for="userStreetAddress" class="inline">Street Address</label>
-				<input type="text" name="street" id="userStreetAddress" class="form-control" placeholder="123 Address Street" ng-model="user.street_address" ng-minlength=4 show-form-errors />
-				<p class="form-helper" ng-if="donationForm.street.$dirty && donationForm.street.$error.required && !donationForm.street.$focused">This field is required!</p>
-			</div>
-			<div class="sub-section region">
-				<div class="form-group country">
-					<label for="userCountry" class="inline">Country</label>
-					<select name="country" 
-						id="userCountry" 
-						ng-model="user.country" 
-						ng-change="countryChange(user)" 
-						ng-options="c.name for c in countryList">
-					</select>
-				</div>
-				<div class="form-group state">
-					<label for="userState" class="inline"><span ng-if="user.country.code == 'US'">State</span><span ng-if="user.country.code == 'CA'">Province</span></label>
-					<select name="state" 
-						id="userState" 
-						ng-model="user.state" 
-						ng-change="stateChange(user)" 
-						ng-options="s.name for s in states">
-					</select>
-				</div>
-			</div>
-			<div class="sub-section city-zip">
-				<div class="form-group city" ng-class="{'invalid' : donationForm.city.$invalid && donationForm.city.$dirty, 'valid' : donationForm.city.$valid && donationForm.city.$dirty}">
-					<label for="userCity" class="inline">City</label>
-					<input type="text" name="city" id="userCity" class="form-control" placeholder="ex: Vancouver" ng-model="user.city" show-form-errors />
-					<p class="form-helper" ng-if="donationForm.city.$dirty && donationForm.city.$error.required && !donationForm.city.$focused">This field is required!</p>
-				</div>
-				<div class="form-group zip" ng-class="{'invalid' : donationForm.zip.$invalid && donationForm.zip.$dirty, 'valid' : donationForm.zip.$valid && donationForm.zip.$dirty}">
-					<label for="userZip" class="inline"><span ng-if="user.country.code == 'US'">Zip</span><span ng-if="user.country.code == 'CA'">Postal Code</span></label>
-					<input type="text" name="zip" id="userZip" class="form-control" placeholder="{{zipPlaceholder}}" ng-model="user.zip" ng-minlength=5 maxlength=7 ng-pattern="zipRegex" show-form-errors />
-					<p class="form-helper" ng-if="donationForm.zip.$error.pattern && !donationForm.zip.$focused">Invalid <span ng-if="selectedCountry.code == 'US'">Zip Code</span><span ng-if="selectedCountry.code == 'CA'">Postal Code</span></p>
-					<p class="form-helper" ng-if="donationForm.zip.$dirty && donationForm.zip.$error.required && !donationForm.zip.$focused">This field is required!</p>
-				</div>
-			</div>
-		</div>
--->
 		<div class="form-section credit-card-info">
-			<div class="credit-card-number">
+			<div class="credit-card-number form-group">
 				<label for="creditCard" class="inline">Credit Card #</label>
-				<input type="text" id="creditCard" class="form-control" placeholder="xxxx xxxx xxxx xxxx" ng-model="donation.credit_card.number" show-form-errors />
+				<input type="text" name="creditCard" id="creditCard" class="form-control" placeholder="xxxx xxxx xxxx xxxx" ng-model="number" payments-validate="card" payments-format="card" show-form-errors />
 			</div>
 			<div class="expiry">
-				<div class="month">
-					<label for="expiryMonth" class="inline">Expiry Month</label>
-					<input type="text" id="expiryMonth" class="form-control" placeholder="MM" ng-model="donation.credit_card.expiration_month" show-form-errors />
+				<div class="expiration form-group">
+					<label for="expiry" class="inline">Expiry Month</label>
+					<input type="text" name="expiry" id="expiry" class="form-control" placeholder="MM / YYYY" ng-model="expiry" payments-validate="expiry" payments-format="expiry" show-form-errors />
 				</div>
-				<div class="year">
-					<label for="expiryYear" class="inline">Expiry Year</label>
-					<input type="text" id="expiryYear" class="form-control" placeholder="YYYY" ng-model="donation.credit_card.expiration_year" show-form-errors />
-				</div>
-				<div class="cvv">
-					<label for="cvv" class="inline">CVV</label>
-					<input type="text" id="cvv" class="form-control" placeholder="123" ng-model="donation.credit_card.cvv" show-form-errors />
+				<div class="cvv form-group">
+					<label for="cvc" class="inline">CVC</label>
+					<input type="text" name="cvc" id="cvc" class="form-control" placeholder="123" ng-model="cvc" payments-validate="cvc" payments-format="cvc" show-form-errors />
 				</div>
 			</div>
 		</div>
 	    <div class="form-group form-buttons">
-	        <button class="btn button button-primary" type="submit">Save Changes</button>
+	        <button class="btn button button-primary" type="submit">Donate ${{amount}}</button>
 	    </div>
 
     </form>

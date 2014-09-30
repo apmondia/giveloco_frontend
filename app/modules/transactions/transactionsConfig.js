@@ -5,13 +5,12 @@ function transactionRoutes($stateProvider) {
   var transaction = {
       name: 'transaction',
       abstract: true,
-      url: '/transaction',
       template: '<div ui-view></div>',
       controller: 'TransactionsCtrl'
   },
   transactionDonate = {
       name: 'transaction.donate',
-      url: '/donate',
+      url: '^/cause/:id/donate',
       template: '<div transaction-donate></div>',
       data: {
         moduleClasses: 'transaction',
@@ -22,7 +21,7 @@ function transactionRoutes($stateProvider) {
   },
   transactionPledge = {
       name: 'transaction.pledge',
-      url: '/pledge',
+      url: '^/cause/:id/pledge',
       template: '<div transaction-pledge></div>',
       data: {
         moduleClasses: 'transaction',
@@ -33,7 +32,7 @@ function transactionRoutes($stateProvider) {
   },
   transactionRedeem = {
       name: 'transaction.redeem',
-      url: '/redeem',
+      url: '^/business/:id/redeem',
       template: '<div transaction-redeem></div>',
       data: {
         moduleClasses: 'transaction',

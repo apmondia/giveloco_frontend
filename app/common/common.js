@@ -7,6 +7,7 @@ require('angular-bootstrap');
 require('angular-ui-router');
 require('angular-animate');
 require('angular-cookies');
+require('angular-payments');
 require('angular-resource');
 require('angular-sanitize');
 require('angular-truncate');
@@ -22,13 +23,14 @@ module.exports = angular.module('common',
 	[
         'ui.bootstrap',
         'ui.router',
+        'angularFileUpload',
+        'angularPayments',
         'ngAnimate',
         'ngCookies',
-        'ngSanitize',
-        'restangular',
-        'ngTagsInput',
-        'angularFileUpload',
         'ngIdle',
+        'ngSanitize',
+        'ngTagsInput',
+        'restangular',
         require('./components/header').name,
         require('./components/footer').name,
         require('./constants').name,
