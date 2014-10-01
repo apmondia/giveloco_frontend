@@ -3,10 +3,14 @@
 function transactionRoutes($stateProvider) {
 
   var transaction = {
+      parent: 'user.id',
       name: 'transaction',
       abstract: true,
       template: '<div ui-view></div>',
-      controller: 'TransactionsCtrl'
+      controller: 'TransactionsCtrl',
+      data: {
+        loginRequired: true
+      }
   },
   transactionDonate = {
       name: 'transaction.donate',

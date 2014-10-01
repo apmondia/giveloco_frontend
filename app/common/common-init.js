@@ -71,7 +71,21 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 	    	});
 		}
 	});
-	
+
+
+/* =======================================================================
+	Login Required
+======================================================================= */
+	$rootScope.$on('$stateChangeStart', function (event, next) {
+		if (next.data.loginRequired) {
+			if ($rootScope.isLoggedIn === false) {
+				event.preventDefault();
+				$state.go('auth.login');
+			} else {
+				// Continue to destination
+			}
+		}
+	});
 }
 
 commonInit.$inject = ['$rootScope', '$state', 'Auth', 'AUTH_EVENTS', '$cookieStore', 'alertService'];

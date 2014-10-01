@@ -7,7 +7,7 @@
 				<li ui-sref-active="active"><a ui-sref="account.billing" class="billing-info">Billing Information</a></li>
 				<li ui-sref-active="active"><a ui-sref="account.changePassword" class="password">Change Password</a></li>
 			</ul>
-			<div class="output address" ng-if="$state.current.name.indexOf('account.details') != -1">
+			<div class="output address" ng-if="($state.current.name.indexOf('account.details') != -1) && (currentUser.role !== 'individual')">
 				<i class="icon icon-mark-map"></i>
 				<div class="address_output">
 					<div class="street_address">{{currentUser.street_address || "Street Address"}}</div>

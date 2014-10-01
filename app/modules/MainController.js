@@ -13,7 +13,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	};
 
 	$scope.currentUser = null;
-	$scope.isLoggedIn = Auth.isLoggedIn;
+	$rootScope.isLoggedIn = Auth.isLoggedIn;
 	$scope.userRoles = USER_ROLES;
 
 	var setCurrentUser = function() {

@@ -1,8 +1,8 @@
 'use strict';
 
-function TransactionsCtrl() {
-	
+function TransactionsCtrl($scope, user) {
+	$scope.user = user;
 }
 
-TransactionsCtrl.$inject = [];
+TransactionsCtrl.$inject = ['$scope', 'user'];
 module.exports = TransactionsCtrl;

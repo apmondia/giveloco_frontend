@@ -5,7 +5,7 @@
 	    <div class="form-section basic-info">
 			<div class="form-group amount" ng-class="{'invalid' : donationForm.amount.$invalid && donationForm.amount.$dirty, 'valid' : donationForm.amount.$valid && donationForm.amount.$dirty}">
 				<label for="amount_name" class="inline">Donation Amount</label>
-				<input type="text" name="amount" id="amount" class="form-control" placeholder="20.00" ng-model="amount" required show-form-errors />
+				<input type="text" name="amount" id="amount" class="form-control" placeholder="20.00" ng-model="transaction.amount" required show-form-errors />
 				<p class="form-helper" ng-if="donationForm.amount.$dirty && donationForm.amount.$error.required && !donationForm.amount.$focused">You must add an amount to donate is required!</p>
 			</div>
 		</div>
@@ -26,7 +26,7 @@
 			</div>
 		</div>
 	    <div class="form-group form-buttons">
-	        <button class="btn button button-primary" type="submit">Donate ${{amount}}</button>
+	        <button class="btn button button-primary" type="submit">Donate {{amount | currency}}</button>
 	    </div>
 
     </form>
