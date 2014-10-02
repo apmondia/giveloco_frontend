@@ -2,6 +2,10 @@
 	<h1>Donate to {{user.company_name}}</h1>
     <form class="form" id="donationForm" name="donationForm" stripe-form="stripeCallBack" novalidate autocomplete="off">
 
+    	<div class="hidden-fields">
+    		<input type="hidden" ng-model="name">
+    	</div>
+
 	    <div class="form-section basic-info">
 			<div class="form-group amount" ng-class="{'invalid' : donationForm.amount.$invalid && donationForm.amount.$dirty, 'valid' : donationForm.amount.$valid && donationForm.amount.$dirty}">
 				<label for="amount_name" class="inline">Donation Amount</label>
