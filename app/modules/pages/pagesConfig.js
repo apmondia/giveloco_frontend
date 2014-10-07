@@ -3,6 +3,7 @@
 function pageRoutes($stateProvider) {
 
   var about = {
+      abstract: true, // Removes access to this page until we decide to use it.
       name: 'about',
       url: '/how-it-works',
       template: '<div about-view></div>',

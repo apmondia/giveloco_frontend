@@ -38,7 +38,7 @@ body.account {
 					list-style: none;
 					a {
 						display: block;
-						border: solid 1px #eee;
+						border: solid 1px @border-color;
 						padding: 10px;
 						border-bottom: none;
 					}
@@ -50,7 +50,7 @@ body.account {
 					&:last-child {
 						a {
 							border-radius: 0 0 5px 5px;
-							border-bottom: solid 1px #eee;
+							border-bottom: solid 1px @border-color;
 						}
 					}
 					&.active {
@@ -71,7 +71,7 @@ body.account {
 			}
 			.output.address {
 				margin-top: 30px;
-				border: solid 1px #eee;
+				border: solid 1px @border-color;
 				border-radius: 5px;
 				padding: 15px 10px;
 				.clearfix();

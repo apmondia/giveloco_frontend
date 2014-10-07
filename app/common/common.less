@@ -95,6 +95,12 @@ a {
         font-size: 0;
         padding: 0 15px;
     }
+    .navbar-left {
+        .icon {
+            .icons(@font-size: 20px);
+            margin-right: 5px;
+        }
+    }
     .open>a,
     .active a,
     .nav>li>a:hover,
@@ -188,6 +194,7 @@ a {
 ========================================================================== */
 .page-header {
     margin: 0;
+    border-bottom: solid 1px @border-color;
     .clearfix();
     .page-title {
         .icon {

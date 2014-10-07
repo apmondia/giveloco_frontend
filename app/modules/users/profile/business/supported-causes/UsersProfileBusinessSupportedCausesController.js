@@ -6,8 +6,8 @@ function UsersProfileBusinessSupportedCausesCtrl($rootScope, $scope, Restangular
 	Get Lists of Supported Causes
 ======================================================================= */	
 	var causeList = [];
-	for (var i=0; i < $scope.$parent.user.supported_causes.length; i++) {
-		var supportedCause = Restangular.one('users', $scope.$parent.user.supported_causes[i]).get().$object;
+	for (var i=0; i < $scope.user.supported_causes.length; i++) {
+		var supportedCause = Restangular.one('users', $scope.user.supported_causes[i].to_user_id).get().$object;
 		causeList.push(supportedCause);	
 	}
 	
