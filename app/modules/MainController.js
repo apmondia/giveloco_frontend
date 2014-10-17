@@ -9,6 +9,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	$scope.logout = function() {
 		Auth.logout().then(function() {
 			$state.go('auth.login');
+			$scope.currentUser = null;
 		});
 	};
 
@@ -46,10 +47,10 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	// Filter users to populate list of Causes
 	users.getList().then(function(user) {
         $scope.causes = _.filter(user, function(user){
-            return user.role === 'cause';
+            return user.role === 'cause' && user.is_published === true;
         });
         $scope.businesses = _.filter(user, function(user){
-            return user.role === 'business';
+            return user.role === 'business' && user.is_published === true;
         });
         $scope.loading = false;
     });

@@ -23,6 +23,13 @@
           <ul class="nav navbar-nav navbar-right">
             <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.login">Log In</a></li>
             <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.signup.donor">Sign Up</a></li>
+            <li ng-if="currentUser.balance > 0 && currentUser.role == 'individual'">
+              <a ui-sref="explore.redeem" class="current-balance button btn button-primary">
+                <span class="balance">{{currentUser.balance | currency}}</span>
+                <span class="redeem">Redeem</span>
+              </a>
+            </li>
+
             <li class="dropdown" ng-if="isLoggedIn()">
               <div dropdown is-open="status.isopen" class="dropdown-wrapper">
                 <a class="dropdown-toggle">

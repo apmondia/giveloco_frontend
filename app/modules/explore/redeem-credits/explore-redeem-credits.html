@@ -1,0 +1,29 @@
+<div class="exploreRedeemCredits exploreGrid module-view">
+	<div class="row">
+		<div class="page-header">
+			<div class="left title">
+				<h1 class="page-title"><i class="icon icon-cash"></i>Redeem Your Credits</h1>
+				<div class="page-sub-title">The following businesses sponsored causes that you have donated to.</div>
+			</div>
+			<div class="right utils search-wrapper">
+				<i class="icon icon-search-2"></i>
+				<input type="search" class="search" ng-model="search" placeholder="Search Businesses" typeahead="user.company_name for user in businesses | filter:$viewValue | limitTo:8">
+			</div>
+		</div>
+		<div class="page-content">
+			<div dir-paginate="user in businesses | filter: search | itemsPerPage: 12" class="business grid block">
+		    	<div class="grid-item">
+			    	<a ui-sref="profile.business({id:user.id})" title="{{user.company_name}}">
+						<div class="profile-picture"><img ng-src="{{user.profile_picture}}"></div>
+						<div class="company-name">{{user.company_name | characters:20}}</div>
+					</a>
+					<div class="user-summary">{{user.summary | characters:140}}</div>
+					<div class="supporters">{{user.supported_causes.length}} Cause<span ng-if="user.supported_causes.length != 1">s</span> Supported</div>
+				</div>
+		    </div>
+		    <div ajax-spinner class="spinner" ng-show="loading"></div>
+		    <p ng-hide="(businesses | filter: search).length || loading" class="no-results">Sorry, No Results</p>
+		</div>
+		<div dir-pagination-controls></div>
+	</div>
+</div>

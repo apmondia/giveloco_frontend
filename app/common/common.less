@@ -101,6 +101,30 @@ a {
             margin-right: 5px;
         }
     }
+    .navbar-right {
+        .current-balance {
+            width: 100px;
+            height: 34px;
+            margin: 8px 8px 0 0;
+            padding: 6px 12px;
+            .balance {
+                display: block;
+                line-height: 20px;
+            }
+            .redeem {
+                display: none;
+                line-height: 22px;
+            }
+            &:hover {
+                .balance {
+                    display: none;
+                }
+                .redeem {
+                    display: block;
+                }
+            }
+        }
+    }
     .open>a,
     .active a,
     .nav>li>a:hover,

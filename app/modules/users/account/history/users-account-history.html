@@ -33,7 +33,7 @@
 				<tr dir-paginate="t in transactions | orderBy: 'created_at' : true | itemsPerPage: 25" class="transaction {{t.status}}">
 					<td class="transaction-field date">
 						<div class="trans-type">{{t.trans_type}}</div>
-						<div class="date">{{t.created_at | date : medium}}</div>
+						<div class="date">{{t.created_at | date : 'MMM d, y h:mm:ss a'}}</div>
 					</td>
 					<td class="transaction-field details">
 						<div class="from_to_user">

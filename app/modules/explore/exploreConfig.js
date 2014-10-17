@@ -17,7 +17,7 @@ function exploreRoutes($stateProvider) {
                 moduleClasses: 'explore',
                 pageClasses: 'businesses',
                 pageTitle: 'Collect Your Vouchers',
-                pageDescription: 'Explore Businesses on Taliflo and claim vouchers that can be redeemed in store.'
+                pageDescription: 'Explore Businesses on Taliflo and donate to their supported causes and be rewarded with store credit.'
             }
         },
         exploreCauses = {
@@ -28,13 +28,25 @@ function exploreRoutes($stateProvider) {
                 moduleClasses: 'explore',
                 pageClasses: 'causes',
                 pageTitle: 'Explore Causes',
-                pageDescription: 'Explore Causes on Taliflo and donate to receive vouchers that are redeemable at participating businesses.'
+                pageDescription: 'Explore Causes on Taliflo and donate to receive store credit that can be redeemed at the cause\'s sponsors.'
+            }
+        },
+        redeemCredits = {
+            name: 'explore.redeem',
+            url: '/redeemable',
+            template: '<div explore-redeem-credits></div>',
+            data: {
+                moduleClasses: 'explore',
+                pageClasses: 'redeem-credits',
+                pageTitle: 'Redeem Credits',
+                pageDescription: 'Choose businesses on Taliflo in which to redeem your store credit.'
             }
         };
 
     $stateProvider.state(explore);
     $stateProvider.state(exploreBusinesses);
     $stateProvider.state(exploreCauses);
+    $stateProvider.state(redeemCredits);
 
 }
 
