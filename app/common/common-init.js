@@ -22,7 +22,7 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 
 
 /* =======================================================================
-	User authentication check on state change
+	User authentication check on state change (requires authentication)
 ======================================================================= */
 	$rootScope.$on('$stateChangeStart', function (event, next) {
 		if (next.data.authRequired && Auth.isLoggedIn() === false) {
@@ -34,7 +34,7 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 	});
 
 /* =======================================================================
-	User authentication check on state change
+	User authentication check on state change (restricts sensitive data)
 ======================================================================= */
 	$rootScope.$on('$stateChangeStart', function (event, next, toState) {
 		if (next.data.restricted) {
