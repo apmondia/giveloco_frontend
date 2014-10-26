@@ -2,6 +2,7 @@
 
 module.exports = angular.module('modules',
 	[
+		require('./dashboard').name,
 		require('./explore').name,
 		require('./home').name,
 		require('./pages').name,

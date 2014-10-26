@@ -2,9 +2,9 @@
 
 module.exports = angular.module('transactions',
 	[
-		require('./donate').name,
-		require('./pledge').name,
-		require('./redeem').name
+		require('./purchase').name,
+		require('./redeem').name,
+		require('./sponsor').name
 	])
 	.config(require('./transactionsConfig'))
 	.controller('TransactionsCtrl', require('./TransactionsController'));

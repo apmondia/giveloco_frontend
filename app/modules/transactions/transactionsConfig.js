@@ -12,26 +12,15 @@ function transactionRoutes($stateProvider) {
         loginRequired: true
       }
   },
-  transactionDonate = {
-      name: 'transaction.donate',
-      url: '^/cause/:id/donate',
-      template: '<div transaction-donate></div>',
+  transactionPurchase = {
+      name: 'transaction.purchase',
+      url: '^/business/:id/purchase',
+      template: '<div transaction-purchase></div>',
       data: {
         moduleClasses: 'transaction',
-        pageClasses: 'donate',
+        pageClasses: 'purchase',
         pageTitle: 'Donate to the Cause',
         pageDescription: 'Donate to a good cause and receive credit that can be used as store credit at participating businesses.'
-      }
-  },
-  transactionPledge = {
-      name: 'transaction.pledge',
-      url: '^/cause/:id/pledge',
-      template: '<div transaction-pledge></div>',
-      data: {
-        moduleClasses: 'transaction',
-        pageClasses: 'pledge',
-        pageTitle: 'Pledge to the Cause',
-        pageDescription: 'Promote your business by attaching your brand to a good cause.'
       }
   },
   transactionRedeem = {
@@ -44,12 +33,23 @@ function transactionRoutes($stateProvider) {
         pageTitle: 'Redeem Credit',
         pageDescription: 'Redeem your credit like real money at participating businesses.'
       }
+  },
+  transactionSponsor = {
+      name: 'transaction.sponsor',
+      url: '^/cause/:id/sponsor',
+      template: '<div transaction-sponsor></div>',
+      data: {
+        moduleClasses: 'transaction',
+        pageClasses: 'sponsor',
+        pageTitle: 'Pledge to the Cause',
+        pageDescription: 'Promote your business by attaching your brand to a good cause.'
+      }
   };
 
 $stateProvider.state(transaction);
-$stateProvider.state(transactionDonate);
-$stateProvider.state(transactionPledge);
+$stateProvider.state(transactionPurchase);
 $stateProvider.state(transactionRedeem);
+$stateProvider.state(transactionSponsor);
 
 }
 

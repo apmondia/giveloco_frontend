@@ -2,10 +2,10 @@
 
 function UsersAuthLoginCtrl($rootScope, $scope, $state, $cookieStore, Auth, AUTH_EVENTS, alertService) {
 	
-	var success = function(user) {
+	var success = function() {
 		$rootScope.$broadcast('logged-in');
 		alertService.showAlert(AUTH_EVENTS.loginSuccess, 'alert-success');
-		$state.go('account.details.view', {id:user.data.uid});
+		$state.go('dashboard');
 	};
 
 	var error = function() {

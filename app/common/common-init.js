@@ -20,11 +20,24 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 		}
 	});
 
+
+/* =======================================================================
+	User authentication check on state change
+======================================================================= */
+	$rootScope.$on('$stateChangeStart', function (event, next) {
+		if (next.data.authRequired && Auth.isLoggedIn() === false) {
+			event.preventDefault();
+			// user is not logged in
+			$state.go('auth.login');
+			alertService.showAlert(AUTH_EVENTS.notAuthenticated, 'alert-danger');
+		}
+	});
+
 /* =======================================================================
 	User authentication check on state change
 ======================================================================= */
 	$rootScope.$on('$stateChangeStart', function (event, next, toState) {
-		if (next.data.authRequired) {
+		if (next.data.restricted) {
 			Auth.getCurrentUser().then(function(user) {
 
 				// Validate the user's token

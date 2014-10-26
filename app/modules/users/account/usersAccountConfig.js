@@ -10,7 +10,7 @@ function userAccountRoutes($stateProvider) {
       template: '<div users-account-layout></div>',
       controller: 'UsersAccountCtrl',
       data: {
-        authRequired: true
+        restricted: true
       }
   },
   accountBilling = {
@@ -64,17 +64,17 @@ function userAccountRoutes($stateProvider) {
         pageDescription: 'User account history.'
       }
   },
-  // accountSettings = {
-  //     name: 'account.settings',
-  //     url: '/settings',
-  //     template: '<div users-account-settings></div>',
-  //     data: {
-  //       moduleClasses: 'users account',
-  //       pageClasses: 'settings',
-  //       pageTitle: 'Account Settings',
-  //       pageDescription: 'User account settings.'
-  //     }
-  // },
+  accountSponsors = {
+      name: 'account.sponsors',
+      url: '/sponsors',
+      template: '<div users-account-sponsors></div>',
+      data: {
+        moduleClasses: 'users account',
+        pageClasses: 'sponsors',
+        pageTitle: 'Sponsors and Sponsorships',
+        pageDescription: 'Cause sponsors and business sponsorships.'
+      }
+  },
   accountChangePassword = {
       name: 'account.changePassword',
       url: '/change-password',
@@ -93,7 +93,7 @@ $stateProvider.state(accountDetails);
 $stateProvider.state(accountDetailsView);
 $stateProvider.state(accountDetailsEdit);
 $stateProvider.state(accountHistory);
-// $stateProvider.state(accountSettings);
+$stateProvider.state(accountSponsors);
 $stateProvider.state(accountChangePassword);
 
 }

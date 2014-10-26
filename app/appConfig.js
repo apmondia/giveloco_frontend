@@ -22,18 +22,33 @@ function appRoutes($stateProvider, $urlRouterProvider, $locationProvider, $httpP
     Location States (Home)
 ========================================================================== */
 	var home = {
-		name: 'home', // state name
-		url: '/', // url path that activates this state
-		template: '<div home-view></div>', // generate the Directive "homeView" - when calling the directive in HTML, the name must not be camelCased
-		data: {
-			moduleClasses: 'page', // assign a module class to the <body> tag
-			pageClasses: 'home', // assign a page-specific class to the <body> tag
-			pageTitle: 'Home', // set the title in the <head> section of the index.html file
-			pageDescription: 'Meta Description goes here' // meta description in <head>
-		}
-	};
+			name: 'home', // state name
+			url: '/', // url path that activates this state
+			template: '<div ui-view></div>',
+			controller: function($state, Auth) {
+	        	if ($state.is('home')) { $state.go(Auth.isLoggedIn() ? 'dashboard' : 'home.guest'); }
+	        },
+	        data: {
+				moduleClasses: '', // assign a module class to the <body> tag
+				pageClasses: '', // assign a page-specific class to the <body> tag
+				pageTitle: '', // set the title in the <head> section of the index.html file
+				pageDescription: '' // meta description in <head>
+			}
+		},
+		guest = {
+			name: 'home.guest',
+			// url: '',
+			template: '<div home-view></div>', // generate the Directive "homeView" - when calling the directive in HTML, the name must not be camelCased
+			data: {
+				moduleClasses: 'page',
+				pageClasses: 'home',
+				pageTitle: 'Home',
+				pageDescription: 'Taliflo helps you invest in your community with your everyday purchases. A portion of every gift certificate purchased goes towards a good cause.'
+			}
+		};
 
 	$stateProvider.state(home);
+	$stateProvider.state(guest);
 
 }
 

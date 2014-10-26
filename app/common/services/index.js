@@ -9,5 +9,6 @@ module.exports = angular.module('common.services', [])
 	.factory('Auth', require('./Auth.js'))
 	.factory('AuthInterceptor', require('./AuthInterceptor.js'))
 	.service('formValidation', require('./formValidation.js'))
+	.factory('Dashboard', require('./DashboardService.js'))
 	.service('regions', require('./regions.js'))
-	.factory('TransactionService', require('./TransactionService.js'));
+	.factory('Transactions', require('./TransactionService.js'));

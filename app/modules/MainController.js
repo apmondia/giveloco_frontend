@@ -38,7 +38,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 
 
 /* =======================================================================
-	Get Lists of Causes and Businesses
+	Get Lists of Causes and Businesses (for Explore pages)
 ======================================================================= */
 	// Get all users from server
 	var users = Restangular.all('users');
