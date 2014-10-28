@@ -10,6 +10,7 @@ require('angular-cookies');
 require('angular-payments');
 require('angular-resource');
 require('angular-sanitize');
+require('angular-spinner');
 require('angular-truncate');
 require('angular-file-upload');
 require('domready/ready');
@@ -25,6 +26,7 @@ module.exports = angular.module('common',
         'ui.router',
         'angularFileUpload',
         'angularPayments',
+        'angularSpinner',
         'ngAnimate',
         'ngCookies',
         'ngIdle',

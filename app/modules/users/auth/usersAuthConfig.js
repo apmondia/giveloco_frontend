@@ -23,12 +23,12 @@ function userAuthRoutes($stateProvider) {
         pageDescription: 'User Registration.'
       }
     },
-      signupDonor = {
-        name: 'auth.signup.donor',
+      signupIndividual = {
+        name: 'auth.signup.individual',
         url: '',
-        template: '<div users-auth-registration-donor></div>',
+        template: '<div users-auth-registration-individual></div>',
         data: {
-          moduleClasses: 'users auth donor'
+          moduleClasses: 'users auth individual'
         }
       },
       signupCause = {
@@ -72,7 +72,7 @@ function userAuthRoutes($stateProvider) {
 
   $stateProvider.state(auth);
   $stateProvider.state(signup);
-  $stateProvider.state(signupDonor);
+  $stateProvider.state(signupIndividual);
   $stateProvider.state(signupCause);
   $stateProvider.state(signupBusiness);
   $stateProvider.state(login);

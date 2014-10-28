@@ -6,13 +6,8 @@ function dashboardRoutes($stateProvider) {
             name: 'dashboard',
             template: '<div dashboard-view></div>',
             url: '/',
-            controller: function(Auth, Dashboard, $state) {
+            controller: function($state, Auth) {
             	if ($state.is('dashboard')) { $state.go(Auth.isLoggedIn() ? 'dashboard' : 'home.guest'); }
-            	if (Auth.isLoggedIn() === true) {
-            		Auth.getCurrentUser().then(function(currentUser){
-            			Dashboard.showDashByRoleFor(currentUser);
-            		});
-            	}
             },
             data: {
                 moduleClasses: 'dashboard',

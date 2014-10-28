@@ -64,7 +64,8 @@ var filePath = {
             './libs/jquery/dist/jquery.js', // v2.1.1
             './libs/bootstrap/dist/js/bootstrap.js', // v3.1.1
             './app/assets/vendor/modernizr.js',
-            './app/assets/vendor/webshim/js-webshim/dev/polyfiller.js' // v1.14.5
+            './app/assets/vendor/webshim/js-webshim/dev/polyfiller.js', // v1.14.5
+            './libs/spin.js/spin.js'
         ]
     },
     vendorCSS: { 

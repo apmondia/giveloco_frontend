@@ -3,6 +3,6 @@
 module.exports = angular.module('users.auth.registration', [
 		require('./business').name,
 		require('./cause').name,
-		require('./donor').name
+		require('./individual').name
 	])
 	.controller('UsersAuthRegistrationCtrl', require('./UsersAuthRegistrationController'));
