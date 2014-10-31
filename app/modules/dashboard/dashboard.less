@@ -1,13 +1,39 @@
 /* =======================================================================
 	Style References
 ======================================================================= */
-@import (reference) "../../../common/styles/custom_mixins.less";
-@import (reference) "../../../common/styles/custom_variables.less";
+@import (reference) "../../common/styles/custom_mixins.less";
+@import (reference) "../../common/styles/custom_variables.less";
 
 
 /* ***********************************************************************
 	Page Styles
 *********************************************************************** */
-body.page.dashboard {
-	
+body.dashboard {
+	.dashboard-layout {
+		.container();
+		position: relative;
+	}
+	.dashboard {
+		.animated();
+		.fadeIn();
+	}
+	.dash-summary {
+		height: 100px;
+	}
+	.dash-content {
+		height: 100px;
+	}
+
+	/* ADMIN */
+	.dashboard-admin-summary {
+
+	}
+	.dashboard-admin-content {
+
+	}
+}
+
+.spinner {
+	position: relative !important;
+	margin-top: 50px;
 }

@@ -6,8 +6,24 @@ function dashboardRoutes($stateProvider) {
             name: 'dashboard',
             template: '<div dashboard-view></div>',
             url: '/',
-            controller: function($state, Auth) {
+            controller: function($state, Auth, DashService, $scope) {
+                // Show Dashboard if user is logged in, or homepage if user is logged out
             	if ($state.is('dashboard')) { $state.go(Auth.isLoggedIn() ? 'dashboard' : 'home.guest'); }
+                // Show different dashboard based on the user's role
+                if (Auth.isLoggedIn() === true) {
+                    $scope.spinner = true;
+                    if (Auth.currentRole === null) {
+                        // this is used if the user has refreshed the site at any point
+                        Auth.getCurrentUser().then(function(currentUser){
+                            DashService.showDashByRoleFor(currentUser);
+                            $scope.spinner = false;
+                        });
+                    } else {
+                        // This is used if the user is just logging in
+                        DashService.showDashByRole(Auth.currentRole);
+                        $scope.spinner = false;
+                    }
+                }
             },
             data: {
                 moduleClasses: 'dashboard',
@@ -18,8 +34,14 @@ function dashboardRoutes($stateProvider) {
         },
         adminDash = {
         	name: 'dashboard.admin',
-            template: '<div dashboard-admin-view></div>',
-            url: '',
+            views: {
+                'dash-summary': {
+                    template: '<div dashboard-admin-summary></div>'
+                },
+                'dash-content': {
+                    template: '<div dashboard-admin-view></div>'
+                }
+            },
             data: {
                 moduleClasses: 'dashboard',
                 pageClasses: 'admin',
@@ -29,8 +51,14 @@ function dashboardRoutes($stateProvider) {
         },
         businessDash = {
         	name: 'dashboard.business',
-            template: '<div dashboard-business-view></div>',
-            url: '',
+            views: {
+                'dash-summary': {
+                    template: ''
+                },
+                'dash-content': {
+                    template: '<div dashboard-business-view></div>'
+                }
+            },
             data: {
                 moduleClasses: 'dashboard',
                 pageClasses: 'business',
@@ -40,8 +68,14 @@ function dashboardRoutes($stateProvider) {
         },
         causeDash = {
         	name: 'dashboard.cause',
-            template: '<div dashboard-cause-view></div>',
-            url: '',
+            views: {
+                'dash-summary': {
+                    template: ''
+                },
+                'dash-content': {
+                    template: '<div dashboard-cause-view></div>'
+                }
+            },
             data: {
                 moduleClasses: 'dashboard',
                 pageClasses: 'cause',
@@ -51,8 +85,14 @@ function dashboardRoutes($stateProvider) {
         },
         userDash = {
         	name: 'dashboard.user',
-            template: '<div dashboard-user-view></div>',
-            url: '',
+            views: {
+                'dash-summary': {
+                    template: ''
+                },
+                'dash-content': {
+                    template: '<div dashboard-user-view></div>'
+                }
+            },
             data: {
                 moduleClasses: 'dashboard',
                 pageClasses: 'user',

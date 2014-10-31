@@ -26,6 +26,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	};
 	
 	setCurrentUser();
+
 	$scope.currentUserName = localStorage.getItem('uname');
 	$rootScope.$on('user.data.changed', setCurrentUser);
 	$rootScope.$on('logged-in', setCurrentUser);
@@ -54,6 +55,12 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
         });
         $scope.loading = false;
     });
+
+
+/* =======================================================================
+	Loading Spinner Options
+======================================================================= */
+    $scope.spinnerOptions = {radius:8, width:3, length: 6};
 
 }
 

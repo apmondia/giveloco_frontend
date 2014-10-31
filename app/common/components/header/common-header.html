@@ -16,19 +16,13 @@
         <div class="collapse navbar-collapse" id="mobile-menu-nav">
 
           <ul class="nav navbar-nav navbar-left">
-            <li ui-sref-active="active"><a ui-sref="explore.causes"><i class="icon icon-ribbon"></i>Causes</a></li>
             <li ui-sref-active="active"><a ui-sref="explore.businesses"><i class="icon icon-cash"></i>Businesses</a></li>
+            <li ui-sref-active="active"><a ui-sref="explore.causes"><i class="icon icon-ribbon"></i>Causes</a></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
             <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.login">Log In</a></li>
             <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.signup.individual">Sign Up</a></li>
-            <li ng-if="currentUser.balance > 0 && currentUser.role == 'individual'">
-              <a ui-sref="explore.redeem" class="current-balance button btn button-primary">
-                <span class="balance">{{currentUser.balance | currency}}</span>
-                <span class="redeem">Redeem</span>
-              </a>
-            </li>
 
             <li class="dropdown" ng-if="isLoggedIn()">
               <div dropdown is-open="status.isopen" class="dropdown-wrapper">

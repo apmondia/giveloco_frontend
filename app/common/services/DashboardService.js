@@ -4,6 +4,19 @@ var Dashboard = function($state) {
 
 	var dashService = {
 
+        showDashByRole: function(role) {
+            console.log(role);
+            if (role === 'admin') {
+                $state.go('dashboard.admin');
+            } else if (role === 'business') {
+                $state.go('dashboard.business');
+            } else if (role === 'cause') {
+                $state.go('dashboard.cause');
+            } else {
+                $state.go('dashboard.user');
+            }
+        },
+        
 	    showDashByRoleFor: function(currentUser) {
     		if (currentUser.role === 'admin') {
     			$state.go('dashboard.admin');

@@ -4,21 +4,27 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 
 	var authService = {
 
-		setCookies: function(user){
+		currentUser: null,
+
+		currentRole: null,
+
+		setUserData: function(user){
 			$cookieStore.put('uid', user.data.uid);
 			$cookieStore.put('auth_token', user.data.auth_token);
+			$rootScope.$broadcast('logged-in');
+			authService.currentRole = user.data.role;
 		},
 
 		signup: function(data) {
 			return $http.post(apiConfig.API.user.signup, {user:data}).then(function(user){
-				authService.setCookies(user);
+				authService.setUserData(user);
 				return user;
 			});
 		},
 
 		login: function(credentials) {
 			return $http.post(apiConfig.API.user.login, credentials).then(function(user){
-				authService.setCookies(user);
+				authService.setUserData(user);
 				return user;
 			});
 		},
@@ -35,8 +41,6 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 				alertService.showAlert(AUTH_EVENTS.logoutSuccess, 'alert-success');
 			});
 		},
-
-	    currentUser: null,
 
 	    getCurrentUser: function() {
 	    	var uid = $cookieStore.get('uid');

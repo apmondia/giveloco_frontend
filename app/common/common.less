@@ -96,9 +96,15 @@ a {
         padding: 0 15px;
     }
     .navbar-left {
-        .icon {
-            .icons(@font-size: 20px);
-            margin-right: 5px;
+        a {
+            text-align: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            .icon {
+                .icons(@font-size: 20px);
+                margin-right: 0px;
+                float: none;
+            }
         }
     }
     .navbar-right {
@@ -575,6 +581,32 @@ select {
     Grid Items (Causes and Businesses)
 ========================================================================== */
 .grid.block {
+    /* Staggered Loading Animations */
+    -webkit-transition:0.2s ease-in-out all;
+    transition:0.2s ease-in-out all;
+    position: relative;
+    top: 0px;
+    &.ng-enter,
+    &.ng-move,
+    &.ng-leave.ng-leave-active {
+        opacity: 0;
+        top:-20px;
+    }
+    &.ng-enter-stagger,
+    &.ng-move-stagger,
+    &.ng-leave.ng-leave-stagger {
+        -webkit-transition-delay: 0.1s;
+        transition-delay: 0.1s;
+
+        -webkit-transition-duration:0;
+        transition-duration:0;
+    }
+    &.ng-enter.ng-enter-active,
+    &.ng-move.ng-move-active,
+    &.ng-leave {
+        opacity: 1;
+        top:0;
+    }
     float: left;
     margin-bottom: 30px;
     .make-xs-column(6);

@@ -1,0 +1,17 @@
+<div class="users-profile-cause-sponsors supporters">
+	<hr />
+	<h3 class="supporters-title">Sponsors</h3>
+	<div class="row">
+	    <div ng-repeat="business in sponsors" class="business small-grid grid block">
+	    	<div class="grid-item" ng-hide="loading">
+		    	<a ui-sref="profile.business({id:business.id, role:business.role})" title="{{business.company_name}}">
+					<div class="profile-picture"><img ng-src="{{business.profile_picture}}"></div>
+					<div class="company-name">{{business.company_name | characters:24}}</div>
+				</a>
+				<div class="user-summary">{{business.summary | characters:140}}</div>
+				<div class="supporters">{{business.supported_causes.length}} Supported Cause<span ng-if="business.supported_causes.length != 1">s</span></div>
+			</div>
+	    </div>
+    </div>
+    <div ajax-spinner class="spinner" ng-show="loading"></div>
+</div>

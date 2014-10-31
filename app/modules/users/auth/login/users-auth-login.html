@@ -3,10 +3,6 @@
 	<div class="login-form small-form">
 		<h1>Sign in to your Account</h1>
 
-		<a class="facebook-signup button btn" ng-click="facebookSignup()"><i class="icon icon-facebook"></i><span>Log in with Facebook</span></a>
-
-		<p class="orManual">or...</p>
-
 	    <form class="form" name="loginForm" ng-submit="login(loginForm.$valid)" novalidate ng-controller="UsersAuthLoginCtrl">
 
 	    	<div class="form-group" ng-class="{'invalid' : loginForm.email.$invalid && loginForm.email.$dirty, 'valid' : loginForm.email.$valid && loginForm.email.$dirty}">

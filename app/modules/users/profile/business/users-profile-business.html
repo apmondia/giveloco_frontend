@@ -37,8 +37,8 @@
 					<ul class="my-profile-buttons" ng-if="currentUser.id === user.id">
 						<li><a ui-sref="account.details.edit" class="edit-profile btn button button-secondary"><i class="icon icon-pencil"></i>Edit Profile</a></li>
 					</ul>
-					<ul class="redeem-buttons" ng-if="redeemCredits()">
-						<li><a ui-sref="#" class="donate btn button button-secondary"><i class="icon icon-shopping-cart"></i>Redeem Credits</a></li>
+					<ul class="user-action-buttons" ng-if="currentUser.id !== user.id">
+						<li><a ui-sref="transaction.purchase" class="donate btn button button-primary"><i class="icon icon-shopping-cart"></i>Buy a Gift Certificate</a></li>
 					</ul>
 				</div>
 			</div>
@@ -58,6 +58,6 @@
 		
 	    <div class="user-description" ng-bind-html="user.description | linky:'_blank'"></div>
 
-	    <div users-profile-business-supported-causes></div>
+	    <div users-profile-business-sponsored-causes></div>
 	</div>
 </div>

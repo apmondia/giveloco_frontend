@@ -17,7 +17,7 @@
 						<div class="company-name">{{user.company_name | characters:20}}</div>
 					</a>
 					<div class="user-summary">{{user.summary | characters:140}}</div>
-					<div class="supporters">{{user.supporters.length}} Supporting Business<span ng-if="user.supporters.length != 1">es</span></div>
+					<div class="supporters">{{user.sponsors.length}} Supporting Business<span ng-if="user.sponsors.length != 1">es</span></div>
 				</div>
 		    </div>
 		    <div ajax-spinner class="spinner" ng-show="loading"></div>
