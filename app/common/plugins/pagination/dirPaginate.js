@@ -2,29 +2,35 @@
 
 var dirPaginate = function($compile, $parse, $timeout, paginationService) {
     return  {
-        priority: 5000, //High priority means it will execute first
         terminal: true,
-        compile: function(element, attrs){
-            attrs.$set('ngRepeat', attrs.dirPaginate); //Add ng-repeat to the dom
+            multiElement: true,
+            priority: 5000, // This setting is used in conjunction with the later call to $compile() to prevent infinite recursion of compilation
+            compile: function dirPaginationCompileFn(tElement, tAttrs){
 
-            var expression = attrs.dirPaginate;
+            // Add ng-repeat to the dom element
+            if (tElement[0].hasAttribute('dir-paginate-start') || tElement[0].hasAttribute('data-dir-paginate-start')) {
+                // using multiElement mode (dir-paginate-start, dir-paginate-end)
+                tAttrs.$set('ngRepeatStart', tAttrs.dirPaginate);
+                tElement.eq(tElement.length - 1).attr('ng-repeat-end', true);
+            } else {
+                tAttrs.$set('ngRepeat', tAttrs.dirPaginate);
+            }
+
+            var expression = tAttrs.dirPaginate;
             // regex taken directly from https://github.com/angular/angular.js/blob/master/src/ng/directive/ngRepeat.js#L211
             var match = expression.match(/^\s*([\s\S]+?)\s+in\s+([\s\S]+?)(?:\s+track\s+by\s+([\s\S]+?))?\s*$/);
 
-            var filterPattern = /\|\s*itemsPerPage:[^|]*/;
+            var filterPattern = /\|\s*itemsPerPage\s*:[^|]*/;
             if (match[2].match(filterPattern) === null) {
                 throw 'pagination directive: the \'itemsPerPage\' filter must be set.';
             }
             var itemsPerPageFilterRemoved = match[2].replace(filterPattern, '');
             var collectionGetter = $parse(itemsPerPageFilterRemoved);
 
-            //Now that we added ng-repeat to the element, proceed with compilation
-            //but skip directives with priority 5000 or above to avoid infinite
-            //recursion (we don't want to compile ourselves again)
-            var compiled =  $compile(element, null, 5000);
-
-            return function(scope, element, attrs){
+            return function dirPaginationLinkFn(scope, element, attrs){
                 var paginationId;
+                var compiled =  $compile(element, false, 5000); // we manually compile the element again, as we have now added ng-repeat. Priority less than 5000 prevents infinite recursion of compiling dirPaginate
+
                 paginationId = attrs.paginationId || '__default';
                 paginationService.registerInstance(paginationId);
 
@@ -44,7 +50,7 @@ var dirPaginate = function($compile, $parse, $timeout, paginationService) {
                     scope.$watch(function() {
                         return $parse(attrs.totalItems)(scope);
                     }, function (result) {
-                        if (0 < result) {
+                        if (0 <= result) {
                             paginationService.setCollectionLength(paginationId, result);
                         }
                     });
@@ -57,7 +63,8 @@ var dirPaginate = function($compile, $parse, $timeout, paginationService) {
                         }
                     });
                 }
-                //When linking just delegate to the link function returned by the new compile
+
+                // Delegate to the link function returned by the new compilation of the ng-repeat
                 compiled(scope);
             };
         }

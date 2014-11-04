@@ -33,6 +33,7 @@
     "ng-idle": "~0.3.5",
     "angular-payments": "*",
     "angular-spinner": "~0.5.1",
-    "spin.js": "~2.0.1"
+    "spin.js": "~2.0.1",
+    "angular-utils-pagination": "~0.3.1"
   }
 }

@@ -1,18 +1,18 @@
 window.jQuery = window.$ = require('jquery');
 window._ = require('lodash');
-// var braintree = require('https://js.braintreegateway.com/v2/braintree.js');
 
 require('angular');
 require('angular-bootstrap');
 require('angular-ui-router');
 require('angular-animate');
 require('angular-cookies');
+require('angular-file-upload');
 require('angular-payments');
 require('angular-resource');
 require('angular-sanitize');
 require('angular-spinner');
 require('angular-truncate');
-require('angular-file-upload');
+// require('angular-utils-pagination');
 require('domready/ready');
 require('gsap');
 require('lodash');
@@ -27,6 +27,7 @@ module.exports = angular.module('common',
         'angularFileUpload',
         'angularPayments',
         'angularSpinner',
+        // 'angularUtils.directives.dirPagination',
         'ngAnimate',
         'ngCookies',
         'ngIdle',

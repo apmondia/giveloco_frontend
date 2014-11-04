@@ -84,3 +84,35 @@
   -o-animation: @name @duration @timing-function @delay @iteration @direction;
   animation: @name @duration @timing-function @delay @iteration @direction;
 }
+
+.staggerAnimation(@topBefore: inherit, @rightBefore: inherit, @bottomBefore: inherit, @leftBefore: inherit, @transSpeed: 0.2s, @transDelay: 0.1s, @transDuration: 0) {
+  /* Staggered Loading Animations */
+  -webkit-transition: @transSpeed ease-in-out all;
+  transition: @transSpeed ease-in-out all;
+  position: relative;
+  top: 0px;
+  &.ng-enter,
+  &.ng-move,
+  &.ng-leave.ng-leave-active {
+      opacity: 0;
+      top:@topBefore;
+      right: rightBefore;
+      bottom: @bottomBefore;
+      left: @leftBefore;
+  }
+  &.ng-enter-stagger,
+  &.ng-move-stagger,
+  &.ng-leave.ng-leave-stagger {
+      -webkit-transition-delay: @transDelay;
+      transition-delay: @transDelay;
+
+      -webkit-transition-duration: @transDuration;
+      transition-duration: @transDuration;
+  }
+  &.ng-enter.ng-enter-active,
+  &.ng-move.ng-move-active,
+  &.ng-leave {
+      opacity: 1;
+      top:0;
+  }
+}

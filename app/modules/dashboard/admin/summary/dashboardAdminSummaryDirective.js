@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function DashboardAdminsumary() {
+module.exports = function DashboardAdminSummary() {
 	return {
 		controller: 'DashboardAdminSummaryCtrl',
 		template: require('./dashboard-admin-summary.html'),
