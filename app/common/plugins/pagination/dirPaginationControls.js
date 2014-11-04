@@ -73,23 +73,10 @@ var dirPaginationControls = function(paginationService) {
 
     return {
         restrict: 'AE',
-        template:   '<ul class="pagination" ng-if="1 < pages.length">' +
-                        '<li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }">' +
-                            '<a href="" ng-click="setCurrent(1)" class="first">&laquo;</a>' +
-                        '</li>' +
-                        '<li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope">' +
-                            '<a href="" ng-click="setCurrent(pagination.current - 1)" class="ng-binding prev">&lsaquo;</a>' +
-                        '</li>' +
-                        '<li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == \'...\' }">' +
-                            '<a href="" ng-click="setCurrent(pageNumber)">{{ pageNumber }}</a>' +
-                        '</li>' +
-                        '<li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">' +
-                            '<a href="" ng-click="setCurrent(pagination.current + 1)" class="ng-binding next">&rsaquo;</a>' +
-                        '</li>' +
-                        '<li ng-if="boundaryLinks"  ng-class="{ disabled : pagination.current == pagination.last }">' +
-                            '<a href="" ng-click="setCurrent(pagination.last)" class="last">&raquo;</a>' +
-                        '</li>' +
-                    '</ul>',
+        template: require('./dirPagination.tpl.html'),
+        // templateUrl: function(elem, attrs) {
+        //     return attrs.templateUrl || templatePath;
+        // },
         scope: {
             maxSize: '=?',
             onPageChange: '&?'
@@ -123,25 +110,29 @@ var dirPaginationControls = function(paginationService) {
 
             scope.$watch(function() {
                 return paginationService.getCurrentPage(paginationId);
-            }, function(currentPage) {
-                scope.setCurrent(currentPage);
-                window.scrollTo(0,0);
+            }, function(currentPage, previousPage) {
+                if (currentPage !== previousPage) {
+                    goToPage(currentPage);
+                }
             });
 
             scope.setCurrent = function(num) {
-                if (numberRegex.test(num)) {
-                    if (0 < num && num <= scope.pagination.last) {
-                        paginationService.setCurrentPage(paginationId, num);
-                        scope.pages = generatePagesArray(num, paginationService.getCollectionLength(paginationId), paginationService.getItemsPerPage(paginationId), paginationRange);
-                        scope.pagination.current = num;
-
-                        // if a callback has been set, then call it with the page number as an argument
-                        if (scope.onPageChange) {
-                            scope.onPageChange({ newPageNumber : num });
-                        }
-                    }
+                if (isValidPageNumber(num)) {
+                    paginationService.setCurrentPage(paginationId, num);
                 }
             };
+
+            function goToPage(num) {
+                if (isValidPageNumber(num)) {
+                    scope.pages = generatePagesArray(num, paginationService.getCollectionLength(paginationId), paginationService.getItemsPerPage(paginationId), paginationRange);
+                    scope.pagination.current = num;
+
+                    // if a callback has been set, then call it with the page number as an argument
+                    if (scope.onPageChange) {
+                        scope.onPageChange({ newPageNumber : num });
+                    }
+                }
+            }
 
             function generatePagination() {
                 scope.pages = generatePagesArray(1, paginationService.getCollectionLength(paginationId), paginationService.getItemsPerPage(paginationId), paginationRange);
@@ -150,6 +141,10 @@ var dirPaginationControls = function(paginationService) {
                 if (scope.pagination.last < scope.pagination.current) {
                     scope.setCurrent(scope.pagination.last);
                 }
+            }
+
+            function isValidPageNumber(num) {
+                return (numberRegex.test(num) && (0 < num && num <= scope.pagination.last));
             }
         }
     };

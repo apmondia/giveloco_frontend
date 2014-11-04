@@ -18,17 +18,59 @@ body.dashboard {
 		.fadeIn();
 	}
 	.dash-summary {
-		margin-bottom: 10px;
+		margin-bottom: 30px;
 	}
 	.dash-content {
 		.tab {
 			.tab-header {
 				.clearfix();
+				.left-section {
+					.make-xs-column(12);
+					.make-sm-column(4);
+		            .make-md-column(4);
+		            .make-lg-column(4);
+				}
+				.middle-section {
+					.make-xs-column(12);
+					.make-sm-column(4);
+		            .make-md-column(4);
+		            .make-lg-column(4);
+				}
+				.right-section {
+					.make-xs-column(12);
+					.make-sm-column(4);
+		            .make-md-column(4);
+		            .make-lg-column(4);
+				}
+				.spinner {
+					.fountainG_wrapper {
+						margin: 20px auto;
+					}
+				}
+				.utils {
+					margin-top: 10px;
+				}
 			}
 			.table {
-				tr.user {
-					.animated();
-					/*.staggerAnimation(@transSpeed: 0.1s);*/
+				.user-field {
+					&.user-actions {
+						padding: 0;
+						.dropdown {
+							.dropdown-toggle {
+								display: block;
+								padding: 8px 4px;
+								text-align: center;
+								.icon {
+									.icons(@font-size: 20px);
+									margin-right: -5px;
+								}
+							}
+							.dropdown-menu {
+								margin: 0px;
+								padding: 2px 0px;
+							}
+						}
+					}
 				}
 			}
 		}
@@ -64,11 +106,14 @@ body.dashboard {
 
 	/* ADMIN */
 	&.admin {
-		.dashboard.summary {
+		.dash-summary {
 			
 		}
-		.dashboard.content {
-
+		.dash-content {
+			.subtitle .warning {
+				color: red;
+				margin-left: 20px;
+			}
 		}
 	}
 
@@ -81,3 +126,9 @@ body.dashboard {
 	position: relative !important;
 	margin-top: 50px;
 }
+
+
+/* =======================================================================
+	Sub-Module LESS file imports
+======================================================================= */
+@import "modals/modals.less";

@@ -2,7 +2,7 @@
 
 function DashboardAdminCtrl($scope, Restangular) {
 /* =======================================================================
-	Get Lists of Causes and Businesses (for Explore pages)
+	Get Lists of Users by role
 ======================================================================= */
 	// Get all users from server
 	var users = Restangular.all('users');
@@ -30,6 +30,14 @@ function DashboardAdminCtrl($scope, Restangular) {
         });
         $scope.loading = false;
     });
+
+
+/* =======================================================================
+	Modals
+======================================================================= */
+    $scope.changeUserStatus = function () {
+        $scope.adminChangeUserStatusModal.open({windowClass: 'change-user-status'});
+	};
 }
 
 DashboardAdminCtrl.$inject = ['$scope', 'Restangular'];

@@ -3,7 +3,6 @@
 var paginationService = function() {
 	var instances = {};
     var lastRegisteredInstance;
-    this.paginationDirectiveInitialized = false;
 
     this.registerInstance = function(instanceId) {
         if (typeof instances[instanceId] === 'undefined') {
@@ -15,7 +14,7 @@ var paginationService = function() {
     };
 
     this.isRegistered = function(instanceId) {
-          return (typeof instances[instanceId] !== 'undefined');
+        return (typeof instances[instanceId] !== 'undefined');
     };
 
     this.getLastInstanceId = function() {

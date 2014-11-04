@@ -1,25 +1,32 @@
 <div class="tab businesses">
 	<div class="tab-header">
-		<div class="left title">
-			<h3 class="tab-title">Total Businesses: {{businesses.length}}</h3>
-			<h5 class="subtitle warning">Inactive Businesses: {{businessesInactive.length}}</h5>
+		<div class="left-section">
+			<div class="title">
+				<h3 class="tab-title">Total Businesses: {{businesses.length}}</h3>
+				<h5 class="subtitle"><span class="active">Activated Businesses: {{businesses.length}}</span><span class="inactive warning">Inactive Businesses: {{businessesInactive.length}}</span></h5>
+			</div>
 		</div>
-		<div class="right utils search-wrapper">
-			<i class="icon icon-search-2"></i>
-			<input type="search" class="search" ng-model="searchBusinesses" placeholder="Search Businesses" typeahead="user.company_name for user in businesses | filter:$viewValue | limitTo:8" />
+		<div class="middle-section">
+			<div ajax-spinner class="spinner" ng-show="loading"></div>
+		</div>
+		<div class="right-section">
+			<div class="utils search-wrapper">
+				<i class="icon icon-search-2"></i>
+				<input type="search" class="search" ng-model="searchBusinesses" placeholder="Search Businesses" typeahead="user.company_name for user in businesses | filter:$viewValue | limitTo:8" />
+			</div>
 		</div>
 	</div>
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
-				<th class="user-header id">User ID</th>
+				<th class="user-header id">ID</th>
 				<th class="user-header company-name">Company Name</th>
 				<th class="user-header total-vouchers-sold">GCs Sold</th>
 				<th class="user-header value-vouchers-sold">Value of GCs Sold</th>
 				<th class="user-header total-unredeemed-vouchers">GCs Outstanding</th>
 				<th class="user-header last-voucher-sold">Last GC Sold</th>
 				<th class="user-header status">Status</th>
-				<th class="user-header user-actions">Actions</th>
+				<th class="user-header user-actions"></th>
 			</tr>
 		</thead>
 		<tbody ng-hide="loading">
@@ -28,7 +35,9 @@
 					{{user.id}}
 				</td>
 				<td class="user-field company-name">
-					{{user.company_name}}
+					<a ui-sref="profile.business({id:user.id})" title="{{user.company_name}}">
+						{{user.company_name}}
+					</a>
 				</td>
 				<td class="user-field total-vouchers-sold">
 					
@@ -47,11 +56,21 @@
 					<div class="status-not-active" ng-if="user.is_active === false">Inactive</div>
 				</td>
 				<td class="user-field user-actions">
-					
+		            <div class="dropdown">
+		              <div dropdown is-open="status.isopen" class="dropdown-wrapper">
+		                <a class="dropdown-toggle">
+		                	<i class="icon icon-cog"></i><span class="caret"></span>
+		                </a>
+		                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+		                  <li class="first"><a ng-click="changeUserStatus()">Change Status</a></li>
+		                </ul>
+		              </div>
+		            </div>
 				</td>
 			</tr>
-			<div ajax-spinner class="spinner" ng-show="loading"></div>
-			<p ng-hide="(businesses | filter: searchBusinesses).length || loading" class="no-results">Sorry, No Results</p>
+			<tr ng-hide="(businesses | filter: searchBusinesses).length || loading" class="no-results">
+				<td colspan="100%">No Results</td>
+			</tr>
 		</tbody>
 	</table>
 	<div dir-pagination-controls pagination-id="bizTab"></div>
