@@ -66,7 +66,7 @@ body.dashboard {
 								}
 							}
 							.dropdown-menu {
-								margin: 0px;
+								margin: -2px 0px 0px;
 								padding: 2px 0px;
 							}
 						}
@@ -104,19 +104,6 @@ body.dashboard {
 
 	}
 
-	/* ADMIN */
-	&.admin {
-		.dash-summary {
-			
-		}
-		.dash-content {
-			.subtitle .warning {
-				color: red;
-				margin-left: 20px;
-			}
-		}
-	}
-
 	.search-wrapper .icon {
 		right: 237px;
 	}
@@ -131,4 +118,7 @@ body.dashboard {
 /* =======================================================================
 	Sub-Module LESS file imports
 ======================================================================= */
-@import "modals/modals.less";
+@import "admin/dashboard-admin.less";
+@import "business/dashboard-business.less";
+@import "cause/dashboard-cause.less";
+@import "user/dashboard-user.less";

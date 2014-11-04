@@ -36,7 +36,7 @@ function DashboardAdminCtrl($scope, Restangular) {
 	Modals
 ======================================================================= */
     $scope.changeUserStatus = function () {
-        $scope.adminChangeUserStatusModal.open({windowClass: 'change-user-status'});
+        $scope.changeUserStatusModal.open();
 	};
 }
 

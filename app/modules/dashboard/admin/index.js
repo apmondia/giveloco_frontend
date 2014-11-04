@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = angular.module('dashboard.admin', [
+		require('./modals').name,
 		require('./summary').name,
 		require('./tab-businesses').name,
 		require('./tab-causes').name,
