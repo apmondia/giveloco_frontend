@@ -1,8 +1,9 @@
 'use strict';
 
-function ChangeUserStatusCtrl() {
-	
+function ChangeUserStatusCtrl($scope, user) {
+	$scope.user = user;
+	console.log('test');
 }
 
-ChangeUserStatusCtrl.$inject = [];
+ChangeUserStatusCtrl.$inject = ['$scope', 'user'];
 module.exports = ChangeUserStatusCtrl;

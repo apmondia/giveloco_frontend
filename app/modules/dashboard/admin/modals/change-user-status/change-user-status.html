@@ -1,14 +1,14 @@
 <div id="modal-adminChangeUserStatus" class="modal-wrapper">
-    <h2 class="modal-title">Change {Users Name}'s Status</h2>
-    <button class="close" ng-click="adminChangeUserStatusModal.close()"><i class="icon icon-x"></i></button>
+    <h2 class="modal-title">Change {{user.company_name}}'s Status</h2>
+    <button class="close" ng-click="changeUserStatusModal.close()"><i class="icon icon-x"></i></button>
     <div class="modal-body">
         Content goes here
     </div>
 
     <div class="modal-footer">
         <ul class="buttons list-unstyled">
-            <li></li>
-            <li></li>
+            <li><button class="btn button button-secondary">Save Changes</button></li>
+            <li><button class="btn button btn-danger" ng-click="changeUserStatusModal.close()">Cancel</button></li>
         </ul>
     </div>
 </div>
