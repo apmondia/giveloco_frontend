@@ -20,7 +20,7 @@
 		<thead>
 			<tr>
 				<th class="user-header id">ID</th>
-				<th class="user-header company-name">Company Name</th>
+				<th class="user-header name">Company Name</th>
 				<th class="user-header total-vouchers-sold">GCs Sold</th>
 				<th class="user-header value-vouchers-sold">Value of GCs Sold</th>
 				<th class="user-header total-unredeemed-vouchers">GCs Outstanding</th>
@@ -34,7 +34,7 @@
 				<td class="user-field id">
 					{{user.id}}
 				</td>
-				<td class="user-field company-name">
+				<td class="user-field name">
 					<a ui-sref="profile.business({id:user.id})" title="{{user.company_name}}">
 						{{user.company_name}}
 					</a>

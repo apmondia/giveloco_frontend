@@ -1,3 +1,75 @@
 <div class="tab individuals">
-	Individuals Tab Content
+	<div class="tab-header">
+		<div class="left-section">
+			<div class="title">
+				<h3 class="tab-title">Total Customers: {{individuals.length}}</h3>
+				<h5 class="subtitle"><span class="active">Activated Customers: {{individuals.length}}</span><span class="inactive warning">Inactive Customers: {{individualsInactive.length}}</span></h5>
+			</div>
+		</div>
+		<div class="middle-section">
+			<div ajax-spinner class="spinner" ng-show="loading"></div>
+		</div>
+		<div class="right-section">
+			<div class="utils search-wrapper">
+				<i class="icon icon-search-2"></i>
+				<input type="search" class="search" ng-model="searchIndividuals" placeholder="Search Customers" typeahead="user.company_name for user in individuals | filter:$viewValue | limitTo:8" />
+			</div>
+		</div>
+	</div>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th class="user-header id">ID</th>
+				<th class="user-header name">Full Name</th>
+				<th class="user-header purchases-made">Purchases Made</th>
+				<th class="user-header value-of-purchases">Value of Purchases</th>
+				<th class="user-header unused-gift-certificates">Unused GCs</th>
+				<th class="user-header last-purchase-made">Last Purchase Made</th>
+				<th class="user-header status">Status</th>
+				<th class="user-header user-actions"></th>
+			</tr>
+		</thead>
+		<tbody ng-hide="loading">
+			<tr dir-paginate="user in individuals | orderBy: 'created_at' : true | filter: searchIndividuals | itemsPerPage: 25 : 'customerTab'" pagination-id="customerTab" class="user individual">
+				<td class="user-field id">
+					{{user.id}}
+				</td>
+				<td class="user-field name">
+					{{user.first_name}} {{user.last_name}}
+				</td>
+				<td class="user-field purchases-made">
+					
+				</td>
+				<td class="user-field value-of-purchases">
+					
+				</td>
+				<td class="user-field unused-gift-certificates">
+					
+				</td>
+				<td class="user-field last-purchase-made">
+					
+				</td>
+				<td class="user-field status">
+					<div class="status-active" ng-if="user.is_active === true">Active</div>
+					<div class="status-not-active" ng-if="user.is_active === false">Inactive</div>
+				</td>
+				<td class="user-field user-actions">
+		            <div class="dropdown">
+		              <div dropdown is-open="status.isopen" class="dropdown-wrapper">
+		                <a class="dropdown-toggle">
+		                	<i class="icon icon-cog"></i><span class="caret"></span>
+		                </a>
+		                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+		                  <li class="first"><a ng-click="changeUserStatus(user)">Change Status</a></li>
+		                </ul>
+		              </div>
+		            </div>
+				</td>
+			</tr>
+			<tr ng-hide="(individuals | filter: searchIndividuals).length || loading" class="no-results">
+				<td colspan="100%">No Results</td>
+			</tr>
+		</tbody>
+	</table>
+	<div dir-pagination-controls pagination-id="customerTab"></div>
 </div>
