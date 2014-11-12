@@ -21,6 +21,11 @@ function transactionRoutes($stateProvider) {
         pageClasses: 'purchase',
         pageTitle: 'Donate to the Cause',
         pageDescription: 'Donate to a good cause and receive credit that can be used as store credit at participating businesses.'
+      },
+      resolve: {
+        user: function(Restangular, $stateParams) {
+            return Restangular.one('users', $stateParams.id).get();
+        }
       }
   },
   transactionRedeem = {

@@ -103,41 +103,37 @@ h5.subtitle {
         font-size: 0;
         padding: 0 15px;
     }
+    .navbar-nav {
+        margin: 0;
+    }
     .navbar-left {
         a {
-            text-align: center;
-            padding-top: 5px;
-            padding-bottom: 5px;
+            @media @breakpoint-xs {
+                font-size: 0px;
+                float: left;
+            }
+            @media @breakpoint-md {
+                text-align: center;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
             .icon {
                 .icons(@font-size: 20px);
-                margin-right: 0px;
-                float: none;
+                margin-right: 10px;
+                float: left;
+                @media @breakpoint-xs {
+                    margin-right: 0px;
+                    .icons(@font-size: 30px);
+                }
+                @media @breakpoint-md {
+                    margin-right: 0px;
+                    float: none;
+                }
             }
         }
     }
     .navbar-right {
-        .current-balance {
-            width: 100px;
-            height: 34px;
-            margin: 8px 8px 0 0;
-            padding: 6px 12px;
-            .balance {
-                display: block;
-                line-height: 20px;
-            }
-            .redeem {
-                display: none;
-                line-height: 22px;
-            }
-            &:hover {
-                .balance {
-                    display: none;
-                }
-                .redeem {
-                    display: block;
-                }
-            }
-        }
+        
     }
     .open>a,
     .active a,
@@ -152,6 +148,36 @@ h5.subtitle {
     .navbar-toggle {
         .icon-bar {
             background-color: #333;
+        }
+    }
+    .mobile-menu {
+        @media @breakpoint-md {
+            display: none;
+        }
+        li {
+            a {
+                display: block;
+                padding: 10px 15px;
+                color: @brand-teal;
+                .icon {
+                    font-size: 18px;
+                    width: 18px;
+                    height: 18px;
+                    line-height: 26px;
+                    margin-right: 10px;
+                }
+            }
+            &.active a,
+            a:hover {
+                color: #fff;
+                background-color: @brand-teal;
+            }
+        }
+    }
+    .dropdown {
+        display: none;
+        @media @breakpoint-md {
+            display: block;
         }
     }
     .dropdown-wrapper {
@@ -201,8 +227,11 @@ h5.subtitle {
                     }
                 }
                 a {
-                    padding: 7px 10px;
+                    padding: 10px;
                     color: @brand-teal;
+                    @media @breakpoint-md {
+                        padding: 7px 10px;
+                    }
                     &:hover {
                         color: #fff;
                         background-color: @brand-teal;
@@ -231,18 +260,21 @@ h5.subtitle {
     Main Content Area
 ========================================================================== */
 .page-header {
-    margin: 0;
-    border-bottom: solid 1px @border-color;
     .clearfix();
+    margin: 0;
     .page-title {
+        @media @breakpoint-xs {
+            text-align: center;
+            margin-top: 0;
+        }
         .icon {
-            display: block;
-            float: left;
-            height: 36px;
-            width: 36px;
-            font-size: 36px;
-            line-height: 50px;
+            .icons(@font-size: 36px, @top-margin:0px);
             margin-right: 10px;
+            @media @breakpoint-xs {
+                .icons(@font-size: 70px, @top-margin:0px);
+                float: none;
+                margin: auto;
+            }
         }
     }
 }
@@ -296,14 +328,22 @@ span.edit {
     .top {
         .container();
         .clearfix();
-        padding-top: 40px;
+        @media @breakpoint-sm {
+            padding-top: 40px;
+        }
         .left {
             .make-xs-column(12);
+            .make-sm-column(9);
             .make-md-column(7);
             padding-left: 0;
+            display: none;
+            @media @breakpoint-sm {
+                display: block;
+            }
         }
         .right {
             .make-xs-column(12);
+            .make-sm-column(3);
             .make-md-column(3);
             .make-md-column-offset(2);
             padding-right: 0;
@@ -320,6 +360,12 @@ span.edit {
             .footer-links {
                 li {
                     margin-bottom: 5px;
+                }
+                .desktop-visible {
+                    display: none;
+                    @media @breakpoint-sm {
+                        display: block;
+                    }
                 }
             }
             .social-links {
@@ -355,7 +401,10 @@ span.edit {
     .bottom {
         .container();
         text-align: center;
-        padding: 40px 0;
+         padding: 20px 0;
+        @media @breakpoint-sm {
+            padding: 40px 0;
+        }
     }
     ul {
         margin: 0;
@@ -388,6 +437,30 @@ span.edit {
     .make-sm-column-offset(1.5);
     .make-md-column(6);
     .make-md-column-offset(3);
+}
+.form-styles {
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    padding: 0 20px 10px;
+    box-shadow: 0px 0px 8px #ccc;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    h1 {
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 24px;
+        text-align: center;
+        display: block;
+        margin: 0 -20px;
+        padding: 20px 10px;
+        border-radius: 4px 4px 0 0;
+        border-bottom: solid 1px #fff;
+        background-color: #00a79d;
+    }
+    form {
+        margin-top: 20px;
+    }
 }
 .form-buttons {
     text-align: center;
@@ -592,14 +665,16 @@ select {
     .staggerAnimation(@topBefore: -20px);
     float: left;
     margin-bottom: 30px;
-    .make-xs-column(6);
+    .make-xs-column(9);
+    .make-sm-column(6);
+    .make-md-column(3);
     @media @breakpoint-xs {
-        margin-bottom: 15px;
         padding-left: 5px;
         padding-right: 5px;
+        margin: 0 auto 15px;
+        float: none;
     }
     @media @breakpoint-md {
-        .make-md-column(3);
         padding-left: 5px;
         padding-right: 5px;
     }
@@ -609,6 +684,9 @@ select {
     }
     &.small-grid {
         @media @breakpoint-xs {
+            .make-xs-column(12);
+        }
+        @media @breakpoint-sm {
             .make-xs-column(6);
         }
         @media @breakpoint-md {
@@ -822,30 +900,51 @@ p.no-results {
 
 
 /* ==========================================================================
+    Tool Tips & Pop Overs
+========================================================================== */
+.tool-tip {
+    display: block;
+    .icon {
+        .icons(@font-size: 20px);
+    }
+}
+
+.pop-over {
+    display: block;
+    .icon {
+        .icons(@font-size: 20px);
+    }
+}
+
+.popover {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+
+/* ==========================================================================
     Modals
 ========================================================================== */
 .modal-dialog {
     .modal-content {
-        background-color: @brand-purple;
+        border: solid 2px #fff;
         .modal-wrapper {
-            margin: 20px;
-            padding: 20px;
             border-radius: 5px;
             background-color: #fff;
-            box-shadow: 0px 0px 5px #000;
         }
         .close {
             display: block;
             height: 24px;
             width: 24px;
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: -10px;
+            right: -10px;
             background-color: #fff;
             opacity: 1;
             text-align: center;
             border-radius: 100%;
-            border: solid 1px #000;
+            border: none;
             box-shadow: 0px 0px 4px #000;
             .icon {
                 float: none;
@@ -853,8 +952,24 @@ p.no-results {
                 margin: auto;
             }
         }
+        .modal-title {
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 24px;
+            text-align: center;
+            display: block;
+            margin: 0px;
+            padding: 20px;
+            border-radius: 5px 5px 0 0;
+            border-bottom: solid 1px #fff;
+            background-color: @brand-teal;
+            span {
+                display: block;
+                font-size: 14px;
+            }
+        }
         .modal-footer {
-            padding: 35px 20px 20px;
+            padding: 20px;
             ul {
                 .clearfix();
                 width: 200px;

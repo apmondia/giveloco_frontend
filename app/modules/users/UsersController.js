@@ -28,6 +28,7 @@ function UsersCtrl($scope, formValidation) {
 	$scope.userRoleIs = function(userRole) {
 		return ($scope.currentUser.role === userRole) ? true : false;
 	};
+
 }
 
 UsersCtrl.$inject = ['$scope', 'formValidation'];

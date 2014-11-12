@@ -6,4 +6,5 @@ module.exports = angular.module('users.profile',
 		require('./cause').name
 	])
 	.config(require('./usersProfileConfig'))
+	.directive('usersProfileView', require('./usersProfileDirective'))
 	.controller('UsersProfileCtrl', require('./UsersProfileController'));

@@ -1,14 +1,10 @@
 <div class="users-account-history">
-	<div class="page-header">
+	<div class="page-header" ng-if="$state.includes('account')">
 		<div class="left-side">
 			<h1>Transaction History</h1>
 			<div class="sub-header">
 				<h5 class="username">for <span>{{currentUser.company_name || currentUser.first_name + '  ' + currentUser.last_name}}</span></h5>
 			</div>
-		</div>
-		<div class="right-side">
-			<div class="balance-label">Current Balance: </div>
-			<div class="user-balance">{{user.balance | customCurrency: ''}}<span>credits</span></div>
 		</div>
 	</div>
 	<div class="transactions">

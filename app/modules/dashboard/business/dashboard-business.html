@@ -1,5 +1,4 @@
 <div class="dashboard business">
-	Business Dashboard
 	<ul>
 		<li>Community Investment Rate (percentage of each transaction donated to a cause) - Ability to modify it (default is 20%)</li>
 		<li>Total gift certificates sold</li>
@@ -9,4 +8,24 @@
 		<li>List of unclaimed gift certificates</li>
 		<li>Transaction History</li>
 	</ul>
+
+	<div class="dashboard-main">
+		<tabset justified="true">
+			<tab>
+				<tab-heading>Sponsored Causes</tab-heading>
+				<h2 class="section-title">Sponsored Causes</h2>
+				<div dashboard-business-sponsorships></div>
+			</tab>
+			<tab>
+				<tab-heading>Unused Gift Certificates</tab-heading>
+				<h2 class="section-title">Unused Gift Certificates</h2>
+				<div dashboard-business-unused-vouchers></div>
+			</tab>
+			<tab>
+				<tab-heading>Transaction History</tab-heading>
+				<h2 class="section-title">Transaction History</h2>
+				<div users-account-history></div>
+			</tab>
+		</tabset>
+	</div>
 </div>

@@ -53,7 +53,7 @@ function dashboardRoutes($stateProvider) {
         	name: 'dashboard.business',
             views: {
                 'dash-summary': {
-                    template: ''
+                    template: '<div dashboard-business-summary></div>'
                 },
                 'dash-content': {
                     template: '<div dashboard-business-view></div>'
@@ -70,7 +70,7 @@ function dashboardRoutes($stateProvider) {
         	name: 'dashboard.cause',
             views: {
                 'dash-summary': {
-                    template: ''
+                    template: '<div dashboard-cause-summary></div>'
                 },
                 'dash-content': {
                     template: '<div dashboard-cause-view></div>'

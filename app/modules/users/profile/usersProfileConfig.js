@@ -6,8 +6,10 @@ function userProfileRoutes($stateProvider) {
             parent: 'user.id',
             name: 'profile',
             abstract: true,
-            template: '<div ui-view></div>',
-            controller: 'UsersProfileCtrl'
+            template: '<div users-profile-view></div>',
+            controller: function($scope, user){
+                $scope.user = user;
+            }
         },
         profileBusiness = {
             name: 'profile.business',

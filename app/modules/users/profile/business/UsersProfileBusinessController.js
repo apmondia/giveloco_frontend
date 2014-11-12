@@ -5,6 +5,9 @@ function UsersProfileBusinessCtrl($rootScope, $scope) {
 	$scope.redeemCredits = function() {
 		return ($scope.currentUser.role === 'individual' && $scope.currentUser.id !== $scope.user.id) ? true : false;
 	};
+
+	console.log($scope.currentUser.role);
+
 }
 
 UsersProfileBusinessCtrl.$inject = ['$rootScope', '$scope'];

@@ -146,11 +146,15 @@ body.users.auth.signup {
 			.clearfix();
 			.first-name,
 			.last-name {
-				width: 49%;
-				float: left;
+				@media @breakpoint-md {
+					width: 49%;
+					float: left;
+				}
 			}
 			.first-name {
-				margin-right: 2%;
+				@media @breakpoint-md {
+					margin-right: 2%;
+				}
 			}
 		}
 	}

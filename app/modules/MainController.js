@@ -56,12 +56,6 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
         $scope.loading = false;
     });
 
-
-/* =======================================================================
-	Loading Spinner Options
-======================================================================= */
-    $scope.spinnerOptions = {radius:8, width:3, length: 6};
-
 }
 
 // $inject is necessary for minification. See http://bit.ly/1lNICde for explanation.

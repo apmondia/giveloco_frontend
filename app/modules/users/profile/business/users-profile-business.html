@@ -1,4 +1,4 @@
-<div class="users-profile business module-view" ng-class="{'my-profile': user.id === currentUser.id}">
+<div class="users-profile business" ng-class="{'my-profile': user.id === currentUser.id}">
 	<div class="sidebar">
 		<div class="user-profile-picture">
 			<div class="default-image" ng-if="user.images.profile_picture.original === ''"><i class="icon icon-photos-pictures"></i></div>
@@ -35,10 +35,17 @@
 			<div class="user-actions">
 				<div class="action-buttons">
 					<ul class="my-profile-buttons" ng-if="currentUser.id === user.id">
-						<li><a ui-sref="account.details.edit" class="edit-profile btn button button-secondary"><i class="icon icon-pencil"></i>Edit Profile</a></li>
+						<li>
+							<a ui-sref="account.details.edit" class="edit-profile btn button button-secondary"><i class="icon icon-pencil"></i>Edit Profile</a>
+						</li>
 					</ul>
-					<ul class="user-action-buttons" ng-if="currentUser.id !== user.id">
-						<li><a ui-sref="transaction.purchase" class="donate btn button button-primary"><i class="icon icon-shopping-cart"></i>Buy a Gift Certificate</a></li>
+					<ul class="user-action-buttons">
+						<li ng-if="currentUser.role === 'admin'">
+							<a ng-click="changeUserStatus(user)" class="change-status btn button button-secondary"><i class="icon icon-pencil"></i>Change User's Status</a>
+						</li>
+						<li ng-if="currentUser.role === 'individual' || currentUser.role === undefined">
+							<a ui-sref="transaction.purchase" class="donate btn button button-primary"><i class="icon icon-shopping-cart"></i>Buy a Gift Certificate</a>
+						</li>
 					</ul>
 				</div>
 			</div>
