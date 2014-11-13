@@ -1,7 +1,5 @@
 <div class="exploreCauses exploreGrid module-view">
 	<div class="row">
-		<div dir-pagination-controls class="pagination-top"></div>
-
 		<div class="page-header">
 			<div class="left title">
 				<h1 class="page-title"><i class="icon icon-ribbon"></i>Explore Causes</h1>
@@ -11,6 +9,9 @@
 				<input type="search" class="search" ng-model="search" placeholder="Search Causes" typeahead="user.company_name for user in causes | filter:$viewValue | limitTo:8">
 			</div>
 		</div>
+
+		<div dir-pagination-controls max-size="3" boundary-links="true" class="pagination-controls top"></div>
+
 		<div class="page-content">
 			<div dir-paginate="user in causes | filter: search | itemsPerPage: 12" class="cause grid block">
 		    	<div class="grid-item">
@@ -26,6 +27,6 @@
 		    <p ng-hide="(causes | filter: search).length || loading" class="no-results">Sorry, No Results</p>
 		</div>
 		
-		<div dir-pagination-controls class="pagination-bottom"></div>
+		<div dir-pagination-controls boundary-links="true" class="pagination-controls bottom"></div>
 	</div>
 </div>

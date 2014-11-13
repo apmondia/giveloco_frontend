@@ -29,7 +29,8 @@ var paginationService = function() {
         instances[instanceId].currentPageParser.assign(instances[instanceId].context, val);
     };
     this.getCurrentPage = function(instanceId) {
-        return instances[instanceId].currentPageParser(instances[instanceId].context);
+        var parser = instances[instanceId].currentPageParser;
+        return parser ? parser(instances[instanceId].context) : 1;
     };
 
     this.setItemsPerPage = function(instanceId, val) {

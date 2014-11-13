@@ -27,12 +27,11 @@ var dirPaginate = function($compile, $parse, $timeout, paginationService) {
             var itemsPerPageFilterRemoved = match[2].replace(filterPattern, '');
             var collectionGetter = $parse(itemsPerPageFilterRemoved);
 
-            return function dirPaginationLinkFn(scope, element, attrs){
-                var paginationId;
-                var compiled =  $compile(element, false, 5000); // we manually compile the element again, as we have now added ng-repeat. Priority less than 5000 prevents infinite recursion of compiling dirPaginate
+            var paginationId = tAttrs.paginationId || '__default';
+            paginationService.registerInstance(paginationId);
 
-                paginationId = attrs.paginationId || '__default';
-                paginationService.registerInstance(paginationId);
+            return function dirPaginationLinkFn(scope, element, attrs){
+                var compiled =  $compile(element, false, 5000); // we manually compile the element again, as we have now added ng-repeat. Priority less than 5000 prevents infinite recursion of compiling dirPaginate
 
                 var currentPageGetter;
                 if (attrs.currentPage) {

@@ -17,20 +17,20 @@
         </div>
 
         <!-- Collapsible menu for responsive layouts -->
-        <div id="mobile-menu-nav" class="collapse navbar-collapse navbar-right" ng-init="navbarCollapsed = true" collapse="navbarCollapsed">
+        <div id="mobile-menu-nav" class="navbar-collapse navbar-right" ng-init="navbarCollapsed = true" collapse="navbarCollapsed">
 
           <ul class="nav navbar-nav">
-            <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.login">Log In</a></li>
-            <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.signup.individual">Sign Up</a></li>
+            <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.login" ng-click="closeNavbar()">Log In</a></li>
+            <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.signup.individual" ng-click="closeNavbar()">Sign Up</a></li>
 
             <!-- Mobile Menu-->
             <div class="mobile-menu" ng-if="isLoggedIn()">
-              <li ui-sref-active="active"><a ui-sref="home" ng-click="navbarCollapsed"><i class="icon icon-speedometer"></i>Dashboard</a></li>
-              <li ui-sref-active="active" ng-if="currentUser.role == 'cause'"><a ui-sref="profile.cause({id:currentUser.id})"><i class="icon icon-user-circle-outline"></i>My Profile</a></li>
-              <li ui-sref-active="active" ng-if="currentUser.role == 'business'"><a ui-sref="profile.business({id:currentUser.id})"><i class="icon icon-user-circle-outline"></i>My Profile</a></li>
-              <li ui-sref-active="active"><a ui-sref="account.details.view({id:currentUser.id})"><i class="icon icon-account"></i>My Account</a></li>
+              <li ui-sref-active="active"><a ui-sref="home" ng-click="closeNavbar()"><i class="icon icon-speedometer"></i>Dashboard</a></li>
+              <li ui-sref-active="active" ng-click="closeNavbar()" ng-if="currentUser.role == 'cause'"><a ui-sref="profile.cause({id:currentUser.id})"><i class="icon icon-user-circle-outline"></i>My Profile</a></li>
+              <li ui-sref-active="active" ng-click="closeNavbar()" ng-if="currentUser.role == 'business'"><a ui-sref="profile.business({id:currentUser.id})"><i class="icon icon-user-circle-outline"></i>My Profile</a></li>
+              <li ui-sref-active="active"><a ui-sref="account.details.view({id:currentUser.id})" ng-click="closeNavbar()"><i class="icon icon-account"></i>My Account</a></li>
               <li class="divider"></li>
-              <li class="last"><a ng-click="logout()"><i class="icon icon-power-off"></i>Log Out</a></li>
+              <li class="last"><a ng-click="logout(); closeNavbar()"><i class="icon icon-power-off"></i>Log Out</a></li>
             </div>
             <!-- /Mobile Menu -->
 

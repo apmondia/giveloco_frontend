@@ -1,7 +1,5 @@
 <div class="exploreBusinesses exploreGrid module-view">
 	<div class="row">
-		<div dir-pagination-controls class="pagination-top"></div>
-
 		<div class="page-header">
 			<div class="left title">
 				<h1 class="page-title"><i class="icon icon-cash"></i>Explore Businesses</h1>
@@ -11,8 +9,11 @@
 				<input type="search" class="search" ng-model="search" placeholder="Search Businesses" typeahead="user.company_name for user in businesses | filter:$viewValue | limitTo:8">
 			</div>
 		</div>
+
+		<div dir-pagination-controls max-size="3" boundary-links="true" class="pagination-controls top"></div>
+
 		<div class="page-content">
-			<div dir-paginate="user in businesses | filter: search | itemsPerPage: 12" class="business grid block">
+			<div dir-paginate="user in businesses | filter: search | itemsPerPage: 4" class="business grid block">
 		    	<div class="grid-item">
 			    	<a ui-sref="profile.business({id:user.id})" title="{{user.company_name}}">
 						<div class="profile-picture"><img ng-src="{{user.profile_picture}}"></div>
@@ -26,6 +27,6 @@
 		    <p ng-hide="(businesses | filter: search).length || loading" class="no-results">Sorry, No Results</p>
 		</div>
 		
-		<div dir-pagination-controls class="pagination-bottom"></div>
+		<div dir-pagination-controls boundary-links="true" class="pagination-controls bottom"></div>
 	</div>
 </div>

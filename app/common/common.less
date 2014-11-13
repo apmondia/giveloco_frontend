@@ -107,10 +107,21 @@ h5.subtitle {
         margin: 0;
     }
     .navbar-left {
+        .clearfix();
+        li:first-child {
+            a, a:hover {
+                @media @breakpoint-xs {
+                    border-left: solid 1px @border-color;
+                    border-right: solid 1px @border-color;
+                }
+            }
+        }
         a {
             @media @breakpoint-xs {
                 font-size: 0px;
                 float: left;
+                padding: 10px 13px;
+                border-right: solid 1px @border-color;
             }
             @media @breakpoint-md {
                 text-align: center;
@@ -133,7 +144,18 @@ h5.subtitle {
         }
     }
     .navbar-right {
-        
+        ul {
+            li {
+                @media @breakpoint-xs {
+                    border-bottom: solid 1px #fff;
+                }
+            }
+        }
+    }
+    #mobile-menu-nav {
+        @media @breakpoint-xs {
+            padding-bottom: 5px;
+        }
     }
     .open>a,
     .active a,
@@ -146,6 +168,9 @@ h5.subtitle {
         border: none;
     }
     .navbar-toggle {
+        @media @breakpoint-xs {
+            margin-right: 3px;
+        }
         .icon-bar {
             background-color: #333;
         }
@@ -780,9 +805,6 @@ p.no-results {
 /* ==========================================================================
     Pagination
 ========================================================================== */
-.pagination-wrapper {
-    .container();
-}
 .pagination>.active>a, 
 .pagination>.active>a:focus, 
 .pagination>.active>a:hover, 
@@ -791,6 +813,15 @@ p.no-results {
 .pagination>.active>span:hover {
     background-color: @brand-teal;
     border-color: @brand-teal;
+}
+
+.pagination-controls {
+    .container();
+    &.top {
+        ul.pagination {
+            margin-top: 0;
+        }
+    }
 }
 
 

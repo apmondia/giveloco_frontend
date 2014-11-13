@@ -56,6 +56,16 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
         $scope.loading = false;
     });
 
+
+/* =======================================================================
+	Navbar Collapsible menu
+======================================================================= */
+    // $scope.navbarCollapsed = true;
+    $scope.closeNavbar = function() {
+    	$scope.navbarCollapsed = true;
+    	console.log('Navbar closed');
+    };
+
 }
 
 // $inject is necessary for minification. See http://bit.ly/1lNICde for explanation.
