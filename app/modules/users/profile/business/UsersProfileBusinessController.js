@@ -1,14 +1,8 @@
 'use strict';
 
-function UsersProfileBusinessCtrl($rootScope, $scope) {
-
-	$scope.redeemCredits = function() {
-		return ($scope.currentUser.role === 'individual' && $scope.currentUser.id !== $scope.user.id) ? true : false;
-	};
-
-	console.log($scope.currentUser.role);
+function UsersProfileBusinessCtrl() {
 
 }
 
-UsersProfileBusinessCtrl.$inject = ['$rootScope', '$scope'];
+UsersProfileBusinessCtrl.$inject = [];
 module.exports = UsersProfileBusinessCtrl;

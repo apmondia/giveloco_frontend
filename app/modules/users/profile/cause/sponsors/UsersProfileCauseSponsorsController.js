@@ -7,7 +7,7 @@ function UsersProfileCauseSponsorsCtrl($rootScope, $scope, Restangular) {
 ======================================================================= */	
 	var businessList = [];
 	for (var i=0; i < $scope.user.sponsors.length; i++) {
-		var sponsors = Restangular.one('users', $scope.user.sponsors[i].from_user_id).get().$object;
+		var sponsors = Restangular.one('users', $scope.user.sponsors[i].business_id).get().$object;
 		businessList.push(sponsors);	
 	}
 	

@@ -1,8 +1,8 @@
 'use strict';
 
-function UsersProfileCauseCtrl($rootScope, $scope) {
-	$scope.test = '';
+function UsersProfileCauseCtrl() {
+	
 }
 
-UsersProfileCauseCtrl.$inject = ['$rootScope', '$scope'];
+UsersProfileCauseCtrl.$inject = [];
 module.exports = UsersProfileCauseCtrl;
