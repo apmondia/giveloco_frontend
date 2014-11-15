@@ -7,7 +7,7 @@ var gulp            = require('gulp'),
     jshint          = require('gulp-jshint'),
     stylish         = require('jshint-stylish'),
     concat          = require('gulp-concat'),
-    rimraf          = require('gulp-rimraf'),
+    del             = require('del'),
     streamify       = require('gulp-streamify'),
     uglify          = require('gulp-uglify'),
     sourcemaps      = require('gulp-sourcemaps'),
@@ -103,16 +103,16 @@ var express = require('express'),
     server  = express();
 
 // Server settings
-server.use(express.static('./dist'));
+server.use(express.static(filePath.build.dest));
 // Redirects everything back to our index.html
 server.all('/*', function(req, res) {
-    res.sendfile('/', { root: './dist' });
+    res.sendfile('/', { root: filePath.build.dest });
 });
 
 gulp.task('devServer', function() {
   connect.server({
-    root: './dist',
-    fallback: './dist/index.html',
+    root: filePath.build.dest,
+    fallback: filePath.build.dest + '/index.html',
     port: 5000,
     livereload: true,
     middleware: function(connect, o) {
@@ -130,8 +130,8 @@ gulp.task('devServer', function() {
 
 gulp.task('prodServer', function() {
   connect.server({
-    root: './dist',
-    fallback: './dist/index.html',
+    root: filePath.build.dest,
+    fallback: filePath.build.dest + '/index.html',
     port: 5050,
     livereload: true,
     middleware: function(connect, o) {
@@ -151,13 +151,11 @@ gulp.task('prodServer', function() {
 // Clean out dist folder contents on build
 // =======================================================================  
 gulp.task('clean-dev', function () {
-    return gulp.src(['!./dist/vendor.js', '!./dist/vendor.css', './dist/*.js', './dist/*.css', './dist/*.html', './dist/*.png', './dist/*.ico'], {read: false})
-        .pipe(rimraf());
+    del(['!./dist/vendor.js', '!./dist/vendor.css', './dist/*.js', './dist/*.css', './dist/*.html', './dist/*.png', './dist/*.ico']);
 });
 
 gulp.task('clean-full', function () {
-    return gulp.src(['./dist/*'], {read: false})
-        .pipe(rimraf());
+    del(['./dist/*'])
 });
 
 
@@ -175,30 +173,31 @@ gulp.task('lint', function() {
 // Browserify Bundle
 // =======================================================================  
 gulp.task('bundle-dev', function() {
-    var bundler = watchify(filePath.browserify.DEVsrc);
 
-    bundler.on('update', rebundle)
-
+    var entryFile = filePath.browserify.DEVsrc,
+        bundler = watchify(entryFile);
+    
     function rebundle () {
         return bundler.bundle({ debug: true })
             .pipe(source('bundle.js'))
             .on("error", handleError)
             .pipe(buffer())
-            // Comment out the "Uglify" task if you don't want to minify your app in your dev environment. 
-            // However, it can be useful to minify your app periodically to debug any problems with minification.
-            // .pipe(streamify(uglify({mangle: false})))
+            .pipe(sourcemaps.init({loadMaps: true}))
+            .pipe(sourcemaps.write(filePath.build.dest))
             .pipe(gulp.dest(filePath.build.dest))
             .pipe(notify({ message: 'Browserify task complete' }))
             .pipe(connect.reload());
     }
 
+    bundler.on('update', rebundle)
+
     return rebundle()
 });
 
 gulp.task('bundle-prod', function() {
-    var bundler = watchify(filePath.browserify.PRODsrc);
 
-    bundler.on('update', rebundle)
+    var entryFile = filePath.browserify.PRODsrc,
+        bundler = watchify(entryFile);
 
     function rebundle () {
         return bundler.bundle({ debug: true })
@@ -210,6 +209,8 @@ gulp.task('bundle-prod', function() {
             .pipe(notify({ message: 'Browserify task complete' }))
             .pipe(connect.reload());
     }
+
+    bundler.on('update', rebundle)
 
     return rebundle()
 });
