@@ -8,22 +8,57 @@
 /* ***********************************************************************
 	Module Styles
 *********************************************************************** */
-/*body.transaction {
-	.module-view {
-		.container();
-	}
-	h1 {
-		span {
-			display: block;
-			font-size: 14px;
-			font-weight: normal;
-			margin-bottom: 5px;
+.modal.transaction-purchase {
+	.form-section {
+		.clearfix();
+		h3.form-section-title {
+			margin: 0 0 10px;
+		}
+		h5.form-section-title {
+			margin: 30px 0 10px;
+			text-align: center;
+		}
+		&.purchase-amount {
+			text-align: center;
+			margin-bottom: 20px;
+			.form-group.amount {
+				.radio-button {
+					.custom-input();
+					.radio-button();
+					text-align: left;
+					label {
+						width: 55px;
+					}
+				}
+			}
+			.radio-button {
+				margin: 0 10px;
+				.checkbox-inline {
+					padding-left: 0;
+				}
+			}
+		}
+		.form-group {
+			&.first-name,
+			&.last-name,
+			&.expiration,
+			&.cvc {
+				.make-xs-column(12);
+				.make-sm-column(6);
+				padding: 0;
+				padding-right: 10px;
+				margin-right: -10px;
+			}
+			&.last-name,
+			&.cvc {
+				padding-right: 0;
+				margin-left: 10px;
+			}
 		}
 	}
-	label.inline {
-		width: 130px;
+	.modal-footer {
+		ul.buttons {
+			width: 234px;
+		}
 	}
-	input {
-		padding: 20px 36px 20px 140px;
-	}
-}*/
+}

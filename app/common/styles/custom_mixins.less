@@ -37,6 +37,63 @@
   top: @top-margin;
 }
 
+.custom-input(@height: 16px, @width: 16px, @bottom: 2px) {
+  input[type=radio],
+  input[type=checkbox] {  
+    display: none;  
+  }
+
+  label {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  label:before {
+    font-family: 'Taliflo';
+    content: "";  
+    display: inline-block;  
+  
+    width: @width;  
+    height: @height;  
+  
+    margin-right: 10px;  
+    position: absolute;  
+    left: 0;  
+    bottom: @bottom;  
+    background-color: @brand-teal;  
+    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+  }
+
+  &.radio-button {
+    label:before {  
+      border-radius: 100%;  
+    } 
+  }
+
+  &.checkbox {
+    label:before {  
+      border-radius: 3px;  
+    }
+  }
+
+  input[type=radio]:checked + label:before { 
+    content: "\e024";  
+    color: #fff;  
+    font-size: 10px;  
+    text-align: center;  
+    line-height: 16px;  
+  }
+
+  input[type=checkbox]:checked + label:before {  
+    content: "\e077";  
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+    font-size: 13px;  
+    color: #fff;  
+    text-align: center;  
+    line-height: 15px;  
+  }
+}
+
 .arrow {
   content: ' ';
   height: 0;

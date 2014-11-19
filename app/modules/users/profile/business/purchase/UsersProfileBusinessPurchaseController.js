@@ -8,13 +8,17 @@ function UsersProfileBusinessPurchaseCtrl($rootScope, $scope, TRANSACTION_EVENTS
 	
 	$scope.transaction = {
 		stripeToken: null,
-		amount: null,
-		from_user_id: currentUser.id,
-		to_user_id: $scope.user.id
+		amount: 20,
+		user: {
+			first_name: '',
+			last_name: '',
+			email: ''
+		}
 	};
 
 	var resetForm = function() {
 		$scope.transaction.amount = '';
+		$scope.transaction.user = {};
 		$scope.number = '';
 		$scope.expiry = '';
 		$scope.cvc = '';
