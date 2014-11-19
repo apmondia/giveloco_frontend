@@ -37,6 +37,7 @@
   top: @top-margin;
 }
 
+/* Custom display for Radio Buttons and Checkboxes */
 .custom-input(@height: 16px, @width: 16px, @bottom: 2px) {
   input[type=radio],
   input[type=checkbox] {  
@@ -94,6 +95,7 @@
   }
 }
 
+/* Custom Traingular Pointers for UI elements */
 .arrow {
   content: ' ';
   height: 0;
@@ -142,6 +144,22 @@
   animation: @name @duration @timing-function @delay @iteration @direction;
 }
 
+.customAnimated(@duration: 0.5s, @delay: 0s, @iteration: 1) {
+  -webkit-animation-duration: @duration;
+  -webkit-animation-delay: @delay;
+  -webkit-animation-iteration-count: @iteration;
+  -moz-animation-duration: @duration;
+  -moz-animation-delay: @delay;
+  -moz-animation-iteration-count: @iteration;
+  -o-animation-duration: @duration;
+  -o-animation-delay: @delay;
+  -o-animation-iteration-count: @iteration;
+  animation-duration: @duration;
+  animation-delay: @delay;
+  animation-iteration-count: @iteration;
+}
+
+/* Stagger loading for ng-repeated elements */
 .staggerAnimation(@topBefore: inherit, @rightBefore: inherit, @bottomBefore: inherit, @leftBefore: inherit, @transSpeed: 0.2s, @transDelay: 0.1s, @transDuration: 0) {
   /* Staggered Loading Animations */
   -webkit-transition: @transSpeed ease-in-out all;

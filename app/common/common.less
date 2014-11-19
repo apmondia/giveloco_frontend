@@ -720,6 +720,11 @@ select {
         @media @breakpoint-md {
             .make-md-column(4);
         }
+        &.business {
+            .supporters {
+                padding: 0 29px;
+            }
+        }
     }
     .grid-item {
         background-color: #fff;
@@ -767,10 +772,9 @@ select {
             border-top: solid 1px @border-color;
             font-weight: 400;
             font-size: 18px;
-            &:before {
-                font-size: 40px;
-                font-family: 'Taliflo';
-                margin: 0 15px;
+            .icon {
+                .icons(@font-size: 40px, @top-margin:7px);
+                margin: 0 12px;
                 float: left;
             }
         }
@@ -779,20 +783,13 @@ select {
         .profile-picture:before {
             content:'a';
         }
-        .supporters {
-            &:before {
-                content:'\e07c';
-            }
-        }
     }
     &.business {
         .profile-picture:before {
             content:'\e07c';
         }
         .supporters {
-            &:before {
-                content:'a';
-            }
+            padding: 0 33px;
         }
     }
 }
@@ -953,6 +950,11 @@ p.no-results {
     font-size: 12px;
     font-weight: normal;
     line-height: 20px;
+    .animated();
+    &.top {
+        .fadeInDown();
+        .customAnimated(@duration: 0.1s)
+    }
 }
 
 

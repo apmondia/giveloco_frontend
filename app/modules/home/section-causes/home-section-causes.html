@@ -9,7 +9,10 @@
 						<div class="company-name">{{cause.company_name | characters:20}}</div>
 					</a>
 					<div class="user-summary">{{cause.summary | characters:140}}</div>
-					<div class="supporters">{{cause.sponsors.length}} Sponsor<span ng-if="cause.sponsors.length != 1">s</span></div>
+					<div class="supporters" popover-placement="top" popover-trigger="mouseenter" popover="{{pluralizedUserTooltip(cause)}}">
+						<i class="icon icon-cash" ng-repeat="sponsor in cause.sponsors | limitTo : 3"></i>
+						<i class="icon icon-more-2" ng-if="cause.sponsors.length > 3"></i>
+					</div>
 				</div>
 			</div>
 			<div ajax-spinner class="spinner" ng-show="loading"></div>

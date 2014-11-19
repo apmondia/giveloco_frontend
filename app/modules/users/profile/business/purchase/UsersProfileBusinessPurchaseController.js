@@ -2,8 +2,6 @@
 
 function UsersProfileBusinessPurchaseCtrl($rootScope, $scope, TRANSACTION_EVENTS, alertService, Transactions) {
 
-	var currentUser = $scope.currentUser;
-
 	$scope.name = $scope.currentUser.first_name + ' ' + $scope.currentUser.last_name;
 	
 	$scope.transaction = {
