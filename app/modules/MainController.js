@@ -48,10 +48,10 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	// Filter users to populate list of Causes
 	users.getList().then(function(user) {
         $scope.causes = _.filter(user, function(user){
-            return user.role === 'cause' && user.is_published === true && user.is_activated === true && user.sponsors.length > 0;
+            return user.role === USER_ROLES.cause && user.is_published === true && user.is_activated === true && user.sponsors.length > 0;
         });
         $scope.businesses = _.filter(user, function(user){
-            return user.role === 'business' && user.is_published === true && user.is_activated === true && user.sponsorships.length > 0;
+            return user.role === USER_ROLES.business && user.is_published === true && user.is_activated === true && user.sponsorships.length > 0;
         });
         $scope.loading = false;
     });
@@ -69,7 +69,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	Pluralized Tooltip / Popover for Grid Items
 ======================================================================= */
 	$scope.pluralizedUserTooltip = function(user) {
-    	if (user.role === 'cause') {
+    	if (user.role === USER_ROLES.cause) {
     		if (user.sponsors.length === 0) {
 	    		return 'No Sponsors';
 	    	} else if (user.sponsors.length === 1) {
@@ -79,7 +79,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	    	}
     	}
 
-    	if (user.role === 'business') {
+    	if (user.role === USER_ROLES.business) {
     		if (user.sponsorships.length === 0) {
 	    		return 'No Sponsorsed Causes';
 	    	} else if (user.sponsorships.length === 1) {

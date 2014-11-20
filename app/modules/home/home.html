@@ -1,20 +1,27 @@
 <div class="view-home module-view">
-	<div class="jumbotron">
-		<h1>Bringing businesses and people together to contribute to causes they care about.</h1>
+	<div id="home-top" class="jumbotron">
+		<div class="logo-large"></div>
+		<div class="explore-links">
+			<a ui-sref="explore.businesses" class="businesses"><i class="icon icon-cash"></i>Businesses</a>
+            <a ui-sref="explore.causes" class="causes"><i class="icon icon-ribbon"></i>Causes</a>
+		</div>
+		<h1>A portion of every gift certificate purchased goes to a cause of your choice.</h1>
+		<a href="#causes-carousel" class="scroll-down" du-smooth-scroll offset="18"><i class="icon icon-chevron-circle-down"></i></a>
 	</div>
+	
+	<!-- <div home-navbar class="home-navbar" ng-class="{'active': navVisible === true, 'inactive': navVisible === false}"></div> -->
+	<div home-navbar class="home-navbar" scroll-display position="630"></div>
 
-	<div class="scroll-down">
-		<a ng-click="scrollToTarget('causes-carousel')"><i class="icon icon-chevron-circle-down"></i></a>
+	<div id="home-content-area">
+		<div home-section-causes></div>
+
+		<div home-section-why-taliflo></div>
+
+		<div home-section-how-it-works></div>
+
+		<div home-section-supporters></div>
+
+		<div home-section-team></div>
 	</div>
-
-	<div home-section-causes></div>
-
-	<div home-section-why-taliflo></div>
-
-	<div home-section-how-it-works></div>
-
-	<div home-section-supporters></div>
-
-	<div home-section-team></div>
 	
 </div>

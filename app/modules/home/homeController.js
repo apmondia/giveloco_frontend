@@ -1,13 +1,20 @@
 'use strict';
 
-function HomeViewCtrl($rootScope, $scope, $location, $anchorScroll) {
+function HomeViewCtrl($scope, $document) {
+	// $scope.navVisible = false;
 
-	$scope.scrollToTarget = function (target){
-		$location.hash(target);
-		$anchorScroll();
-	};
-	
+	// $document.on('scroll', function() {
+ //      if ($document.scrollTop() >= 555) {
+ //      	console.log('Reveal navbar');
+ //      	$scope.navVisible = true;
+ //      } 
+ //      if ($document.scrollTop() < 555) {
+ //      	console.log('hide navbar');
+ //      	$scope.navVisible = false;
+ //      }
+ //      console.log($scope.navVisible);
+ //    });
 }
 
-HomeViewCtrl.$inject = ['$rootScope', '$scope', '$location', '$anchorScroll'];
+HomeViewCtrl.$inject = ['$scope', '$document'];
 module.exports = HomeViewCtrl;

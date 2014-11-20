@@ -4,15 +4,26 @@ function UsersProfileBusinessPurchaseCtrl($rootScope, $scope, TRANSACTION_EVENTS
 
 	$scope.name = $scope.currentUser.first_name + ' ' + $scope.currentUser.last_name;
 	
-	$scope.transaction = {
-		stripeToken: null,
-		amount: 20,
-		user: {
-			first_name: '',
-			last_name: '',
-			email: ''
-		}
-	};
+	$scope.newUser = {
+    	first_name: '',
+    	last_name: '',
+    	email: '',
+		certificate: {
+			sponsorship_id: null,
+			amount: 20,
+			stripeToken: null
+    	}
+    };
+
+	// $scope.transaction = {
+	// 	stripeToken: null,
+	// 	amount: 20,
+	// 	user: {
+	// 		first_name: '',
+	// 		last_name: '',
+	// 		email: ''
+	// 	}
+	// };
 
 	var resetForm = function() {
 		$scope.transaction.amount = '';

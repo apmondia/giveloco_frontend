@@ -1,25 +1,14 @@
 <footer class="footer">
-	<div class="top">
+	<div class="bottom">
 		<div class="row">
-			<div class="left">
-				<div class="footer-branding">
-					<img src="/images/logo/logo_white.png" height="70px">
-				</div>
-				<p class="description">Taliflo's branded currency platform enables everyday businesses and people to seamlessly create, distribute and exchange vouchers, coupons, points, credits and any other form of branded currency. The stronger your reputation, the larger your network, the more you can contribute to causes that benefit your community and innovate how we treat each other financially.</p>
-				<p class="address">PO Box 3451, Smithers, BC, V9J2N0, Canada</p>
-				<a href="" class="email">community@taliflo.com</a>
-			</div>
-			<div class="right">
+			<div class="right-side">
 				<ul class="footer-links">
-					<li class="desktop-visible">
-						<a class="footer-link" ui-sref="explore.causes">Explore Causes</a>
+					<li ui-sref-active="active" ng-if="!isLoggedIn()">
+						<a ui-sref="auth.login">Log In</a>
 					</li>
-					<li class="desktop-visible">
-						<a class="footer-link" ui-sref="explore.businesses">Explore Businesses</a>
-					</li>
-					<li class="desktop-visible">
-						<a class="footer-link" href="http://blog.taliflo.com/">Visit Our Blog</a>
-					</li>
+	            	<li ui-sref-active="active" ng-if="!isLoggedIn()">
+	            		<a ui-sref="auth.signup.individual">Sign Up</a>
+	            	</li>
 					<li>
 						<a class="footer-link" ui-sref="terms">Terms of Service</a>
 					</li>
@@ -27,18 +16,10 @@
 						<a class="footer-link" ui-sref="policy">Privacy Policy</a>
 					</li>
 				</ul>
-				<ul class="social-links">
-					<li>
-						<a class="social-link facebook" href="https://www.facebook.com/TalifloInc">Facebook</a>
-					</li>
-					<li>
-						<a class="social-link twitter" href="https://twitter.com/TalifloInc">Twitter</a>
-					</li>
-				</ul>
+			</div>
+			<div class="left-side copyright">
+				&copy; 2014 Taliflo Inc.
 			</div>
 		</div>
-	</div>
-	<div class="bottom copyright">
-		&copy; 2014 Taliflo Inc.
 	</div>
 </footer>

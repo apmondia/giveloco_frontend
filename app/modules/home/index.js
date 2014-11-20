@@ -1,6 +1,7 @@
 'use strict';
 // Home View
 module.exports = angular.module('home', [
+		require('./navbar').name,
 		require('./section-causes').name,
 		require('./section-how-it-works').name,
 		require('./section-supporters').name,

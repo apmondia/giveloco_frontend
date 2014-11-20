@@ -427,6 +427,18 @@
 .icon-link:before {
   content: "\e089";
 }
+.icon-instagram-circle:before {
+  content: "\e08a";
+}
+.icon-instagram:before {
+  content: "\e08b";
+}
+.icon-vimeo:before {
+  content: "\e08c";
+}
+.icon-social-vimeo:before {
+  content: "\e08d";
+}
 
 /*!
 Animate.css - http://daneden.me/animate

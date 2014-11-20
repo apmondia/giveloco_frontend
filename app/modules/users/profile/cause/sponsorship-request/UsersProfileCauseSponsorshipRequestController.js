@@ -1,8 +1,8 @@
 'use strict';
 
-function UsersProfileCauseSponsorshipRequestCtrl($rootScope, $scope) {
-	$scope.transaction = 'Sponsor Transaction goes here.';
+function UsersProfileCauseSponsorshipRequestCtrl($scope, user) {
+	$scope.user = user;
 }
 
-UsersProfileCauseSponsorshipRequestCtrl.$inject = ['$rootScope', '$scope'];
+UsersProfileCauseSponsorshipRequestCtrl.$inject = ['$scope', 'user'];
 module.exports = UsersProfileCauseSponsorshipRequestCtrl;
