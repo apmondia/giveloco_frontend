@@ -26,40 +26,40 @@ var gulp            = require('gulp'),
 // File Paths
 // =======================================================================
 var filePath = {
-    build: { 
-        dest: './dist' 
+    build: {
+        dest: './dist'
     },
-    lint: { 
-        src: ['!./app/assets/vendor/**/*.js', './app/*.js', './app/**/*.js'] 
+    lint: {
+        src: ['!./app/assets/vendor/**/*.js', './app/*.js', './app/**/*.js']
     },
-    browserify: { 
+    browserify: {
         DEVsrc: './app/appDev.js',
         PRODsrc: './app/app.js',
-        watch: 
+        watch:
         [
             '!./app/assets/libs/*.js',
             '!./app/assets/libs/**/*.js',
-            './app/*.js','./app/**/*.js', 
+            './app/*.js','./app/**/*.js',
             '/app/**/*.html'
-        ] 
+        ]
     },
-    styles: { 
-        src: './app/app.less', 
-        watch: ['./app/app.less','./app/**/*.less'] 
+    styles: {
+        src: './app/app.less',
+        watch: ['./app/app.less','./app/**/*.less']
     },
-    images: { 
-        src: './app/assets/images/**/*', 
+    images: {
+        src: './app/assets/images/**/*',
         watch: ['./app/assets/images', './app/assets/images/**/*'],
-        dest: './dist/images/' 
+        dest: './dist/images/'
     },
-    icons: { 
-        src: './app/assets/icons/fonts/*', 
+    icons: {
+        src: './app/assets/icons/fonts/*',
         watch: ['./app/assets/icons/fonts/*'],
         dest: './dist/fonts/'
     },
-    vendorJS: { 
+    vendorJS: {
         // These files will be bundled into a single vendor.js file that's called at the bottom of index.html
-        src: 
+        src:
         [
             './libs/jquery/dist/jquery.js', // v2.1.1
             './libs/bootstrap/dist/js/bootstrap.js', // v3.1.1
@@ -68,8 +68,8 @@ var filePath = {
             './libs/spin.js/spin.js'
         ]
     },
-    vendorCSS: { 
-        src: 
+    vendorCSS: {
+        src:
         [
             './libs/bootstrap/dist/css/bootstrap.css', // v3.1.1
             './app/assets/icons/styles.css',
@@ -77,12 +77,12 @@ var filePath = {
             './libs/ng-tags-input/ng-tags-input.bootstrap.css'
         ]
     },
-    copyIndex: { 
-        src: './app/index.html', 
-        watch: './app/index.html' 
+    copyIndex: {
+        src: './app/index.html',
+        watch: './app/index.html'
     },
-    copyFavicon: { 
-        src: './app/favicon.png' 
+    copyFavicon: {
+        src: './app/favicon.png'
     }
 };
 
@@ -98,7 +98,7 @@ function handleError(err) {
 
 // =======================================================================
 // Server Task
-// =======================================================================  
+// =======================================================================
 var express = require('express'),
     server  = express();
 
@@ -109,47 +109,41 @@ server.all('/*', function(req, res) {
     res.sendfile('/', { root: filePath.build.dest });
 });
 
-gulp.task('devServer', function() {
-  connect.server({
+function buildServerOptions(port, apiHost) {
+  return {
     root: filePath.build.dest,
     fallback: filePath.build.dest + '/index.html',
-    port: 5000,
+    port: port,
     livereload: true,
     middleware: function(connect, o) {
-        return [ (function() {
-            var url = require('url');
-            var proxy = require('proxy-middleware');
-            // var options = url.parse('http://api-dev.taliflo.com/');
-            var options = url.parse('http://localhost:3000/');
-            options.route = '/api';
-            return proxy(options);
-        })() ];
+      return [ (function() {
+        var url = require('url');
+        var proxy = require('proxy-middleware');
+        // var options = url.parse('http://api-dev.taliflo.com/');
+        var options = url.parse(apiHost);
+        options.route = '/api';
+        return proxy(options);
+      })() ];
     }
-  });
+  };
+}
+
+gulp.task('testServer', function () {
+  connect.server( buildServerOptions(4999, 'http://localhost:6999/') );
+});
+
+gulp.task('devServer', function() {
+  connect.server( buildServerOptions(5000, 'http://localhost:3000/') );
 });
 
 gulp.task('prodServer', function() {
-  connect.server({
-    root: filePath.build.dest,
-    fallback: filePath.build.dest + '/index.html',
-    port: 5050,
-    livereload: true,
-    middleware: function(connect, o) {
-        return [ (function() {
-            var url = require('url');
-            var proxy = require('proxy-middleware');
-            var options = url.parse('https://api.taliflo.com/');
-            options.route = '/api';
-            return proxy(options);
-        })() ];
-    }
-  });
+  connect.server( buildServerOptions(5050, 'https://api.taliflo.com/') );
 });
 
 
 // =======================================================================
 // Clean out dist folder contents on build
-// =======================================================================  
+// =======================================================================
 gulp.task('clean-dev', function () {
     del(['./dist/*.js', './dist/*.css', '!./dist/vendor.js', '!./dist/vendor.css', './dist/*.html', './dist/*.png', './dist/*.ico']);
 });
@@ -171,12 +165,12 @@ gulp.task('lint', function() {
 
 // =======================================================================
 // Browserify Bundle
-// =======================================================================  
+// =======================================================================
 gulp.task('bundle-dev', function() {
 
     var entryFile = filePath.browserify.DEVsrc,
         bundler = watchify(entryFile);
-    
+
     function rebundle () {
         return bundler.bundle({ debug: true })
             .pipe(source('bundle.js'))
@@ -218,7 +212,7 @@ gulp.task('bundle-prod', function() {
 
 // =======================================================================
 // Styles Task
-// =======================================================================  
+// =======================================================================
 gulp.task('styles-dev', function () {
     return gulp.src(filePath.styles.src)
         .pipe(sourcemaps.init())
@@ -244,7 +238,7 @@ gulp.task('styles-prod', function () {
 
 // =======================================================================
 // Images Task
-// =======================================================================  
+// =======================================================================
 gulp.task('images', function() {
     return gulp.src(filePath.images.src)
         .on("error", handleError)
@@ -256,7 +250,7 @@ gulp.task('images', function() {
 
 // =======================================================================
 // Icons Task
-// =======================================================================  
+// =======================================================================
 gulp.task('icons', function() {
     return gulp.src(filePath.icons.src)
         .on("error", handleError)
@@ -268,7 +262,7 @@ gulp.task('icons', function() {
 
 // =======================================================================
 // Vendor JS Task
-// =======================================================================  
+// =======================================================================
 gulp.task('vendorJS', function () {
     return gulp.src(filePath.vendorJS.src)
         .pipe(concat("vendor.js"))
@@ -281,7 +275,7 @@ gulp.task('vendorJS', function () {
 
 // =======================================================================
 // Vendor CSS Task
-// =======================================================================  
+// =======================================================================
 gulp.task('vendorCSS', function () {
     return gulp.src(filePath.vendorCSS.src)
         .pipe(concat("vendor.css"))
@@ -295,7 +289,7 @@ gulp.task('vendorCSS', function () {
 
 // =======================================================================
 // Copy index.html
-// =======================================================================  
+// =======================================================================
 gulp.task('copyIndex', function () {
     return gulp.src(filePath.copyIndex.src)
         .pipe(gulp.dest(filePath.build.dest))
@@ -306,7 +300,7 @@ gulp.task('copyIndex', function () {
 
 // =======================================================================
 // Copy Favicon
-// =======================================================================  
+// =======================================================================
 gulp.task('copyFavicon', function () {
     return gulp.src(filePath.copyFavicon.src)
         .pipe(gulp.dest(filePath.build.dest))
@@ -316,7 +310,7 @@ gulp.task('copyFavicon', function () {
 
 // =======================================================================
 // Watch for changes
-// =======================================================================  
+// =======================================================================
 gulp.task('watch', function () {
     gulp.watch(filePath.browserify.watch, ['bundle-dev']);
     gulp.watch(filePath.styles.watch, ['styles-dev']);
@@ -331,7 +325,17 @@ gulp.task('watch', function () {
 
 // =======================================================================
 // Sequential Build Rendering
-// =======================================================================  
+// =======================================================================
+
+gulp.task('build-test', function(callback) {
+  runSequence(
+    ['clean-dev', 'lint'],
+    // images and vendor tasks are removed to speed up build time. Use "gulp build" to do a full re-build of the dev app.
+    ['bundle-dev', 'styles-dev', 'copyIndex', 'copyFavicon'],
+    ['testServer', 'watch'],
+    callback
+  );
+});
 
 // run "gulp" in terminal to build the DEV app
 gulp.task('build-dev', function(callback) {
@@ -365,5 +369,5 @@ gulp.task('build', function(callback) {
 });
 
 
-gulp.task('default',['build-dev']); 
-gulp.task('prod',['build-prod']); 
+gulp.task('default',['build-dev']);
+gulp.task('prod',['build-prod']);
