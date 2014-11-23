@@ -327,16 +327,6 @@ gulp.task('watch', function () {
 // Sequential Build Rendering
 // =======================================================================
 
-gulp.task('build-test', function(callback) {
-  runSequence(
-    ['clean-dev', 'lint'],
-    // images and vendor tasks are removed to speed up build time. Use "gulp build" to do a full re-build of the dev app.
-    ['bundle-dev', 'styles-dev', 'copyIndex', 'copyFavicon'],
-    ['testServer', 'watch'],
-    callback
-  );
-});
-
 // run "gulp" in terminal to build the DEV app
 gulp.task('build-dev', function(callback) {
     runSequence(
@@ -346,6 +336,17 @@ gulp.task('build-dev', function(callback) {
         ['devServer', 'watch'],
         callback
     );
+});
+
+// run "gulp test" in terminal to build the TEST environment app
+gulp.task('build-test', function(callback) {
+  runSequence(
+    ['clean-dev', 'lint'],
+    // images and vendor tasks are removed to speed up build time. Use "gulp build" to do a full re-build of the dev app.
+    ['bundle-dev', 'styles-dev', 'copyIndex', 'copyFavicon'],
+    ['testServer', 'watch'],
+    callback
+  );
 });
 
 // run "gulp prod" in terminal to build the PROD-ready app
@@ -370,4 +371,5 @@ gulp.task('build', function(callback) {
 
 
 gulp.task('default',['build-dev']);
+gulp.task('test',['build-test']);
 gulp.task('prod',['build-prod']);
