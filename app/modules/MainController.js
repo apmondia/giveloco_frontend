@@ -19,12 +19,13 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 
 	var setCurrentUser = function() {
 		Auth.getCurrentUser().then(function(userData){
+			console.debug("Received curentUser: ", userData);
 			$scope.currentUser = userData;
 			localStorage.setItem('uname', userData.first_name);
 			$scope.currentUserName = userData.first_name;
 		});
 	};
-	
+
 	setCurrentUser();
 
 	$scope.currentUserName = localStorage.getItem('uname');
@@ -48,7 +49,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	// Filter users to populate list of Causes
 	users.getList().then(function(user) {
         $scope.causes = _.filter(user, function(user){
-            return user.role === USER_ROLES.cause && user.is_published === true && user.is_activated === true && user.sponsors.length > 0;
+            return user.role === USER_ROLES.cause && user.is_published === true && user.is_activated === true;
         });
         $scope.businesses = _.filter(user, function(user){
             return user.role === USER_ROLES.business && user.is_published === true && user.is_activated === true && user.sponsorships.length > 0;
