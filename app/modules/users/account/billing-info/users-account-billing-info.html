@@ -10,4 +10,16 @@
 	<div class="sub-header">
 		<h5>for <span>{{currentUser.company_name}}</span></h5>
 	</div>
+	<div ng-show='currentUser.has_stripe_connect'>
+		Your account has been connected to Stripe and is ready to go.
+	</div>
+	<div ng-hide='currentUser.has_stripe_connect'>
+		Connect your billing account to Stripe
+
+		<a id='stripe-connect' href='{{currentUser.stripe_user_omniauth_authorize_path}}'>
+			<img src='/images/light.png' alt='Connect with Stripe'/>
+		</a>
+
+	</div>
+
 </div>
