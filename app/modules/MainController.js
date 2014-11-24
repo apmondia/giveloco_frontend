@@ -19,7 +19,6 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 
 	var setCurrentUser = function() {
 		Auth.getCurrentUser().then(function(userData){
-			console.debug('Received curentUser: ', userData);
 			$scope.currentUser = userData;
 			localStorage.setItem('uname', userData.first_name);
 			$scope.currentUserName = userData.first_name;
