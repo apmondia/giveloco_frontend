@@ -7,12 +7,25 @@
 
 
 /* =======================================================================
-	Base Elements
+	Base Elements & Fonts
 ======================================================================= */
 body {
-	font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 200;
+    font-size: 14px;
     line-height: 20px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "PT Sans Narrow", "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
+}
+p {
+    color: #666;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+}
+blockquote {
+    .quotation();
 }
 
 
@@ -56,6 +69,7 @@ a {
 .page {
     .main {
         margin-top:50px;
+        padding-bottom: 40px;
         min-height: 300px;
     }
 }
@@ -78,6 +92,12 @@ a {
 ========================================================================== */
 h5.subtitle {
     color:@grey;
+}
+.section-title {
+    text-align: center;
+    font-weight: 500;
+    font-family: "PT Sans Narrow", "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
+    font-size: 65px;
 }
 
 
@@ -338,60 +358,68 @@ span.edit {
 
 
 /* ==========================================================================
-    Footer
+    Social Media Links
 ========================================================================== */
 .social-media-links {
-    margin-top: 40px;
     padding: 40px 0;
     background-color: @brand-purple;
     border-bottom: solid 1px darken(@brand-purple, 10%);
-    ul.social-links {
-        width: 278px;
-        margin: auto;
-        .clearfix();
-        &:hover {
-            li {
-                opacity: 0.5;
-            }
-        }
+}
+ul.social-links {
+    width: 278px;
+    margin: auto;
+    .clearfix();
+    &:hover {
         li {
-            transition: opacity 0.3s;
-            &:hover {
-                opacity: 1;
+            opacity: 0.5;
+        }
+    }
+    li {
+        transition: opacity 0.3s;
+        &:hover {
+            opacity: 1;
+        }
+        a.social-link {
+            padding: 5px;
+            margin: 0 3px;
+            color: #fff;
+            border-radius: 3px;
+            position: relative;
+            float: left;
+            .icon {
+                .icons(@font-size: 30px);
             }
-            a.social-link {
-                padding: 5px;
-                margin: 0 3px;
-                color: #fff;
-                border-radius: 3px;
-                position: relative;
-                float: left;
+            &.small-icon {
                 .icon {
-                    .icons(@font-size: 30px);
+                    .icons(@font-size: 16px);
                 }
-                &.email {
-                    background-color: #cc5a4f;
-                }
-                &.facebook {
-                    background-color: #3b6598;
-                }
-                &.twitter {
-                    background-color: #00a3ea;
-                }
-                &.instagram {
-                    background-color: #3f799b;
-                }
-                &.linkedin {
-                    background-color: #0f7ba4;
-                }
-                &.vimeo {
-                    background-color: #75beec;
-                }
+            }
+            &.email {
+                background-color: #cc5a4f;
+            }
+            &.facebook {
+                background-color: #3b6598;
+            }
+            &.twitter {
+                background-color: #00a3ea;
+            }
+            &.instagram {
+                background-color: #3f799b;
+            }
+            &.linkedin {
+                background-color: #0f7ba4;
+            }
+            &.vimeo {
+                background-color: #75beec;
             }
         }
     }
 }
 
+
+/* ==========================================================================
+    Footer
+========================================================================== */
 .footer {
     color: #fff;
     background-color: @brand-purple;
@@ -671,6 +699,8 @@ select {
 ========================================================================== */
 .button {
     color: #fff;
+    border-radius: 3px;
+    transition: background-color 0.2s linear, border-color 0.2s linear;
     &:hover,
     &:focus {
         color: #fff;

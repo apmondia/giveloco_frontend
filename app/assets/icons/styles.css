@@ -239,7 +239,7 @@
 .icon-keypad-outline:before {
   content: "(";
 }
-.icon-linkedin:before {
+.icon-linkedin-box:before {
   content: ")";
 }
 .icon-linkedin-outline:before {
@@ -745,4 +745,7 @@
 }
 .icon-social-vimeo:before {
   content: "\e08d";
+}
+.icon-linkedin:before {
+  content: "\e08e";
 }

@@ -25,7 +25,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 		login: function(credentials) {
 			return $http.post(apiConfig.API.user.login, credentials).then(function(user){
 				authService.setUserData(user);
-				console.debug("login: ", user);
+				console.debug('login: ', user);
 				return user;
 			});
 		},
@@ -45,7 +45,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 
 	    getCurrentUser: function() {
 	    	var uid = $cookieStore.get('uid');
-				console.debug("getCurrentUser(): returning: ", Restangular.one('users', uid).get());
+				console.debug('getCurrentUser(): returning: ', Restangular.one('users', uid).get());
 	    	return Restangular.one('users', uid).get();
 	    },
 

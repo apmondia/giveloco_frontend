@@ -9,7 +9,7 @@ function UsersProfileCtrl($rootScope, $scope) {
 	if ($scope.user.website) {
 		$scope.shortURL = $scope.user.website.replace(/.*?:\/\//g, '');
 	} else {
-		$scope.shortURL = ''
+		$scope.shortURL = '';
 	}
 	
 	/* =======================================================================

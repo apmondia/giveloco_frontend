@@ -1,21 +1,24 @@
-<div id="causes-carousel" class="section-causes">
+<div id="causes-carousel" class="home-section section-causes">
 	<div class="container">
 		<div class="row">
 			<h2 class="section-title">Featured Causes</h2>
-			<div ng-repeat="cause in featuredCauses | limitTo:4" class="cause grid block">
-				<div class="grid-item">
-					<a ui-sref="profile.cause({id:cause.id})" title="{{cause.company_name}}">
-						<div class="profile-picture"><img ng-src="{{cause.profile_picture}}"></div>
-						<div class="company-name">{{cause.company_name | characters:20}}</div>
-					</a>
-					<div class="user-summary">{{cause.summary | characters:140}}</div>
-					<div class="supporters" popover-placement="top" popover-trigger="mouseenter" popover="{{pluralizedUserTooltip(cause)}}">
-						<i class="icon icon-cash" ng-repeat="sponsor in cause.sponsors | limitTo : 3"></i>
-						<i class="icon icon-more-2" ng-if="cause.sponsors.length > 3"></i>
+			<div class="divider"></div>
+			<div class="section-content">
+				<div ng-repeat="cause in featuredCauses | limitTo:4" class="cause grid block">
+					<div class="grid-item">
+						<a ui-sref="profile.cause({id:cause.id})" title="{{cause.company_name}}">
+							<div class="profile-picture"><img ng-src="{{cause.profile_picture}}"></div>
+							<div class="company-name">{{cause.company_name | characters:20}}</div>
+						</a>
+						<div class="user-summary">{{cause.summary | characters:140}}</div>
+						<div class="supporters" popover-placement="top" popover-trigger="mouseenter" popover="{{pluralizedUserTooltip(cause)}}">
+							<i class="icon icon-cash" ng-repeat="sponsor in cause.sponsors | limitTo : 3"></i>
+							<i class="icon icon-more-2" ng-if="cause.sponsors.length > 3"></i>
+						</div>
 					</div>
 				</div>
+				<div ajax-spinner class="spinner" ng-show="loading"></div>
 			</div>
-			<div ajax-spinner class="spinner" ng-show="loading"></div>
 		</div>
 		<div class="register-cause">
 			<a class="btn button button-primary" ui-sref="auth.signup.cause">Register Your Cause</a>

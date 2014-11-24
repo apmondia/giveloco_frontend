@@ -8,7 +8,7 @@ function DashboardBusinessSponsorshipsCtrl($scope, Restangular) {
   //   causeList.push(supportedCause);
   // }
   // console.debug('cause List: ', causeList);
-  $scope.sponsorships = $scope.currentUser.getList("sponsorships")
+  $scope.sponsorships = $scope.currentUser.getList('sponsorships');
 }
 
 DashboardBusinessSponsorshipsCtrl.$inject = ['$scope', 'Restangular'];

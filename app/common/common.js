@@ -3,8 +3,6 @@ window._ = require('lodash');
 
 require('angular');
 require('angular-bootstrap');
-require('angular-carousel');
-require('angular-ui-router');
 require('angular-animate');
 require('angular-cookies');
 require('angular-file-upload');
@@ -15,6 +13,7 @@ require('angular-scroll');
 require('angular-spinner');
 require('angular-touch');
 require('angular-truncate');
+require('angular-ui-router');
 require('domready/ready');
 require('gsap');
 require('lodash');
@@ -26,7 +25,6 @@ module.exports = angular.module('common',
 	[
         'ui.bootstrap',
         'ui.router',
-        'angular-carousel',
         'angularFileUpload',
         'angularPayments',
         'angularSpinner',

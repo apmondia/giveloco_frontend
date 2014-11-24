@@ -37,6 +37,16 @@
   top: @top-margin;
 }
 
+.quotation {
+  font-family: "Garamond-italic", "Georgia", serif;
+}
+
+.rotate(@degrees: 90deg) {
+  -ms-transform: rotate(@degrees); /* IE 9 */
+  -webkit-transform: rotate(@degrees); /* Chrome, Safari, Opera */
+  transform: rotate(@degrees);
+}
+
 /* Custom display for Radio Buttons and Checkboxes */
 .custom-input(@height: 16px, @width: 16px, @bottom: 2px) {
   input[type=radio],
@@ -130,6 +140,7 @@
   }
 }
 
+/* Animations */
 .transition(@property: all, @duration: 0.3s, @function: ease-in-out, @delay: 0s) {
   -webkit-transition: @property @duration @function @delay;
   -moz-transition: @property @duration @function @delay;

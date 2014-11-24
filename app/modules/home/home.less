@@ -13,8 +13,38 @@ body.page.home {
 		.animated();
 		.fadeIn();
 	}
+	p {
+		font-size: 18px;
+		line-height: 28px;
+	}
 	.header {
 		display: none;
+		@media @breakpoint-md {
+			display: block;
+			position: absolute;
+		}
+		.navbar {
+			background-color: transparent;
+			border-bottom: none;
+			.navbar-header {
+				display: none;
+			}
+			.navbar-right {
+				padding: 0;
+				background: url("/images/blacks/black35.png");
+				border-radius: 0 0 5px 5px;
+				li {
+					a {
+						color: #fff;
+						text-transform: capitalize;
+						&:hover {
+							background-color: transparent;
+							background: url("/images/whites/white35.png");
+						}
+					}
+				}
+			}
+		}
 	}
 	.home-navbar {
 		width: 100%;
@@ -22,12 +52,19 @@ body.page.home {
 		top: 0;
 		z-index: 10;
 		opacity: 0;
+		visibility: hidden;
+		transition: visibility linear 0.3s, opacity linear 0.3s;
 		.animated();
 		.customAnimated(@duration: 0.3s);
+		@media @breakpoint-xs {
+			display: none;
+		}
 		&.active {
+			visibility: visible;
 			.fadeInDown();
 		}
 		&.inactive {
+			visibility: hidden;
 			.fadeOutUp();
 		}
 		.home-branding {
@@ -37,6 +74,10 @@ body.page.home {
 					background-color: transparent;
 				}
 			}
+		}
+		li {
+			padding-left: 0;
+			padding-right: 0;
 		}
 	}
 	.main {
@@ -56,12 +97,7 @@ body.page.home {
 				.explore-links {
 					.clearfix();
 					width: 450px;
-					margin: 40px auto;
-					&:hover {
-						a {
-							opacity:0.6;
-						}
-					}
+					margin: 30px auto;
 					a {
 						display: block;
 						width: 200px;
@@ -70,34 +106,31 @@ body.page.home {
 						text-transform: uppercase;
 						text-align: center;
 						color: #fff;
-						border-radius: 5px;
+						border-radius: 3px;
 						padding: 15px;
 						text-shadow: 0px 0px 3px #333;
 						float: left;
-						&:hover {
-							opacity: 1;
-						}
 						&.businesses {
 							color: #fff;
-							border: solid 2px @brand-teal;
-							box-shadow: 0px 0px 10px darken(@brand-teal, 50%);
-							/*background-color: rgba(16,14,98,0.3);*/
-							background-color: rgba(0,167,157,0.3);
+							border: solid 2px #fff;
+							box-shadow: 0px 0px 10px #333;
 							&:hover {
-								/*background-color: rgba(16,14,98,0.5);*/
-								background-color: rgba(0,167,157,0.5);
+								border: solid 2px @brand-teal;
+								background-color: rgba(0,167,157,0.3);
+								box-shadow: 0px 0px 10px darken(@brand-teal, 50%);
 							}
 						}
 						&.causes {
 							color: #fff;
-							border: solid 2px @brand-orange;
-							box-shadow: 0px 0px 10px darken(@brand-orange, 50%);
-							background-color: rgba(255,174,66,0.3);
+							border: solid 2px #fff;
+							box-shadow: 0px 0px 10px #333;
 							.icon {
 								margin-right: -15px;
 							}
 							&:hover {
-								background-color: rgba(255,174,66,0.5);
+								border: solid 2px @brand-orange;
+								background-color: rgba(255,174,66,0.3);
+								box-shadow: 0px 0px 10px darken(@brand-orange, 50%);
 							}
 						}
 						.icon {
@@ -107,11 +140,11 @@ body.page.home {
 				}
 				h1 {
 					color: #fff;
-					font-size: 55px;
+					font-size: 70px;
 					text-shadow: 1px 1px 5px #333;
-					margin: 0 -30px;
-					padding: 10px 30px;
-					/*background-color: rgba(0,0,0,0.2);*/
+					@media @breakpoint-md {
+						margin: 0 25px;
+					}
 				}
 			}
 			a.scroll-down {
@@ -130,17 +163,39 @@ body.page.home {
 			}
 		}
 	}
+	.home-section {
+		min-height: 525px;
+		padding: 30px 0px;
+		.section-title {
+			margin: 30px 0 30px;
+		}
+		.divider {
+			height: 5px;
+			width: 150px;
+			margin: 0 auto 40px;
+			background: url("/images/whites/white35.png");
+		}
+		.section-block {
+			.make-xs-column(12);
+			.make-sm-column(4);
+			.make-md-column(4);
+			.make-lg-column(4);
+			margin-bottom: 50px;
+			.block-divider {
+				height: 5px;
+				width: 75px;
+				margin: 20px auto;
+				background: url("/images/blacks/black10.png");
+			}
+		}
+	}
 	.section-causes {
 		background-color: @brand-teal;
-		padding: 30px 0px;
 		.row {
 			min-height: 525px;
 		}
-		h2 {
+		.section-title {
 			color: #fff;
-			text-align: center;
-			font-weight: 500;
-			margin: 0 0 30px;
 		}
 		.register-cause {
 			text-align: center;
@@ -152,15 +207,254 @@ body.page.home {
 		}
 	}
 	.section-why-taliflo {
-		height: 300px;
+		background-color: @brand-grey;
+		padding-bottom: 100px;
+		.divider {
+			background: url("/images/blacks/black10.png");
+		}
+		.section-block {
+			text-align: center;
+			.block-image {
+				color: #fff;
+				width: 180px;
+				height: 180px;
+				padding: 35px;
+				margin: auto;
+				border-radius: 100%;
+				.icon {
+					.icons(@font-size: 100px);
+					float: none;
+					margin-right: 0;
+				}
+			}
+			.block-content {
+				padding: 0;
+				@media @breakpoint-md {
+					padding: 0 20px;
+				}
+				@media @breakpoint-lg {
+					padding: 0 15px;
+				}
+			}
+			.block-footer {
+				margin-top: 30px;
+				.button {
+					&:hover {
+						background-color: @brand-orange;
+					}
+				}
+			}
+			&.people {
+				.block-image {
+					background-color: @brand-purple;
+				}
+			}
+			&.causes {
+				.block-image {
+					padding: 36px;
+					background-color: @brand-orange;
+					.icon {
+						.icons(@font-size: 110px);
+					}
+				}
+			}
+			&.businesses {
+				.block-image {
+					background-color: @brand-teal;
+				}
+			}
+		}
 	}
 	.section-how-it-works {
-		height: 300px;
+		background-color: @brand-teal;
+		.section-title {
+			color: #fff;
+		}
+		.section-block {
+			&.video {
+				.make-xs-column(12);
+				.make-sm-column(12);
+				.make-md-column(12);
+				.make-lg-column(12);
+				float: none;
+				height: 100%;
+				@media @breakpoint-lg {
+					padding-left: 20px;
+					padding-right: 20px;
+				}
+				iframe {
+					width: 100%;
+					@media @breakpoint-xs {
+						height: 218px;
+					}
+					@media @breakpoint-sm {
+						height: 414px;
+					}
+					@media @breakpoint-md {
+						height: 538px;
+					}
+					@media @breakpoint-lg {
+						height: 633px;
+					}
+				}
+			}
+			&.purchase,
+			&.redeem {
+				.make-xs-column(12);
+				.make-sm-column(6);
+				.make-md-column(6);
+				.make-lg-column(6);
+				color: #fff;
+				.block-title,
+				.block-content {
+					@media @breakpoint-md {
+						padding: 0 40px;
+					}
+					p {
+						color: #fff;
+					}
+				}
+			}
+		}
 	}
 	.section-supporters {
-		height: 300px;
+		background-color: @brand-orange;
+		padding-bottom: 100px;
+		.section-title {
+			color: #fff;
+		}
+		.section-content {
+			.quotation-mark {
+				.icon {
+					width: 60px;
+					margin: auto;
+					color: @brand-teal;
+					.icons(@font-size: 60px);
+					.rotate(@degrees: 180deg);
+					float: none;
+				}
+			}
+			.quote {
+				padding: 0 20px;
+				@media @breakpoint-sm {
+					padding: 0 60px;
+				}
+				blockquote {
+					font-size: 26px;
+					@media @breakpoint-sm {
+						font-size: 36px;
+						line-height: 40px;
+					}
+					line-height: 36px;
+					border-left: none;
+					color: #fff;
+					text-shadow: 1px 1px 1px darken(@brand-orange, 20%);
+				}
+			}
+			.supporter-name {
+				.quotation();
+				font-size: 16px;
+				@media @breakpoint-sm {
+					font-size: 20px;
+				}
+				color: #fff;
+				text-shadow: 1px 1px 1px darken(@brand-orange, 20%);
+				opacity: 0.9;
+			}
+		}
+		.bootstrap-carousel {
+			.carousel-indicators {
+				position: relative;
+				bottom: 0;
+				margin-top: 30px;
+				li {
+					width: 50px;
+					height: 50px;
+					margin: 0 5px;
+					border-radius: 100%;
+					text-indent: 0;
+					color: #fff;
+					border-color: #000;
+					background-color: #000;
+					opacity: 0.15;
+					transition: opacity linear 0.2s;
+					&:before {
+						font-family: 'Taliflo';
+						.icons(@font-size: 34px);
+						line-height: 48px;
+						width: 50px;
+						height: 50px;
+					}
+					&:first-child:before {
+						content:'J';
+						margin-left: -3px;
+					}
+					&:last-child:before {
+						content:'L';
+						margin-left: 1px;
+					}
+					&.active,
+					&:hover {
+						opacity: 0.4;
+					}
+				}
+			}
+			.carousel-control {
+				display: none;
+				background: none;
+				.icon {
+					.icons(@font-size: 60px);
+				}
+				&.left {
+
+				}
+				&.right {
+					.icon {
+						float: right;
+					}
+				}
+			}
+		}
 	}
 	.section-team {
-		height: 300px;
+		background-color: @brand-grey;
+		padding-bottom: 100px;
+		margin-bottom: -40px;
+		text-align: center;
+		.member-photo {
+
+		}
+		.member-name {
+			margin-bottom: 0;
+		}
+		.member-title {
+			font-size: 18px;
+			margin: 10px 0;
+			.quotation();
+		}
+		.member-bio {
+			padding: 0;
+			@media @breakpoint-lg {
+				padding: 0 20px;
+			}
+		}
+		.block-footer {
+			.social-links {
+				@link-width: 32px;
+				&.links {
+					width: @link-width;
+					margin: auto;
+					&.two {
+						width: @link-width * 2;
+					}
+					&.three {
+						width: @link-width * 3;
+					}
+				}
+			}
+		}
+		.divider {
+			background: url("/images/blacks/black10.png");
+		}
 	}
 }
