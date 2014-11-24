@@ -6,9 +6,12 @@ function UsersProfileCtrl($rootScope, $scope) {
 	$scope.userImage = $scope.user.images.profile_picture.medium;
 
 	// Strip protocol from website for profile page presentation
-	$scope.shortURL = $scope.user.website.replace(/.*?:\/\//g, '');
-
-
+	if ($scope.user.website) {
+		$scope.shortURL = $scope.user.website.replace(/.*?:\/\//g, '');
+	} else {
+		$scope.shortURL = ''
+	}
+	
 	/* =======================================================================
 		Modals
 	======================================================================= */

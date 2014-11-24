@@ -2,11 +2,7 @@
 'use strict';
 
 function UsersAccountHistoryCtrl($rootScope, $scope) {
-	var t_created = $scope.transactions_created = $scope.currentUser.transactions_created;
-	var t_accepted = $scope.transactions_accepted = $scope.currentUser.transactions_accepted;
 
-	$scope.transactions = t_created.concat(t_accepted);
-	
 // =======================================================================
 //	View Configurations
 // =======================================================================
