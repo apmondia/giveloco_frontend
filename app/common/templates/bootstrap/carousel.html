@@ -1,0 +1,8 @@
+<div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">
+    <div class="carousel-inner" ng-transclude></div>
+    <ol class="carousel-indicators" ng-show="slides.length > 1">
+        <li ng-repeat="slide in slides track by $index" ng-class="{active: isActive(slide)}" ng-click="select(slide)"></li>
+    </ol>
+    <a class="left carousel-control" ng-click="prev()" ng-show="slides.length > 1"><span class="icon icon-chevron-left"></span></a>
+    <a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"><span class="icon icon-chevron-right"></span></a>
+</div>
