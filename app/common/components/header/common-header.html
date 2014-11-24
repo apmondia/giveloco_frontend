@@ -35,9 +35,9 @@
             <!-- /Mobile Menu -->
 
             <!-- Desktop Menu-->
-            <li class="dropdown" ng-if="isLoggedIn()">
+            <li class="dropdown" ng-if="isLoggedIn()" dropdown on-toggle="toggled(open)">
               <div dropdown is-open="status.isopen" class="dropdown-wrapper">
-                <a class="dropdown-toggle">
+                <a class="dropdown-toggle" dropdown-toggle>
                   Hi, {{currentUserName}} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
