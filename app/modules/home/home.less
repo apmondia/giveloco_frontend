@@ -17,6 +17,11 @@ body.page.home {
 		font-size: 18px;
 		line-height: 28px;
 	}
+	#freshwidget-button {
+		@media @breakpoint-xs {
+			display: none !important;
+		}
+	}
 	.header {
 		display: none;
 		@media @breakpoint-md {
@@ -31,8 +36,43 @@ body.page.home {
 			}
 			.navbar-right {
 				padding: 0;
-				background: url("/images/blacks/black35.png");
+				background: none;
 				border-radius: 0 0 5px 5px;
+				position: relative;
+				li {
+					.animated();
+					.customAnimated(@duration: 0.2s);
+					opacity: 0;
+					transition: opacity 0.2s linear;
+				}
+				&:before {
+					transition: opacity 0.2s linear;
+					cursor: pointer;
+					width: 50px;
+					font-family: "Taliflo";
+					font-size: 30px;
+					content: "]";
+					position: absolute;
+					top: 0; bottom: 0; left: 0; right: 0;
+					margin: auto;
+					text-align: center;
+					z-index: 1;
+					color: #fff;
+					padding: 8px 10px 4px;
+					border-radius: 5px;
+					background: url("/images/blacks/black35.png");
+				}
+				&:hover {
+					background: url("/images/blacks/black35.png");
+					li {
+						.fadeInDownBig();
+						opacity: 1;
+					}
+					&:before {
+						opacity: 0;
+						z-index: 0;
+					}
+				}
 				li {
 					a {
 						color: #fff;
@@ -57,7 +97,7 @@ body.page.home {
 		.animated();
 		.customAnimated(@duration: 0.3s);
 		@media @breakpoint-xs {
-			display: none;
+			display: none !important;
 		}
 		&.active {
 			visibility: visible;
@@ -94,10 +134,19 @@ body.page.home {
 				background: url("/images/home_header_bg_dark.jpg") no-repeat center top;
 				background-size: cover;
 				padding-top: 20px;
+				@media @breakpoint-xs {
+					padding: 30px 5px;
+				}
 				.logo-large {
 					height: 275px;
 					background: url("/images/logo/logo_color_lg.png") no-repeat center;
 					background-size: contain;
+					@media @breakpoint-xs {
+						height: 180px;
+					}
+					@media @breakpoint-md {
+						height: 275px;
+					}
 				}
 				.explore-links {
 					.clearfix();
@@ -116,9 +165,16 @@ body.page.home {
 						padding: 15px;
 						text-shadow: 0px 0px 3px #333;
 						float: left;
-
 						color: #fff;
 						box-shadow: 0px 0px 10px darken(@brand-orange, 50%);
+						@media @breakpoint-xs {
+							width: 185px;
+							font-size: 16px;
+							line-height: 20px;
+							.icon {
+								.icons(@font-size: 35px, @top-margin: 2px);
+							}
+						}
 						&:hover {
 							box-shadow: 0px 0px 10px darken(@brand-teal, 50%);
 						}
@@ -136,6 +192,10 @@ body.page.home {
 					color: #fff;
 					font-size: 60px;
 					text-shadow: 1px 1px 5px #333;
+					@media @breakpoint-xs {
+						font-size: 50px;
+						line-height: 60px;
+					}
 					@media @breakpoint-md {
 						margin: 30px 25px 40px;
 					}
@@ -294,9 +354,9 @@ body.page.home {
 		.section-block {
 			&.video {
 				.make-xs-column(12);
-				.make-sm-column(12);
-				.make-md-column(12);
-				.make-lg-column(12);
+				.make-sm-column(7);
+				.make-md-column(7);
+				.make-lg-column(7);
 				float: none;
 				height: 100%;
 				@media @breakpoint-lg {
@@ -309,30 +369,46 @@ body.page.home {
 						height: 218px;
 					}
 					@media @breakpoint-sm {
-						height: 414px;
+						height: 238px;
 					}
 					@media @breakpoint-md {
-						height: 538px;
+						height: 296px;
 					}
 					@media @breakpoint-lg {
-						height: 633px;
+						height: 358px;
 					}
 				}
 			}
-			&.purchase,
-			&.redeem {
+			&.text {
 				.make-xs-column(12);
-				.make-sm-column(6);
-				.make-md-column(6);
-				.make-lg-column(6);
+				.make-sm-column(5);
+				.make-md-column(5);
+				.make-lg-column(5);
 				color: #fff;
 				.block-title,
 				.block-content {
 					@media @breakpoint-md {
 						padding: 0 40px;
 					}
-					p {
-						color: #fff;
+					li {
+						font-size: 16px;
+						line-height: 20px;
+						margin: 10px 0;
+						@media @breakpoint-sm {
+							font-size: 20px;
+							line-height: 30px;
+							margin: 25px 0;
+						}
+						@media @breakpoint-md {
+							font-size: 22px;
+							line-height: 26px;
+							margin: 40px 0;
+						}
+						@media @breakpoint-lg {
+							font-size: 30px;
+							line-height: 34px;
+							margin: 45px 0;
+						}
 					}
 				}
 			}
@@ -343,6 +419,10 @@ body.page.home {
 		padding-bottom: 100px;
 		.section-title {
 			color: #fff;
+			font-size: 0;
+		}
+		.divider {
+			display: none;
 		}
 		.section-content {
 			.quotation-mark {
@@ -480,11 +560,15 @@ body.page.home {
 	}
 	.section-learn-more {
 		height: 600px;
-		padding: 170px;
 		text-align: center;
 		margin-bottom: -40px;
-		background: url("/images/home_footer_bg.jpg") no-repeat center top;
+		background: url("/images/home_footer_bg.jpg") no-repeat center 1px;
 		background-size: cover;
+		border-top: solid 1px #ccc;
+		padding: 170px 40px;
+		@media @breakpoint-xs {
+			padding: 100px 10px;
+		}
 		.section-title {
 			color: #fff;
 			text-shadow: 1px 1px 1px #666;
