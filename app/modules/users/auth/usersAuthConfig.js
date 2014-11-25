@@ -68,6 +68,17 @@ function userAuthRoutes($stateProvider) {
         pageTitle: 'Reset Password',
         pageDescription: 'Reset your account password.'
       }
+    },
+    stripeOAuth = {
+      name: 'auth.stripe',
+      url: '^/auth/stripe',
+      template: '<div users-auth-stripe></div>',
+      data: {
+        moduleClasses: 'users auth',
+        pageClasses: 'stripe',
+        pageTitle: 'Stripe OAuth',
+        pageDescription: 'Stripe Authentication Redirect'
+      }
     };
 
   $stateProvider.state(auth);
@@ -77,6 +88,7 @@ function userAuthRoutes($stateProvider) {
   $stateProvider.state(signupBusiness);
   $stateProvider.state(login);
   $stateProvider.state(passwordReset);
+  $stateProvider.state(stripeOAuth);
 
 }
 
