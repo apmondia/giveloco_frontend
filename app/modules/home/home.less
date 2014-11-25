@@ -50,7 +50,7 @@ body.page.home {
 		width: 100%;
 		position: fixed;
 		top: 0;
-		z-index: 10;
+		z-index: 99;
 		opacity: 0;
 		visibility: hidden;
 		transition: visibility linear 0.2s;
@@ -101,13 +101,14 @@ body.page.home {
 				}
 				.explore-links {
 					.clearfix();
-					width: 450px;
+					width: 470px;
 					margin: 30px auto;
 					a {
 						display: block;
-						width: 200px;
+						width: 225px;
 						margin: 0 5px;
 						font-size: 20px;
+						line-height: 24px;
 						text-transform: uppercase;
 						text-align: center;
 						color: #fff;
@@ -115,40 +116,28 @@ body.page.home {
 						padding: 15px;
 						text-shadow: 0px 0px 3px #333;
 						float: left;
-						&.businesses {
-							color: #fff;
-							border: solid 2px #fff;
-							box-shadow: 0px 0px 10px #333;
-							&:hover {
-								border: solid 2px @brand-teal;
-								background-color: rgba(0,167,157,0.3);
-								box-shadow: 0px 0px 10px darken(@brand-teal, 50%);
-							}
+
+						color: #fff;
+						box-shadow: 0px 0px 10px darken(@brand-orange, 50%);
+						&:hover {
+							box-shadow: 0px 0px 10px darken(@brand-teal, 50%);
 						}
 						&.causes {
-							color: #fff;
-							border: solid 2px #fff;
-							box-shadow: 0px 0px 10px #333;
 							.icon {
-								margin-right: -15px;
-							}
-							&:hover {
-								border: solid 2px @brand-orange;
-								background-color: rgba(255,174,66,0.3);
-								box-shadow: 0px 0px 10px darken(@brand-orange, 50%);
+								margin-right: -13px;
 							}
 						}
 						.icon {
-							.icons(@font-size: 20px);
+							.icons(@font-size: 45px, @top-margin: 2px);
 						}
 					}
 				}
 				h1 {
 					color: #fff;
-					font-size: 70px;
+					font-size: 60px;
 					text-shadow: 1px 1px 5px #333;
 					@media @breakpoint-md {
-						margin: 0 25px;
+						margin: 30px 25px 40px;
 					}
 				}
 			}
@@ -214,8 +203,11 @@ body.page.home {
 	.section-why-taliflo {
 		background-color: @brand-grey;
 		padding-bottom: 100px;
+		.section-title {
+			font-size: 0;
+		}
 		.divider {
-			background: url("/images/blacks/black10.png");
+			display: none;
 		}
 		.section-block {
 			text-align: center;
@@ -253,6 +245,14 @@ body.page.home {
 				.block-image {
 					background-color: @brand-purple;
 				}
+				.block-footer {
+					.button {
+						background-color: @brand-purple;
+						&:hover {
+							background-color: lighten(@brand-purple, 15%);
+						}
+					}
+				}
 			}
 			&.causes {
 				.block-image {
@@ -262,10 +262,26 @@ body.page.home {
 						.icons(@font-size: 110px);
 					}
 				}
+				.block-footer {
+					.button {
+						background-color: @brand-orange;
+						&:hover {
+							background-color: darken(@brand-orange, 15%);
+						}
+					}
+				}
 			}
 			&.businesses {
 				.block-image {
 					background-color: @brand-teal;
+				}
+				.block-footer {
+					.button {
+						background-color: @brand-teal;
+						&:hover {
+							background-color: darken(@brand-teal, 15%);
+						}
+					}
 				}
 			}
 		}
@@ -460,6 +476,25 @@ body.page.home {
 		}
 		.divider {
 			background: url("/images/blacks/black10.png");
+		}
+	}
+	.section-learn-more {
+		height: 600px;
+		padding: 170px;
+		text-align: center;
+		margin-bottom: -40px;
+		background: url("/images/home_footer_bg.jpg") no-repeat center top;
+		background-size: cover;
+		.section-title {
+			color: #fff;
+			text-shadow: 1px 1px 1px #666;
+		}
+		.button {
+			margin-top: 40px;
+			padding: 20px 40px;
+			text-transform: uppercase;
+			text-shadow: 1px 1px 1px #666;
+			box-shadow: 0px 0px 10px #666;
 		}
 	}
 }

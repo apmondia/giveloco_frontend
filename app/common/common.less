@@ -616,9 +616,10 @@ ul.social-links {
         }
     }
     input {
-        padding: 20px 0;
+        padding: 0;
+        height: 42px;
         &.with-label {
-            padding: 20px 0 20px 110px;
+            padding: 0 0 0 110px;
         }
     }
     textarea {
@@ -657,6 +658,7 @@ ul.social-links {
         position: absolute;
         left: 104%;
         top: 1px;
+        z-index: 1;
         border-radius: 5px;
         &.ng-enter {
             .fadeInRight();
@@ -709,13 +711,13 @@ select {
 .button-primary {
     background-color: @brand-orange;
     &:hover {
-        background-color: darken(@brand-orange, 10%);
+        background-color: @brand-teal;
     }
 }
 .button-secondary {
     background-color: @brand-teal;
     &:hover {
-        background-color: darken(@brand-teal, 10%);
+        background-color: @brand-orange;
     }
 }
 .button-tertiary {

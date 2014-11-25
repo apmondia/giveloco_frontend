@@ -5,7 +5,6 @@ var Dashboard = function($state) {
 	var dashService = {
 
         showDashByRole: function(role) {
-            console.log(role);
             if (role === 'admin') {
                 $state.go('dashboard.admin');
             } else if (role === 'business') {
