@@ -1,0 +1,7 @@
+<div class="purchase-certificate-step-two">
+	<div ng-repeat="cause in sponsorships" class="cause">
+		<div class="profile-picture"><img ng-src="{{cause.images.profile_picture.thumb}}"></div>
+		<div class="company-name">{{cause.company_name | characters:24}}</div>
+		<div class="user-summary">{{cause.summary | characters:140}}</div>
+    </div>
+</div>

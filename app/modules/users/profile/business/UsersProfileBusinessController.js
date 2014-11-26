@@ -11,8 +11,15 @@ function UsersProfileBusinessCtrl($scope) {
         	resolve: {
 		        user: function () {
 					return userParam;
+		        },
+		        sponsorships: function(SponsorService) {
+		        	return SponsorService.getSponsorships(userParam);
 		        }
-			}
+			},
+			controller: function($scope, user, sponsorships) {
+        		$scope.user = user;
+        		$scope.sponsorships = sponsorships;
+        	}
         });
 	};
 }

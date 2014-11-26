@@ -18,7 +18,31 @@
 			margin: 30px 0 10px;
 			text-align: center;
 		}
-		&.purchase-amount {
+	}
+	.form-slider {
+		overflow: hidden;
+		position: relative;
+		.slide {
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			left: -9000px;
+			width: 100%;
+			max-height: 0;
+			.animated();
+			transition: max-height 0.2s ease-in;
+			&.active {
+				max-height: 1000px;
+				opacity: 1;
+				position: relative;
+				float: left;
+				left: 0px;
+				.bounceInLeft();
+			}
+		}
+	}
+	.purchase-certificate-step-one {
+		.purchase-amount {
 			text-align: center;
 			margin-bottom: 20px;
 			.form-group.amount {
@@ -27,7 +51,7 @@
 					.radio-button();
 					text-align: left;
 					label {
-						width: 55px;
+						width: 56px;
 					}
 				}
 			}
@@ -56,9 +80,21 @@
 			}
 		}
 	}
+	.purchase-certificate-step-two {
+
+	}
+	.purchase-certificate-step-three {
+
+	}
 	.modal-footer {
 		ul.buttons {
-			width: 234px;
+			width: 213px;
+			&.slide-two {
+				width: 234px;
+			}
+			&.slide-three {
+				width: 286px;
+			}
 		}
 	}
 }

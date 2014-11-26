@@ -1,20 +1,10 @@
 'use strict';
 
-function UsersProfileBusinessSupportedCausesCtrl($rootScope, $scope, Restangular) {
+function UsersProfileBusinessSupportedCausesCtrl($scope, SponsorService) {
 
-/* =======================================================================
-	Get Lists of Supported Causes
-======================================================================= */
-	var causeList = [];
-	for (var i=0; i < $scope.user.sponsorships.length; i++) {
-		if ($scope.user.sponsorships[i].status === 'accepted') {
-			var supportedCause = Restangular.one('users', $scope.user.sponsorships[i].cause.id).get().$object;
-			causeList.push(supportedCause);
-		}
-	}
+	$scope.sponsorships = SponsorService.getSponsorships($scope.user);
 
-	$scope.sponsorships = causeList;
 }
 
-UsersProfileBusinessSupportedCausesCtrl.$inject = ['$rootScope', '$scope', 'Restangular'];
+UsersProfileBusinessSupportedCausesCtrl.$inject = ['$scope', 'SponsorService'];
 module.exports = UsersProfileBusinessSupportedCausesCtrl;

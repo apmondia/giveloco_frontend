@@ -108,7 +108,7 @@ h5.subtitle {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 9999;
+    z-index: 1000;
     .animated(@duration: 0.5s, @fill: both);
     .slideInDown();
 }
@@ -1020,6 +1020,7 @@ p.no-results {
     font-size: 12px;
     font-weight: normal;
     line-height: 20px;
+    z-index: 9;
     .animated();
     &.top {
         &.in {
@@ -1090,6 +1091,29 @@ p.no-results {
                 }
             }
         }
+    }
+}
+
+
+/* ==========================================================================
+    Carousel
+========================================================================== */
+.carousel-control {
+    &.left,
+    &.right {
+        background-image: none;
+    }
+    &.right {
+        .icon {
+            float: right;
+        }
+    }
+}
+.carousel-indicators {
+    position: relative;
+    bottom: 0;
+    li {
+        border: 1px solid #999;
     }
 }
 

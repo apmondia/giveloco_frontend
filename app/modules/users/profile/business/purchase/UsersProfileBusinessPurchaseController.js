@@ -1,6 +1,6 @@
 'use strict';
 
-function UsersProfileBusinessPurchaseCtrl($rootScope, $scope, TRANSACTION_EVENTS, alertService, Transactions) {
+function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertService, TransactionService) {
 
 	$scope.name = $scope.currentUser.first_name + ' ' + $scope.currentUser.last_name;
 	
@@ -54,5 +54,5 @@ function UsersProfileBusinessPurchaseCtrl($rootScope, $scope, TRANSACTION_EVENTS
 
 }
 
-UsersProfileBusinessPurchaseCtrl.$inject = ['$rootScope', '$scope', 'TRANSACTION_EVENTS', 'alertService', 'Transactions'];
+UsersProfileBusinessPurchaseCtrl.$inject = ['$scope', 'TRANSACTION_EVENTS', 'alertService', 'TransactionService'];
 module.exports = UsersProfileBusinessPurchaseCtrl;

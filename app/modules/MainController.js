@@ -70,9 +70,10 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	Pluralized Tooltip / Popover for Grid Items
 ======================================================================= */
 	$scope.pluralizedUserTooltip = function(user) {
+		var i;
     	if (user.role === USER_ROLES.cause) {
     		var sponsorCount = 0;
-    		for (var i=0; i < user.sponsors.length; i++) {
+    		for (i=0; i < user.sponsors.length; i++) {
     			if (user.sponsors[i].status === 'accepted') {
     				sponsorCount += 1;
     			}
@@ -88,7 +89,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 
     	if (user.role === USER_ROLES.business) {
     		var sponsorshipCount = 0;
-    		for (var i=0; i < user.sponsorships.length; i++) {
+    		for (i=0; i < user.sponsorships.length; i++) {
     			if (user.sponsorships[i].status === 'accepted') {
     				sponsorshipCount += 1;
     			}
