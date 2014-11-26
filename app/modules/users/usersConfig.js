@@ -7,7 +7,19 @@ function userRoutes($stateProvider) {
             abstract: true,
             url: '/user',
             template: '<div ui-view></div>',
-            controller: 'UsersCtrl'
+            controller: 'UsersCtrl',
+            resolve: {
+                allUsers: function(Restangular) {
+                    return Restangular.all('users');
+                },
+                allCauses: function(allUsers) {
+                    allUsers.getList().then(function(user) {
+                        $scope.causes = _.filter(user, function(user){
+                            return user.role === USER_ROLES.cause && user.is_published === true && user.is_activated === true;
+                        });
+                    });
+                }
+            }
         },
         userID = {
             name: 'user.id',

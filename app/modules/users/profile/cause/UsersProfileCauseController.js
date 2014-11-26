@@ -6,7 +6,7 @@ function UsersProfileCauseCtrl($scope) {
 	Modals
 ======================================================================= */
     $scope.sponsorCause = function(userParam) {
-        $scope.usersProfileBusinessPurchaseModal.open({
+        $scope.usersProfileSponsorshipRequestModal.open({
         	windowClass: 'sponsor-cause',
         	resolve: {
 		        user: function () {

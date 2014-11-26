@@ -7,8 +7,10 @@ function UsersProfileBusinessSupportedCausesCtrl($rootScope, $scope, Restangular
 ======================================================================= */
 	var causeList = [];
 	for (var i=0; i < $scope.user.sponsorships.length; i++) {
-		var supportedCause = Restangular.one('users', $scope.user.sponsorships[i].cause_id).get().$object;
-		causeList.push(supportedCause);
+		if ($scope.user.sponsorships[i].status === 'accepted') {
+			var supportedCause = Restangular.one('users', $scope.user.sponsorships[i].cause.id).get().$object;
+			causeList.push(supportedCause);
+		}
 	}
 
 	$scope.sponsorships = causeList;

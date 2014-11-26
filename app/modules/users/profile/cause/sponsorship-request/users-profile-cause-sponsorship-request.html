@@ -1,4 +1,19 @@
-<div class="users-profile-cause-sponsorship-request">
-	<h1>Sponsor</h1>
-    <p>{{user.company_name}}</p>
+<div id="modalSponsorshipRequest" class="modal-wrapper">
+	<h2 class="modal-title"><span>Sponsor</span> {{user.company_name}}</h2>
+	<button class="close" ng-click="usersProfileSponsorshipRequestModal.close()"><i class="icon icon-x"></i></button>
+	
+	<form class="form" id="sponsorshipForm" name="sponsorshipForm" novalidate autocomplete="off">
+		<div class="modal-body">
+	    	<div class="form-section request">
+	            
+	        </div>
+		</div>
+
+		<div class="modal-footer">
+	        <ul class="buttons list-unstyled">
+	            <li><button class="btn button button-secondary" type="submit">Send Request</button></li>
+	            <li><button class="btn button btn-danger" ng-click="usersProfileSponsorshipRequestModal.close()">Cancel</button></li>
+	        </ul>
+	    </div>
+    </form>
 </div>

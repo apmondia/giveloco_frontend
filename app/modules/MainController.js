@@ -70,22 +70,34 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 ======================================================================= */
 	$scope.pluralizedUserTooltip = function(user) {
     	if (user.role === USER_ROLES.cause) {
-    		if (user.sponsors.length === 0) {
+    		var sponsorCount = 0;
+    		for (var i=0; i < user.sponsors.length; i++) {
+    			if (user.sponsors[i].status === 'accepted') {
+    				sponsorCount += 1;
+    			}
+    		}
+    		if (sponsorCount === 0) {
 	    		return 'No Sponsors';
-	    	} else if (user.sponsors.length === 1) {
+	    	} else if (sponsorCount === 1) {
 	    		return '1 Sponsor';
 	    	} else {
-	    		return user.sponsors.length + ' Sponsors';
+	    		return sponsorCount + ' Sponsors';
 	    	}
     	}
 
     	if (user.role === USER_ROLES.business) {
-    		if (user.sponsorships.length === 0) {
+    		var sponsorshipCount = 0;
+    		for (var i=0; i < user.sponsorships.length; i++) {
+    			if (user.sponsorships[i].status === 'accepted') {
+    				sponsorshipCount += 1;
+    			}
+    		}
+    		if (sponsorshipCount === 0) {
 	    		return 'No Sponsorsed Causes';
-	    	} else if (user.sponsorships.length === 1) {
+	    	} else if (sponsorshipCount === 1) {
 	    		return '1 Sponsorsed Cause';
 	    	} else {
-	    		return user.sponsorships.length + ' Sponsorsed Causes';
+	    		return sponsorshipCount + ' Sponsorsed Causes';
 	    	}
     	}
     };

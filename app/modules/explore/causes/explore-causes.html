@@ -21,7 +21,7 @@
 					</a>
 					<div class="user-summary">{{user.summary | characters:140}}</div>
 					<div class="supporters" popover-placement="top" popover-trigger="mouseenter" popover="{{pluralizedUserTooltip(user)}}">
-						<i class="icon icon-cash" ng-repeat="sponsor in user.sponsors | limitTo : 3"></i>
+						<i class="icon icon-cash" ng-repeat="sponsor in user.sponsors | filter: { status: 'accepted' } | limitTo: 3"></i>
 						<i class="icon icon-more-2" ng-if="user.sponsors.length > 3"></i>
 					</div>
 				</div>
