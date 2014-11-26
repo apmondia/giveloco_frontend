@@ -11,12 +11,16 @@
 		<h5>for <span>{{currentUser.company_name}}</span></h5>
 	</div>
 	<div ng-show='currentUser.has_stripe_connect'>
-		Your account has been connected to Stripe and is ready to go.
+		Your account has been connected to Stripe.
+		You can <a href='{{currentUser.stripe_user_omniauth_authorize_path}}?redirect_uri={{auth_stripe_url}}'>reconnect</a>
+		with Stripe if you need to.
 	</div>
 	<div ng-hide='currentUser.has_stripe_connect'>
-		Connect your billing account to Stripe
+		<h4>
+			Connect your billing account to Stripe
+		</h4>
 
-		<a id='stripe-connect' href='{{currentUser.stripe_user_omniauth_authorize_path}}'>
+		<a id='stripe-connect' href='{{currentUser.stripe_user_omniauth_authorize_path}}?redirect_uri={{auth_stripe_url}}'>
 			<img src='/images/light.png' alt='Connect with Stripe'/>
 		</a>
 

@@ -27,7 +27,7 @@ function UsersAccountDetailsImageUploadCtrl($rootScope, $scope, $cookies, apiCon
     uploader.onSuccessItem = function() {
         $scope.showSpinner = false;
         alertService.showAlert(USER_EVENTS.imageUploadSuccess, 'alert-success');
-        Auth.getCurrentUser().then(function(user) {
+        Auth.refreshCurrentUser().then(function(user) {
             $scope.userImage = user.images.profile_picture.medium;
             return;
         });

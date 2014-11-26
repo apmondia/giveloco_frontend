@@ -43,9 +43,9 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 		},
 
 	    getCurrentUser: function() {
-	    	var uid = $cookieStore.get('uid');
+				var uid = $cookieStore.get('uid');
 				//console.debug('getCurrentUser(): returning: ', Restangular.one('users', uid).get());
-	    	return Restangular.one('users', uid).get();
+				return Restangular.one('users', uid).get();
 	    },
 
 	    isAuthenticated: function() {

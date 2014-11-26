@@ -109,6 +109,15 @@ server.all('/*', function(req, res) {
     res.sendfile('/', { root: filePath.build.dest });
 });
 
+function buildProxy(path, host) {
+  var url = require('url');
+  var proxy = require('proxy-middleware');
+  // var options = url.parse('http://api-dev.taliflo.com/');
+  var options = url.parse(host);
+  options.route = path;
+  return proxy(options);
+}
+
 function buildServerOptions(port, apiHost) {
   return {
     root: filePath.build.dest,
@@ -116,14 +125,7 @@ function buildServerOptions(port, apiHost) {
     port: port,
     livereload: true,
     middleware: function(connect, o) {
-      return [ (function() {
-        var url = require('url');
-        var proxy = require('proxy-middleware');
-        // var options = url.parse('http://api-dev.taliflo.com/');
-        var options = url.parse(apiHost);
-        options.route = '/api';
-        return proxy(options);
-      })() ];
+      return [  buildProxy('/api', apiHost) ];
     }
   };
 }

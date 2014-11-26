@@ -3,7 +3,7 @@
 
 function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertService) {
 	$rootScope.$state = $state;
-	
+
 	// Set bodyClasses, pageTitle, and pageDescription on state change (ui-router)
     $rootScope.$on('$stateChangeSuccess', function(event, toState){
 		if ( angular.isDefined( toState.data.pageTitle ) ) {
@@ -67,7 +67,7 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 					// 	return false;
 					// }
 				})();
-				
+
 				// Restrict access if authorization is required from state data (defined in module config files)
 				if (validateAuthToken && validateUserID === false) {
 					event.preventDefault();
@@ -80,8 +80,9 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 						$state.go('auth.login');
 						alertService.showAlert(AUTH_EVENTS.notAuthenticated, 'alert-danger');
 					}
-				}	
+				}
 	    	});
+
 		}
 	});
 
