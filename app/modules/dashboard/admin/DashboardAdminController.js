@@ -7,6 +7,10 @@ function DashboardAdminCtrl($scope, Restangular) {
 	// Get all users from server
 	var users = Restangular.all('users');
 
+	$scope.setLoading = function(b) {
+		$scope.loading = b;
+	};
+
 	$scope.loading = true;
 	// Filter users by role
 	users.getList().then(function(user) {

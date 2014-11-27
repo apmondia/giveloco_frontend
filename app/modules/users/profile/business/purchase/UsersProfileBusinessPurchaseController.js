@@ -1,9 +1,9 @@
 'use strict';
 
-function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertService, TransactionService) {
+function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertService) {
 
 	$scope.name = $scope.currentUser.first_name + ' ' + $scope.currentUser.last_name;
-	
+
 	$scope.newUser = {
     	first_name: '',
     	last_name: '',
@@ -24,7 +24,7 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 	// 		email: ''
 	// 	}
 	// };
-
+	/*
 	var resetForm = function() {
 		$scope.transaction.amount = '';
 		$scope.transaction.user = {};
@@ -42,17 +42,17 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 	var transactionError = function() {
 		alertService.showAlert(TRANSACTION_EVENTS.paymentFailure, 'alert-danger');
 	};
-
+*/
 	$scope.stripeCallBack = function (status, response) {
 		if (response.error) {
 			alertService.showAlert(TRANSACTION_EVENTS.paymentFailure, 'alert-danger');
 		} else {
 			$scope.transaction.stripeToken = response.id;
-			Transactions.donation($scope.transaction).then(transactionSuccess, transactionError);
+//			Transactions.donation($scope.transaction).then(transactionSuccess, transactionError);
 		}
 	};
 
 }
 
-UsersProfileBusinessPurchaseCtrl.$inject = ['$scope', 'TRANSACTION_EVENTS', 'alertService', 'TransactionService'];
+UsersProfileBusinessPurchaseCtrl.$inject = ['$scope', 'TRANSACTION_EVENTS', 'alertService'];
 module.exports = UsersProfileBusinessPurchaseCtrl;

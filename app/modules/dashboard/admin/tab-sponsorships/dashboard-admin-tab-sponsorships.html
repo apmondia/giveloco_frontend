@@ -1,0 +1,61 @@
+<div class="tab sponsorships">
+  <div class="tab-header">
+    <div class="left-section">
+      <div class="title">
+        <h3 class="tab-title">Total Sponsorships: {{sponsorships.length}}</h3>
+      </div>
+    </div>
+    <div class="middle-section">
+      <div ajax-spinner class="spinner" ng-show="loading"></div>
+    </div>
+    <div class="right-section">
+      <div class="utils search-wrapper">
+        <i class="icon icon-search-2"></i>
+        <input type="search" class="search" ng-model="searchSponsorships" placeholder="Search Sponsorships" />
+      </div>
+    </div>
+  </div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th class="user-header id">Sponsorship ID</th>
+        <th class="user-header business-name">Business Name</th>
+        <th class="user-header cause-name">Cause Name</th>
+        <th class="user-header investment-rate">Investment Rate</th>
+        <th class="user-header user-actions"></th>
+      </tr>
+    </thead>
+    <tbody ng-hide="loading">
+      <tr dir-paginate="sponsorship in sponsorships | orderBy: 'created_at' : true | filter: searchSponsorships | itemsPerPage: 25 : 'sponsorshipTab'" pagination-id="sponsorshipTab" class="user sponsorship">
+        <td class="user-field id">
+          {{sponsorship.id}}
+        </td>
+        <td class="user-field business-name">
+          {{sponsorship.business.company_name}}
+        </td>
+        <td class="user-field cause-name">
+          {{sponsorship.cause.company_name}}
+        </td>
+        <td class="user-field investment-rate">
+          {{sponsorship.donation_percentage}}
+        </td>
+        <td class="user-field user-actions">
+          <div class="dropdown">
+            <div dropdown class="dropdown-wrapper">
+              <a class="dropdown-toggle">
+                <i class="icon icon-gear-setting-1"></i><span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                <li class="first"><a>Delete</a></li>
+              </ul>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr ng-hide="(sponsorships | filter: searchSponsorships).length || loading" class="no-results">
+        <td colspan="100%">No Results</td>
+      </tr>
+    </tbody>
+  </table>
+  <div dir-pagination-controls pagination-id="sponsorshipTab"></div>
+</div>
