@@ -18,21 +18,23 @@
 		</div>
 
 		<div class="modal-footer">
+			<div ng-show="stepThreeNotComplete() && activeSlide === 'three'" class="disclaimer">To complete your purchase you must agree to the Terms &amp; Conditions</div>
+
 	        <ul class="slide-one buttons list-unstyled" ng-show="activeSlide === 'one'">
 	            <li><a class="btn button btn-danger" ng-click="usersProfileBusinessPurchaseModal.close()">Cancel</a></li>
-	            <li><a class="btn button button-secondary" ng-click="activeSlide = 'two'">Choose a Cause</a></li>
+	            <li><a class="btn button button-secondary" ng-click="activeSlide = 'two'" ng-disabled="stepOneNotComplete()">Choose a Cause</a></li>
 	        </ul>
 
 	        <ul class="slide-two buttons list-unstyled" ng-show="activeSlide === 'two'">
 	            <li><a class="btn button btn-danger" ng-click="usersProfileBusinessPurchaseModal.close()">Cancel</a></li>
 	            <li><a class="btn btn-default" ng-click="activeSlide = 'one'">Back</a></li>
-	            <li><a class="btn button button-secondary" ng-click="activeSlide = 'three'">Checkout</a></li>
+	            <li><a class="btn button button-secondary" ng-click="activeSlide = 'three'" ng-disabled="stepTwoNotComplete()">Checkout</a></li>
 	        </ul>
 
 	        <ul class="slide-three buttons list-unstyled" ng-show="activeSlide === 'three'">
 	        	<li><a class="btn button btn-danger" ng-click="usersProfileBusinessPurchaseModal.close()">Cancel</a></li>
 	        	<li><a class="btn btn-default" ng-click="activeSlide = 'two'">Back</a></li>
-	            <li><button class="btn button button-secondary" type="submit">Confirm Purchase</button></li>
+	            <li><button class="btn button button-secondary" type="submit" ng-disabled="stepThreeNotComplete()">Confirm Purchase</button></li>
 	        </ul>
 	    </div>
     </form>

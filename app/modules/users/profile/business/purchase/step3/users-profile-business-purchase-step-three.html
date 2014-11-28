@@ -5,13 +5,53 @@
 	</div>
 
 	<div class="step-body">
-		<div class="group billing-info">
-			<h5 class="form-section-title">Billing Info</h5>
-			<div class="amount">{{newUser.certificate.amount}}</div>
+		<div class="section purchase-amount">
+			<h3 class="checkout-section-title">Purchase Amount</h3>
+			<div class="amount">
+				<span class="field-label"></span> {{newUser.certificate.amount | currency}}
+			</div>
 		</div>
-		<div class="group user-info">
-			<h5 class="form-section-title">User Info</h5>
-			<div class="full-name">{{full_name}}</div>
+		<div class="left-side">
+			<div class="section user-info">
+				<h3 class="checkout-section-title">Customer Details</h3>
+				<div class="full-name">
+					<span class="field-label">Full Name</span> {{newUser.first_name}} {{newUser.last_name}}
+				</div>
+				<div class="email">
+					<span class="field-label">Email Address</span> {{newUser.email}}
+				</div>
+			</div>
+			<div class="section cause">
+				<h3 class="checkout-section-title">Chosen Cause</h3>
+				<div class="chosen-cause">
+					<span class="field-label">Cause Name</span> {{causeName}}
+				</div>
+			</div>
 		</div>
+		<div class="right-side">
+			<div class="section billing-info">
+				<h3 class="checkout-section-title">Billing Details</h3>
+				<div class="credit-card">
+					<span class="field-label">Credit Card</span> {{lastFourDigits()}}
+				</div>
+				<div class="expiration">
+					<span class="field-label">Expiration</span> {{expiry}}
+				</div>
+				<div class="cvc">
+					<span class="field-label">CVC</span> {{cvc}}
+				</div>
+			</div>
+			<div class="section checkboxes">
+				<div class="group opt-in checkbox">
+					<input type="checkbox" id="mail-opt-in" name="mailing_list_opt_in" ng-model="newUser.mailing_list_opt_in" value="true">
+					<label for="mail-opt-in">Subscribe to the Taliflo mailing list for a chance to win free gift certificates</label>
+				</div>
+				<div class="group terms checkbox">
+					<input type="checkbox" id="agree_to_tc" name="agree_to_tc" ng-model="newUser.agree_to_tc" value="true">
+					<label for="agree_to_tc">I agree to the <a ui-sref="terms" target="_blank">Terms &amp; Conditions</a></label>
+				</div>
+			</div>
+		</div>
+		
 	</div>
 </div>

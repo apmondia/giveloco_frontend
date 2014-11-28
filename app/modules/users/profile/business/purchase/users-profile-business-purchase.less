@@ -93,6 +93,9 @@
 				padding-right: 0;
 				margin-left: 10px;
 			}
+			&.first-name:after {
+				right: 20px;
+			}
 		}
 	}
 	.purchase-certificate-step-two {
@@ -191,9 +194,61 @@
 		}
 	}
 	.purchase-certificate-step-three {
-
+		.step-body {
+			text-align: center;
+			.section {
+				margin-top: 30px;
+				&.checkboxes {
+					margin-top: 10px;
+				}
+				.amount {
+					font-size: 30px;
+					line-height: 30px;
+				}
+			}
+			.left-side {
+				.make-xs-column(6);
+			    .make-sm-column(6);
+			    .make-md-column(6);
+			    .make-lg-column(6);
+			}
+			.right-side {
+				.make-xs-column(6);
+			    .make-sm-column(6);
+			    .make-md-column(6);
+			    .make-lg-column(6);
+			    .amount {
+			    	font-size: 30px;
+					line-height: 30px;
+					margin-bottom: 20px;
+			    }
+			}
+			.checkbox {
+				.custom-input();
+				padding-left: 0;
+				label {
+					display: block;
+					font-size: 12px;
+					text-align: left;
+					padding-left: 25px;
+					&:before {
+						top: 2px;
+					}
+				}
+			}
+		}
+		.checkout-section-title {
+			margin-top: 0;
+			border-bottom: solid 1px #ccc;
+		}
 	}
 	.modal-footer {
+		.disclaimer {
+			color: red;
+			font-size: 12px;
+			text-align: center;
+			margin: -10px 0 10px;
+		}
 		ul.buttons {
 			width: 213px;
 			&.slide-two {
@@ -201,6 +256,10 @@
 			}
 			&.slide-three {
 				width: 286px;
+			}
+			.btn[disabled] {
+				opacity: 0.25;
+				background-color: #333;
 			}
 		}
 	}

@@ -18,9 +18,7 @@ function CreateSponsorshipCtrl($scope, SponsorService, SPONSORSHIP_EVENTS, alert
 		$scope.sponsorship.cause_id = $scope.causeItem.id;
 	};
 
-	$scope.donationPercentage = 10.00;
-
-	// $scope.sponsorship.donation_percentage = parseFloat($scope.donationPercentage).toFixed(2);
+	$scope.donationPercentage = 10.0;
 
 	var success = function() {
 		alertService.showAlert(SPONSORSHIP_EVENTS.creationSuccess, 'alert-success');
@@ -33,8 +31,6 @@ function CreateSponsorshipCtrl($scope, SponsorService, SPONSORSHIP_EVENTS, alert
 
 	$scope.createSponsorship = function(isValid) {
 		$scope.sponsorship.donation_percentage = parseFloat($scope.donationPercentage).toFixed(1);
-		console.log($scope.sponsorship.donation_percentage);
-
 		if (isValid) {
 			SponsorService.createSponsorship($scope.sponsorship).then(success, error);
 		}
