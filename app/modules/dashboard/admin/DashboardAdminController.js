@@ -41,15 +41,23 @@ function DashboardAdminCtrl($scope, Restangular) {
 ======================================================================= */
     $scope.changeUserStatus = function(userParam) {
         $scope.changeUserStatusModal.open({
-        	windowClass: 'change-user-status',
-        	controller: 'ChangeUserStatusCtrl',
-        	resolve: {
-		        user: function () {
-					return userParam;
-		        }
-			}
+            windowClass: 'change-user-status',
+            resolve: {
+                user: function () {
+                    return userParam;
+                }
+            },
+            controller: function(user) {
+                $scope.user = user;
+            }
         });
-	};
+    };
+
+    $scope.createSponsorship = function() {
+        $scope.createSponsorshipModal.open({
+            windowClass: 'create-sponsorship'
+        });
+    };
 }
 
 DashboardAdminCtrl.$inject = ['$scope', 'Restangular'];
