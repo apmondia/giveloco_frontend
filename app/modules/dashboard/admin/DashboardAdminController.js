@@ -14,20 +14,29 @@ function DashboardAdminCtrl($scope, Restangular) {
 	$scope.loading = true;
 	// Filter users by role
 	users.getList().then(function(user) {
-        $scope.causes = _.filter(user, function(user){
+        $scope.causesAll = _.filter(user, function(user){
             return user.role === 'cause';
+        });
+        $scope.causesActive = _.filter(user, function(user){
+            return user.role === 'cause' && user.is_active === true;
         });
         $scope.causesInactive = _.filter(user, function(user){
             return user.role === 'cause' && user.is_active === false;
         });
-        $scope.businesses = _.filter(user, function(user){
+        $scope.businessesAll = _.filter(user, function(user){
             return user.role === 'business';
+        });
+        $scope.businessesActive = _.filter(user, function(user){
+            return user.role === 'business' && user.is_active === true;
         });
         $scope.businessesInactive = _.filter(user, function(user){
             return user.role === 'business' && user.is_active === false;
         });
-        $scope.individuals = _.filter(user, function(user){
+        $scope.individualsAll = _.filter(user, function(user){
             return user.role === 'individual';
+        });
+        $scope.individualsActive = _.filter(user, function(user){
+            return user.role === 'individual' && user.is_active === true;
         });
         $scope.individualsInactive = _.filter(user, function(user){
             return user.role === 'individual' && user.is_active === false;

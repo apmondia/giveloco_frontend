@@ -32,6 +32,8 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
     	}
     };
 
+    $scope.full_name = $scope.newUser.first_name + ' ' + $scope.newUser.last_name;
+
     // reset form when the modal is closed or competed submission
 	var resetForm = function() {
 		$scope.newUser.first_name = '';

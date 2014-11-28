@@ -1,14 +1,35 @@
 <div id="modal-adminCreateSponsorship" class="modal-wrapper">
-    <h2 class="modal-title"></h2>
+    <h2 class="modal-title">Create a Sponsorship</h2>
     <button class="close" ng-click="createSponsorshipModal.close()"><i class="icon icon-x"></i></button>
-    <div class="modal-body">
-        Content goes here
-    </div>
+    
+    <form class="form" id="adminSponsorshipForm" name="adminSponsorshipForm" novalidate ng-submit="createSponsorship(adminSponsorshipForm.$valid)">
+        <div class="modal-body">
+            <div class="left-side">
+                <div class="form-group select-business">
+                    <label for="select-business" class="inline">Business</label>
+                    <input type="text" id="select-business" class="form-control with-label business" ng-model="businessItem" placeholder="Start typing a business name" typeahead="user.company_name for user in businessesAll | filter:$viewValue | limitTo:12" typeahead-on-select="selectedBusiness($item)">
+                </div>
+                <div class="form-group select-cause">
+                    <label for="select-cause" class="inline">Cause</label>
+                    <input type="text" id="select-cause" class="form-control with-label cause" ng-model="causeItem" placeholder="Start typing a cause name" typeahead="user.company_name for user in causesAll | filter:$viewValue | limitTo:12" typeahead-on-select="selectedCause($item)">
+                </div>
+                <div class="form-group percentage">
+                    <label for="donation-percentage" class="inline">Percentage</label>
+                    <input type="numbers" id="donation-percentage" class="form-control with-label percentage" ng-model="donationPercentage" placeholder="Enter a value from 5-100">
+                </div>
+            </div>
+            <div class="right-side">
+                <div>Sponsor: {{businessItem.company_name}}</div>
+                <div>Cause: {{causeItem.company_name}}</div>
+                <div>Donation Percentage: {{donationPercentage}}%</div>
+            </div>
+        </div>
 
-    <div class="modal-footer">
-        <ul class="buttons list-unstyled">
-            <li><button class="btn button button-secondary">Create Sponsorship</button></li>
-            <li><button class="btn button btn-danger" ng-click="createSponsorshipModal.close()">Cancel</button></li>
-        </ul>
-    </div>
+        <div class="modal-footer">
+            <ul class="buttons list-unstyled">
+                <li><button class="btn button button-secondary" type="submit">Create Sponsorship</button></li>
+                <li><button class="btn button btn-danger" ng-click="createSponsorshipModal.close()">Cancel</button></li>
+            </ul>
+        </div>
+    </form>
 </div>

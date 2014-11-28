@@ -17,7 +17,7 @@ var apiConfig = function($cookieStore) {
 			redeem: apiProxy + apiVersion + '/certificates/redeem'
 		},
 		sponsorship: {
-
+			create: apiProxy + apiVersion + '/sponsorships'
 		},
 		user: {
 			login: apiProxy + '/user/login',

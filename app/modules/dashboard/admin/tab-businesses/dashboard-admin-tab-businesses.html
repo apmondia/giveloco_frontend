@@ -2,8 +2,8 @@
 	<div class="tab-header">
 		<div class="left-section">
 			<div class="title">
-				<h3 class="tab-title">Total Businesses: {{businesses.length}}</h3>
-				<h5 class="subtitle"><span class="active">Activated Businesses: {{businesses.length}}</span><span class="inactive warning">Inactive Businesses: {{businessesInactive.length}}</span></h5>
+				<h3 class="tab-title">Total Businesses: {{businessesAll.length}}</h3>
+				<h5 class="subtitle"><span class="active">Activated Businesses: {{businessesActive.length}}</span><span class="inactive warning">Inactive Businesses: {{businessesInactive.length}}</span></h5>
 			</div>
 		</div>
 		<div class="middle-section">
@@ -30,7 +30,7 @@
 			</tr>
 		</thead>
 		<tbody ng-hide="loading">
-			<tr dir-paginate="user in businesses | orderBy: 'created_at' : true | filter: searchBusinesses | itemsPerPage: 25 : 'bizTab'" pagination-id="bizTab" class="user business">
+			<tr dir-paginate="user in businessesAll | orderBy: 'created_at' : true | filter: searchBusinesses | itemsPerPage: 25 : 'bizTab'" pagination-id="bizTab" class="user business">
 				<td class="user-field id">
 					{{user.id}}
 				</td>

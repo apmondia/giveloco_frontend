@@ -71,7 +71,7 @@ module.exports = angular.module('taliflo',
 	.config(require('./appConfig'))
 	.constant('version', require('../package.json').version)
 	.run(require('./common/common-init.js'));
-},{"../package.json":331,"./../libs/angular/angular.js":323,"./appConfig":1,"./common/common":4,"./common/common-init.js":3,"./env/dev":55,"./modules":174}],3:[function(require,module,exports){
+},{"../package.json":327,"./../libs/angular/angular.js":319,"./appConfig":1,"./common/common":4,"./common/common-init.js":3,"./env/dev":56,"./modules":170}],3:[function(require,module,exports){
 /*jshint camelcase: false */
 'use strict';
 
@@ -226,7 +226,7 @@ module.exports = angular.module('common',
         require('./services').name,
         require('./templates').name
 	]);
-},{"./../../libs/angular-animate/angular-animate.js":311,"./../../libs/angular-bootstrap/ui-bootstrap-tpls.js":312,"./../../libs/angular-cookies/angular-cookies.js":313,"./../../libs/angular-file-upload/angular-file-upload.js":314,"./../../libs/angular-payments/lib/angular-payments.js":315,"./../../libs/angular-resource/angular-resource.js":316,"./../../libs/angular-sanitize/angular-sanitize.js":317,"./../../libs/angular-scroll/angular-scroll.min.js":318,"./../../libs/angular-spinner/angular-spinner.js":319,"./../../libs/angular-touch/angular-touch.js":320,"./../../libs/angular-truncate/src/truncate.js":321,"./../../libs/angular-ui-router/release/angular-ui-router.js":322,"./../../libs/angular/angular.js":323,"./../../libs/domready/ready":324,"./../../libs/gsap/src/uncompressed/TweenMax.js":325,"./../../libs/jquery/dist/jquery.js":326,"./../../libs/lodash/dist/lodash.compat.js":327,"./../../libs/ng-idle/angular-idle.js":328,"./../../libs/ng-tags-input/ng-tags-input.min.js":329,"./../../libs/restangular/dist/restangular.js":330,"./components":9,"./constants":20,"./directives":26,"./filters":32,"./plugins":33,"./services":48,"./templates":53}],5:[function(require,module,exports){
+},{"./../../libs/angular-animate/angular-animate.js":307,"./../../libs/angular-bootstrap/ui-bootstrap-tpls.js":308,"./../../libs/angular-cookies/angular-cookies.js":309,"./../../libs/angular-file-upload/angular-file-upload.js":310,"./../../libs/angular-payments/lib/angular-payments.js":311,"./../../libs/angular-resource/angular-resource.js":312,"./../../libs/angular-sanitize/angular-sanitize.js":313,"./../../libs/angular-scroll/angular-scroll.min.js":314,"./../../libs/angular-spinner/angular-spinner.js":315,"./../../libs/angular-touch/angular-touch.js":316,"./../../libs/angular-truncate/src/truncate.js":317,"./../../libs/angular-ui-router/release/angular-ui-router.js":318,"./../../libs/angular/angular.js":319,"./../../libs/domready/ready":320,"./../../libs/gsap/src/uncompressed/TweenMax.js":321,"./../../libs/jquery/dist/jquery.js":322,"./../../libs/lodash/dist/lodash.compat.js":323,"./../../libs/ng-idle/angular-idle.js":324,"./../../libs/ng-tags-input/ng-tags-input.min.js":325,"./../../libs/restangular/dist/restangular.js":326,"./components":9,"./constants":21,"./directives":27,"./filters":33,"./plugins":34,"./services":49,"./templates":54}],5:[function(require,module,exports){
 module.exports = '<footer class="footer">\n' +
     '	<div class="bottom">\n' +
     '		<div class="row">\n' +
@@ -455,18 +455,27 @@ module.exports = SPONSORSHIP;
 
 var TRANSACTION_EVENTS = (function() {
     return {
-    	paymentFailure: 'Uh Oh! Something went wrong. Your credit card information may not be valid.',
-      transactionFailure: 'Uh Oh! Something went wrong. Please check that your information is correct and try again.',
-      transactionSuccess: 'Your transaction was completed successfully!',
-      redemptionSuccess: 'You have successfully redeemed the gift certificate',
-      redemptionFailure: 'We could not redeem that gift certificate'
+    	creationSuccess: 'A new Sponsorship was successfully created!',
+        creationFailure: 'Uh Oh! Something went wrong. Please check that your information is correct and try again.'
     };
 }());
 
 TRANSACTION_EVENTS.$inject = [];
 module.exports = TRANSACTION_EVENTS;
-
 },{}],18:[function(require,module,exports){
+'use strict';
+
+var TRANSACTION_EVENTS = (function() {
+    return {
+    	paymentFailure: 'Uh Oh! Something went wrong. Your credit card information may not be valid.',
+        transactionFailure: 'Uh Oh! Something went wrong. Please check that your information is correct and try again.',
+        transactionSuccess: 'Your transaction was completed successfully!'
+    };
+}());
+
+TRANSACTION_EVENTS.$inject = [];
+module.exports = TRANSACTION_EVENTS;
+},{}],19:[function(require,module,exports){
 'use strict';
 
 var USER_EVENTS = (function() {
@@ -482,7 +491,7 @@ var USER_EVENTS = (function() {
 
 USER_EVENTS.$inject = [];
 module.exports = USER_EVENTS;
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 var USER_ROLES = (function() {
@@ -498,7 +507,7 @@ var USER_ROLES = (function() {
 
 USER_ROLES.$inject = [];
 module.exports = USER_ROLES;
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('common.constants', [])
@@ -506,9 +515,10 @@ module.exports = angular.module('common.constants', [])
 	.constant('ENV', require('./ENV.js'))
 	.constant('SPONSORSHIP', require('./SPONSORSHIP.js'))
 	.constant('TRANSACTION_EVENTS', require('./TRANSACTION_EVENTS.js'))
+	.constant('SPONSORSHIP_EVENTS', require('./SPONSORSHIP_EVENTS.js'))
 	.constant('USER_EVENTS', require('./USER_EVENTS.js'))
 	.constant('USER_ROLES', require('./USER_ROLES.js'));
-},{"./AUTH_EVENTS.js":14,"./ENV.js":15,"./SPONSORSHIP.js":16,"./TRANSACTION_EVENTS.js":17,"./USER_EVENTS.js":18,"./USER_ROLES.js":19}],21:[function(require,module,exports){
+},{"./AUTH_EVENTS.js":14,"./ENV.js":15,"./SPONSORSHIP.js":16,"./SPONSORSHIP_EVENTS.js":17,"./TRANSACTION_EVENTS.js":18,"./USER_EVENTS.js":19,"./USER_ROLES.js":20}],22:[function(require,module,exports){
 module.exports = '<div class="fountainG_wrapper">\n' +
     '	<div class="fountainG fountainG_1"></div>\n' +
     '	<div class="fountainG fountainG_2"></div>\n' +
@@ -519,7 +529,7 @@ module.exports = '<div class="fountainG_wrapper">\n' +
     '	<div class="fountainG fountainG_7"></div>\n' +
     '	<div class="fountainG fountainG_8"></div>\n' +
     '</div>';
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 var ajaxSpinner = function() {
@@ -531,12 +541,12 @@ var ajaxSpinner = function() {
 
 ajaxSpinner.$inject = [];
 module.exports = ajaxSpinner;
-},{"./ajax-spinner.html":21}],23:[function(require,module,exports){
+},{"./ajax-spinner.html":22}],24:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('common.directives.ajaxSpinner', [])
     .directive('ajaxSpinner', require('./ajaxSpinner.js'));
-},{"./ajaxSpinner.js":22}],24:[function(require,module,exports){
+},{"./ajaxSpinner.js":23}],25:[function(require,module,exports){
 'use strict';
 
 var autoFocus = function($timeout) {
@@ -550,7 +560,7 @@ var autoFocus = function($timeout) {
 
 autoFocus.$inject = ['$timeout'];
 module.exports = autoFocus;
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 function ModalDirective($modal) {
@@ -601,7 +611,7 @@ function ModalDirective($modal) {
 
 ModalDirective.$inject = ['$modal'];
 module.exports = ModalDirective;
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('common.directives', [
@@ -613,7 +623,7 @@ module.exports = angular.module('common.directives', [
 	.directive('scrollDisplay', require('./scrollDisplay.js'))
 	.directive('showFormErrors', require('./showFormErrors.js'))
 	.directive('systemNotifications', require('./systemNotifications.js'));
-},{"./ajaxSpinner":23,"./autoFocus.js":24,"./dynamicModals.js":25,"./passwordEquals.js":27,"./scrollDisplay.js":28,"./showFormErrors.js":29,"./systemNotifications.js":30}],27:[function(require,module,exports){
+},{"./ajaxSpinner":24,"./autoFocus.js":25,"./dynamicModals.js":26,"./passwordEquals.js":28,"./scrollDisplay.js":29,"./showFormErrors.js":30,"./systemNotifications.js":31}],28:[function(require,module,exports){
 'use strict';
 
 // Validates tht two password fields are the same
@@ -650,7 +660,7 @@ var passwordEquals = function() {
 
 passwordEquals.$inject = [];
 module.exports = passwordEquals;
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict';
 
 var scrollDisplay = function($window, $timeout) {
@@ -692,7 +702,7 @@ var scrollDisplay = function($window, $timeout) {
 
 scrollDisplay.$inject = ['$window', '$timeout'];
 module.exports = scrollDisplay;
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 var showFormErrors = function($timeout) {
@@ -718,7 +728,7 @@ var showFormErrors = function($timeout) {
 
 showFormErrors.$inject = ['$timeout'];
 module.exports = showFormErrors;
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 var systemNotifications = function() {
@@ -734,7 +744,7 @@ var systemNotifications = function() {
 
 systemNotifications.$inject = [];
 module.exports = systemNotifications;
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 'use strict';
 
 var customCurrency = function($filter) {
@@ -751,12 +761,12 @@ var customCurrency = function($filter) {
 
 customCurrency.$inject = ['$filter'];
 module.exports = customCurrency;
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('common.filters', [])
 	.filter('customCurrency', require('./customCurrency.js'));
-},{"./customCurrency.js":31}],33:[function(require,module,exports){
+},{"./customCurrency.js":32}],34:[function(require,module,exports){
 // Plugins are third party modules that are unavailable as bower installations.
 // All of the code in these plugins has been created by a third party.
 
@@ -765,7 +775,7 @@ module.exports = angular.module('common.filters', [])
 module.exports = angular.module('common.plugins', [
 		require('./pagination').name
 	]);
-},{"./pagination":37}],34:[function(require,module,exports){
+},{"./pagination":38}],35:[function(require,module,exports){
 'use strict';
 
 var dirPaginate = function($compile, $parse, $timeout, paginationService) {
@@ -840,7 +850,7 @@ var dirPaginate = function($compile, $parse, $timeout, paginationService) {
 
 dirPaginate.$inject = ['$compile', '$parse', '$timeout', 'paginationService'];
 module.exports = dirPaginate;
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 module.exports = '<ul class="pagination" ng-if="1 < pages.length">\n' +
     '    <li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }">\n' +
     '        <a href="" ng-click="setCurrent(1)">&laquo;</a>\n' +
@@ -859,7 +869,7 @@ module.exports = '<ul class="pagination" ng-if="1 < pages.length">\n' +
     '        <a href="" ng-click="setCurrent(pagination.last)">&raquo;</a>\n' +
     '    </li>\n' +
     '</ul>';
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 'use strict';
 
 var dirPaginationControls = function(paginationService) {
@@ -1014,7 +1024,7 @@ var dirPaginationControls = function(paginationService) {
 
 dirPaginationControls.$inject = ['paginationService'];
 module.exports = dirPaginationControls;
-},{"./dirPagination.tpl.html":35}],37:[function(require,module,exports){
+},{"./dirPagination.tpl.html":36}],38:[function(require,module,exports){
 'use strict';
 
 // Plugin origin: https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination
@@ -1024,7 +1034,7 @@ module.exports = angular.module('common.plugins.pagination', [])
     .directive('dirPaginationControls', require('./dirPaginationControls.js'))
     .filter('itemsPerPage', require('./itemsPerPage.js'))
     .service('paginationService', require('./paginationService.js'));
-},{"./dirPaginate.js":34,"./dirPaginationControls.js":36,"./itemsPerPage.js":38,"./paginationService.js":39}],38:[function(require,module,exports){
+},{"./dirPaginate.js":35,"./dirPaginationControls.js":37,"./itemsPerPage.js":39,"./paginationService.js":40}],39:[function(require,module,exports){
 'use strict';
 
 var itemsPerPage = function(paginationService) {
@@ -1056,7 +1066,7 @@ var itemsPerPage = function(paginationService) {
 
 itemsPerPage.$inject = ['paginationService'];
 module.exports = itemsPerPage;
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 'use strict';
 
 var paginationService = function() {
@@ -1117,7 +1127,7 @@ var paginationService = function() {
 
 paginationService.$inject = [];
 module.exports = paginationService;
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 'use strict';
 
 var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, alertService, apiConfig) {
@@ -1192,7 +1202,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 Auth.$inject = ['$rootScope', '$http', 'Restangular', '$cookieStore', 'AUTH_EVENTS', 'alertService', 'apiConfig'];
 module.exports = Auth;
 
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 /*jshint camelcase: false */
 'use strict';
 
@@ -1217,7 +1227,7 @@ var AuthInterceptor = function($q, $cookies, $injector) {
 
 AuthInterceptor.$inject = ['$q', '$cookies', '$injector'];
 module.exports = AuthInterceptor;
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 'use strict';
 
 var Dashboard = function($state) {
@@ -1256,10 +1266,10 @@ var Dashboard = function($state) {
 
 Dashboard.$inject = ['$state'];
 module.exports = Dashboard;
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 'use strict';
 
-var Sponsorships = function(Restangular) {
+var Sponsorships = function(Restangular, $http, apiConfig) {
 
 	var sponsorService = {
 		/* =======================================================================
@@ -1299,6 +1309,14 @@ var Sponsorships = function(Restangular) {
 				}
 			}
 			return businessList;
+		},
+		/* =======================================================================
+			Create Sponsorship
+		======================================================================= */	
+		createSponsorship: function(data) {
+			return $http.post(apiConfig.API.sponsorship.create, data).then(function(data){
+				return data;
+			});
 		}
 
 	};
@@ -1307,9 +1325,9 @@ var Sponsorships = function(Restangular) {
 
 };
 
-Sponsorships.$inject = ['Restangular'];
+Sponsorships.$inject = ['Restangular', '$http', 'apiConfig'];
 module.exports = Sponsorships;
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 'use strict';
 
 var Transactions = function($http, apiConfig) {
@@ -1331,7 +1349,7 @@ var Transactions = function($http, apiConfig) {
 
 Transactions.$inject = ['$http', 'apiConfig'];
 module.exports = Transactions;
-},{}],45:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 'use strict';
 
 var Alert = function($rootScope, $timeout) {
@@ -1358,11 +1376,11 @@ var Alert = function($rootScope, $timeout) {
 
 Alert.$inject = ['$rootScope', '$timeout'];
 module.exports = Alert;
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 'use strict';
 
 var apiConfig = function($cookieStore) {
-
+	
 /* =======================================================================
 	Taliflo API Configuration
 ======================================================================= */
@@ -1374,11 +1392,10 @@ var apiConfig = function($cookieStore) {
 		baseUrl: apiProxy + apiVersion,
 		certificate: {
 			purchase: apiProxy + apiVersion + '/users/certificates',
-			get_token: apiProxy + apiVersion + '/certificates/get_client_token',
-			redeem: apiProxy + apiVersion + '/certificates/redeem'
+			get_token: apiProxy + apiVersion + '/certificates/get_client_token'
 		},
 		sponsorship: {
-
+			create: apiProxy + apiVersion + '/sponsorships'
 		},
 		user: {
 			login: apiProxy + '/user/login',
@@ -1405,13 +1422,11 @@ var apiConfig = function($cookieStore) {
 
 apiConfig.$inject = ['$cookieStore'];
 module.exports = apiConfig;
-
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 'use strict';
 
 var FormValidation = function() {
 
-	this.alphaNumNoWhitespace = /^[a-zA-Z\d]+$/;
 	this.alphaNum = /^[a-z\d\-_\s]+$/i;
 	this.alphaNumComma = /^[a-zA-Z0-9_,\-\s]*$/;
 	this.alphaNumPeriod = /^[a-zA-Z0-9_.\-\s]*$/;
@@ -1428,8 +1443,7 @@ var FormValidation = function() {
 
 FormValidation.$inject = [];
 module.exports = FormValidation;
-
-},{}],48:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 'use strict';
 
 // Services use camelCase for their names like Directives
@@ -1445,7 +1459,7 @@ module.exports = angular.module('common.services', [])
 	.service('regions', require('./regions.js'))
 	.factory('SponsorService', require('./SponsorService.js'))
 	.factory('TransactionService', require('./TransactionService.js'));
-},{"./Auth.js":40,"./AuthInterceptor.js":41,"./DashboardService.js":42,"./SponsorService.js":43,"./TransactionService.js":44,"./alertService.js":45,"./apiConfig.js":46,"./formValidation.js":47,"./regions.js":49}],49:[function(require,module,exports){
+},{"./Auth.js":41,"./AuthInterceptor.js":42,"./DashboardService.js":43,"./SponsorService.js":44,"./TransactionService.js":45,"./alertService.js":46,"./apiConfig.js":47,"./formValidation.js":48,"./regions.js":50}],50:[function(require,module,exports){
 'use strict';
 
 var Regions = function() {
@@ -1784,7 +1798,7 @@ var Regions = function() {
 
 Regions.$inject = [];
 module.exports = Regions;
-},{}],50:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 module.exports = '<div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">\n' +
     '    <div class="carousel-inner" ng-transclude></div>\n' +
     '    <ol class="carousel-indicators" ng-show="slides.length > 1">\n' +
@@ -1793,7 +1807,7 @@ module.exports = '<div ng-mouseenter="pause()" ng-mouseleave="play()" class="car
     '    <a class="left carousel-control" ng-click="prev()" ng-show="slides.length > 1"><span class="icon icon-chevron-left"></span></a>\n' +
     '    <a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"><span class="icon icon-chevron-right"></span></a>\n' +
     '</div>';
-},{}],51:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('common.templates.bootstrap', [])
@@ -1801,7 +1815,7 @@ module.exports = angular.module('common.templates.bootstrap', [])
 		$templateCache.put('template/carousel/carousel.html', require('./carousel.html'));
 		$templateCache.put('template/carousel/slide.html', require('./slide.html'));
 	}]);
-},{"./carousel.html":50,"./slide.html":52}],52:[function(require,module,exports){
+},{"./carousel.html":51,"./slide.html":53}],53:[function(require,module,exports){
 module.exports = '<div ng-class="{\n' +
     '    \'active\': leaving || (active && !entering),\n' +
     '    \'prev\': (next || active) && direction==\'prev\',\n' +
@@ -1809,7 +1823,7 @@ module.exports = '<div ng-class="{\n' +
     '    \'right\': direction==\'prev\',\n' +
     '    \'left\': direction==\'next\'\n' +
     '  }" class="item text-center" ng-transclude></div>';
-},{}],53:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('common.templates',
@@ -1818,7 +1832,7 @@ module.exports = angular.module('common.templates',
         // Use templates to override external template files, such as Angular Bootstrap template files.
         require('./bootstrap').name
 	]);
-},{"./bootstrap":51}],54:[function(require,module,exports){
+},{"./bootstrap":52}],55:[function(require,module,exports){
 'use strict';
 
 function devInit($rootScope, Restangular, apiConfig, ENV, $window) {
@@ -1839,12 +1853,12 @@ function devInit($rootScope, Restangular, apiConfig, ENV, $window) {
 
 devInit.$inject = ['$rootScope', 'Restangular', 'apiConfig', 'ENV', '$window'];
 module.exports = devInit;
-},{}],55:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('env.dev', [])	
     .run(require('./dev-init'));
-},{"./dev-init":54}],56:[function(require,module,exports){
+},{"./dev-init":55}],57:[function(require,module,exports){
 /*jshint camelcase: false */
 'use strict';
 // MainCtrl is set in the index.html file
@@ -1958,7 +1972,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 MainCtrl.$inject = ['$rootScope', '$scope', '$timeout', '$state', 'Restangular', 'Auth', 'USER_ROLES'];
 module.exports = MainCtrl;
 
-},{}],57:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 'use strict';
 
 function DashboardCtrl() {
@@ -1967,7 +1981,7 @@ function DashboardCtrl() {
 
 DashboardCtrl.$inject = [];
 module.exports = DashboardCtrl;
-},{}],58:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 'use strict';
 
 function DashboardAdminCtrl($scope, Restangular) {
@@ -1976,7 +1990,7 @@ function DashboardAdminCtrl($scope, Restangular) {
 ======================================================================= */
 	// Get all users from server
 	var users = Restangular.all('users');
-	
+
 	$scope.setLoading = function(b) {
 		$scope.loading = b;
 	};
@@ -1984,20 +1998,29 @@ function DashboardAdminCtrl($scope, Restangular) {
 	$scope.loading = true;
 	// Filter users by role
 	users.getList().then(function(user) {
-        $scope.causes = _.filter(user, function(user){
+        $scope.causesAll = _.filter(user, function(user){
             return user.role === 'cause';
+        });
+        $scope.causesActive = _.filter(user, function(user){
+            return user.role === 'cause' && user.is_active === true;
         });
         $scope.causesInactive = _.filter(user, function(user){
             return user.role === 'cause' && user.is_active === false;
         });
-        $scope.businesses = _.filter(user, function(user){
+        $scope.businessesAll = _.filter(user, function(user){
             return user.role === 'business';
+        });
+        $scope.businessesActive = _.filter(user, function(user){
+            return user.role === 'business' && user.is_active === true;
         });
         $scope.businessesInactive = _.filter(user, function(user){
             return user.role === 'business' && user.is_active === false;
         });
-        $scope.individuals = _.filter(user, function(user){
+        $scope.individualsAll = _.filter(user, function(user){
             return user.role === 'individual';
+        });
+        $scope.individualsActive = _.filter(user, function(user){
+            return user.role === 'individual' && user.is_active === true;
         });
         $scope.individualsInactive = _.filter(user, function(user){
             return user.role === 'individual' && user.is_active === false;
@@ -2033,7 +2056,7 @@ function DashboardAdminCtrl($scope, Restangular) {
 DashboardAdminCtrl.$inject = ['$scope', 'Restangular'];
 module.exports = DashboardAdminCtrl;
 
-},{}],59:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 module.exports = '<div class="dashboard admin">\n' +
     '	<div class="dashboard-main">\n' +
     '		<tabset justified="true">\n' +
@@ -2059,7 +2082,7 @@ module.exports = '<div class="dashboard admin">\n' +
     '\n' +
     '<div dashboard-admin-modals></div>\n' +
     '';
-},{}],60:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardAdminView() {
@@ -2070,7 +2093,7 @@ module.exports = function DashboardAdminView() {
 		scope: true
 	};
 };
-},{"./dashboard-admin.html":59}],61:[function(require,module,exports){
+},{"./dashboard-admin.html":60}],62:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.admin', [
@@ -2084,7 +2107,7 @@ module.exports = angular.module('dashboard.admin', [
 	.directive('dashboardAdminView', require('./dashboardAdminDirective'))
 	.controller('DashboardAdminCtrl', require('./DashboardAdminController'));
 
-},{"./DashboardAdminController":58,"./dashboardAdminDirective":60,"./modals":69,"./summary":73,"./tab-businesses":77,"./tab-causes":81,"./tab-individuals":85,"./tab-sponsorships":89}],62:[function(require,module,exports){
+},{"./DashboardAdminController":59,"./dashboardAdminDirective":61,"./modals":70,"./summary":74,"./tab-businesses":78,"./tab-causes":82,"./tab-individuals":86,"./tab-sponsorships":90}],63:[function(require,module,exports){
 'use strict';
 
 function ChangeUserStatusCtrl() {
@@ -2093,7 +2116,7 @@ function ChangeUserStatusCtrl() {
 
 ChangeUserStatusCtrl.$inject = [];
 module.exports = ChangeUserStatusCtrl;
-},{}],63:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 module.exports = '<div id="modal-adminChangeUserStatus" class="modal-wrapper">\n' +
     '    <h2 class="modal-title"><span>Change Status for</span>{{user.company_name || user.first_name + \' \' + user.last_name}}</h2>\n' +
     '    <button class="close" ng-click="changeUserStatusModal.close()"><i class="icon icon-x"></i></button>\n' +
@@ -2108,7 +2131,7 @@ module.exports = '<div id="modal-adminChangeUserStatus" class="modal-wrapper">\n
     '        </ul>\n' +
     '    </div>\n' +
     '</div>';
-},{}],64:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.admin.modals.change-user-status', [])
@@ -2120,51 +2143,109 @@ module.exports = angular.module('dashboard.admin.modals.change-user-status', [])
         };
     })
     .controller('ChangeUserStatusCtrl', require('./ChangeUserStatusController'));
-},{"./ChangeUserStatusController":62,"./change-user-status.html":63}],65:[function(require,module,exports){
+},{"./ChangeUserStatusController":63,"./change-user-status.html":64}],66:[function(require,module,exports){
 'use strict';
 
-function CreateSponsorshipCtrl() {
+function CreateSponsorshipCtrl($scope, SponsorService, SPONSORSHIP_EVENTS, alertService) {
+
+	$scope.sponsorship = {
+		business_id: null,
+		cause_id: null,
+		donation_percentage: null
+	};
+
+	$scope.selectedBusiness= function ($item) {
+		$scope.businessItem = $item;
+		$scope.sponsorship.business_id = $scope.businessItem.id;
+	};
+
+	$scope.selectedCause = function ($item) {
+		$scope.causeItem = $item;
+		$scope.sponsorship.cause_id = $scope.causeItem.id;
+	};
+
+	$scope.donationPercentage = 10.00;
+
+	// $scope.sponsorship.donation_percentage = parseFloat($scope.donationPercentage).toFixed(2);
+
+	var success = function() {
+		alertService.showAlert(SPONSORSHIP_EVENTS.creationSuccess, 'alert-success');
+		$scope.createSponsorshipModal.close();
+	};
+
+	var error = function() {
+		alertService.showAlert(SPONSORSHIP_EVENTS.creationFailure, 'alert-danger');
+	};
+
+	$scope.createSponsorship = function(isValid) {
+		$scope.sponsorship.donation_percentage = parseFloat($scope.donationPercentage).toFixed(1);
+		console.log($scope.sponsorship.donation_percentage);
+
+		if (isValid) {
+			SponsorService.createSponsorship($scope.sponsorship).then(success, error);
+		}
+	};
 	
 }
 
-CreateSponsorshipCtrl.$inject = [];
+CreateSponsorshipCtrl.$inject = ['$scope', 'SponsorService', 'SPONSORSHIP_EVENTS', 'alertService'];
 module.exports = CreateSponsorshipCtrl;
-},{}],66:[function(require,module,exports){
-module.exports = '<div id="modal-adminCreateSponsorship" class="modal-wrapper">\n' +
-    '    <h2 class="modal-title"></h2>\n' +
-    '    <button class="close" ng-click="createSponsorshipModal.close()"><i class="icon icon-x"></i></button>\n' +
-    '    <div class="modal-body">\n' +
-    '        Content goes here\n' +
-    '    </div>\n' +
-    '\n' +
-    '    <div class="modal-footer">\n' +
-    '        <ul class="buttons list-unstyled">\n' +
-    '            <li><button class="btn button button-secondary">Create Sponsorship</button></li>\n' +
-    '            <li><button class="btn button btn-danger" ng-click="createSponsorshipModal.close()">Cancel</button></li>\n' +
-    '        </ul>\n' +
-    '    </div>\n' +
-    '</div>';
 },{}],67:[function(require,module,exports){
+module.exports = '<div id="modal-adminCreateSponsorship" class="modal-wrapper">\n' +
+    '    <h2 class="modal-title">Create a Sponsorship</h2>\n' +
+    '    <button class="close" ng-click="createSponsorshipModal.close()"><i class="icon icon-x"></i></button>\n' +
+    '    \n' +
+    '    <form class="form" id="adminSponsorshipForm" name="adminSponsorshipForm" novalidate ng-submit="createSponsorship(adminSponsorshipForm.$valid)">\n' +
+    '        <div class="modal-body">\n' +
+    '            <div class="left-side">\n' +
+    '                <div class="form-group select-business">\n' +
+    '                    <label for="select-business" class="inline">Business</label>\n' +
+    '                    <input type="text" id="select-business" class="form-control with-label business" ng-model="businessItem" placeholder="Start typing a business name" typeahead="user.company_name for user in businessesAll | filter:$viewValue | limitTo:12" typeahead-on-select="selectedBusiness($item)">\n' +
+    '                </div>\n' +
+    '                <div class="form-group select-cause">\n' +
+    '                    <label for="select-cause" class="inline">Cause</label>\n' +
+    '                    <input type="text" id="select-cause" class="form-control with-label cause" ng-model="causeItem" placeholder="Start typing a cause name" typeahead="user.company_name for user in causesAll | filter:$viewValue | limitTo:12" typeahead-on-select="selectedCause($item)">\n' +
+    '                </div>\n' +
+    '                <div class="form-group percentage">\n' +
+    '                    <label for="donation-percentage" class="inline">Percentage</label>\n' +
+    '                    <input type="numbers" id="donation-percentage" class="form-control with-label percentage" ng-model="donationPercentage" placeholder="Enter a value from 5-100">\n' +
+    '                </div>\n' +
+    '            </div>\n' +
+    '            <div class="right-side">\n' +
+    '                <div>Sponsor: {{businessItem.company_name}}</div>\n' +
+    '                <div>Cause: {{causeItem.company_name}}</div>\n' +
+    '                <div>Donation Percentage: {{donationPercentage}}%</div>\n' +
+    '            </div>\n' +
+    '        </div>\n' +
+    '\n' +
+    '        <div class="modal-footer">\n' +
+    '            <ul class="buttons list-unstyled">\n' +
+    '                <li><button class="btn button button-secondary" type="submit">Create Sponsorship</button></li>\n' +
+    '                <li><button class="btn button btn-danger" ng-click="createSponsorshipModal.close()">Cancel</button></li>\n' +
+    '            </ul>\n' +
+    '        </div>\n' +
+    '    </form>\n' +
+    '</div>';
+},{}],68:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.admin.modals.create-sponsorship', [])
-  .directive('dashboardAdminModalsCreateSponsorship', function () {
-      return {
-          controller: 'CreateSponsorshipCtrl',
-		      template: require('./create-sponsorship.html'),
-          scope: true
-      };
-  })
-  .controller('CreateSponsorshipCtrl', require('./CreateSponsorshipController'));
-
-},{"./CreateSponsorshipController":65,"./create-sponsorship.html":66}],68:[function(require,module,exports){
+    .directive('dashboardAdminModalsCreateSponsorship', function () {
+        return {
+            controller: 'CreateSponsorshipCtrl',
+			template: require('./create-sponsorship.html'),
+            scope: true
+        };
+    })
+    .controller('CreateSponsorshipCtrl', require('./CreateSponsorshipController'));
+},{"./CreateSponsorshipController":66,"./create-sponsorship.html":67}],69:[function(require,module,exports){
 module.exports = '<div modal="changeUserStatusModal">\n' +
     '    <div dashboard-admin-modals-change-user-status></div>\n' +
     '</div>\n' +
     '<div modal="createSponsorshipModal">\n' +
     '	<div dashboard-admin-modals-create-sponsorship></div>\n' +
     '</div>';
-},{}],69:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.admin.modals',
@@ -2177,7 +2258,7 @@ module.exports = angular.module('dashboard.admin.modals',
             template: require('./dashboard-admin-modals.html')
         };
     });
-},{"./change-user-status":64,"./create-sponsorship":67,"./dashboard-admin-modals.html":68}],70:[function(require,module,exports){
+},{"./change-user-status":65,"./create-sponsorship":68,"./dashboard-admin-modals.html":69}],71:[function(require,module,exports){
 'use strict';
 
 function DashboardAdminSummaryCtrl() {
@@ -2186,7 +2267,7 @@ function DashboardAdminSummaryCtrl() {
 
 DashboardAdminSummaryCtrl.$inject = [];
 module.exports = DashboardAdminSummaryCtrl;
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 module.exports = '<div class="dashboard admin summary">\n' +
     '	<div class="page-title">\n' +
     '		<h1 class="dashboard-summary">Admin Dashboard</h1>\n' +
@@ -2227,7 +2308,7 @@ module.exports = '<div class="dashboard admin summary">\n' +
     '	</div>\n' +
     '</div>\n' +
     '';
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardAdminSummary() {
@@ -2238,13 +2319,13 @@ module.exports = function DashboardAdminSummary() {
 		scope: true
 	};
 };
-},{"./dashboard-admin-summary.html":71}],73:[function(require,module,exports){
+},{"./dashboard-admin-summary.html":72}],74:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.admin.summary', [])
 	.directive('dashboardAdminSummary', require('./dashboardAdminSummaryDirective'))
 	.controller('DashboardAdminSummaryCtrl', require('./DashboardAdminSummaryController'));
-},{"./DashboardAdminSummaryController":70,"./dashboardAdminSummaryDirective":72}],74:[function(require,module,exports){
+},{"./DashboardAdminSummaryController":71,"./dashboardAdminSummaryDirective":73}],75:[function(require,module,exports){
 'use strict';
 
 function DashboardAdminTabBusinessesCtrl() {
@@ -2253,13 +2334,13 @@ function DashboardAdminTabBusinessesCtrl() {
 
 DashboardAdminTabBusinessesCtrl.$inject = [];
 module.exports = DashboardAdminTabBusinessesCtrl;
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 module.exports = '<div class="tab businesses">\n' +
     '	<div class="tab-header">\n' +
     '		<div class="left-section">\n' +
     '			<div class="title">\n' +
-    '				<h3 class="tab-title">Total Businesses: {{businesses.length}}</h3>\n' +
-    '				<h5 class="subtitle"><span class="active">Activated Businesses: {{businesses.length}}</span><span class="inactive warning">Inactive Businesses: {{businessesInactive.length}}</span></h5>\n' +
+    '				<h3 class="tab-title">Total Businesses: {{businessesAll.length}}</h3>\n' +
+    '				<h5 class="subtitle"><span class="active">Activated Businesses: {{businessesActive.length}}</span><span class="inactive warning">Inactive Businesses: {{businessesInactive.length}}</span></h5>\n' +
     '			</div>\n' +
     '		</div>\n' +
     '		<div class="middle-section">\n' +
@@ -2286,7 +2367,7 @@ module.exports = '<div class="tab businesses">\n' +
     '			</tr>\n' +
     '		</thead>\n' +
     '		<tbody ng-hide="loading">\n' +
-    '			<tr dir-paginate="user in businesses | orderBy: \'created_at\' : true | filter: searchBusinesses | itemsPerPage: 25 : \'bizTab\'" pagination-id="bizTab" class="user business">\n' +
+    '			<tr dir-paginate="user in businessesAll | orderBy: \'created_at\' : true | filter: searchBusinesses | itemsPerPage: 25 : \'bizTab\'" pagination-id="bizTab" class="user business">\n' +
     '				<td class="user-field id">\n' +
     '					{{user.id}}\n' +
     '				</td>\n' +
@@ -2331,7 +2412,7 @@ module.exports = '<div class="tab businesses">\n' +
     '	</table>\n' +
     '	<div dir-pagination-controls pagination-id="bizTab"></div>\n' +
     '</div>';
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardAdminTabBusinesses() {
@@ -2342,13 +2423,13 @@ module.exports = function DashboardAdminTabBusinesses() {
 		scope: true
 	};
 };
-},{"./dashboard-admin-tab-businesses.html":75}],77:[function(require,module,exports){
+},{"./dashboard-admin-tab-businesses.html":76}],78:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.admin.tab-businesses', [])
 	.directive('dashboardAdminTabBusinesses', require('./dashboardAdminTabBusinessesDirective'))
 	.controller('DashboardAdminTabBusinessesCtrl', require('./DashboardAdminTabBusinessesController'));
-},{"./DashboardAdminTabBusinessesController":74,"./dashboardAdminTabBusinessesDirective":76}],78:[function(require,module,exports){
+},{"./DashboardAdminTabBusinessesController":75,"./dashboardAdminTabBusinessesDirective":77}],79:[function(require,module,exports){
 'use strict';
 
 function DashboardAdminTabCausesCtrl() {
@@ -2357,13 +2438,13 @@ function DashboardAdminTabCausesCtrl() {
 
 DashboardAdminTabCausesCtrl.$inject = [];
 module.exports = DashboardAdminTabCausesCtrl;
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 module.exports = '<div class="tab causes">\n' +
     '	<div class="tab-header">\n' +
     '		<div class="left-section">\n' +
     '			<div class="title">\n' +
-    '				<h3 class="tab-title">Total Causes: {{causes.length}}</h3>\n' +
-    '				<h5 class="subtitle"><span class="active">Activated Causes: {{causes.length}}</span><span class="inactive warning">Inactive Causes: {{causesInactive.length}}</span></h5>\n' +
+    '				<h3 class="tab-title">Total Causes: {{causesAll.length}}</h3>\n' +
+    '				<h5 class="subtitle"><span class="active">Activated Causes: {{causesActive.length}}</span><span class="inactive warning">Inactive Causes: {{causesInactive.length}}</span></h5>\n' +
     '			</div>\n' +
     '		</div>\n' +
     '		<div class="middle-section">\n' +
@@ -2390,7 +2471,7 @@ module.exports = '<div class="tab causes">\n' +
     '			</tr>\n' +
     '		</thead>\n' +
     '		<tbody ng-hide="loading">\n' +
-    '			<tr dir-paginate="user in causes | orderBy: \'created_at\' : true | filter: searchCauses | itemsPerPage: 25 : \'causeTab\'" pagination-id="causeTab" class="user cause">\n' +
+    '			<tr dir-paginate="user in causesAll | orderBy: \'created_at\' : true | filter: searchCauses | itemsPerPage: 25 : \'causeTab\'" pagination-id="causeTab" class="user cause">\n' +
     '				<td class="user-field id">\n' +
     '					{{user.id}}\n' +
     '				</td>\n' +
@@ -2435,7 +2516,7 @@ module.exports = '<div class="tab causes">\n' +
     '	</table>\n' +
     '	<div dir-pagination-controls pagination-id="causeTab"></div>\n' +
     '</div>';
-},{}],80:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardAdminTabCauses() {
@@ -2446,13 +2527,13 @@ module.exports = function DashboardAdminTabCauses() {
 		scope: true
 	};
 };
-},{"./dashboard-admin-tab-causes.html":79}],81:[function(require,module,exports){
+},{"./dashboard-admin-tab-causes.html":80}],82:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.admin.tab-causes', [])
 	.directive('dashboardAdminTabCauses', require('./dashboardAdminTabCausesDirective'))
 	.controller('DashboardAdminTabCausesCtrl', require('./DashboardAdminTabCausesController'));
-},{"./DashboardAdminTabCausesController":78,"./dashboardAdminTabCausesDirective":80}],82:[function(require,module,exports){
+},{"./DashboardAdminTabCausesController":79,"./dashboardAdminTabCausesDirective":81}],83:[function(require,module,exports){
 'use strict';
 
 function DashboardAdminTabIndividualsCtrl() {
@@ -2461,13 +2542,13 @@ function DashboardAdminTabIndividualsCtrl() {
 
 DashboardAdminTabIndividualsCtrl.$inject = [];
 module.exports = DashboardAdminTabIndividualsCtrl;
-},{}],83:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 module.exports = '<div class="tab individuals">\n' +
     '	<div class="tab-header">\n' +
     '		<div class="left-section">\n' +
     '			<div class="title">\n' +
-    '				<h3 class="tab-title">Total Customers: {{individuals.length}}</h3>\n' +
-    '				<h5 class="subtitle"><span class="active">Activated Customers: {{individuals.length}}</span><span class="inactive warning">Inactive Customers: {{individualsInactive.length}}</span></h5>\n' +
+    '				<h3 class="tab-title">Total Customers: {{individualsAll.length}}</h3>\n' +
+    '				<h5 class="subtitle"><span class="active">Activated Customers: {{individualsActive.length}}</span><span class="inactive warning">Inactive Customers: {{individualsInactive.length}}</span></h5>\n' +
     '			</div>\n' +
     '		</div>\n' +
     '		<div class="middle-section">\n' +
@@ -2494,7 +2575,7 @@ module.exports = '<div class="tab individuals">\n' +
     '			</tr>\n' +
     '		</thead>\n' +
     '		<tbody ng-hide="loading">\n' +
-    '			<tr dir-paginate="user in individuals | orderBy: \'created_at\' : true | filter: searchIndividuals | itemsPerPage: 25 : \'customerTab\'" pagination-id="customerTab" class="user individual">\n' +
+    '			<tr dir-paginate="user in individualsAll | orderBy: \'created_at\' : true | filter: searchIndividuals | itemsPerPage: 25 : \'customerTab\'" pagination-id="customerTab" class="user individual">\n' +
     '				<td class="user-field id">\n' +
     '					{{user.id}}\n' +
     '				</td>\n' +
@@ -2537,7 +2618,7 @@ module.exports = '<div class="tab individuals">\n' +
     '	</table>\n' +
     '	<div dir-pagination-controls pagination-id="customerTab"></div>\n' +
     '</div>';
-},{}],84:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardAdminTabIndividuals() {
@@ -2548,13 +2629,13 @@ module.exports = function DashboardAdminTabIndividuals() {
 		scope: true
 	};
 };
-},{"./dashboard-admin-tab-individuals.html":83}],85:[function(require,module,exports){
+},{"./dashboard-admin-tab-individuals.html":84}],86:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.admin.tab-individuals', [])
 	.directive('dashboardAdminTabIndividuals', require('./dashboardAdminTabIndividualsDirective'))
 	.controller('DashboardAdminTabIndividualsCtrl', require('./DashboardAdminTabIndividualsController'));
-},{"./DashboardAdminTabIndividualsController":82,"./dashboardAdminTabIndividualsDirective":84}],86:[function(require,module,exports){
+},{"./DashboardAdminTabIndividualsController":83,"./dashboardAdminTabIndividualsDirective":85}],87:[function(require,module,exports){
 'use strict';
 
 function DashboardAdminTabSponsorshipsCtrl($scope, Restangular) {
@@ -2572,7 +2653,7 @@ function DashboardAdminTabSponsorshipsCtrl($scope, Restangular) {
 DashboardAdminTabSponsorshipsCtrl.$inject = ['$scope', 'Restangular'];
 module.exports = DashboardAdminTabSponsorshipsCtrl;
 
-},{}],87:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 module.exports = '<div class="tab sponsorships">\n' +
     '  <div class="tab-header">\n' +
     '    <div class="left-section">\n' +
@@ -2636,7 +2717,7 @@ module.exports = '<div class="tab sponsorships">\n' +
     '  <div dir-pagination-controls pagination-id="sponsorshipTab"></div>\n' +
     '</div>\n' +
     '';
-},{}],88:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardAdminTabSponsorships() {
@@ -2648,32 +2729,24 @@ module.exports = function DashboardAdminTabSponsorships() {
   };
 };
 
-},{"./dashboard-admin-tab-sponsorships.html":87}],89:[function(require,module,exports){
+},{"./dashboard-admin-tab-sponsorships.html":88}],90:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.admin.tab-sponsorships', [])
 .directive('dashboardAdminTabSponsorships', require('./dashboardAdminTabSponsorshipsDirective'))
 .controller('DashboardAdminTabSponsorshipsCtrl', require('./DashboardAdminTabSponsorshipsController'));
 
-},{"./DashboardAdminTabSponsorshipsController":86,"./dashboardAdminTabSponsorshipsDirective":88}],90:[function(require,module,exports){
+},{"./DashboardAdminTabSponsorshipsController":87,"./dashboardAdminTabSponsorshipsDirective":89}],91:[function(require,module,exports){
 'use strict';
 
-function DashboardBusinessCtrl($scope) {
-
-  $scope.openRedeemCertificate = function () {
-    $scope.redeemCertificateModal.open({
-      windowClass: 'redeem-certificate'
-    });
-  };
+function DashboardBusinessCtrl() {
 
 }
 
-DashboardBusinessCtrl.$inject = ['$scope'];
+DashboardBusinessCtrl.$inject = [];
 module.exports = DashboardBusinessCtrl;
-
-},{}],91:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 module.exports = '<div class="dashboard business">\n' +
-    '	<a class="btn button button-secondary" ng-click="openRedeemCertificate()" id=\'redeem-certificate-button\'>Redeem Certificate</a>\n' +
     '	<ul>\n' +
     '		<li>Community Investment Rate (percentage of each transaction donated to a cause) - Ability to modify it (default is 20%)</li>\n' +
     '		<li>Total gift certificates sold</li>\n' +
@@ -2703,11 +2776,9 @@ module.exports = '<div class="dashboard business">\n' +
     '			</tab>\n' +
     '		</tabset>\n' +
     '	</div>\n' +
-    '\n' +
-    '	<div dashboard-business-modals></div>\n' +
     '</div>\n' +
     '';
-},{}],92:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardBusinessView() {
@@ -2718,112 +2789,17 @@ module.exports = function DashboardBusinessView() {
 		scope: true
 	};
 };
-
-},{"./dashboard-business.html":91}],93:[function(require,module,exports){
+},{"./dashboard-business.html":92}],94:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.business', [
-		require('./modals').name,
 		require('./sponsorships').name,
 		require('./summary').name,
 		require('./unused-vouchers').name
 	])
 	.directive('dashboardBusinessView', require('./dashboardBusinessDirective'))
 	.controller('DashboardBusinessCtrl', require('./DashboardBusinessController'));
-
-},{"./DashboardBusinessController":90,"./dashboardBusinessDirective":92,"./modals":95,"./sponsorships":102,"./summary":106,"./unused-vouchers":110}],94:[function(require,module,exports){
-module.exports = '<div modal="redeemCertificateModal">\n' +
-    '  <div dashboard-business-modals-redeem-certificate></div>\n' +
-    '</div>\n' +
-    '';
-},{}],95:[function(require,module,exports){
-'use strict';
-
-module.exports = angular.module('dashboard.business.modals',
-[
-require('./redeem-certificate').name
-])
-.directive('dashboardBusinessModals', function () {
-  return {
-    template: require('./dashboard-business-modals.html')
-  };
-});
-
-},{"./dashboard-business-modals.html":94,"./redeem-certificate":97}],96:[function(require,module,exports){
-'use strict';
-
-function RedeemCertificateCtrl($scope, formValidation, $http, alertService, TRANSACTION_EVENTS, apiConfig) {
-  $scope.redemptionCodeRegex = formValidation.alphaNumNoWhitespace;
-  $scope.redeemCertificate = function (valid) {
-    if (!valid) {
-      return;
-    }
-
-    $http({
-        method: 'PUT',
-        url: apiConfig.API.certificate.redeem,
-        data: { redemption_code: $scope.redemptionCode }
-      })
-      .success(function() {
-        alertService.showAlert(TRANSACTION_EVENTS.redemptionSuccess, 'alert-success');
-      })
-      .error(function() {
-        alertService.showAlert(TRANSACTION_EVENTS.redemptionFailure, 'alert-danger');
-      });
-
-    $scope.redeemCertificateModal.close();
-  };
-}
-
-RedeemCertificateCtrl.$inject = ['$scope', 'formValidation', '$http', 'alertService', 'TRANSACTION_EVENTS', 'apiConfig'];
-module.exports = RedeemCertificateCtrl;
-
-},{}],97:[function(require,module,exports){
-'use strict';
-
-module.exports = angular.module('dashboard.business.modals.redeem-certificate', [])
-.directive('dashboardBusinessModalsRedeemCertificate', function () {
-  return {
-    controller: 'RedeemCertificateCtrl',
-    template: require('./redeem-certificate.html'),
-    scope: true
-  };
-})
-.controller('RedeemCertificateCtrl', require('./RedeemCertificateController'));
-
-},{"./RedeemCertificateController":96,"./redeem-certificate.html":98}],98:[function(require,module,exports){
-module.exports = '<div id="modal-businessRedeemCertificate" class="modal-wrapper">\n' +
-    '  <h2 class="modal-title"></h2>\n' +
-    '  <button class="close" ng-click="redeemCertificateModal.close()"><i class="icon icon-x"></i></button>\n' +
-    '\n' +
-    '  <form class="form" name="redeemCertificateForm" ng-submit="redeemCertificate(redeemCertificateForm.$valid)" novalidate>\n' +
-    '\n' +
-    '    <div class="modal-body">\n' +
-    '\n' +
-    '        <div class="form-section">\n' +
-    '          <div class="form-group" ng-class="{\'invalid\' : redeemCertificateForm.redemptionCode.$invalid && redeemCertificateForm.redemptionCode.$dirty, \'valid\' : signupFormCause.company.$valid && redeemCertificateForm.redemptionCode.$dirty}">\n' +
-    '            <label for="redeemCertificateForm" class="inline">Certificate Code</label>\n' +
-    '            <input type="redemptionCode" name="redemptionCode" id="redemptionCode" class="form-control with-label" placeholder="Certificate Redemption Code" ng-model="redemptionCode" ng-pattern="redemptionCodeRegex" maxlength="60" required auto-focus show-form-errors />\n' +
-    '            <p class="form-helper" ng-if="redeemCertificateForm.redemptionCode.$error.pattern">This field only accepts letters and numbers.</p>\n' +
-    '            <p class="form-helper" ng-if="redeemCertificateForm.redemptionCode.$dirty && redeemCertificateForm.redemptionCode.$error.required && !redeemCertificateForm.redemptionCode.$focused">Certificate code is required!</p>\n' +
-    '          </div>\n' +
-    '\n' +
-    '    </div>\n' +
-    '\n' +
-    '    <div class="modal-footer">\n' +
-    '      <ul class="buttons list-unstyled">\n' +
-    '        <li><button class="btn button button-primary" type="submit" ng-disabled="signupFormCause.$invalid">Redeem</button></li>\n' +
-    '        <li><button class="btn button btn-danger" ng-click="redeemCertificateModal.close()">Cancel</button></li>\n' +
-    '      </ul>\n' +
-    '    </div>\n' +
-    '\n' +
-    '\n' +
-    '  </form>\n' +
-    '\n' +
-    '\n' +
-    '</div>\n' +
-    '';
-},{}],99:[function(require,module,exports){
+},{"./DashboardBusinessController":91,"./dashboardBusinessDirective":93,"./sponsorships":98,"./summary":102,"./unused-vouchers":106}],95:[function(require,module,exports){
 'use strict';
 
 function DashboardBusinessSponsorshipsCtrl($rootScope, $scope) {
@@ -2837,7 +2813,7 @@ function DashboardBusinessSponsorshipsCtrl($rootScope, $scope) {
 DashboardBusinessSponsorshipsCtrl.$inject = ['$rootScope', '$scope'];
 module.exports = DashboardBusinessSponsorshipsCtrl;
 
-},{}],100:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 module.exports = '<div class="dashboard business sponsorships">\n' +
     '\n' +
     '	<div class="row">\n' +
@@ -2855,7 +2831,7 @@ module.exports = '<div class="dashboard business sponsorships">\n' +
     '\n' +
     '</div>\n' +
     '';
-},{}],101:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardBusinessSponsorships() {
@@ -2866,22 +2842,22 @@ module.exports = function DashboardBusinessSponsorships() {
 		scope: true
 	};
 };
-},{"./dashboard-business-sponsorships.html":100}],102:[function(require,module,exports){
+},{"./dashboard-business-sponsorships.html":96}],98:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.business.sponsorships', [])
 	.directive('dashboardBusinessSponsorships', require('./dashboardBusinessSponsorshipsDirective'))
 	.controller('DashboardBusinessSponsorshipsCtrl', require('./DashboardBusinessSponsorshipsController'));
-},{"./DashboardBusinessSponsorshipsController":99,"./dashboardBusinessSponsorshipsDirective":101}],103:[function(require,module,exports){
+},{"./DashboardBusinessSponsorshipsController":95,"./dashboardBusinessSponsorshipsDirective":97}],99:[function(require,module,exports){
 'use strict';
 
 function DashboardBusinessSummaryCtrl() {
+    
 }
 
 DashboardBusinessSummaryCtrl.$inject = [];
 module.exports = DashboardBusinessSummaryCtrl;
-
-},{}],104:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 module.exports = '<div class="dashboard business summary">\n' +
     '	<div class="page-title">\n' +
     '		<h1 class="dashboard-summary">{{currentUser.company_name}}\'s Dashboard</h1>\n' +
@@ -2892,7 +2868,7 @@ module.exports = '<div class="dashboard business summary">\n' +
     '		<div class="block-wrapper">\n' +
     '			<h4 class="block-title">Community Investment Rate <a class="pop-over" popover-trigger="mouseenter" popover-placement="right" popover="The percentage donated from each gift certificate sold." popover-append-to-body><i class="icon icon-question-circle-outline"></i></a></h4>\n' +
     '			<div class="block-content">\n' +
-    '\n' +
+    '				\n' +
     '			</div>\n' +
     '		</div>\n' +
     '	</div>\n' +
@@ -2900,7 +2876,7 @@ module.exports = '<div class="dashboard business summary">\n' +
     '		<div class="block-wrapper">\n' +
     '			<h4 class="block-title">Gift Certificates Sold</h4>\n' +
     '			<div class="block-content">\n' +
-    '\n' +
+    '				\n' +
     '			</div>\n' +
     '		</div>\n' +
     '	</div>\n' +
@@ -2908,7 +2884,7 @@ module.exports = '<div class="dashboard business summary">\n' +
     '		<div class="block-wrapper">\n' +
     '			<h4 class="block-title">Value of Sales</h4>\n' +
     '			<div class="block-content">\n' +
-    '\n' +
+    '				\n' +
     '			</div>\n' +
     '		</div>\n' +
     '	</div>\n' +
@@ -2916,13 +2892,13 @@ module.exports = '<div class="dashboard business summary">\n' +
     '		<div class="block-wrapper">\n' +
     '			<h4 class="block-title">Funds Raised</h4>\n' +
     '			<div class="block-content">\n' +
-    '\n' +
+    '				\n' +
     '			</div>\n' +
     '		</div>\n' +
     '	</div>\n' +
     '</div>\n' +
     '';
-},{}],105:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardBusinessSummary() {
@@ -2933,14 +2909,13 @@ module.exports = function DashboardBusinessSummary() {
 		scope: true
 	};
 };
-
-},{"./dashboard-business-summary.html":104}],106:[function(require,module,exports){
+},{"./dashboard-business-summary.html":100}],102:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.business.summary', [])
 	.directive('dashboardBusinessSummary', require('./dashboardBusinessSummaryDirective'))
 	.controller('DashboardBusinessSummaryCtrl', require('./DashboardBusinessSummaryController'));
-},{"./DashboardBusinessSummaryController":103,"./dashboardBusinessSummaryDirective":105}],107:[function(require,module,exports){
+},{"./DashboardBusinessSummaryController":99,"./dashboardBusinessSummaryDirective":101}],103:[function(require,module,exports){
 'use strict';
 
 function DashboardBusinessUnusedVouchersCtrl() {
@@ -2949,12 +2924,12 @@ function DashboardBusinessUnusedVouchersCtrl() {
 
 DashboardBusinessUnusedVouchersCtrl.$inject = [];
 module.exports = DashboardBusinessUnusedVouchersCtrl;
-},{}],108:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 module.exports = '<div class="dashboard business unused-vouchers">\n' +
-    '	List of Unused Certificates\n' +
+    '	List of Unused Vouchers\n' +
     '</div>\n' +
     '';
-},{}],109:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardBusinessUnusedVouchers() {
@@ -2965,13 +2940,13 @@ module.exports = function DashboardBusinessUnusedVouchers() {
 		scope: true
 	};
 };
-},{"./dashboard-business-unused-vouchers.html":108}],110:[function(require,module,exports){
+},{"./dashboard-business-unused-vouchers.html":104}],106:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.business.unused-vouchers', [])
 	.directive('dashboardBusinessUnusedVouchers', require('./dashboardBusinessUnusedVouchersDirective'))
 	.controller('DashboardBusinessUnusedVouchersCtrl', require('./DashboardBusinessUnusedVouchersController'));
-},{"./DashboardBusinessUnusedVouchersController":107,"./dashboardBusinessUnusedVouchersDirective":109}],111:[function(require,module,exports){
+},{"./DashboardBusinessUnusedVouchersController":103,"./dashboardBusinessUnusedVouchersDirective":105}],107:[function(require,module,exports){
 'use strict';
 
 function DashboardCauseCtrl() {
@@ -2980,7 +2955,7 @@ function DashboardCauseCtrl() {
 
 DashboardCauseCtrl.$inject = [];
 module.exports = DashboardCauseCtrl;
-},{}],112:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 module.exports = '<div class="dashboard cause">\n' +
     '	Cause Dashboard\n' +
     '	<ul>\n' +
@@ -2990,7 +2965,7 @@ module.exports = '<div class="dashboard cause">\n' +
     '	</ul>\n' +
     '</div>\n' +
     '';
-},{}],113:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardCauseView() {
@@ -3001,7 +2976,7 @@ module.exports = function DashboardCauseView() {
 		scope: true
 	};
 };
-},{"./dashboard-cause.html":112}],114:[function(require,module,exports){
+},{"./dashboard-cause.html":108}],110:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.cause', [
@@ -3010,7 +2985,7 @@ module.exports = angular.module('dashboard.cause', [
 	])
 	.directive('dashboardCauseView', require('./dashboardCauseDirective'))
 	.controller('DashboardCauseCtrl', require('./DashboardCauseController'));
-},{"./DashboardCauseController":111,"./dashboardCauseDirective":113,"./sponsors":118,"./summary":122}],115:[function(require,module,exports){
+},{"./DashboardCauseController":107,"./dashboardCauseDirective":109,"./sponsors":114,"./summary":118}],111:[function(require,module,exports){
 'use strict';
 
 function DashboardCauseSponsorsCtrl() {
@@ -3019,12 +2994,12 @@ function DashboardCauseSponsorsCtrl() {
 
 DashboardCauseSponsorsCtrl.$inject = [];
 module.exports = DashboardCauseSponsorsCtrl;
-},{}],116:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 module.exports = '<div class="dashboard cause sponsors">\n' +
     '	List of Sponsors\n' +
     '</div>\n' +
     '';
-},{}],117:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardCauseSponsors() {
@@ -3035,13 +3010,13 @@ module.exports = function DashboardCauseSponsors() {
 		scope: true
 	};
 };
-},{"./dashboard-cause-sponsors.html":116}],118:[function(require,module,exports){
+},{"./dashboard-cause-sponsors.html":112}],114:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.cause.sponsors', [])
 	.directive('dashboardCauseSponsors', require('./dashboardCauseSponsorsDirective'))
 	.controller('DashboardCauseSponsorsCtrl', require('./DashboardCauseSponsorsController'));
-},{"./DashboardCauseSponsorsController":115,"./dashboardCauseSponsorsDirective":117}],119:[function(require,module,exports){
+},{"./DashboardCauseSponsorsController":111,"./dashboardCauseSponsorsDirective":113}],115:[function(require,module,exports){
 'use strict';
 
 function DashboardCauseSummaryCtrl() {
@@ -3050,7 +3025,7 @@ function DashboardCauseSummaryCtrl() {
 
 DashboardCauseSummaryCtrl.$inject = [];
 module.exports = DashboardCauseSummaryCtrl;
-},{}],120:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 module.exports = '<div class="dashboard cause summary">\n' +
     '	<div class="page-title">\n' +
     '		<h1 class="dashboard-summary">{{currentUser.company_name}}\'s Dashboard</h1>\n' +
@@ -3091,7 +3066,7 @@ module.exports = '<div class="dashboard cause summary">\n' +
     '	</div>\n' +
     '</div>\n' +
     '';
-},{}],121:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardCauseSummary() {
@@ -3102,19 +3077,19 @@ module.exports = function DashboardCauseSummary() {
 		scope: true
 	};
 };
-},{"./dashboard-cause-summary.html":120}],122:[function(require,module,exports){
+},{"./dashboard-cause-summary.html":116}],118:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.cause.summary', [])
 	.directive('dashboardCauseSummary', require('./dashboardCauseSummaryDirective'))
 	.controller('DashboardCauseSummaryCtrl', require('./DashboardCauseSummaryController'));
-},{"./DashboardCauseSummaryController":119,"./dashboardCauseSummaryDirective":121}],123:[function(require,module,exports){
+},{"./DashboardCauseSummaryController":115,"./dashboardCauseSummaryDirective":117}],119:[function(require,module,exports){
 module.exports = '<div class="dashboard-layout">\n' +
     '	<div ui-view="dash-summary" class="dash-summary"></div>\n' +
     '	<div ui-view="dash-content" class="dash-content"></div>\n' +
     '</div>\n' +
     '';
-},{}],124:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 'use strict';
 
 function dashboardRoutes($stateProvider) {
@@ -3228,7 +3203,7 @@ function dashboardRoutes($stateProvider) {
 
 dashboardRoutes.$inject = ['$stateProvider'];
 module.exports = dashboardRoutes;
-},{}],125:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardView() {
@@ -3239,7 +3214,7 @@ module.exports = function DashboardView() {
 		scope: true
 	};
 };
-},{"./dashboard-layout.html":123}],126:[function(require,module,exports){
+},{"./dashboard-layout.html":119}],122:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard', 
@@ -3252,7 +3227,7 @@ module.exports = angular.module('dashboard',
 	.config(require('./dashboardConfig'))
 	.directive('dashboardView', require('./dashboardDirective'))
 	.controller('DashboardCtrl', require('./DashboardController'));
-},{"./DashboardController":57,"./admin":61,"./business":93,"./cause":114,"./dashboardConfig":124,"./dashboardDirective":125,"./user":130}],127:[function(require,module,exports){
+},{"./DashboardController":58,"./admin":62,"./business":94,"./cause":110,"./dashboardConfig":120,"./dashboardDirective":121,"./user":126}],123:[function(require,module,exports){
 'use strict';
 
 function DashboardUserCtrl() {
@@ -3261,7 +3236,7 @@ function DashboardUserCtrl() {
 
 DashboardUserCtrl.$inject = [];
 module.exports = DashboardUserCtrl;
-},{}],128:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 module.exports = '<div class="dashboard user">\n' +
     '	User Dashboard\n' +
     '	<ul>\n' +
@@ -3272,7 +3247,7 @@ module.exports = '<div class="dashboard user">\n' +
     '	<div users-account-history></div>\n' +
     '</div>\n' +
     '';
-},{}],129:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardUserView() {
@@ -3283,7 +3258,7 @@ module.exports = function DashboardUserView() {
 		scope: true
 	};
 };
-},{"./dashboard-user.html":128}],130:[function(require,module,exports){
+},{"./dashboard-user.html":124}],126:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.user', [
@@ -3291,7 +3266,7 @@ module.exports = angular.module('dashboard.user', [
 	])
 	.directive('dashboardUserView', require('./dashboardUserDirective'))
 	.controller('DashboardUserCtrl', require('./DashboardUserController'));
-},{"./DashboardUserController":127,"./dashboardUserDirective":129,"./vouchers":134}],131:[function(require,module,exports){
+},{"./DashboardUserController":123,"./dashboardUserDirective":125,"./vouchers":130}],127:[function(require,module,exports){
 'use strict';
 
 function DashboardUserVouchersCtrl() {
@@ -3300,48 +3275,9 @@ function DashboardUserVouchersCtrl() {
 
 DashboardUserVouchersCtrl.$inject = [];
 module.exports = DashboardUserVouchersCtrl;
-},{}],132:[function(require,module,exports){
-module.exports = '<div class="dashboard business summary">\n' +
-    '	<div class="page-title">\n' +
-    '		<h1 class="dashboard-summary">{{currentUser.company_name}}\'s Dashboard</h1>\n' +
-    '		<h5 class="subtitle">Business Performance Snapshot</h5>\n' +
-    '	</div>\n' +
-    '\n' +
-    '	<div class="community-investment-rate summary-block">\n' +
-    '		<div class="block-wrapper">\n' +
-    '			<h4 class="block-title">Community Investment Rate <a class="pop-over" popover-trigger="mouseenter" popover-placement="right" popover="The percentage donated from each gift certificate sold." popover-append-to-body><i class="icon icon-question-circle-outline"></i></a></h4>\n' +
-    '			<div class="block-content">\n' +
-    '				\n' +
-    '			</div>\n' +
-    '		</div>\n' +
-    '	</div>\n' +
-    '	<div class="total-vouchers-sold summary-block">\n' +
-    '		<div class="block-wrapper">\n' +
-    '			<h4 class="block-title">Gift Certificates Sold</h4>\n' +
-    '			<div class="block-content">\n' +
-    '				\n' +
-    '			</div>\n' +
-    '		</div>\n' +
-    '	</div>\n' +
-    '	<div class="total-value-sales summary-block">\n' +
-    '		<div class="block-wrapper">\n' +
-    '			<h4 class="block-title">Value of Sales</h4>\n' +
-    '			<div class="block-content">\n' +
-    '				\n' +
-    '			</div>\n' +
-    '		</div>\n' +
-    '	</div>\n' +
-    '	<div class="total-donations-value summary-block">\n' +
-    '		<div class="block-wrapper">\n' +
-    '			<h4 class="block-title">Funds Raised</h4>\n' +
-    '			<div class="block-content">\n' +
-    '				\n' +
-    '			</div>\n' +
-    '		</div>\n' +
-    '	</div>\n' +
-    '</div>\n' +
-    '';
-},{}],133:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
+module.exports=require(100)
+},{}],129:[function(require,module,exports){
 'use strict';
 
 module.exports = function DashboardUserVouchers() {
@@ -3352,13 +3288,13 @@ module.exports = function DashboardUserVouchers() {
 		scope: true
 	};
 };
-},{"./dashboard-user-vouchers.html":132}],134:[function(require,module,exports){
+},{"./dashboard-user-vouchers.html":128}],130:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('dashboard.user.vouchers', [])
 	.directive('dashboardUserVouchers', require('./dashboardUserVouchersDirective'))
 	.controller('DashboardUserVouchersCtrl', require('./DashboardUserVouchersController'));
-},{"./DashboardUserVouchersController":131,"./dashboardUserVouchersDirective":133}],135:[function(require,module,exports){
+},{"./DashboardUserVouchersController":127,"./dashboardUserVouchersDirective":129}],131:[function(require,module,exports){
 'use strict';
 
 function ExploreCtrl() {
@@ -3367,7 +3303,7 @@ function ExploreCtrl() {
 
 ExploreCtrl.$inject = [];
 module.exports = ExploreCtrl;
-},{}],136:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 'use strict';
 
 function ExploreBusinessesCtrl() {
@@ -3376,7 +3312,7 @@ function ExploreBusinessesCtrl() {
 
 ExploreBusinessesCtrl.$inject = [];
 module.exports = ExploreBusinessesCtrl;
-},{}],137:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 module.exports = '<div class="exploreBusinesses exploreGrid module-view">\n' +
     '	<div class="row">\n' +
     '		<div class="page-header">\n' +
@@ -3411,7 +3347,7 @@ module.exports = '<div class="exploreBusinesses exploreGrid module-view">\n' +
     '		<div dir-pagination-controls boundary-links="true" class="pagination-controls bottom"></div>\n' +
     '	</div>\n' +
     '</div>';
-},{}],138:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 'use strict';
 
 module.exports = function exploreBusinessesDirective() {
@@ -3422,13 +3358,13 @@ module.exports = function exploreBusinessesDirective() {
 		scope: true
 	};
 };
-},{"./explore-businesses.html":137}],139:[function(require,module,exports){
+},{"./explore-businesses.html":133}],135:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('explore.businesses', [])
 	.directive('exploreBusinesses', require('./exploreBusinessesDirective'))
 	.controller('ExploreBusinessesCtrl', require('./ExploreBusinessesController'));
-},{"./ExploreBusinessesController":136,"./exploreBusinessesDirective":138}],140:[function(require,module,exports){
+},{"./ExploreBusinessesController":132,"./exploreBusinessesDirective":134}],136:[function(require,module,exports){
 'use strict';
 
 function ExploreCausesCtrl() {
@@ -3437,7 +3373,7 @@ function ExploreCausesCtrl() {
 
 ExploreCausesCtrl.$inject = [];
 module.exports = ExploreCausesCtrl;
-},{}],141:[function(require,module,exports){
+},{}],137:[function(require,module,exports){
 module.exports = '<div class="exploreCauses exploreGrid module-view">\n' +
     '	<div class="row">\n' +
     '		<div class="page-header">\n' +
@@ -3473,7 +3409,7 @@ module.exports = '<div class="exploreCauses exploreGrid module-view">\n' +
     '		<div dir-pagination-controls boundary-links="true" class="pagination-controls bottom"></div>\n' +
     '	</div>\n' +
     '</div>';
-},{}],142:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 'use strict';
 
 module.exports = function exploreCausesDirective() {
@@ -3484,13 +3420,13 @@ module.exports = function exploreCausesDirective() {
 		scope: true
 	};
 };
-},{"./explore-causes.html":141}],143:[function(require,module,exports){
+},{"./explore-causes.html":137}],139:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('explore.causes', [])
 	.directive('exploreCauses', require('./exploreCausesDirective'))
 	.controller('ExploreCausesCtrl', require('./ExploreCausesController'));
-},{"./ExploreCausesController":140,"./exploreCausesDirective":142}],144:[function(require,module,exports){
+},{"./ExploreCausesController":136,"./exploreCausesDirective":138}],140:[function(require,module,exports){
 'use strict';
 
 function exploreRoutes($stateProvider) {
@@ -3545,7 +3481,7 @@ function exploreRoutes($stateProvider) {
 
 exploreRoutes.$inject = ['$stateProvider'];
 module.exports = exploreRoutes;
-},{}],145:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('explore',
@@ -3555,7 +3491,7 @@ module.exports = angular.module('explore',
 	])
 	.config(require('./exploreConfig'))
 	.controller('ExploreCtrl', require('./ExploreController'));
-},{"./ExploreController":135,"./businesses":139,"./causes":143,"./exploreConfig":144}],146:[function(require,module,exports){
+},{"./ExploreController":131,"./businesses":135,"./causes":139,"./exploreConfig":140}],142:[function(require,module,exports){
 'use strict';
 
 function HomeViewCtrl() {
@@ -3564,7 +3500,7 @@ function HomeViewCtrl() {
 
 HomeViewCtrl.$inject = [];
 module.exports = HomeViewCtrl;
-},{}],147:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 module.exports = '<div class="view-home module-view">\n' +
     '	<div id="home-top" class="jumbotron">\n' +
     '		<div class="logo-large"></div>\n' +
@@ -3594,7 +3530,7 @@ module.exports = '<div class="view-home module-view">\n' +
     '	</div>\n' +
     '	\n' +
     '</div>';
-},{}],148:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 'use strict';
 
 module.exports = function homeDirective() {
@@ -3605,7 +3541,7 @@ module.exports = function homeDirective() {
 		scope: true
 	};
 };
-},{"./home.html":147}],149:[function(require,module,exports){
+},{"./home.html":143}],145:[function(require,module,exports){
 'use strict';
 // Home View
 module.exports = angular.module('home', [
@@ -3618,7 +3554,7 @@ module.exports = angular.module('home', [
 	])
 	.directive('homeView', require('./homeDirective'))
 	.controller('HomeViewCtrl', require('./HomeController'));
-},{"./HomeController":146,"./homeDirective":148,"./navbar":153,"./section-causes":157,"./section-how-it-works":161,"./section-supporters":165,"./section-team":169,"./section-why-taliflo":173}],150:[function(require,module,exports){
+},{"./HomeController":142,"./homeDirective":144,"./navbar":149,"./section-causes":153,"./section-how-it-works":157,"./section-supporters":161,"./section-team":165,"./section-why-taliflo":169}],146:[function(require,module,exports){
 'use strict';
 
 function HomeNavbarCtrl() {
@@ -3627,7 +3563,7 @@ function HomeNavbarCtrl() {
 
 HomeNavbarCtrl.$inject = [];
 module.exports = HomeNavbarCtrl;
-},{}],151:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 module.exports = '<div class="navbar">\n' +
     '	<div class="container">\n' +
     '		<div class="row">\n' +
@@ -3652,7 +3588,7 @@ module.exports = '<div class="navbar">\n' +
     '	</div>\n' +
     '</div>\n' +
     '';
-},{}],152:[function(require,module,exports){
+},{}],148:[function(require,module,exports){
 'use strict';
 
 module.exports = function HomeNavbarView() {
@@ -3663,13 +3599,13 @@ module.exports = function HomeNavbarView() {
 		scope: true
 	};
 };
-},{"./home-navbar.html":151}],153:[function(require,module,exports){
+},{"./home-navbar.html":147}],149:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('home.navbar', [])
 	.directive('homeNavbar', require('./homeNavbarDirective'))
 	.controller('HomeNavbarCtrl', require('./HomeNavbarController'));
-},{"./HomeNavbarController":150,"./homeNavbarDirective":152}],154:[function(require,module,exports){
+},{"./HomeNavbarController":146,"./homeNavbarDirective":148}],150:[function(require,module,exports){
 'use strict';
 
 function HomeSectionCausesCtrl($rootScope, $scope, Restangular) {
@@ -3693,7 +3629,7 @@ function HomeSectionCausesCtrl($rootScope, $scope, Restangular) {
 
 HomeSectionCausesCtrl.$inject = ['$rootScope', '$scope', 'Restangular'];
 module.exports = HomeSectionCausesCtrl;
-},{}],155:[function(require,module,exports){
+},{}],151:[function(require,module,exports){
 module.exports = '<div id="causes-carousel" class="home-section section-causes">\n' +
     '	<div class="container">\n' +
     '		<div class="row">\n' +
@@ -3722,7 +3658,7 @@ module.exports = '<div id="causes-carousel" class="home-section section-causes">
     '	</div>\n' +
     '</div>\n' +
     '';
-},{}],156:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 'use strict';
 
 module.exports = function HomeSectionCausesView() {
@@ -3733,13 +3669,13 @@ module.exports = function HomeSectionCausesView() {
 		scope: true
 	};
 };
-},{"./home-section-causes.html":155}],157:[function(require,module,exports){
+},{"./home-section-causes.html":151}],153:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('home.sectionCauses', ['truncate'])
 	.directive('homeSectionCauses', require('./homeSectionCausesDirective'))
 	.controller('HomeSectionCausesCtrl', require('./HomeSectionCausesController'));
-},{"./HomeSectionCausesController":154,"./homeSectionCausesDirective":156}],158:[function(require,module,exports){
+},{"./HomeSectionCausesController":150,"./homeSectionCausesDirective":152}],154:[function(require,module,exports){
 'use strict';
 
 function HomeSectionHowItWorksCtrl() {
@@ -3748,7 +3684,7 @@ function HomeSectionHowItWorksCtrl() {
 
 HomeSectionHowItWorksCtrl.$inject = [];
 module.exports = HomeSectionHowItWorksCtrl;
-},{}],159:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 module.exports = '<div id="how-it-works" class="home-section section-how-it-works">\n' +
     '	<div class="container">\n' +
     '		<div class="row">\n' +
@@ -3771,7 +3707,7 @@ module.exports = '<div id="how-it-works" class="home-section section-how-it-work
     '		</div>\n' +
     '	</div>\n' +
     '</div>';
-},{}],160:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
 'use strict';
 
 module.exports = function homeSectionHowItWorksView() {
@@ -3782,13 +3718,13 @@ module.exports = function homeSectionHowItWorksView() {
 		scope: true
 	};
 };
-},{"./home-section-how-it-works.html":159}],161:[function(require,module,exports){
+},{"./home-section-how-it-works.html":155}],157:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('home.section-how-it-works', [])
 	.directive('homeSectionHowItWorks', require('./homeSectionHowItWorksDirective'))
 	.controller('HomeSectionHowItWorksCtrl', require('./HomeSectionHowItWorksController'));
-},{"./HomeSectionHowItWorksController":158,"./homeSectionHowItWorksDirective":160}],162:[function(require,module,exports){
+},{"./HomeSectionHowItWorksController":154,"./homeSectionHowItWorksDirective":156}],158:[function(require,module,exports){
 'use strict';
 
 function HomeSectionSupportersCtrl() {
@@ -3797,7 +3733,7 @@ function HomeSectionSupportersCtrl() {
 
 HomeSectionSupportersCtrl.$inject = [];
 module.exports = HomeSectionSupportersCtrl;
-},{}],163:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
 module.exports = '<div id="taliflo-supporters" class="home-section section-supporters">\n' +
     '	<div class="container">\n' +
     '		<div class="row">\n' +
@@ -3828,7 +3764,7 @@ module.exports = '<div id="taliflo-supporters" class="home-section section-suppo
     '		</div>\n' +
     '	</div>\n' +
     '</div>';
-},{}],164:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 'use strict';
 
 module.exports = function homeSectionSupportersView() {
@@ -3839,13 +3775,13 @@ module.exports = function homeSectionSupportersView() {
 		scope: true
 	};
 };
-},{"./home-section-supporters.html":163}],165:[function(require,module,exports){
+},{"./home-section-supporters.html":159}],161:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('home.section-supporters', [])
 	.directive('homeSectionSupporters', require('./homeSectionSupportersDirective'))
 	.controller('HomeSectionSupportersCtrl', require('./HomeSectionSupportersController'));
-},{"./HomeSectionSupportersController":162,"./homeSectionSupportersDirective":164}],166:[function(require,module,exports){
+},{"./HomeSectionSupportersController":158,"./homeSectionSupportersDirective":160}],162:[function(require,module,exports){
 'use strict';
 
 function HomeSectionTeamCtrl() {
@@ -3854,7 +3790,7 @@ function HomeSectionTeamCtrl() {
 
 HomeSectionTeamCtrl.$inject = [];
 module.exports = HomeSectionTeamCtrl;
-},{}],167:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 module.exports = '<div id="taliflo-team" class="home-section section-team">\n' +
     '	<div class="container">\n' +
     '		<div class="row">\n' +
@@ -3922,7 +3858,7 @@ module.exports = '<div id="taliflo-team" class="home-section section-team">\n' +
     '		</div>\n' +
     '	</div>\n' +
     '</div>';
-},{}],168:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 'use strict';
 
 module.exports = function homeSectionTeamView() {
@@ -3933,13 +3869,13 @@ module.exports = function homeSectionTeamView() {
 		scope: true
 	};
 };
-},{"./home-section-team.html":167}],169:[function(require,module,exports){
+},{"./home-section-team.html":163}],165:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('home.section-team', [])
 	.directive('homeSectionTeam', require('./homeSectionTeamDirective'))
 	.controller('HomeSectionTeamCtrl', require('./HomeSectionTeamController'));
-},{"./HomeSectionTeamController":166,"./homeSectionTeamDirective":168}],170:[function(require,module,exports){
+},{"./HomeSectionTeamController":162,"./homeSectionTeamDirective":164}],166:[function(require,module,exports){
 'use strict';
 
 function HomeSectionWhyTalifloCtrl() {
@@ -3948,7 +3884,7 @@ function HomeSectionWhyTalifloCtrl() {
 
 HomeSectionWhyTalifloCtrl.$inject = [];
 module.exports = HomeSectionWhyTalifloCtrl;
-},{}],171:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 module.exports = '<div id="taliflo-why" class="home-section section-why-taliflo">\n' +
     '	<div class="container">\n' +
     '		<div class="row">\n' +
@@ -4004,7 +3940,7 @@ module.exports = '<div id="taliflo-why" class="home-section section-why-taliflo"
     '		</div>\n' +
     '	</div>\n' +
     '</div>';
-},{}],172:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 'use strict';
 
 module.exports = function homeSectionWhyTalifloView() {
@@ -4015,13 +3951,13 @@ module.exports = function homeSectionWhyTalifloView() {
 		scope: true
 	};
 };
-},{"./home-section-why-taliflo.html":171}],173:[function(require,module,exports){
+},{"./home-section-why-taliflo.html":167}],169:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('home.section-why-taliflo', [])
 	.directive('homeSectionWhyTaliflo', require('./homeSectionWhyTalifloDirective'))
 	.controller('HomeSectionWhyTalifloCtrl', require('./HomeSectionWhyTalifloController'));
-},{"./HomeSectionWhyTalifloController":170,"./homeSectionWhyTalifloDirective":172}],174:[function(require,module,exports){
+},{"./HomeSectionWhyTalifloController":166,"./homeSectionWhyTalifloDirective":168}],170:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('modules',
@@ -4034,7 +3970,7 @@ module.exports = angular.module('modules',
 		require('./users').name
 	])
 	.controller('MainCtrl', require('./MainController'));
-},{"./MainController":56,"./dashboard":126,"./explore":145,"./home":149,"./pages":180,"./transactions":189,"./users":269}],175:[function(require,module,exports){
+},{"./MainController":57,"./dashboard":122,"./explore":141,"./home":145,"./pages":176,"./transactions":185,"./users":265}],171:[function(require,module,exports){
 'use strict';
 
 function PagesCtrl() {
@@ -4043,7 +3979,7 @@ function PagesCtrl() {
 
 PagesCtrl.$inject = [''];
 module.exports = PagesCtrl;
-},{}],176:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 'use strict';
 
 function AboutCtrl($rootScope, $scope) {
@@ -4052,12 +3988,12 @@ function AboutCtrl($rootScope, $scope) {
 
 AboutCtrl.$inject = ['$rootScope', '$scope'];
 module.exports = AboutCtrl;
-},{}],177:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 module.exports = '<div class="page-about module-view">\n' +
     '	<h1>How It Works</h1>\n' +
     '    <p>{{testVar}}</p>\n' +
     '</div>';
-},{}],178:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 'use strict';
 
 module.exports = function aboutDirective() {
@@ -4068,13 +4004,13 @@ module.exports = function aboutDirective() {
 		scope: true
 	};
 };
-},{"./about.html":177}],179:[function(require,module,exports){
+},{"./about.html":173}],175:[function(require,module,exports){
 'use strict';
 // About (How it Works) View
 module.exports = angular.module('pages.about', [])
 	.directive('aboutView', require('./aboutDirective'))
 	.controller('AboutCtrl', require('./AboutController'));
-},{"./AboutController":176,"./aboutDirective":178}],180:[function(require,module,exports){
+},{"./AboutController":172,"./aboutDirective":174}],176:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('pages',
@@ -4085,7 +4021,7 @@ module.exports = angular.module('pages',
 	])
 	.config(require('./pagesConfig'))
 	.controller('PagesCtrl', require('./PagesController'));
-},{"./PagesController":175,"./about":179,"./pagesConfig":181,"./policy":182,"./terms":185}],181:[function(require,module,exports){
+},{"./PagesController":171,"./about":175,"./pagesConfig":177,"./policy":178,"./terms":181}],177:[function(require,module,exports){
 'use strict';
 
 function pageRoutes($stateProvider) {
@@ -4133,12 +4069,12 @@ $stateProvider.state(terms);
 
 pageRoutes.$inject = ['$stateProvider'];
 module.exports = pageRoutes;
-},{}],182:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 'use strict';
 // Privacy Policy View
 module.exports = angular.module('pages.policy', [])
 	.directive('policyView', require('./policyDirective'));
-},{"./policyDirective":184}],183:[function(require,module,exports){
+},{"./policyDirective":180}],179:[function(require,module,exports){
 module.exports = '<div class="page-policy module-view">\n' +
     '	<h1>Privacy Policy</h1>\n' +
     '	<p><i>Dated March 8, 2014</i></p>\n' +
@@ -4168,7 +4104,7 @@ module.exports = '<div class="page-policy module-view">\n' +
     '	<p>If you have any questions concerning this Privacy Policy, please contact Taliflo through <a href="mailto:community@taliflo.com">community@taliflo.com</a> or other contact information set out on the Site.</p>\n' +
     '\n' +
     '</div>';
-},{}],184:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 'use strict';
 
 module.exports = function policyDirective() {
@@ -4178,12 +4114,12 @@ module.exports = function policyDirective() {
 		scope: true
 	};
 };
-},{"./policy.html":183}],185:[function(require,module,exports){
+},{"./policy.html":179}],181:[function(require,module,exports){
 'use strict';
 // Terms of Service View
 module.exports = angular.module('pages.terms', [])
 	.directive('termsView', require('./termsDirective'));
-},{"./termsDirective":187}],186:[function(require,module,exports){
+},{"./termsDirective":183}],182:[function(require,module,exports){
 module.exports = '<div class="page-terms module-view">\n' +
     '	<h1>Terms of Service and Conditions of Use</h1>\n' +
     '	<p><i>Last updated on March 31, 2014</i></p>\n' +
@@ -4424,7 +4360,7 @@ module.exports = '<div class="page-terms module-view">\n' +
     '\n' +
     '	<p>If you have any questions concerning this Agreement, please contact Taliflo through <a href="mailto:community@taliflo.com">community@taliflo.com</a> or other contact information set out on the Site.</p>\n' +
     '</div>';
-},{}],187:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 'use strict';
 
 module.exports = function termsDirective() {
@@ -4434,7 +4370,7 @@ module.exports = function termsDirective() {
 		scope: true
 	};
 };
-},{"./terms.html":186}],188:[function(require,module,exports){
+},{"./terms.html":182}],184:[function(require,module,exports){
 'use strict';
 
 function TransactionsCtrl($scope, user) {
@@ -4443,7 +4379,7 @@ function TransactionsCtrl($scope, user) {
 
 TransactionsCtrl.$inject = ['$scope', 'user'];
 module.exports = TransactionsCtrl;
-},{}],189:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('transactions',
@@ -4454,7 +4390,7 @@ module.exports = angular.module('transactions',
 	])
 	.config(require('./transactionsConfig'))
 	.controller('TransactionsCtrl', require('./TransactionsController'));
-},{"./TransactionsController":188,"./purchase":191,"./redeem":195,"./sponsor":199,"./transactionsConfig":202}],190:[function(require,module,exports){
+},{"./TransactionsController":184,"./purchase":187,"./redeem":191,"./sponsor":195,"./transactionsConfig":198}],186:[function(require,module,exports){
 'use strict';
 
 function TransactionPurchaseCtrl($rootScope, $scope, TRANSACTION_EVENTS, alertService, Transactions) {
@@ -4500,13 +4436,13 @@ function TransactionPurchaseCtrl($rootScope, $scope, TRANSACTION_EVENTS, alertSe
 
 TransactionPurchaseCtrl.$inject = ['$rootScope', '$scope', 'TRANSACTION_EVENTS', 'alertService', 'Transactions'];
 module.exports = TransactionPurchaseCtrl;
-},{}],191:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('transactions.purchase', [])
 	.directive('transactionPurchase', require('./transactionPurchaseDirective'))
 	.controller('TransactionPurchaseCtrl', require('./TransactionPurchaseController'));
-},{"./TransactionPurchaseController":190,"./transactionPurchaseDirective":193}],192:[function(require,module,exports){
+},{"./TransactionPurchaseController":186,"./transactionPurchaseDirective":189}],188:[function(require,module,exports){
 module.exports = '<div class="transaction-purchase">\n' +
     '	<div class="small-form form-styles">\n' +
     '		<h1><span>Buy a Gift Certificate from:</span>{{user.company_name}}</h1>\n' +
@@ -4546,7 +4482,7 @@ module.exports = '<div class="transaction-purchase">\n' +
     '	    </form>\n' +
     '    </div>\n' +
     '</div>';
-},{}],193:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 'use strict';
 
 module.exports = function transactionPurchaseDirective() {
@@ -4557,7 +4493,7 @@ module.exports = function transactionPurchaseDirective() {
 		scope: true
 	};
 };
-},{"./transaction-purchase.html":192}],194:[function(require,module,exports){
+},{"./transaction-purchase.html":188}],190:[function(require,module,exports){
 'use strict';
 
 function TransactionRedeemCtrl($rootScope, $scope) {
@@ -4566,18 +4502,18 @@ function TransactionRedeemCtrl($rootScope, $scope) {
 
 TransactionRedeemCtrl.$inject = ['$rootScope', '$scope'];
 module.exports = TransactionRedeemCtrl;
-},{}],195:[function(require,module,exports){
+},{}],191:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('transactions.redeem', [])
 	.directive('transactionRedeem', require('./transactionRedeemDirective'))
 	.controller('TransactionRedeemCtrl', require('./TransactionRedeemController'));
-},{"./TransactionRedeemController":194,"./transactionRedeemDirective":197}],196:[function(require,module,exports){
+},{"./TransactionRedeemController":190,"./transactionRedeemDirective":193}],192:[function(require,module,exports){
 module.exports = '<div class="transaction-redeem module-view">\n' +
     '	<h1>Redeem Credit</h1>\n' +
     '    <p>{{transaction}}</p>\n' +
     '</div>';
-},{}],197:[function(require,module,exports){
+},{}],193:[function(require,module,exports){
 'use strict';
 
 module.exports = function transactionRedeemDirective() {
@@ -4588,7 +4524,7 @@ module.exports = function transactionRedeemDirective() {
 		scope: true
 	};
 };
-},{"./transaction-redeem.html":196}],198:[function(require,module,exports){
+},{"./transaction-redeem.html":192}],194:[function(require,module,exports){
 'use strict';
 
 function TransactionSponsorCtrl($rootScope, $scope) {
@@ -4597,18 +4533,18 @@ function TransactionSponsorCtrl($rootScope, $scope) {
 
 TransactionSponsorCtrl.$inject = ['$rootScope', '$scope'];
 module.exports = TransactionSponsorCtrl;
-},{}],199:[function(require,module,exports){
+},{}],195:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('transactions.sponsor', [])
 	.directive('transactionSponsor', require('./transactionSponsorDirective'))
 	.controller('TransactionSponsorCtrl', require('./TransactionSponsorController'));
-},{"./TransactionSponsorController":198,"./transactionSponsorDirective":201}],200:[function(require,module,exports){
+},{"./TransactionSponsorController":194,"./transactionSponsorDirective":197}],196:[function(require,module,exports){
 module.exports = '<div class="transaction-sponsor module-view">\n' +
     '	<h1>Sponsor</h1>\n' +
     '    <p>{{transaction}}</p>\n' +
     '</div>';
-},{}],201:[function(require,module,exports){
+},{}],197:[function(require,module,exports){
 'use strict';
 
 module.exports = function transactionSponsorDirective() {
@@ -4619,7 +4555,7 @@ module.exports = function transactionSponsorDirective() {
 		scope: true
 	};
 };
-},{"./transaction-sponsor.html":200}],202:[function(require,module,exports){
+},{"./transaction-sponsor.html":196}],198:[function(require,module,exports){
 'use strict';
 
 function transactionRoutes($stateProvider) {
@@ -4682,7 +4618,7 @@ $stateProvider.state(transactionSponsor);
 
 transactionRoutes.$inject = ['$stateProvider'];
 module.exports = transactionRoutes;
-},{}],203:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 'use strict';
 
 function UsersCtrl($scope, formValidation) {
@@ -4718,7 +4654,7 @@ function UsersCtrl($scope, formValidation) {
 
 UsersCtrl.$inject = ['$scope', 'formValidation'];
 module.exports = UsersCtrl;
-},{}],204:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 'use strict';
 
 function UsersAccountCtrl($rootScope, $scope) {
@@ -4746,7 +4682,7 @@ function UsersAccountCtrl($rootScope, $scope) {
 
 UsersAccountCtrl.$inject = ['$rootScope', '$scope'];
 module.exports = UsersAccountCtrl;
-},{}],205:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 'use strict';
 
 function UsersAccountBillingInfoCtrl($scope, $window) {
@@ -4756,13 +4692,13 @@ function UsersAccountBillingInfoCtrl($scope, $window) {
 UsersAccountBillingInfoCtrl.$inject = ['$scope', '$window'];
 module.exports = UsersAccountBillingInfoCtrl;
 
-},{}],206:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.account.billingInfo', [])
 	.directive('usersAccountBillingInfo', require('./usersAccountBillingInfoDirective'))
 	.controller('UsersAccountBillingInfoCtrl', require('./UsersAccountBillingInfoController'));
-},{"./UsersAccountBillingInfoController":205,"./usersAccountBillingInfoDirective":208}],207:[function(require,module,exports){
+},{"./UsersAccountBillingInfoController":201,"./usersAccountBillingInfoDirective":204}],203:[function(require,module,exports){
 module.exports = '<div class="users-account-billing-info" ng-if="userRoleIs(\'individual\')">\n' +
     '	<h1>Billing Information</h1>\n' +
     '	<div class="sub-header">\n' +
@@ -4793,7 +4729,7 @@ module.exports = '<div class="users-account-billing-info" ng-if="userRoleIs(\'in
     '\n' +
     '</div>\n' +
     '';
-},{}],208:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersAccountBillingInfoDirective() {
@@ -4804,7 +4740,7 @@ module.exports = function usersAccountBillingInfoDirective() {
 		scope: true
 	};
 };
-},{"./users-account-billing-info.html":207}],209:[function(require,module,exports){
+},{"./users-account-billing-info.html":203}],205:[function(require,module,exports){
 /*jshint camelcase: false */
 'use strict';
 
@@ -4836,13 +4772,13 @@ function UsersAccountChangePasswordCtrl($scope, $http, Auth, alertService, AUTH_
 
 UsersAccountChangePasswordCtrl.$inject = ['$scope', '$http', 'Auth', 'alertService', 'AUTH_EVENTS'];
 module.exports = UsersAccountChangePasswordCtrl;
-},{}],210:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.account.changePassword', [])
 	.directive('usersAccountChangePassword', require('./usersAccountChangePasswordDirective'))
 	.controller('UsersAccountChangePasswordCtrl', require('./UsersAccountChangePasswordController'));
-},{"./UsersAccountChangePasswordController":209,"./usersAccountChangePasswordDirective":212}],211:[function(require,module,exports){
+},{"./UsersAccountChangePasswordController":205,"./usersAccountChangePasswordDirective":208}],207:[function(require,module,exports){
 module.exports = '<div class="users-account-change-password">\n' +
     '	<h1>Change Your Password</h1>\n' +
     '	<div class="sub-header">\n' +
@@ -4879,7 +4815,7 @@ module.exports = '<div class="users-account-change-password">\n' +
     '	</form>\n' +
     '\n' +
     '</div>';
-},{}],212:[function(require,module,exports){
+},{}],208:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersAccountChangePasswordDirective() {
@@ -4890,7 +4826,7 @@ module.exports = function usersAccountChangePasswordDirective() {
 		scope: true
 	};
 };
-},{"./users-account-change-password.html":211}],213:[function(require,module,exports){
+},{"./users-account-change-password.html":207}],209:[function(require,module,exports){
 /*jshint camelcase: false */
 'use strict';
 
@@ -4907,7 +4843,7 @@ function UsersAccountDetailsCtrl($rootScope, $scope) {
 
 UsersAccountDetailsCtrl.$inject = ['$rootScope', '$scope'];
 module.exports = UsersAccountDetailsCtrl;
-},{}],214:[function(require,module,exports){
+},{}],210:[function(require,module,exports){
 /*jshint camelcase: false */
 'use strict';
 
@@ -5041,13 +4977,13 @@ function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 
 UsersAccountDetailsEditCtrl.$inject = ['$rootScope', '$scope', '$timeout', '$state', 'Auth', 'formValidation', 'regions', 'USER_EVENTS', 'alertService'];
 module.exports = UsersAccountDetailsEditCtrl;
-},{}],215:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.account.details.edit', [])
 	.directive('usersAccountDetailsEdit', require('./usersAccountDetailsEditDirective'))
 	.controller('UsersAccountDetailsEditCtrl', require('./UsersAccountDetailsEditController'));
-},{"./UsersAccountDetailsEditController":214,"./usersAccountDetailsEditDirective":217}],216:[function(require,module,exports){
+},{"./UsersAccountDetailsEditController":210,"./usersAccountDetailsEditDirective":213}],212:[function(require,module,exports){
 module.exports = '<div class="users-account-details-edit content-area">\n' +
     '\n' +
     '    <div class="right-side">\n' +
@@ -5176,7 +5112,7 @@ module.exports = '<div class="users-account-details-edit content-area">\n' +
     '\n' +
     '    </form>\n' +
     '</div>';
-},{}],217:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersAccountDetailsEditDirective() {
@@ -5187,7 +5123,7 @@ module.exports = function usersAccountDetailsEditDirective() {
 		scope: false
 	};
 };
-},{"./users-account-details-edit.html":216}],218:[function(require,module,exports){
+},{"./users-account-details-edit.html":212}],214:[function(require,module,exports){
 /*jshint camelcase: false */
 'use strict';
 
@@ -5232,13 +5168,13 @@ function UsersAccountDetailsImageUploadCtrl($rootScope, $scope, $cookies, apiCon
 UsersAccountDetailsImageUploadCtrl.$inject = ['$rootScope', '$scope', '$cookies', 'apiConfig', 'FileUploader', 'alertService', 'USER_EVENTS', 'Auth'];
 module.exports = UsersAccountDetailsImageUploadCtrl;
 
-},{}],219:[function(require,module,exports){
+},{}],215:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.account.details.imageUpload', [])
 	.directive('usersImageUpload', require('./usersAccountDetailsImageUploadDirective'))
 	.controller('UsersAccountDetailsImageUploadCtrl', require('./UsersAccountDetailsImageUploadController'));
-},{"./UsersAccountDetailsImageUploadController":218,"./usersAccountDetailsImageUploadDirective":221}],220:[function(require,module,exports){
+},{"./UsersAccountDetailsImageUploadController":214,"./usersAccountDetailsImageUploadDirective":217}],216:[function(require,module,exports){
 module.exports = '<div class="user-profile-image-upload">\n' +
     '	<div class="user-profile-picture">\n' +
     '		<div class="loading-spinner" ng-if="showSpinner"></div>\n' +
@@ -5265,7 +5201,7 @@ module.exports = '<div class="user-profile-image-upload">\n' +
     '		</div>\n' +
     '	</div>\n' +
     '</div>';
-},{}],221:[function(require,module,exports){
+},{}],217:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersAccountDetailsImageUploadDirective() {
@@ -5276,7 +5212,7 @@ module.exports = function usersAccountDetailsImageUploadDirective() {
 		scope: true
 	};
 };
-},{"./users-account-details-image-upload.html":220}],222:[function(require,module,exports){
+},{"./users-account-details-image-upload.html":216}],218:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.account.details', [
@@ -5286,7 +5222,7 @@ module.exports = angular.module('users.account.details', [
 	])
 	.directive('usersAccountDetails', require('./usersAccountDetailsDirective'))
 	.controller('UsersAccountDetailsCtrl', require('./UsersAccountDetailsController'));
-},{"./UsersAccountDetailsController":213,"./edit":215,"./image_upload":219,"./usersAccountDetailsDirective":224,"./view":226}],223:[function(require,module,exports){
+},{"./UsersAccountDetailsController":209,"./edit":211,"./image_upload":215,"./usersAccountDetailsDirective":220,"./view":222}],219:[function(require,module,exports){
 module.exports = '<div class="users-account-details">\n' +
     '	<div class="content-header">\n' +
     '		<div class="content-title">\n' +
@@ -5307,7 +5243,7 @@ module.exports = '<div class="users-account-details">\n' +
     '    <div ui-view></div>\n' +
     '\n' +
     '</div>';
-},{}],224:[function(require,module,exports){
+},{}],220:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersAccountDetailsDirective() {
@@ -5318,7 +5254,7 @@ module.exports = function usersAccountDetailsDirective() {
 		scope: true
 	};
 };
-},{"./users-account-details.html":223}],225:[function(require,module,exports){
+},{"./users-account-details.html":219}],221:[function(require,module,exports){
 'use strict';
 
 function UsersAccountDetailsViewCtrl($rootScope, $scope) {
@@ -5348,13 +5284,13 @@ function UsersAccountDetailsViewCtrl($rootScope, $scope) {
 
 UsersAccountDetailsViewCtrl.$inject = ['$rootScope', '$scope'];
 module.exports = UsersAccountDetailsViewCtrl;
-},{}],226:[function(require,module,exports){
+},{}],222:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.account.details.view', [])
 	.directive('usersAccountDetailsView', require('./usersAccountDetailsViewDirective'))
 	.controller('UsersAccountDetailsViewCtrl', require('./UsersAccountDetailsViewController'));
-},{"./UsersAccountDetailsViewController":225,"./usersAccountDetailsViewDirective":228}],227:[function(require,module,exports){
+},{"./UsersAccountDetailsViewController":221,"./usersAccountDetailsViewDirective":224}],223:[function(require,module,exports){
 module.exports = '<div class="users-account-details-view content-area">\n' +
     '	<div class="basic-info section">\n' +
     '		<div class="left-side">\n' +
@@ -5429,7 +5365,7 @@ module.exports = '<div class="users-account-details-view content-area">\n' +
     '	</div>\n' +
     '	\n' +
     '</div>';
-},{}],228:[function(require,module,exports){
+},{}],224:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersAccountDetailsViewDirective() {
@@ -5440,7 +5376,7 @@ module.exports = function usersAccountDetailsViewDirective() {
 		scope: false
 	};
 };
-},{"./users-account-details-view.html":227}],229:[function(require,module,exports){
+},{"./users-account-details-view.html":223}],225:[function(require,module,exports){
 /*jshint camelcase: false */
 'use strict';
 
@@ -5482,13 +5418,13 @@ function UsersAccountHistoryCtrl($rootScope, $scope) {
 UsersAccountHistoryCtrl.$inject = ['$rootScope', '$scope'];
 module.exports = UsersAccountHistoryCtrl;
 
-},{}],230:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.account.history', [])
 	.directive('usersAccountHistory', require('./usersAccountHistoryDirective'))
 	.controller('UsersAccountHistoryCtrl', require('./UsersAccountHistoryController'));
-},{"./UsersAccountHistoryController":229,"./usersAccountHistoryDirective":232}],231:[function(require,module,exports){
+},{"./UsersAccountHistoryController":225,"./usersAccountHistoryDirective":228}],227:[function(require,module,exports){
 module.exports = '<div class="users-account-history">\n' +
     '	<div class="page-header" ng-if="$state.includes(\'account\')">\n' +
     '		<div class="left-side">\n' +
@@ -5565,7 +5501,7 @@ module.exports = '<div class="users-account-history">\n' +
     '		<div dir-pagination-controls></div>\n' +
     '	</div>\n' +
     '</div>';
-},{}],232:[function(require,module,exports){
+},{}],228:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersAccountHistoryDirective() {
@@ -5576,7 +5512,7 @@ module.exports = function usersAccountHistoryDirective() {
 		scope: true
 	};
 };
-},{"./users-account-history.html":231}],233:[function(require,module,exports){
+},{"./users-account-history.html":227}],229:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.account',
@@ -5591,7 +5527,7 @@ module.exports = angular.module('users.account',
 	])
 	.config(require('./usersAccountConfig'))
 	.controller('UsersAccountCtrl', require('./UsersAccountController'));
-},{"./UsersAccountController":204,"./billing-info":206,"./change-password":210,"./details":222,"./history":230,"./layout":235,"./sponsors":239,"./usersAccountConfig":242}],234:[function(require,module,exports){
+},{"./UsersAccountController":200,"./billing-info":202,"./change-password":206,"./details":218,"./history":226,"./layout":231,"./sponsors":235,"./usersAccountConfig":238}],230:[function(require,module,exports){
 'use strict';
 
 function UsersAccountLayoutCtrl() {
@@ -5600,13 +5536,13 @@ function UsersAccountLayoutCtrl() {
 
 UsersAccountLayoutCtrl.$inject = [];
 module.exports = UsersAccountLayoutCtrl;
-},{}],235:[function(require,module,exports){
+},{}],231:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.account.layout', [])
 	.directive('usersAccountLayout', require('./usersAccountLayoutDirective'))
 	.controller('UsersAccountLayoutCtrl', require('./UsersAccountLayoutController'));
-},{"./UsersAccountLayoutController":234,"./usersAccountLayoutDirective":237}],236:[function(require,module,exports){
+},{"./UsersAccountLayoutController":230,"./usersAccountLayoutDirective":233}],232:[function(require,module,exports){
 module.exports = '<div class="account-layout">\n' +
     '	<div class="module-view">\n' +
     '		<div class="account-sidebar">\n' +
@@ -5631,7 +5567,7 @@ module.exports = '<div class="account-layout">\n' +
     '		</div>\n' +
     '	</div>\n' +
     '</div>';
-},{}],237:[function(require,module,exports){
+},{}],233:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersAccountLayoutDirective() {
@@ -5642,7 +5578,7 @@ module.exports = function usersAccountLayoutDirective() {
 		scope: true
 	};
 };
-},{"./users-account-layout.html":236}],238:[function(require,module,exports){
+},{"./users-account-layout.html":232}],234:[function(require,module,exports){
 'use strict';
 
 function UsersAccountSponsorsCtrl() {
@@ -5651,17 +5587,17 @@ function UsersAccountSponsorsCtrl() {
 
 UsersAccountSponsorsCtrl.$inject = [];
 module.exports = UsersAccountSponsorsCtrl;
-},{}],239:[function(require,module,exports){
+},{}],235:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.account.sponsors', [])
 	.directive('usersAccountSponsors', require('./usersAccountSponsorsDirective'))
 	.controller('UsersAccountSponsorsCtrl', require('./UsersAccountSponsorsController'));
-},{"./UsersAccountSponsorsController":238,"./usersAccountSponsorsDirective":241}],240:[function(require,module,exports){
+},{"./UsersAccountSponsorsController":234,"./usersAccountSponsorsDirective":237}],236:[function(require,module,exports){
 module.exports = '<div class="users-account-sponsors">\n' +
     '	<h1>Sponsors / Sponsorships</h1>\n' +
     '</div>';
-},{}],241:[function(require,module,exports){
+},{}],237:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersAccountSponsorsDirective() {
@@ -5672,7 +5608,7 @@ module.exports = function usersAccountSponsorsDirective() {
 		scope: true
 	};
 };
-},{"./users-account-sponsors.html":240}],242:[function(require,module,exports){
+},{"./users-account-sponsors.html":236}],238:[function(require,module,exports){
 'use strict';
 
 function userAccountRoutes($stateProvider) {
@@ -5775,7 +5711,7 @@ $stateProvider.state(accountChangePassword);
 
 userAccountRoutes.$inject = ['$stateProvider'];
 module.exports = userAccountRoutes;
-},{}],243:[function(require,module,exports){
+},{}],239:[function(require,module,exports){
 'use strict';
 
 function UsersAuthCtrl() {
@@ -5784,7 +5720,7 @@ function UsersAuthCtrl() {
 
 UsersAuthCtrl.$inject = [];
 module.exports = UsersAuthCtrl;
-},{}],244:[function(require,module,exports){
+},{}],240:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.auth',
@@ -5796,7 +5732,7 @@ module.exports = angular.module('users.auth',
 	])
 	.config(require('./usersAuthConfig'))
 	.controller('UsersAuthCtrl', require('./UsersAuthController'));
-},{"./UsersAuthController":243,"./login":246,"./password-reset":250,"./registration":260,"./stripe":265,"./usersAuthConfig":268}],245:[function(require,module,exports){
+},{"./UsersAuthController":239,"./login":242,"./password-reset":246,"./registration":256,"./stripe":261,"./usersAuthConfig":264}],241:[function(require,module,exports){
 'use strict';
 
 function UsersAuthLoginCtrl($rootScope, $scope, $state, $cookieStore, Auth, AUTH_EVENTS, alertService) {
@@ -5828,13 +5764,13 @@ function UsersAuthLoginCtrl($rootScope, $scope, $state, $cookieStore, Auth, AUTH
 
 UsersAuthLoginCtrl.$inject = ['$rootScope', '$scope', '$state', '$cookieStore', 'Auth', 'AUTH_EVENTS', 'alertService'];
 module.exports = UsersAuthLoginCtrl;
-},{}],246:[function(require,module,exports){
+},{}],242:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.auth.login', [])
 	.directive('usersAuthLogin', require('./usersAuthLoginDirective'))
 	.controller('UsersAuthLoginCtrl', require('./UsersAuthLoginController'));
-},{"./UsersAuthLoginController":245,"./usersAuthLoginDirective":248}],247:[function(require,module,exports){
+},{"./UsersAuthLoginController":241,"./usersAuthLoginDirective":244}],243:[function(require,module,exports){
 module.exports = '<div class="users-auth-login">\n' +
     '\n' +
     '	<div class="login-form small-form">\n' +
@@ -5865,7 +5801,7 @@ module.exports = '<div class="users-auth-login">\n' +
     '	</div>\n' +
     '\n' +
     '</div>';
-},{}],248:[function(require,module,exports){
+},{}],244:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersAuthLoginDirective() {
@@ -5876,7 +5812,7 @@ module.exports = function usersAuthLoginDirective() {
 		scope: true
 	};
 };
-},{"./users-auth-login.html":247}],249:[function(require,module,exports){
+},{"./users-auth-login.html":243}],245:[function(require,module,exports){
 'use strict';
 
 function UsersAuthPasswordResetCtrl($rootScope, $scope) {
@@ -5891,13 +5827,13 @@ function UsersAuthPasswordResetCtrl($rootScope, $scope) {
 
 UsersAuthPasswordResetCtrl.$inject = ['$rootScope', '$scope'];
 module.exports = UsersAuthPasswordResetCtrl;
-},{}],250:[function(require,module,exports){
+},{}],246:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.auth.password-reset', [])
 	.directive('usersAuthPasswordReset', require('./usersAuthPasswordResetDirective'))
 	.controller('UsersAuthPasswordResetCtrl', require('./UsersAuthPasswordResetController'));
-},{"./UsersAuthPasswordResetController":249,"./usersAuthPasswordResetDirective":252}],251:[function(require,module,exports){
+},{"./UsersAuthPasswordResetController":245,"./usersAuthPasswordResetDirective":248}],247:[function(require,module,exports){
 module.exports = '<div class="users-auth-reset-password module-view container">\n' +
     '\n' +
     '	<div class="reset-password-form small-form">\n' +
@@ -5919,7 +5855,7 @@ module.exports = '<div class="users-auth-reset-password module-view container">\
     '	</div>\n' +
     '\n' +
     '</div>';
-},{}],252:[function(require,module,exports){
+},{}],248:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersAuthPasswordResetDirective() {
@@ -5930,7 +5866,7 @@ module.exports = function usersAuthPasswordResetDirective() {
 		scope: true
 	};
 };
-},{"./users-auth-password-reset.html":251}],253:[function(require,module,exports){
+},{"./users-auth-password-reset.html":247}],249:[function(require,module,exports){
 /*jshint camelcase: false */
 'use strict';
 
@@ -5960,7 +5896,7 @@ function UsersAuthRegistrationCtrl($rootScope, $scope) {
 
 UsersAuthRegistrationCtrl.$inject = ['$rootScope', '$scope'];
 module.exports = UsersAuthRegistrationCtrl;
-},{}],254:[function(require,module,exports){
+},{}],250:[function(require,module,exports){
 /*jshint camelcase: false */
 'use strict';
 
@@ -5999,7 +5935,7 @@ function UsersAuthRegistrationBusinessCtrl($rootScope, $scope, $state, Auth, AUT
 
 UsersAuthRegistrationBusinessCtrl.$inject = ['$rootScope', '$scope', '$state', 'Auth', 'AUTH_EVENTS', 'alertService'];
 module.exports = UsersAuthRegistrationBusinessCtrl;
-},{}],255:[function(require,module,exports){
+},{}],251:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.auth.registration.business', [])
@@ -6012,7 +5948,7 @@ module.exports = angular.module('users.auth.registration.business', [])
 		};
 	})
 	.controller('UsersAuthRegistrationBusinessCtrl', require('./UsersAuthRegistrationBusinessController'));
-},{"./UsersAuthRegistrationBusinessController":254,"./users-auth-registration-business.html":256}],256:[function(require,module,exports){
+},{"./UsersAuthRegistrationBusinessController":250,"./users-auth-registration-business.html":252}],252:[function(require,module,exports){
 module.exports = '<div class="signup-form medium-form toggle-form">\n' +
     '	<h1 ng-class="{\'active\' : signupFormCause.company.$dirty}"><span>Register</span> <span class="company_name">{{user.company_name || "Your Business"}}</span></h1>\n' +
     '	<form class="form" name="signupFormBusiness" ng-submit="signupBusiness(signupFormBusiness.$valid)" novalidate>\n' +
@@ -6063,7 +5999,7 @@ module.exports = '<div class="signup-form medium-form toggle-form">\n' +
     '\n' +
     '	</form>\n' +
     '</div>';
-},{}],257:[function(require,module,exports){
+},{}],253:[function(require,module,exports){
 /*jshint camelcase: false */
 'use strict';
 
@@ -6102,7 +6038,7 @@ function UsersAuthRegistrationCauseCtrl($rootScope, $scope, $state, Auth, AUTH_E
 
 UsersAuthRegistrationCauseCtrl.$inject = ['$rootScope', '$scope', '$state', 'Auth', 'AUTH_EVENTS', 'alertService'];
 module.exports = UsersAuthRegistrationCauseCtrl;
-},{}],258:[function(require,module,exports){
+},{}],254:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.auth.registration.cause', [])
@@ -6115,7 +6051,7 @@ module.exports = angular.module('users.auth.registration.cause', [])
 		};
 	})
 	.controller('UsersAuthRegistrationCauseCtrl', require('./UsersAuthRegistrationCauseController'));
-},{"./UsersAuthRegistrationCauseController":257,"./users-auth-registration-cause.html":259}],259:[function(require,module,exports){
+},{"./UsersAuthRegistrationCauseController":253,"./users-auth-registration-cause.html":255}],255:[function(require,module,exports){
 module.exports = '<div class="signup-form medium-form toggle-form">\n' +
     '	<h1 ng-class="{\'active\' : signupFormCause.company.$dirty}"><span>Register</span> <span class="company_name">{{user.company_name || "Your Cause"}}</span></h1>\n' +
     '	<form class="form" name="signupFormCause" ng-submit="signupCause(signupFormCause.$valid)" novalidate>\n' +
@@ -6166,7 +6102,7 @@ module.exports = '<div class="signup-form medium-form toggle-form">\n' +
     '\n' +
     '	</form>\n' +
     '</div>';
-},{}],260:[function(require,module,exports){
+},{}],256:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.auth.registration', [
@@ -6175,7 +6111,7 @@ module.exports = angular.module('users.auth.registration', [
 		require('./individual').name
 	])
 	.controller('UsersAuthRegistrationCtrl', require('./UsersAuthRegistrationController'));
-},{"./UsersAuthRegistrationController":253,"./business":255,"./cause":258,"./individual":262}],261:[function(require,module,exports){
+},{"./UsersAuthRegistrationController":249,"./business":251,"./cause":254,"./individual":258}],257:[function(require,module,exports){
 /*jshint camelcase: false */
 'use strict';
 
@@ -6219,7 +6155,7 @@ function UsersAuthRegistrationDonorCtrl($rootScope, $scope, $state, Auth, AUTH_E
 
 UsersAuthRegistrationDonorCtrl.$inject = ['$rootScope', '$scope', '$state', 'Auth', 'AUTH_EVENTS', 'alertService'];
 module.exports = UsersAuthRegistrationDonorCtrl;
-},{}],262:[function(require,module,exports){
+},{}],258:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.auth.registration.individual', [])
@@ -6232,7 +6168,7 @@ module.exports = angular.module('users.auth.registration.individual', [])
 		};
 	})
 	.controller('UsersAuthRegistrationIndividualCtrl', require('./UsersAuthRegistrationIndividualController'));
-},{"./UsersAuthRegistrationIndividualController":261,"./users-auth-registration-individual.html":263}],263:[function(require,module,exports){
+},{"./UsersAuthRegistrationIndividualController":257,"./users-auth-registration-individual.html":259}],259:[function(require,module,exports){
 module.exports = '<div class="signup-form medium-form toggle-form">\n' +
     '    <h1>Create a New Account</h1>\n' +
     '\n' +
@@ -6275,7 +6211,7 @@ module.exports = '<div class="signup-form medium-form toggle-form">\n' +
     '\n' +
     '    </form>\n' +
     '</div>';
-},{}],264:[function(require,module,exports){
+},{}],260:[function(require,module,exports){
 'use strict';
 
 function UsersAuthStripeCtrl($rootScope, $scope, $location, Restangular, $http, alertService, AUTH_EVENTS, $state) {
@@ -6309,13 +6245,13 @@ function UsersAuthStripeCtrl($rootScope, $scope, $location, Restangular, $http, 
 UsersAuthStripeCtrl.$inject = ['$rootScope', '$scope', '$location', 'Restangular', '$http', 'alertService', 'AUTH_EVENTS', '$state'];
 module.exports = UsersAuthStripeCtrl;
 
-},{}],265:[function(require,module,exports){
+},{}],261:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.auth.stripe', [])
 	.directive('usersAuthStripe', require('./usersAuthStripeDirective'))
 	.controller('UsersAuthStripeCtrl', require('./UsersAuthStripeController'));
-},{"./UsersAuthStripeController":264,"./usersAuthStripeDirective":267}],266:[function(require,module,exports){
+},{"./UsersAuthStripeController":260,"./usersAuthStripeDirective":263}],262:[function(require,module,exports){
 module.exports = '<div class="users-auth-stripe">\n' +
     '	<div class=\'container\'>\n' +
     '		<h2>Connecting your Stripe account...</h2>\n' +
@@ -6326,7 +6262,7 @@ module.exports = '<div class="users-auth-stripe">\n' +
     '	</div>\n' +
     '</div>\n' +
     '';
-},{}],267:[function(require,module,exports){
+},{}],263:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersAuthStripeDirective() {
@@ -6337,7 +6273,7 @@ module.exports = function usersAuthStripeDirective() {
 		scope: true
 	};
 };
-},{"./users-auth-stripe.html":266}],268:[function(require,module,exports){
+},{"./users-auth-stripe.html":262}],264:[function(require,module,exports){
 'use strict';
 
 function userAuthRoutes($stateProvider) {
@@ -6434,7 +6370,7 @@ function userAuthRoutes($stateProvider) {
 
 userAuthRoutes.$inject = ['$stateProvider'];
 module.exports = userAuthRoutes;
-},{}],269:[function(require,module,exports){
+},{}],265:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users',
@@ -6445,7 +6381,7 @@ module.exports = angular.module('users',
 	])
 	.config(require('./usersConfig'))
 	.controller('UsersCtrl', require('./UsersController'));
-},{"./UsersController":203,"./account":233,"./auth":244,"./profile":306,"./usersConfig":310}],270:[function(require,module,exports){
+},{"./UsersController":199,"./account":229,"./auth":240,"./profile":302,"./usersConfig":306}],266:[function(require,module,exports){
 'use strict';
 
 function UsersProfileCtrl($rootScope, $scope) {
@@ -6480,7 +6416,7 @@ function UsersProfileCtrl($rootScope, $scope) {
 UsersProfileCtrl.$inject = ['$rootScope', '$scope'];
 module.exports = UsersProfileCtrl;
 
-},{}],271:[function(require,module,exports){
+},{}],267:[function(require,module,exports){
 'use strict';
 
 function UsersProfileBusinessCtrl($scope) {
@@ -6510,7 +6446,7 @@ function UsersProfileBusinessCtrl($scope) {
 
 UsersProfileBusinessCtrl.$inject = ['$scope'];
 module.exports = UsersProfileBusinessCtrl;
-},{}],272:[function(require,module,exports){
+},{}],268:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.profile.business', [
@@ -6520,7 +6456,7 @@ module.exports = angular.module('users.profile.business', [
 	])
 	.directive('usersProfileBusiness', require('./usersProfileBusinessDirective'))
 	.controller('UsersProfileBusinessCtrl', require('./UsersProfileBusinessController'));
-},{"./UsersProfileBusinessController":271,"./modals":273,"./purchase":276,"./sponsored-causes":289,"./usersProfileBusinessDirective":292}],273:[function(require,module,exports){
+},{"./UsersProfileBusinessController":267,"./modals":269,"./purchase":272,"./sponsored-causes":285,"./usersProfileBusinessDirective":288}],269:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.profile.business.modals', [])
@@ -6529,11 +6465,11 @@ module.exports = angular.module('users.profile.business.modals', [])
             template: require('./users-profile-business-modals.html')
         };
     });
-},{"./users-profile-business-modals.html":274}],274:[function(require,module,exports){
+},{"./users-profile-business-modals.html":270}],270:[function(require,module,exports){
 module.exports = '<div modal="usersProfileBusinessPurchaseModal">\n' +
     '    <div users-profile-business-purchase></div>\n' +
     '</div>';
-},{}],275:[function(require,module,exports){
+},{}],271:[function(require,module,exports){
 'use strict';
 
 function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertService, Restangular, SponsorService, TransactionService) {
@@ -6567,6 +6503,8 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 			stripeToken: null
     	}
     };
+
+    $scope.full_name = $scope.newUser.first_name + ' ' + $scope.newUser.last_name;
 
     // reset form when the modal is closed or competed submission
 	var resetForm = function() {
@@ -6606,7 +6544,7 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 UsersProfileBusinessPurchaseCtrl.$inject = ['$scope', 'TRANSACTION_EVENTS', 'alertService', 'Restangular', 'SponsorService', 'TransactionService'];
 module.exports = UsersProfileBusinessPurchaseCtrl;
 
-},{}],276:[function(require,module,exports){
+},{}],272:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.profile.business.purchase', [
@@ -6616,13 +6554,13 @@ module.exports = angular.module('users.profile.business.purchase', [
 	])
 	.directive('usersProfileBusinessPurchase', require('./usersProfileBusinessPurchaseDirective'))
 	.controller('UsersProfileBusinessPurchaseCtrl', require('./UsersProfileBusinessPurchaseController'));
-},{"./UsersProfileBusinessPurchaseController":275,"./step1":277,"./step2":280,"./step3":283,"./usersProfileBusinessPurchaseDirective":287}],277:[function(require,module,exports){
+},{"./UsersProfileBusinessPurchaseController":271,"./step1":273,"./step2":276,"./step3":279,"./usersProfileBusinessPurchaseDirective":283}],273:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.profile.business.purchase.stepOne', [])
 	.directive('usersProfileBusinessPurchaseStepOne', require('./usersProfileBusinessPurchaseStepOneDirective'))
 	.controller('UsersProfileBusinessPurchaseCtrl', require('../UsersProfileBusinessPurchaseController'));
-},{"../UsersProfileBusinessPurchaseController":275,"./usersProfileBusinessPurchaseStepOneDirective":279}],278:[function(require,module,exports){
+},{"../UsersProfileBusinessPurchaseController":271,"./usersProfileBusinessPurchaseStepOneDirective":275}],274:[function(require,module,exports){
 module.exports = '<div class="purchase-certificate-step-one">\n' +
     '	<div class="form-section purchase-amount">\n' +
     '		<div class="section-title">\n' +
@@ -6689,7 +6627,7 @@ module.exports = '<div class="purchase-certificate-step-one">\n' +
     '		</div>\n' +
     '	</div>\n' +
     '</div>';
-},{}],279:[function(require,module,exports){
+},{}],275:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersProfileBusinessPurchaseStepOneDirective() {
@@ -6700,13 +6638,13 @@ module.exports = function usersProfileBusinessPurchaseStepOneDirective() {
 		scope: false
 	};
 };
-},{"./users-profile-business-purchase-step-one.html":278}],280:[function(require,module,exports){
+},{"./users-profile-business-purchase-step-one.html":274}],276:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.profile.business.purchase.stepTwo', [])
 	.directive('usersProfileBusinessPurchaseStepTwo', require('./usersProfileBusinessPurchaseStepTwoDirective'))
 	.controller('UsersProfileBusinessPurchaseCtrl', require('../UsersProfileBusinessPurchaseController'));
-},{"../UsersProfileBusinessPurchaseController":275,"./usersProfileBusinessPurchaseStepTwoDirective":282}],281:[function(require,module,exports){
+},{"../UsersProfileBusinessPurchaseController":271,"./usersProfileBusinessPurchaseStepTwoDirective":278}],277:[function(require,module,exports){
 module.exports = '<div class="purchase-certificate-step-two">\n' +
     '	<div class="step-title">\n' +
     '		<span class="big">Choose a Cause</span>\n' +
@@ -6729,7 +6667,7 @@ module.exports = '<div class="purchase-certificate-step-two">\n' +
     '		</label>\n' +
     '    </div>\n' +
     '</div>';
-},{}],282:[function(require,module,exports){
+},{}],278:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersProfileBusinessPurchaseStepTwoDirective() {
@@ -6740,13 +6678,13 @@ module.exports = function usersProfileBusinessPurchaseStepTwoDirective() {
 		scope: false
 	};
 };
-},{"./users-profile-business-purchase-step-two.html":281}],283:[function(require,module,exports){
+},{"./users-profile-business-purchase-step-two.html":277}],279:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.profile.business.purchase.stepThree', [])
 	.directive('usersProfileBusinessPurchaseStepThree', require('./usersProfileBusinessPurchaseStepThreeDirective'))
 	.controller('UsersProfileBusinessPurchaseCtrl', require('../UsersProfileBusinessPurchaseController'));
-},{"../UsersProfileBusinessPurchaseController":275,"./usersProfileBusinessPurchaseStepThreeDirective":285}],284:[function(require,module,exports){
+},{"../UsersProfileBusinessPurchaseController":271,"./usersProfileBusinessPurchaseStepThreeDirective":281}],280:[function(require,module,exports){
 module.exports = '<div class="purchase-certificate-step-three">\n' +
     '	<div class="step-title">\n' +
     '		<span class="big">Checkout</span>\n' +
@@ -6754,10 +6692,17 @@ module.exports = '<div class="purchase-certificate-step-three">\n' +
     '	</div>\n' +
     '\n' +
     '	<div class="step-body">\n' +
-    '		\n' +
+    '		<div class="group billing-info">\n' +
+    '			<h5 class="form-section-title">Billing Info</h5>\n' +
+    '			<div class="amount">{{newUser.certificate.amount}}</div>\n' +
+    '		</div>\n' +
+    '		<div class="group user-info">\n' +
+    '			<h5 class="form-section-title">User Info</h5>\n' +
+    '			<div class="full-name">{{full_name}}</div>\n' +
+    '		</div>\n' +
     '	</div>\n' +
     '</div>';
-},{}],285:[function(require,module,exports){
+},{}],281:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersProfileBusinessPurchaseStepThreeDirective() {
@@ -6768,9 +6713,9 @@ module.exports = function usersProfileBusinessPurchaseStepThreeDirective() {
 		scope: false
 	};
 };
-},{"./users-profile-business-purchase-step-three.html":284}],286:[function(require,module,exports){
+},{"./users-profile-business-purchase-step-three.html":280}],282:[function(require,module,exports){
 module.exports = '<div id="modalTransactionPurchase" class="modal-wrapper">\n' +
-    '	<h2 class="modal-title"><span>Buy a <i>{{gcAmount}}</i> {{newUser.certificate.amount | currency}} Gift Certificate from:</span>{{user.company_name}}</h2>\n' +
+    '	<h2 class="modal-title"><span>Buy a {{newUser.certificate.amount | currency}} Gift Certificate from:</span>{{user.company_name}}</h2>\n' +
     '	<button class="close" ng-click="usersProfileBusinessPurchaseModal.close()"><i class="icon icon-x"></i></button>\n' +
     '	\n' +
     '	<form class="form" id="purchaseForm" name="purchaseForm" stripe-form="stripeCallBack" novalidate autocomplete="off">\n' +
@@ -6808,7 +6753,7 @@ module.exports = '<div id="modalTransactionPurchase" class="modal-wrapper">\n' +
     '	    </div>\n' +
     '    </form>\n' +
     '</div>';
-},{}],287:[function(require,module,exports){
+},{}],283:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersProfileBusinessPurchaseDirective() {
@@ -6819,7 +6764,7 @@ module.exports = function usersProfileBusinessPurchaseDirective() {
 		scope: true
 	};
 };
-},{"./users-profile-business-purchase.html":286}],288:[function(require,module,exports){
+},{"./users-profile-business-purchase.html":282}],284:[function(require,module,exports){
 'use strict';
 
 function UsersProfileBusinessSupportedCausesCtrl($scope, SponsorService) {
@@ -6831,7 +6776,7 @@ function UsersProfileBusinessSupportedCausesCtrl($scope, SponsorService) {
 UsersProfileBusinessSupportedCausesCtrl.$inject = ['$scope', 'SponsorService'];
 module.exports = UsersProfileBusinessSupportedCausesCtrl;
 
-},{}],289:[function(require,module,exports){
+},{}],285:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.profile.business.sponsored-causes', [])
@@ -6844,7 +6789,7 @@ module.exports = angular.module('users.profile.business.sponsored-causes', [])
 		};
 	})
 	.controller('UsersProfileBusinessSponsoredCausesCtrl', require('./UsersProfileBusinessSponsoredCausesController'));
-},{"./UsersProfileBusinessSponsoredCausesController":288,"./users-profile-business-sponsored-causes.html":290}],290:[function(require,module,exports){
+},{"./UsersProfileBusinessSponsoredCausesController":284,"./users-profile-business-sponsored-causes.html":286}],286:[function(require,module,exports){
 module.exports = '<div class="users-profile-business-sponsored-causes supporters">\n' +
     '	<hr />\n' +
     '	<h3 class="supporters-title">Sponsored Causes</h3>\n' +
@@ -6865,7 +6810,7 @@ module.exports = '<div class="users-profile-business-sponsored-causes supporters
     '    </div>\n' +
     '    <div ajax-spinner class="spinner" ng-show="loading"></div>\n' +
     '</div>';
-},{}],291:[function(require,module,exports){
+},{}],287:[function(require,module,exports){
 module.exports = '<div class="users-profile business" ng-class="{\'my-profile\': user.id === currentUser.id}">\n' +
     '	<div class="sidebar">\n' +
     '		<div class="user-profile-picture">\n' +
@@ -6936,7 +6881,7 @@ module.exports = '<div class="users-profile business" ng-class="{\'my-profile\':
     '	    <div users-profile-business-sponsored-causes></div>\n' +
     '	</div>\n' +
     '</div>';
-},{}],292:[function(require,module,exports){
+},{}],288:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersProfileBusinessDirective() {
@@ -6947,7 +6892,7 @@ module.exports = function usersProfileBusinessDirective() {
 		scope: true
 	};
 };
-},{"./users-profile-business.html":291}],293:[function(require,module,exports){
+},{"./users-profile-business.html":287}],289:[function(require,module,exports){
 'use strict';
 
 function UsersProfileCauseCtrl($scope) {
@@ -6969,7 +6914,7 @@ function UsersProfileCauseCtrl($scope) {
 
 UsersProfileCauseCtrl.$inject = ['$scope'];
 module.exports = UsersProfileCauseCtrl;
-},{}],294:[function(require,module,exports){
+},{}],290:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.profile.cause', [
@@ -6979,7 +6924,7 @@ module.exports = angular.module('users.profile.cause', [
 	])
 	.directive('usersProfileCause', require('./usersProfileCauseDirective'))
 	.controller('UsersProfileCauseCtrl', require('./UsersProfileCauseController'));
-},{"./UsersProfileCauseController":293,"./modals":295,"./sponsors":298,"./sponsorship-request":301,"./usersProfileCauseDirective":305}],295:[function(require,module,exports){
+},{"./UsersProfileCauseController":289,"./modals":291,"./sponsors":294,"./sponsorship-request":297,"./usersProfileCauseDirective":301}],291:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.profile.cause.modals', [])
@@ -6988,11 +6933,11 @@ module.exports = angular.module('users.profile.cause.modals', [])
             template: require('./users-profile-cause-modals.html')
         };
     });
-},{"./users-profile-cause-modals.html":296}],296:[function(require,module,exports){
+},{"./users-profile-cause-modals.html":292}],292:[function(require,module,exports){
 module.exports = '<div modal="usersProfileSponsorshipRequestModal">\n' +
     '    <div users-profile-cause-sponsorship-request></div>\n' +
     '</div>';
-},{}],297:[function(require,module,exports){
+},{}],293:[function(require,module,exports){
 'use strict';
 
 function UsersProfileCauseSponsorsCtrl($scope, SponsorService) {
@@ -7003,7 +6948,7 @@ function UsersProfileCauseSponsorsCtrl($scope, SponsorService) {
 
 UsersProfileCauseSponsorsCtrl.$inject = ['$scope', 'SponsorService'];
 module.exports = UsersProfileCauseSponsorsCtrl;
-},{}],298:[function(require,module,exports){
+},{}],294:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.profile.cause.sponsors', [])
@@ -7016,7 +6961,7 @@ module.exports = angular.module('users.profile.cause.sponsors', [])
 		};
 	})
 	.controller('UsersProfileCauseSponsorsCtrl', require('./UsersProfileCauseSponsorsController'));
-},{"./UsersProfileCauseSponsorsController":297,"./users-profile-cause-sponsors.html":299}],299:[function(require,module,exports){
+},{"./UsersProfileCauseSponsorsController":293,"./users-profile-cause-sponsors.html":295}],295:[function(require,module,exports){
 module.exports = '<div class="users-profile-cause-sponsors supporters">\n' +
     '	<hr />\n' +
     '	<h3 class="supporters-title">Sponsors</h3>\n' +
@@ -7036,7 +6981,7 @@ module.exports = '<div class="users-profile-cause-sponsors supporters">\n' +
     '    </div>\n' +
     '    <div ajax-spinner class="spinner" ng-show="loading"></div>\n' +
     '</div>';
-},{}],300:[function(require,module,exports){
+},{}],296:[function(require,module,exports){
 'use strict';
 
 function UsersProfileCauseSponsorshipRequestCtrl() {
@@ -7045,13 +6990,13 @@ function UsersProfileCauseSponsorshipRequestCtrl() {
 
 UsersProfileCauseSponsorshipRequestCtrl.$inject = [];
 module.exports = UsersProfileCauseSponsorshipRequestCtrl;
-},{}],301:[function(require,module,exports){
+},{}],297:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.profile.business.sponsorship-request', [])
 	.directive('usersProfileCauseSponsorshipRequest', require('./usersProfileCauseSponsorshipRequestDirective'))
 	.controller('UsersProfileCauseSponsorshipRequestCtrl', require('./UsersProfileCauseSponsorshipRequestController'));
-},{"./UsersProfileCauseSponsorshipRequestController":300,"./usersProfileCauseSponsorshipRequestDirective":303}],302:[function(require,module,exports){
+},{"./UsersProfileCauseSponsorshipRequestController":296,"./usersProfileCauseSponsorshipRequestDirective":299}],298:[function(require,module,exports){
 module.exports = '<div id="modalSponsorshipRequest" class="modal-wrapper">\n' +
     '	<h2 class="modal-title"><span>Sponsor</span> {{user.company_name}}</h2>\n' +
     '	<button class="close" ng-click="usersProfileSponsorshipRequestModal.close()"><i class="icon icon-x"></i></button>\n' +
@@ -7071,7 +7016,7 @@ module.exports = '<div id="modalSponsorshipRequest" class="modal-wrapper">\n' +
     '	    </div>\n' +
     '    </form>\n' +
     '</div>';
-},{}],303:[function(require,module,exports){
+},{}],299:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersProfileCauseSponsorshipRequestDirective() {
@@ -7082,7 +7027,7 @@ module.exports = function usersProfileCauseSponsorshipRequestDirective() {
 		scope: true
 	};
 };
-},{"./users-profile-cause-sponsorship-request.html":302}],304:[function(require,module,exports){
+},{"./users-profile-cause-sponsorship-request.html":298}],300:[function(require,module,exports){
 module.exports = '<div class="users-profile cause" ng-class="{\'my-profile\': user.id === currentUser.id}">\n' +
     '	<div class="sidebar">\n' +
     '		<div class="user-profile-picture">\n' +
@@ -7148,7 +7093,7 @@ module.exports = '<div class="users-profile cause" ng-class="{\'my-profile\': us
     '	    <div users-profile-cause-sponsors></div>\n' +
     '	</div>\n' +
     '</div>';
-},{}],305:[function(require,module,exports){
+},{}],301:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersProfileCause() {
@@ -7159,7 +7104,7 @@ module.exports = function usersProfileCause() {
 		scope: true
 	};
 };
-},{"./users-profile-cause.html":304}],306:[function(require,module,exports){
+},{"./users-profile-cause.html":300}],302:[function(require,module,exports){
 'use strict';
 
 module.exports = angular.module('users.profile',
@@ -7170,7 +7115,7 @@ module.exports = angular.module('users.profile',
 	.config(require('./usersProfileConfig'))
 	.directive('usersProfileView', require('./usersProfileDirective'))
 	.controller('UsersProfileCtrl', require('./UsersProfileController'));
-},{"./UsersProfileController":270,"./business":272,"./cause":294,"./usersProfileConfig":308,"./usersProfileDirective":309}],307:[function(require,module,exports){
+},{"./UsersProfileController":266,"./business":268,"./cause":290,"./usersProfileConfig":304,"./usersProfileDirective":305}],303:[function(require,module,exports){
 module.exports = '<div class="users-profile-view module-view">\n' +
     '	<div ui-view></div>\n' +
     '</div>\n' +
@@ -7178,7 +7123,7 @@ module.exports = '<div class="users-profile-view module-view">\n' +
     '<div dashboard-admin-modals></div>\n' +
     '<div users-profile-business-modals></div>\n' +
     '<div users-profile-cause-modals></div>';
-},{}],308:[function(require,module,exports){
+},{}],304:[function(require,module,exports){
 'use strict';
 
 function userProfileRoutes($stateProvider) {
@@ -7224,7 +7169,7 @@ function userProfileRoutes($stateProvider) {
 
 userProfileRoutes.$inject = ['$stateProvider'];
 module.exports = userProfileRoutes;
-},{}],309:[function(require,module,exports){
+},{}],305:[function(require,module,exports){
 'use strict';
 
 module.exports = function usersProfileDirective() {
@@ -7236,7 +7181,7 @@ module.exports = function usersProfileDirective() {
 		scope: true
 	};
 };
-},{"./users-profile.html":307}],310:[function(require,module,exports){
+},{"./users-profile.html":303}],306:[function(require,module,exports){
 'use strict';
 
 function userRoutes($stateProvider) {
@@ -7268,9 +7213,9 @@ function userRoutes($stateProvider) {
 
 userRoutes.$inject = ['$stateProvider'];
 module.exports = userRoutes;
-},{}],311:[function(require,module,exports){
+},{}],307:[function(require,module,exports){
 /**
- * @license AngularJS v1.3.3
+ * @license AngularJS v1.3.2
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9160,7 +9105,7 @@ angular.module('ngAnimate', ['ng'])
           //the jqLite object, so we're safe to use a single variable to house
           //the styles since there is always only one element being animated
           var oldStyle = node.getAttribute('style') || '';
-          if (oldStyle.charAt(oldStyle.length - 1) !== ';') {
+          if (oldStyle.charAt(oldStyle.length-1) !== ';') {
             oldStyle += ';';
           }
           node.setAttribute('style', oldStyle + ' ' + style);
@@ -9406,7 +9351,7 @@ angular.module('ngAnimate', ['ng'])
 
 })(window, window.angular);
 
-},{}],312:[function(require,module,exports){
+},{}],308:[function(require,module,exports){
 /*
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
@@ -13620,9 +13565,9 @@ angular.module("template/typeahead/typeahead-popup.html", []).run(["$templateCac
     "");
 }]);
 
-},{}],313:[function(require,module,exports){
+},{}],309:[function(require,module,exports){
 /**
- * @license AngularJS v1.3.3
+ * @license AngularJS v1.3.2
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -13828,7 +13773,7 @@ angular.module('ngCookies', ['ng']).
 
 })(window, window.angular);
 
-},{}],314:[function(require,module,exports){
+},{}],310:[function(require,module,exports){
 /*
  angular-file-upload v1.1.5
  https://github.com/nervgh/angular-file-upload
@@ -15161,7 +15106,7 @@ module
 
     return module;
 }));
-},{}],315:[function(require,module,exports){
+},{}],311:[function(require,module,exports){
 angular.module('angularPayments', []);angular.module('angularPayments')
 
 .factory('Common', [function(){
@@ -15975,9 +15920,9 @@ angular.module('angularPayments', []);angular.module('angularPayments')
   }
 }]);
 
-},{}],316:[function(require,module,exports){
+},{}],312:[function(require,module,exports){
 /**
- * @license AngularJS v1.3.3
+ * @license AngularJS v1.3.2
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -16644,9 +16589,9 @@ angular.module('ngResource', ['ng']).
 
 })(window, window.angular);
 
-},{}],317:[function(require,module,exports){
+},{}],313:[function(require,module,exports){
 /**
- * @license AngularJS v1.3.3
+ * @license AngularJS v1.3.2
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -16865,29 +16810,29 @@ var validElements = angular.extend({},
 //Attributes that have href and hence need to be sanitized
 var uriAttrs = makeMap("background,cite,href,longdesc,src,usemap,xlink:href");
 
-var htmlAttrs = makeMap('abbr,align,alt,axis,bgcolor,border,cellpadding,cellspacing,class,clear,' +
-    'color,cols,colspan,compact,coords,dir,face,headers,height,hreflang,hspace,' +
-    'ismap,lang,language,nohref,nowrap,rel,rev,rows,rowspan,rules,' +
-    'scope,scrolling,shape,size,span,start,summary,target,title,type,' +
+var htmlAttrs = makeMap('abbr,align,alt,axis,bgcolor,border,cellpadding,cellspacing,class,clear,'+
+    'color,cols,colspan,compact,coords,dir,face,headers,height,hreflang,hspace,'+
+    'ismap,lang,language,nohref,nowrap,rel,rev,rows,rowspan,rules,'+
+    'scope,scrolling,shape,size,span,start,summary,target,title,type,'+
     'valign,value,vspace,width');
 
 // SVG attributes (without "id" and "name" attributes)
 // https://wiki.whatwg.org/wiki/Sanitization_rules#svg_Attributes
-var svgAttrs = makeMap('accent-height,accumulate,additive,alphabetic,arabic-form,ascent,' +
-    'attributeName,attributeType,baseProfile,bbox,begin,by,calcMode,cap-height,class,color,' +
-    'color-rendering,content,cx,cy,d,dx,dy,descent,display,dur,end,fill,fill-rule,font-family,' +
-    'font-size,font-stretch,font-style,font-variant,font-weight,from,fx,fy,g1,g2,glyph-name,' +
-    'gradientUnits,hanging,height,horiz-adv-x,horiz-origin-x,ideographic,k,keyPoints,' +
-    'keySplines,keyTimes,lang,marker-end,marker-mid,marker-start,markerHeight,markerUnits,' +
-    'markerWidth,mathematical,max,min,offset,opacity,orient,origin,overline-position,' +
-    'overline-thickness,panose-1,path,pathLength,points,preserveAspectRatio,r,refX,refY,' +
-    'repeatCount,repeatDur,requiredExtensions,requiredFeatures,restart,rotate,rx,ry,slope,stemh,' +
-    'stemv,stop-color,stop-opacity,strikethrough-position,strikethrough-thickness,stroke,' +
-    'stroke-dasharray,stroke-dashoffset,stroke-linecap,stroke-linejoin,stroke-miterlimit,' +
-    'stroke-opacity,stroke-width,systemLanguage,target,text-anchor,to,transform,type,u1,u2,' +
-    'underline-position,underline-thickness,unicode,unicode-range,units-per-em,values,version,' +
-    'viewBox,visibility,width,widths,x,x-height,x1,x2,xlink:actuate,xlink:arcrole,xlink:role,' +
-    'xlink:show,xlink:title,xlink:type,xml:base,xml:lang,xml:space,xmlns,xmlns:xlink,y,y1,y2,' +
+var svgAttrs = makeMap('accent-height,accumulate,additive,alphabetic,arabic-form,ascent,'+
+    'attributeName,attributeType,baseProfile,bbox,begin,by,calcMode,cap-height,class,color,'+
+    'color-rendering,content,cx,cy,d,dx,dy,descent,display,dur,end,fill,fill-rule,font-family,'+
+    'font-size,font-stretch,font-style,font-variant,font-weight,from,fx,fy,g1,g2,glyph-name,'+
+    'gradientUnits,hanging,height,horiz-adv-x,horiz-origin-x,ideographic,k,keyPoints,'+
+    'keySplines,keyTimes,lang,marker-end,marker-mid,marker-start,markerHeight,markerUnits,'+
+    'markerWidth,mathematical,max,min,offset,opacity,orient,origin,overline-position,'+
+    'overline-thickness,panose-1,path,pathLength,points,preserveAspectRatio,r,refX,refY,'+
+    'repeatCount,repeatDur,requiredExtensions,requiredFeatures,restart,rotate,rx,ry,slope,stemh,'+
+    'stemv,stop-color,stop-opacity,strikethrough-position,strikethrough-thickness,stroke,'+
+    'stroke-dasharray,stroke-dashoffset,stroke-linecap,stroke-linejoin,stroke-miterlimit,'+
+    'stroke-opacity,stroke-width,systemLanguage,target,text-anchor,to,transform,type,u1,u2,'+
+    'underline-position,underline-thickness,unicode,unicode-range,units-per-em,values,version,'+
+    'viewBox,visibility,width,widths,x,x-height,x1,x2,xlink:actuate,xlink:arcrole,xlink:role,'+
+    'xlink:show,xlink:title,xlink:type,xml:base,xml:lang,xml:space,xmlns,xmlns:xlink,y,y1,y2,'+
     'zoomAndPan');
 
 var validAttrs = angular.extend({},
@@ -17324,10 +17269,10 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],318:[function(require,module,exports){
+},{}],314:[function(require,module,exports){
 var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:1-Math.pow(2*(1-e),2)/2};angular.module("duScroll",["duScroll.scrollspy","duScroll.smoothScroll","duScroll.scrollContainer","duScroll.spyContext","duScroll.scrollHelpers"]).value("duScrollDuration",350).value("duScrollSpyWait",100).value("duScrollGreedy",!1).value("duScrollOffset",0).value("duScrollEasing",duScrollDefaultEasing),angular.module("duScroll.scrollHelpers",["duScroll.requestAnimation"]).run(["$window","$q","cancelAnimation","requestAnimation","duScrollEasing","duScrollDuration","duScrollOffset",function(e,t,n,r,o,l,i){"use strict";var u=angular.element.prototype,c=function(e){return"undefined"!=typeof HTMLDocument&&e instanceof HTMLDocument||e.nodeType&&e.nodeType===e.DOCUMENT_NODE},a=function(e){return"undefined"!=typeof HTMLElement&&e instanceof HTMLElement||e.nodeType&&e.nodeType===e.ELEMENT_NODE},s=function(e){return a(e)||c(e)?e:e[0]};u.scrollTo=function(t,n,r){var o;if(angular.isElement(t)?o=this.scrollToElement:r&&(o=this.scrollToAnimated),o)return o.apply(this,arguments);var l=s(this);return c(l)?e.scrollTo(t,n):(l.scrollLeft=t,void(l.scrollTop=n))};var d,f;u.scrollToAnimated=function(e,l,i,u){i&&!u&&(u=o);var c=this.scrollLeft(),a=this.scrollTop(),s=Math.round(e-c),p=Math.round(l-a),m=null,g=this,v="scroll mousedown mousewheel touchmove keydown",h=function(e){(!e||e.which>0)&&(g.unbind(v,h),n(d),f.reject(),d=null)};if(d&&h(),f=t.defer(),!s&&!p)return f.resolve(),f.promise;var y=function(e){null===m&&(m=e);var t=e-m,n=t>=i?1:u(t/i);g.scrollTo(c+Math.ceil(s*n),a+Math.ceil(p*n)),1>n?d=r(y):(g.unbind(v,h),d=null,f.resolve())};return g.scrollTo(c,a),g.bind(v,h),d=r(y),f.promise},u.scrollToElement=function(e,t,n,r){var o=s(this);(!angular.isNumber(t)||isNaN(t))&&(t=i);var l=this.scrollTop()+s(e).getBoundingClientRect().top-t;return a(o)&&(l-=o.getBoundingClientRect().top),this.scrollTo(0,l,n,r)};var p={scrollLeft:function(t,n,r){if(angular.isNumber(t))return this.scrollTo(t,this.scrollTop(),n,r);var o=s(this);return c(o)?e.scrollX||document.documentElement.scrollLeft||document.body.scrollLeft:o.scrollLeft},scrollTop:function(t,n,r){if(angular.isNumber(t))return this.scrollTo(this.scrollTop(),t,n,r);var o=s(this);return c(o)?e.scrollY||document.documentElement.scrollTop||document.body.scrollTop:o.scrollTop}};u.scrollToElementAnimated=function(e,t,n,r){return this.scrollToElement(e,t,n||l,r)},u.scrollTopAnimated=function(e,t,n){return this.scrollTop(e,t||l,n)},u.scrollLeftAnimated=function(e,t,n){return this.scrollLeft(e,t||l,n)};var m=function(e,t){return function(n,r){return r?t.apply(this,arguments):e.apply(this,arguments)}};for(var g in p)u[g]=u[g]?m(u[g],p[g]):p[g]}]),angular.module("duScroll.polyfill",[]).factory("polyfill",["$window",function(e){"use strict";var t=["webkit","moz","o","ms"];return function(n,r){if(e[n])return e[n];for(var o,l=n.substr(0,1).toUpperCase()+n.substr(1),i=0;i<t.length;i++)if(o=t[i]+l,e[o])return e[o];return r}}]),angular.module("duScroll.requestAnimation",["duScroll.polyfill"]).factory("requestAnimation",["polyfill","$timeout",function(e,t){"use strict";var n=0,r=function(e){var r=(new Date).getTime(),o=Math.max(0,16-(r-n)),l=t(function(){e(r+o)},o);return n=r+o,l};return e("requestAnimationFrame",r)}]).factory("cancelAnimation",["polyfill","$timeout",function(e,t){"use strict";var n=function(e){t.cancel(e)};return e("cancelAnimationFrame",n)}]),angular.module("duScroll.spyAPI",["duScroll.scrollContainerAPI"]).factory("spyAPI",["$rootScope","$timeout","scrollContainerAPI","duScrollGreedy","duScrollSpyWait",function(e,t,n,r,o){"use strict";var l=function(n){var l=!1,i=!1,u=function(){i=!1;var t=n.container,o=t[0],l=0;("undefined"!=typeof HTMLElement&&o instanceof HTMLElement||o.nodeType&&o.nodeType===o.ELEMENT_NODE)&&(l=o.getBoundingClientRect().top);var u,c,a,s,d,f;for(s=n.spies,c=n.currentlyActive,a=void 0,u=0;u<s.length;u++)d=s[u],f=d.getTargetPosition(),f&&f.top+d.offset-l<20&&-1*f.top+l<f.height&&(!a||a.top<f.top)&&(a={top:f.top,spy:d});a&&(a=a.spy),c===a||r&&!a||(c&&(c.$element.removeClass("active"),e.$broadcast("duScrollspy:becameInactive",c.$element)),a&&(a.$element.addClass("active"),e.$broadcast("duScrollspy:becameActive",a.$element)),n.currentlyActive=a)};return o?function(){l?i=!0:(u(),l=t(function(){l=!1,i&&u()},o,!1))}:u},i={},u=function(e){var t=e.$id,n={spies:[]};return n.handler=l(n),i[t]=n,e.$on("$destroy",function(){c(e)}),t},c=function(e){var t=e.$id,n=i[t],r=n.container;r&&r.off("scroll",n.handler),delete i[t]},a=u(e),s=function(e){return i[e.$id]?i[e.$id]:e.$parent?s(e.$parent):i[a]},d=function(e){var t,n,r=e.$element.scope();if(r)return s(r);for(n in i)if(t=i[n],-1!==t.spies.indexOf(e))return t},f=function(e){for(;e.parentNode;)if(e=e.parentNode,e===document)return!0;return!1},p=function(e){var t=d(e);t&&(t.spies.push(e),t.container&&f(t.container)||(t.container&&t.container.off("scroll",t.handler),t.container=n.getContainer(e.$element.scope()),t.container.on("scroll",t.handler).triggerHandler("scroll")))},m=function(e){var t=d(e);e===t.currentlyActive&&(t.currentlyActive=null);var n=t.spies.indexOf(e);-1!==n&&t.spies.splice(n,1)};return{addSpy:p,removeSpy:m,createContext:u,destroyContext:c,getContextForScope:s}}]),angular.module("duScroll.scrollContainerAPI",[]).factory("scrollContainerAPI",["$document",function(e){"use strict";var t={},n=function(e,n){var r=e.$id;return t[r]=n,r},r=function(e){return t[e.$id]?e.$id:e.$parent?r(e.$parent):void 0},o=function(n){var o=r(n);return o?t[o]:e},l=function(e){var n=r(e);n&&delete t[n]};return{getContainerId:r,getContainer:o,setContainer:n,removeContainer:l}}]),angular.module("duScroll.smoothScroll",["duScroll.scrollHelpers","duScroll.scrollContainerAPI"]).directive("duSmoothScroll",["duScrollDuration","duScrollOffset","scrollContainerAPI",function(e,t,n){"use strict";return{link:function(r,o,l){o.on("click",function(o){if(l.href&&-1!==l.href.indexOf("#")){var i=document.getElementById(l.href.replace(/.*(?=#[^\s]+$)/,"").substring(1));if(i&&i.getBoundingClientRect){o.stopPropagation&&o.stopPropagation(),o.preventDefault&&o.preventDefault();var u=l.offset?parseInt(l.offset,10):t,c=l.duration?parseInt(l.duration,10):e,a=n.getContainer(r);a.scrollToElement(angular.element(i),isNaN(u)?0:u,isNaN(c)?0:c)}}})}}}]),angular.module("duScroll.spyContext",["duScroll.spyAPI"]).directive("duSpyContext",["spyAPI",function(e){"use strict";return{restrict:"A",scope:!0,compile:function(){return{pre:function(t){e.createContext(t)}}}}}]),angular.module("duScroll.scrollContainer",["duScroll.scrollContainerAPI"]).directive("duScrollContainer",["scrollContainerAPI",function(e){"use strict";return{restrict:"A",scope:!0,compile:function(){return{pre:function(t,n,r){r.$observe("duScrollContainer",function(r){angular.isString(r)&&(r=document.getElementById(r)),r=angular.isElement(r)?angular.element(r):n,e.setContainer(t,r),t.$on("$destroy",function(){e.removeContainer(t)})})}}}}}]),angular.module("duScroll.scrollspy",["duScroll.spyAPI"]).directive("duScrollspy",["spyAPI","duScrollOffset","$timeout","$rootScope",function(e,t,n,r){"use strict";var o=function(e,t,n){angular.isElement(e)?this.target=e:angular.isString(e)&&(this.targetId=e),this.$element=t,this.offset=n};return o.prototype.getTargetElement=function(){return!this.target&&this.targetId&&(this.target=document.getElementById(this.targetId)),this.target},o.prototype.getTargetPosition=function(){var e=this.getTargetElement();return e?e.getBoundingClientRect():void 0},o.prototype.flushTargetCache=function(){this.targetId&&(this.target=void 0)},{link:function(l,i,u){var c,a=u.ngHref||u.href;a&&-1!==a.indexOf("#")?c=a.replace(/.*(?=#[^\s]+$)/,"").substring(1):u.duScrollspy&&(c=u.duScrollspy),c&&n(function(){var n=new o(c,i,-(u.offset?parseInt(u.offset,10):t));e.addSpy(n),l.$on("$destroy",function(){e.removeSpy(n)}),l.$on("$locationChangeSuccess",n.flushTargetCache.bind(n)),r.$on("$stateChangeSuccess",n.flushTargetCache.bind(n))},0,!1)}}}]);
 //# sourceMappingURL=angular-scroll.min.js.map
-},{}],319:[function(require,module,exports){
+},{}],315:[function(require,module,exports){
 /**
  * angular-spinner version 0.5.1
  * License: MIT.
@@ -17425,9 +17370,9 @@ var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:
 	}
 }(window));
 
-},{}],320:[function(require,module,exports){
+},{}],316:[function(require,module,exports){
 /**
- * @license AngularJS v1.3.3
+ * @license AngularJS v1.3.2
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -17729,7 +17674,7 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
   // Splices out the allowable region from the list after it has been used.
   function checkAllowableRegions(touchCoordinates, x, y) {
     for (var i = 0; i < touchCoordinates.length; i += 2) {
-      if (hit(touchCoordinates[i], touchCoordinates[i + 1], x, y)) {
+      if (hit(touchCoordinates[i], touchCoordinates[i+1], x, y)) {
         touchCoordinates.splice(i, i + 2);
         return true; // allowable region
       }
@@ -17794,7 +17739,7 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
     $timeout(function() {
       // Remove the allowable region.
       for (var i = 0; i < touchCoordinates.length; i += 2) {
-        if (touchCoordinates[i] == x && touchCoordinates[i + 1] == y) {
+        if (touchCoordinates[i] == x && touchCoordinates[i+1] == y) {
           touchCoordinates.splice(i, i + 2);
           return;
         }
@@ -18049,7 +17994,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 
 })(window, window.angular);
 
-},{}],321:[function(require,module,exports){
+},{}],317:[function(require,module,exports){
 angular.module('truncate', [])
     .filter('characters', function () {
         return function (input, chars, breakOnWord) {
@@ -18088,7 +18033,7 @@ angular.module('truncate', [])
         };
     });
 
-},{}],322:[function(require,module,exports){
+},{}],318:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.11
@@ -21748,7 +21693,7 @@ angular.module('ui.router.state')
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
 
-},{}],323:[function(require,module,exports){
+},{}],319:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.3
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -47500,7 +47445,7 @@ var styleDirective = valueFn({
 })(window, document);
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}</style>');
-},{}],324:[function(require,module,exports){
+},{}],320:[function(require,module,exports){
 /*!
   * domready (c) Dustin Diaz 2014 - License MIT
   */
@@ -47532,7 +47477,7 @@ var styleDirective = valueFn({
 
 });
 
-},{}],325:[function(require,module,exports){
+},{}],321:[function(require,module,exports){
 /*!
  * VERSION: 1.12.1
  * DATE: 2014-06-26
@@ -54344,7 +54289,7 @@ var styleDirective = valueFn({
 		_tickerActive = false; //ensures that the first official animation forces a ticker.tick() to update the time when it is instantiated
 
 })(window);
-},{}],326:[function(require,module,exports){
+},{}],322:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.1
  * http://jquery.com/
@@ -63536,7 +63481,7 @@ return jQuery;
 
 }));
 
-},{}],327:[function(require,module,exports){
+},{}],323:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -70697,7 +70642,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],328:[function(require,module,exports){
+},{}],324:[function(require,module,exports){
 /*** Directives and services for responding to idle users in AngularJS
 * @author Mike Grabski <me@mikegrabski.com>
 * @version v0.3.5
@@ -70931,9 +70876,9 @@ return jQuery;
 
 })(window, window.angular);
 
-},{}],329:[function(require,module,exports){
-/*! ngTagsInput v2.1.1 License: MIT */!function(){"use strict";function a(){var a={};return{on:function(b,c){return b.split(" ").forEach(function(b){a[b]||(a[b]=[]),a[b].push(c)}),this},trigger:function(b,c){return angular.forEach(a[b],function(a){a.call(null,c)}),this}}}function b(a,b){return a=a||[],a.length>0&&!angular.isObject(a[0])&&a.forEach(function(c,d){a[d]={},a[d][b]=c}),a}function c(a,b,c){for(var d=null,f=0;f<a.length;f++)if(e(a[f][c]).toLowerCase()===e(b[c]).toLowerCase()){d=a[f];break}return d}function d(a,b,c){if(!b)return a;var d=b.replace(/([.?*+^$[\]\\(){}|-])/g,"\\$1");return a.replace(new RegExp(d,"gi"),c)}function e(a){return angular.isUndefined(a)||null==a?"":a.toString().trim()}function f(a){return a.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}var g={backspace:8,tab:9,enter:13,escape:27,space:32,up:38,down:40,comma:188},h=9007199254740991,i=["text","email","url"],j=angular.module("ngTagsInput",[]);j.directive("tagsInput",["$timeout","$document","tagsInputConfig",function(d,f,j){function k(a,b){var d,f,g,h={};return d=function(b){return e(b[a.displayProperty])},f=function(b,c){b[a.displayProperty]=c},g=function(b){var e=d(b);return e&&e.length>=a.minLength&&e.length<=a.maxLength&&a.allowedTagsPattern.test(e)&&!c(h.items,b,a.displayProperty)},h.items=[],h.addText=function(a){var b={};return f(b,a),h.add(b)},h.add=function(c){var e=d(c);return a.replaceSpacesWithDashes&&(e=e.replace(/\s/g,"-")),f(c,e),g(c)?(h.items.push(c),b.trigger("tag-added",{$tag:c})):e&&b.trigger("invalid-tag",{$tag:c}),c},h.remove=function(a){var c=h.items.splice(a,1)[0];return b.trigger("tag-removed",{$tag:c}),c},h.removeLast=function(){var b,c=h.items.length-1;return a.enableEditingLastTag||h.selected?(h.selected=null,b=h.remove(c)):h.selected||(h.selected=h.items[c]),b},h}function l(a){return-1!==i.indexOf(a)}return{restrict:"E",require:"ngModel",scope:{tags:"=ngModel",onTagAdded:"&",onTagRemoved:"&"},replace:!1,transclude:!0,templateUrl:"ngTagsInput/tags-input.html",controller:["$scope","$attrs","$element",function(b,c,d){b.events=new a,j.load("tagsInput",b,c,{type:[String,"text",l],placeholder:[String,"Add a tag"],tabindex:[Number,null],removeTagSymbol:[String,String.fromCharCode(215)],replaceSpacesWithDashes:[Boolean,!0],minLength:[Number,3],maxLength:[Number,h],addOnEnter:[Boolean,!0],addOnSpace:[Boolean,!1],addOnComma:[Boolean,!0],addOnBlur:[Boolean,!0],allowedTagsPattern:[RegExp,/.+/],enableEditingLastTag:[Boolean,!1],minTags:[Number,0],maxTags:[Number,h],displayProperty:[String,"text"],allowLeftoverText:[Boolean,!1],addFromAutocompleteOnly:[Boolean,!1]}),b.tagList=new k(b.options,b.events),this.registerAutocomplete=function(){var a=d.find("input");return a.on("keydown",function(a){b.events.trigger("input-keydown",a)}),{addTag:function(a){return b.tagList.add(a)},focusInput:function(){a[0].focus()},getTags:function(){return b.tags},getCurrentTagText:function(){return b.newTag.text},getOptions:function(){return b.options},on:function(a,c){return b.events.on(a,c),this}}}}],link:function(a,c,h,i){var j,k=[g.enter,g.comma,g.space,g.backspace],l=a.tagList,m=a.events,n=a.options,o=c.find("input"),p=["minTags","maxTags","allowLeftoverText"];j=function(){i.$setValidity("maxTags",a.tags.length<=n.maxTags),i.$setValidity("minTags",a.tags.length>=n.minTags),i.$setValidity("leftoverText",n.allowLeftoverText?!0:!a.newTag.text)},m.on("tag-added",a.onTagAdded).on("tag-removed",a.onTagRemoved).on("tag-added",function(){a.newTag.text=""}).on("tag-added tag-removed",function(){i.$setViewValue(a.tags)}).on("invalid-tag",function(){a.newTag.invalid=!0}).on("input-change",function(){l.selected=null,a.newTag.invalid=null}).on("input-focus",function(){i.$setValidity("leftoverText",!0)}).on("input-blur",function(){n.addFromAutocompleteOnly||(n.addOnBlur&&l.addText(a.newTag.text),j())}).on("option-change",function(a){-1!==p.indexOf(a.name)&&j()}),a.newTag={text:"",invalid:null},a.getDisplayText=function(a){return e(a[n.displayProperty])},a.track=function(a){return a[n.displayProperty]},a.newTagChange=function(){m.trigger("input-change",a.newTag.text)},a.$watch("tags",function(c){a.tags=b(c,n.displayProperty),l.items=a.tags}),a.$watch("tags.length",function(){j()}),o.on("keydown",function(b){if(!b.isImmediatePropagationStopped||!b.isImmediatePropagationStopped()){var c,d,e=b.keyCode,f=b.shiftKey||b.altKey||b.ctrlKey||b.metaKey,h={};if(!f&&-1!==k.indexOf(e))if(h[g.enter]=n.addOnEnter,h[g.comma]=n.addOnComma,h[g.space]=n.addOnSpace,c=!n.addFromAutocompleteOnly&&h[e],d=!c&&e===g.backspace&&0===a.newTag.text.length,c)l.addText(a.newTag.text),a.$apply(),b.preventDefault();else if(d){var i=l.removeLast();i&&n.enableEditingLastTag&&(a.newTag.text=i[n.displayProperty]),a.$apply(),b.preventDefault()}}}).on("focus",function(){a.hasFocus||(a.hasFocus=!0,m.trigger("input-focus"),a.$apply())}).on("blur",function(){d(function(){var b=f.prop("activeElement"),d=b===o[0],e=c[0].contains(b);(d||!e)&&(a.hasFocus=!1,m.trigger("input-blur"))})}),c.find("div").on("click",function(){o[0].focus()})}}}]),j.directive("autoComplete",["$document","$timeout","$sce","tagsInputConfig",function(a,h,i,j){function k(a,d){var e,f,g,i={};return f=function(a,b){return a.filter(function(a){return!c(b,a,d.tagsInput.displayProperty)})},i.reset=function(){g=null,i.items=[],i.visible=!1,i.index=-1,i.selected=null,i.query=null,h.cancel(e)},i.show=function(){i.selected=null,i.visible=!0},i.load=function(c,j){h.cancel(e),e=h(function(){i.query=c;var e=a({$query:c});g=e,e.then(function(a){e===g&&(a=b(a.data||a,d.tagsInput.displayProperty),a=f(a,j),i.items=a.slice(0,d.maxResultsToShow),i.items.length>0?i.show():i.reset())})},d.debounceDelay,!1)},i.selectNext=function(){i.select(++i.index)},i.selectPrior=function(){i.select(--i.index)},i.select=function(a){0>a?a=i.items.length-1:a>=i.items.length&&(a=0),i.index=a,i.selected=i.items[a]},i.reset(),i}return{restrict:"E",require:"^tagsInput",scope:{source:"&"},templateUrl:"ngTagsInput/auto-complete.html",link:function(a,b,c,h){var l,m,n,o,p,q,r=[g.enter,g.tab,g.escape,g.up,g.down];j.load("autoComplete",a,c,{debounceDelay:[Number,100],minLength:[Number,3],highlightMatchedText:[Boolean,!0],maxResultsToShow:[Number,10],loadOnDownArrow:[Boolean,!1],loadOnEmpty:[Boolean,!1],loadOnFocus:[Boolean,!1]}),n=a.options,m=h.registerAutocomplete(),n.tagsInput=m.getOptions(),l=new k(a.source,n),o=function(a){return a[n.tagsInput.displayProperty]},p=function(a){return e(o(a))},q=function(a){return a&&a.length>=n.minLength||!a&&n.loadOnEmpty},a.suggestionList=l,a.addSuggestionByIndex=function(b){l.select(b),a.addSuggestion()},a.addSuggestion=function(){var a=!1;return l.selected&&(m.addTag(l.selected),l.reset(),m.focusInput(),a=!0),a},a.highlight=function(a){var b=p(a);return b=f(b),n.highlightMatchedText&&(b=d(b,f(l.query),"<em>$&</em>")),i.trustAsHtml(b)},a.track=function(a){return o(a)},m.on("tag-added tag-removed invalid-tag input-blur",function(){l.reset()}).on("input-change",function(a){q(a)?l.load(a,m.getTags()):l.reset()}).on("input-focus",function(){var a=m.getCurrentTagText();n.loadOnFocus&&q(a)&&l.load(a,m.getTags())}).on("input-keydown",function(b){var c=!1;b.stopImmediatePropagation=function(){c=!0,b.stopPropagation()},b.isImmediatePropagationStopped=function(){return c};var d=b.keyCode,e=!1;-1!==r.indexOf(d)&&(l.visible?d===g.down?(l.selectNext(),e=!0):d===g.up?(l.selectPrior(),e=!0):d===g.escape?(l.reset(),e=!0):(d===g.enter||d===g.tab)&&(e=a.addSuggestion()):d===g.down&&a.options.loadOnDownArrow&&(l.load(m.getCurrentTagText(),m.getTags()),e=!0),e&&(b.preventDefault(),b.stopImmediatePropagation(),a.$apply()))})}}}]),j.directive("tiTranscludeAppend",function(){return function(a,b,c,d,e){e(function(a){b.append(a)})}}),j.directive("tiAutosize",["tagsInputConfig",function(a){return{restrict:"A",require:"ngModel",link:function(b,c,d,e){var f,g,h=a.getTextAutosizeThreshold();f=angular.element('<span class="input"></span>'),f.css("display","none").css("visibility","hidden").css("width","auto").css("white-space","pre"),c.parent().append(f),g=function(a){var b,e=a;return angular.isString(e)&&0===e.length&&(e=d.placeholder),e&&(f.text(e),f.css("display",""),b=f.prop("offsetWidth"),f.css("display","none")),c.css("width",b?b+h+"px":""),a},e.$parsers.unshift(g),e.$formatters.unshift(g),d.$observe("placeholder",function(a){e.$modelValue||g(a)})}}}]),j.directive("tiBindAttrs",function(){return function(a,b,c){a.$watch(c.tiBindAttrs,function(a){angular.forEach(a,function(a,b){c.$set(b,a)})},!0)}}),j.provider("tagsInputConfig",function(){var a={},b={},c=3;this.setDefaults=function(b,c){return a[b]=c,this},this.setActiveInterpolation=function(a,c){return b[a]=c,this},this.setTextAutosizeThreshold=function(a){return c=a,this},this.$get=["$interpolate",function(d){var e={};return e[String]=function(a){return a},e[Number]=function(a){return parseInt(a,10)},e[Boolean]=function(a){return"true"===a.toLowerCase()},e[RegExp]=function(a){return new RegExp(a)},{load:function(c,f,g,h){var i=function(){return!0};f.options={},angular.forEach(h,function(h,j){var k,l,m,n,o,p;k=h[0],l=h[1],m=h[2]||i,n=e[k],o=function(){var b=a[c]&&a[c][j];return angular.isDefined(b)?b:l},p=function(a){f.options[j]=a&&m(a)?n(a):o()},b[c]&&b[c][j]?g.$observe(j,function(a){p(a),f.events.trigger("option-change",{name:j,newValue:a})}):p(g[j]&&d(g[j])(f.$parent))})},getTextAutosizeThreshold:function(){return c}}}]}),j.run(["$templateCache",function(a){a.put("ngTagsInput/tags-input.html",'<div class="host" tabindex="-1" ti-transclude-append=""><div class="tags" ng-class="{focused: hasFocus}"><ul class="tag-list"><li class="tag-item" ng-repeat="tag in tagList.items track by track(tag)" ng-class="{ selected: tag == tagList.selected }"><span ng-bind="getDisplayText(tag)"></span> <a class="remove-button" ng-click="tagList.remove($index)" ng-bind="options.removeTagSymbol"></a></li></ul><input class="input" ng-model="newTag.text" ng-change="newTagChange()" ng-trim="false" ng-class="{\'invalid-tag\': newTag.invalid}" ti-bind-attrs="{type: options.type, placeholder: options.placeholder, tabindex: options.tabindex}" ti-autosize=""></div></div>'),a.put("ngTagsInput/auto-complete.html",'<div class="autocomplete" ng-show="suggestionList.visible"><ul class="suggestion-list"><li class="suggestion-item" ng-repeat="item in suggestionList.items track by track(item)" ng-class="{selected: item == suggestionList.selected}" ng-click="addSuggestionByIndex($index)" ng-mouseenter="suggestionList.select($index)" ng-bind-html="highlight(item)"></li></ul></div>')}])}();
-},{}],330:[function(require,module,exports){
+},{}],325:[function(require,module,exports){
+(function(){"use strict";function r(){var e={};return{on:function(t,n){t.split(" ").forEach(function(t){if(!e[t]){e[t]=[]}e[t].push(n)});return this},trigger:function(t,n){angular.forEach(e[t],function(e){e.call(null,n)});return this}}}function i(e,t){e=e||[];if(e.length>0&&!angular.isObject(e[0])){e.forEach(function(n,r){e[r]={};e[r][t]=n})}return e}function s(e,t,n){var r=null;for(var i=0;i<e.length;i++){if(u(e[i][n]).toLowerCase()===u(t[n]).toLowerCase()){r=e[i];break}}return r}function o(e,t,n){if(!t){return e}var r=t.replace(/([.?*+^$[\]\\(){}|-])/g,"\\$1");return e.replace(new RegExp(r,"gi"),n)}function u(e){return angular.isUndefined(e)||e==null?"":e.toString().trim()}function a(e){return e.replace(/&/g,"&").replace(/</g,"&lt;").replace(/>/g,"&gt;")}var e={backspace:8,tab:9,enter:13,escape:27,space:32,up:38,down:40,comma:188};var t=9007199254740991;var n=["text","email","url"];var f=angular.module("ngTagsInput",[]);f.directive("tagsInput",["$timeout","$document","tagsInputConfig",function(o,a,f){function l(e,t){var n={},r,i,o;r=function(t){return u(t[e.displayProperty])};i=function(t,n){t[e.displayProperty]=n};o=function(t){var i=r(t);return i&&i.length>=e.minLength&&i.length<=e.maxLength&&e.allowedTagsPattern.test(i)&&!s(n.items,t,e.displayProperty)};n.items=[];n.addText=function(e){var t={};i(t,e);return n.add(t)};n.add=function(s){var u=r(s);if(e.replaceSpacesWithDashes){u=u.replace(/\s/g,"-")}i(s,u);if(o(s)){n.items.push(s);t.trigger("tag-added",{$tag:s})}else if(u){t.trigger("invalid-tag",{$tag:s})}return s};n.remove=function(e){var r=n.items.splice(e,1)[0];t.trigger("tag-removed",{$tag:r});return r};n.removeLast=function(){var t,r=n.items.length-1;if(e.enableEditingLastTag||n.selected){n.selected=null;t=n.remove(r)}else if(!n.selected){n.selected=n.items[r]}return t};return n}function c(e){return n.indexOf(e)!==-1}return{restrict:"E",require:"ngModel",scope:{tags:"=ngModel",onTagAdded:"&",onTagRemoved:"&"},replace:false,transclude:true,templateUrl:"ngTagsInput/tags-input.html",controller:["$scope","$attrs","$element",function(e,n,i){e.events=new r;f.load("tagsInput",e,n,{type:[String,"text",c],placeholder:[String,"Add a tag"],tabindex:[Number,null],removeTagSymbol:[String,String.fromCharCode(215)],replaceSpacesWithDashes:[Boolean,true],minLength:[Number,3],maxLength:[Number,t],addOnEnter:[Boolean,true],addOnSpace:[Boolean,false],addOnComma:[Boolean,true],addOnBlur:[Boolean,true],allowedTagsPattern:[RegExp,/.+/],enableEditingLastTag:[Boolean,false],minTags:[Number,0],maxTags:[Number,t],displayProperty:[String,"text"],allowLeftoverText:[Boolean,false],addFromAutocompleteOnly:[Boolean,false]});e.tagList=new l(e.options,e.events);this.registerAutocomplete=function(){var t=i.find("input");t.on("keydown",function(t){e.events.trigger("input-keydown",t)});return{addTag:function(t){return e.tagList.add(t)},focusInput:function(){t[0].focus()},getTags:function(){return e.tags},getCurrentTagText:function(){return e.newTag.text},getOptions:function(){return e.options},on:function(t,n){e.events.on(t,n);return this}}}}],link:function(t,n,r,s){var f=[e.enter,e.comma,e.space,e.backspace],l=t.tagList,c=t.events,h=t.options,p=n.find("input"),d=["minTags","maxTags","allowLeftoverText"],v;v=function(){s.$setValidity("maxTags",t.tags.length<=h.maxTags);s.$setValidity("minTags",t.tags.length>=h.minTags);s.$setValidity("leftoverText",h.allowLeftoverText?true:!t.newTag.text)};c.on("tag-added",t.onTagAdded).on("tag-removed",t.onTagRemoved).on("tag-added",function(){t.newTag.text=""}).on("tag-added tag-removed",function(){s.$setViewValue(t.tags)}).on("invalid-tag",function(){t.newTag.invalid=true}).on("input-change",function(){l.selected=null;t.newTag.invalid=null}).on("input-focus",function(){n.triggerHandler("focus");s.$setValidity("leftoverText",true)}).on("input-blur",function(){n.triggerHandler("blur");if(!h.addFromAutocompleteOnly){if(h.addOnBlur){l.addText(t.newTag.text)}v()}}).on("option-change",function(e){if(d.indexOf(e.name)!==-1){v()}});t.newTag={text:"",invalid:null};t.getDisplayText=function(e){return u(e[h.displayProperty])};t.track=function(e){return e[h.displayProperty]};t.newTagChange=function(){c.trigger("input-change",t.newTag.text)};t.$watch("tags",function(e){t.tags=i(e,h.displayProperty);l.items=t.tags});t.$watch("tags.length",function(){v()});p.on("keydown",function(n){if(n.isImmediatePropagationStopped&&n.isImmediatePropagationStopped()){return}var r=n.keyCode,i=n.shiftKey||n.altKey||n.ctrlKey||n.metaKey,s={},o,u;if(i||f.indexOf(r)===-1){return}s[e.enter]=h.addOnEnter;s[e.comma]=h.addOnComma;s[e.space]=h.addOnSpace;o=!h.addFromAutocompleteOnly&&s[r];u=!o&&r===e.backspace&&t.newTag.text.length===0;if(o){l.addText(t.newTag.text);t.$apply();n.preventDefault()}else if(u){var a=l.removeLast();if(a&&h.enableEditingLastTag){t.newTag.text=a[h.displayProperty]}t.$apply();n.preventDefault()}}).on("focus",function(){if(t.hasFocus){return}t.hasFocus=true;c.trigger("input-focus");t.$apply()}).on("blur",function(){o(function(){var e=a.prop("activeElement"),r=e===p[0],i=n[0].contains(e);if(r||!i){t.hasFocus=false;c.trigger("input-blur")}})});n.find("div").on("click",function(){p[0].focus()})}}}]);f.directive("autoComplete",["$document","$timeout","$sce","tagsInputConfig",function(t,n,r,f){function l(e,t){var r={},o,u,a;u=function(e,n){return e.filter(function(e){return!s(n,e,t.tagsInput.displayProperty)})};r.reset=function(){a=null;r.items=[];r.visible=false;r.index=-1;r.selected=null;r.query=null;n.cancel(o)};r.show=function(){r.selected=null;r.visible=true};r.load=function(s,f){n.cancel(o);o=n(function(){r.query=s;var n=e({$query:s});a=n;n.then(function(e){if(n!==a){return}e=i(e.data||e,t.tagsInput.displayProperty);e=u(e,f);r.items=e.slice(0,t.maxResultsToShow);if(r.items.length>0){r.show()}else{r.reset()}})},t.debounceDelay,false)};r.selectNext=function(){r.select(++r.index)};r.selectPrior=function(){r.select(--r.index)};r.select=function(e){if(e<0){e=r.items.length-1}else if(e>=r.items.length){e=0}r.index=e;r.selected=r.items[e]};r.reset();return r}return{restrict:"E",require:"^tagsInput",scope:{source:"&"},templateUrl:"ngTagsInput/auto-complete.html",link:function(t,n,i,s){var c=[e.enter,e.tab,e.escape,e.up,e.down],h,p,d,v,m,g;f.load("autoComplete",t,i,{debounceDelay:[Number,100],minLength:[Number,3],highlightMatchedText:[Boolean,true],maxResultsToShow:[Number,10],loadOnDownArrow:[Boolean,false],loadOnEmpty:[Boolean,false],loadOnFocus:[Boolean,false]});d=t.options;p=s.registerAutocomplete();d.tagsInput=p.getOptions();h=new l(t.source,d);v=function(e){return e[d.tagsInput.displayProperty]};m=function(e){return u(v(e))};g=function(e){return e&&e.length>=d.minLength||!e&&d.loadOnEmpty};t.suggestionList=h;t.addSuggestionByIndex=function(e){h.select(e);t.addSuggestion()};t.addSuggestion=function(){var e=false;if(h.selected){p.addTag(h.selected);h.reset();p.focusInput();e=true}return e};t.highlight=function(e){var t=m(e);t=a(t);if(d.highlightMatchedText){t=o(t,a(h.query),"<em>$&</em>")}return r.trustAsHtml(t)};t.track=function(e){return v(e)};p.on("tag-added tag-removed invalid-tag input-blur",function(){h.reset()}).on("input-change",function(e){if(g(e)){h.load(e,p.getTags())}else{h.reset()}}).on("input-focus",function(){var e=p.getCurrentTagText();if(d.loadOnFocus&&g(e)){h.load(e,p.getTags())}}).on("input-keydown",function(n){var r=false;n.stopImmediatePropagation=function(){r=true;n.stopPropagation()};n.isImmediatePropagationStopped=function(){return r};var i=n.keyCode,s=false;if(c.indexOf(i)===-1){return}if(h.visible){if(i===e.down){h.selectNext();s=true}else if(i===e.up){h.selectPrior();s=true}else if(i===e.escape){h.reset();s=true}else if(i===e.enter||i===e.tab){s=t.addSuggestion()}}else{if(i===e.down&&t.options.loadOnDownArrow){h.load(p.getCurrentTagText(),p.getTags());s=true}}if(s){n.preventDefault();n.stopImmediatePropagation();t.$apply()}})}}}]);f.directive("tiTranscludeAppend",function(){return function(e,t,n,r,i){i(function(e){t.append(e)})}});f.directive("tiAutosize",["tagsInputConfig",function(e){return{restrict:"A",require:"ngModel",link:function(t,n,r,i){var s=e.getTextAutosizeThreshold(),o,u;o=angular.element('<span class="input"></span>');o.css("display","none").css("visibility","hidden").css("width","auto").css("white-space","pre");n.parent().append(o);u=function(e){var t=e,i;if(angular.isString(t)&&t.length===0){t=r.placeholder}if(t){o.text(t);o.css("display","");i=o.prop("offsetWidth");o.css("display","none")}n.css("width",i?i+s+"px":"");return e};i.$parsers.unshift(u);i.$formatters.unshift(u);r.$observe("placeholder",function(e){if(!i.$modelValue){u(e)}})}}}]);f.directive("tiBindAttrs",function(){return function(e,t,n){e.$watch(n.tiBindAttrs,function(e){angular.forEach(e,function(e,t){n.$set(t,e)})},true)}});f.provider("tagsInputConfig",function(){var e={},t={},n=3;this.setDefaults=function(t,n){e[t]=n;return this};this.setActiveInterpolation=function(e,n){t[e]=n;return this};this.setTextAutosizeThreshold=function(e){n=e;return this};this.$get=["$interpolate",function(r){var i={};i[String]=function(e){return e};i[Number]=function(e){return parseInt(e,10)};i[Boolean]=function(e){return e.toLowerCase()==="true"};i[RegExp]=function(e){return new RegExp(e)};return{load:function(n,s,o,u){var a=function(){return true};s.options={};angular.forEach(u,function(u,f){var l,c,h,p,d,v;l=u[0];c=u[1];h=u[2]||a;p=i[l];d=function(){var t=e[n]&&e[n][f];return angular.isDefined(t)?t:c};v=function(e){s.options[f]=e&&h(e)?p(e):d()};if(t[n]&&t[n][f]){o.$observe(f,function(e){v(e);s.events.trigger("option-change",{name:f,newValue:e})})}else{v(o[f]&&r(o[f])(s.$parent))}})},getTextAutosizeThreshold:function(){return n}}}]});f.run(["$templateCache",function(e){e.put("ngTagsInput/tags-input.html",'<div class="host" tabindex="-1" ti-transclude-append=""><div class="tags" ng-class="{focused: hasFocus}"><ul class="tag-list"><li class="tag-item" ng-repeat="tag in tagList.items track by track(tag)" ng-class="{ selected: tag == tagList.selected }"><span ng-bind="getDisplayText(tag)"></span> <a class="remove-button" ng-click="tagList.remove($index)" ng-bind="options.removeTagSymbol"></a></li></ul><input class="input" ng-model="newTag.text" ng-change="newTagChange()" ng-trim="false" ng-class="{\'invalid-tag\': newTag.invalid}" ti-bind-attrs="{type: options.type, placeholder: options.placeholder, tabindex: options.tabindex}" ti-autosize=""></div></div>');e.put("ngTagsInput/auto-complete.html",'<div class="autocomplete" ng-show="suggestionList.visible"><ul class="suggestion-list"><li class="suggestion-item" ng-repeat="item in suggestionList.items track by track(item)" ng-class="{selected: item == suggestionList.selected}" ng-click="addSuggestionByIndex($index)" ng-mouseenter="suggestionList.select($index)" ng-bind-html="highlight(item)"></li></ul></div>')}])})();
+},{}],326:[function(require,module,exports){
 /**
  * Restful Resources service for AngularJS apps
  * @version v1.4.0 - 2014-04-25 * @link https://github.com/mgonto/restangular
@@ -72240,7 +72185,7 @@ module.provider('Restangular', function() {
 
 })();
 
-},{}],331:[function(require,module,exports){
+},{}],327:[function(require,module,exports){
 module.exports={
   "name": "Taliflo",
   "version": "1.0.0",

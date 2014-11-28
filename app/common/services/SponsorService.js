@@ -1,6 +1,6 @@
 'use strict';
 
-var Sponsorships = function(Restangular) {
+var Sponsorships = function(Restangular, $http, apiConfig) {
 
 	var sponsorService = {
 		/* =======================================================================
@@ -40,6 +40,14 @@ var Sponsorships = function(Restangular) {
 				}
 			}
 			return businessList;
+		},
+		/* =======================================================================
+			Create Sponsorship
+		======================================================================= */	
+		createSponsorship: function(data) {
+			return $http.post(apiConfig.API.sponsorship.create, data).then(function(data){
+				return data;
+			});
 		}
 
 	};
@@ -48,5 +56,5 @@ var Sponsorships = function(Restangular) {
 
 };
 
-Sponsorships.$inject = ['Restangular'];
+Sponsorships.$inject = ['Restangular', '$http', 'apiConfig'];
 module.exports = Sponsorships;

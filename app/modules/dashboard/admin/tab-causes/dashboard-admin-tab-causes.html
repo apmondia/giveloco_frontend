@@ -2,8 +2,8 @@
 	<div class="tab-header">
 		<div class="left-section">
 			<div class="title">
-				<h3 class="tab-title">Total Causes: {{causes.length}}</h3>
-				<h5 class="subtitle"><span class="active">Activated Causes: {{causes.length}}</span><span class="inactive warning">Inactive Causes: {{causesInactive.length}}</span></h5>
+				<h3 class="tab-title">Total Causes: {{causesAll.length}}</h3>
+				<h5 class="subtitle"><span class="active">Activated Causes: {{causesActive.length}}</span><span class="inactive warning">Inactive Causes: {{causesInactive.length}}</span></h5>
 			</div>
 		</div>
 		<div class="middle-section">
@@ -30,7 +30,7 @@
 			</tr>
 		</thead>
 		<tbody ng-hide="loading">
-			<tr dir-paginate="user in causes | orderBy: 'created_at' : true | filter: searchCauses | itemsPerPage: 25 : 'causeTab'" pagination-id="causeTab" class="user cause">
+			<tr dir-paginate="user in causesAll | orderBy: 'created_at' : true | filter: searchCauses | itemsPerPage: 25 : 'causeTab'" pagination-id="causeTab" class="user cause">
 				<td class="user-field id">
 					{{user.id}}
 				</td>
