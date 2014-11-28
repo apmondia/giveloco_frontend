@@ -11,5 +11,5 @@ module.exports = angular.module('common.services', [])
 	.service('formValidation', require('./formValidation.js'))
 	.factory('DashService', require('./DashboardService.js'))
 	.service('regions', require('./regions.js'))
-	.factory('SponsorService', require('./SponsorshipService.js'))
+	.factory('SponsorService', require('./SponsorService.js'))
 	.factory('TransactionService', require('./TransactionService.js'));

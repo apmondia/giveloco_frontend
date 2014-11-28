@@ -8,17 +8,18 @@ function UsersProfileBusinessCtrl($scope) {
     $scope.purchaseGiftCard = function(userParam) {
         $scope.usersProfileBusinessPurchaseModal.open({
         	windowClass: 'transaction-purchase',
+        	backdrop: 'static',
         	resolve: {
 		        user: function () {
 					return userParam;
 		        },
-		        sponsorships: function(SponsorService) {
-		        	return SponsorService.getSponsorships(userParam);
+		        sponsoredCauses: function(SponsorService) {
+		        	return SponsorService.getSponsoredCauses(userParam);
 		        }
 			},
-			controller: function($scope, user, sponsorships) {
+			controller: function($scope, user, sponsoredCauses) {
         		$scope.user = user;
-        		$scope.sponsorships = sponsorships;
+        		$scope.sponsoredCauses = sponsoredCauses;
         	}
         });
 	};

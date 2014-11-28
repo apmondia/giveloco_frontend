@@ -11,11 +11,12 @@ var apiConfig = function($cookieStore) {
 
 	this.API = {
 		baseUrl: apiProxy + apiVersion,
-		transaction: {
-			donation: apiProxy + apiVersion + '/transactions/donation',
-			pledge: apiProxy + apiVersion + '/transactions',
-			redemption: apiProxy + apiVersion + '/transactions',
-			get_token: apiProxy + apiVersion + '/transactions/client_token'
+		certificate: {
+			purchase: apiProxy + apiVersion + '/users/certificates',
+			get_token: apiProxy + apiVersion + '/certificates/get_client_token'
+		},
+		sponsorship: {
+
 		},
 		user: {
 			login: apiProxy + '/user/login',

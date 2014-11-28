@@ -2,8 +2,9 @@
 
 var TRANSACTION_EVENTS = (function() {
     return {
+    	paymentFailure: 'Uh Oh! Something went wrong. Your credit card information may not be valid.',
         transactionFailure: 'Uh Oh! Something went wrong. Please check that your information is correct and try again.',
-        paymentFailure: 'Uh Oh! Something went wrong. Your credit card information may not be valid.'
+        transactionSuccess: 'Your transaction was completed successfully!'
     };
 }());
 

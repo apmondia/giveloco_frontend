@@ -5,12 +5,12 @@
 	    <div ng-repeat="cause in sponsorships" class="cause small-grid grid block">
 	    	<div class="grid-item" ng-hide="loading">
 		    	<a ui-sref="profile.cause({id:cause.id, role:cause.role})" title="{{cause.company_name}}">
-					<div class="profile-picture"><img ng-src="{{cause.profile_picture}}"></div>
+					<div class="profile-picture"><img ng-src="{{cause.images.profile_picture.medium}}"></div>
 					<div class="company-name">{{cause.company_name | characters:24}}</div>
 				</a>
 				<div class="user-summary">{{cause.summary | characters:140}}</div>
 				<div class="supporters" popover-placement="top" popover-trigger="mouseenter" popover="{{pluralizedUserTooltip(cause)}}">
-					<i class="icon icon-cash" ng-repeat="sponsor in cause.sponsors | limitTo : 3"></i>
+					<i class="icon icon-cash" ng-repeat="sponsor in cause.sponsors | filter: { status: 'accepted' } | limitTo : 3"></i>
 					<i class="icon icon-more-2" ng-if="cause.sponsors.length > 3"></i>
 				</div>
 			</div>

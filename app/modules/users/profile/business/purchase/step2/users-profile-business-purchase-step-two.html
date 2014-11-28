@@ -1,7 +1,22 @@
 <div class="purchase-certificate-step-two">
-	<div ng-repeat="cause in sponsorships" class="cause">
-		<div class="profile-picture"><img ng-src="{{cause.images.profile_picture.thumb}}"></div>
-		<div class="company-name">{{cause.company_name | characters:24}}</div>
-		<div class="user-summary">{{cause.summary | characters:140}}</div>
+	<div class="step-title">
+		<span class="big">Choose a Cause</span>
+		<span class="small">to receive the donation</span>
+		<span class="disclaimer">{{user.company_name}} will donate a percentage of this sale to the cause you choose.</span>
+	</div>
+
+	<div ng-repeat="sponsorship in sponsorships" class="cause radio-button">
+		<input type="radio" id="cause-{{$index}}" name="cause-{{$index}}" ng-model="newUser.certificate.sponsorship_id" value="{{sponsorship.id}}">
+		<label for="cause-{{$index}}" class="cause-details">
+			<div class="donation-amount left-side">
+				<div class="donation-amount-label">Donation Amount</div>
+				<div class="value">{{sponsorship.percentage * 0.01 * newUser.certificate.amount | currency}}</div>
+				<div class="icon"></div>
+			</div>
+			<div class="right-side">
+				<div class="company-name">{{sponsorship.cause.company_name}}</div>
+				<div class="user-summary">{{sponsorship.cause.summary | characters:140}}</div>
+			</div>
+		</label>
     </div>
 </div>

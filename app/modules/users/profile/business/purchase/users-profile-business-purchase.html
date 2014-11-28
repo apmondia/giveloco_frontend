@@ -1,5 +1,5 @@
 <div id="modalTransactionPurchase" class="modal-wrapper">
-	<h2 class="modal-title"><span>Buy a {{newUser.certificate.amount | currency}} Gift Certificate from:</span>{{user.company_name}}</h2>
+	<h2 class="modal-title"><span>Buy a <i>{{gcAmount}}</i> {{newUser.certificate.amount | currency}} Gift Certificate from:</span>{{user.company_name}}</h2>
 	<button class="close" ng-click="usersProfileBusinessPurchaseModal.close()"><i class="icon icon-x"></i></button>
 	
 	<form class="form" id="purchaseForm" name="purchaseForm" stripe-form="stripeCallBack" novalidate autocomplete="off">

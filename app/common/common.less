@@ -180,6 +180,7 @@ h5.subtitle {
     .open>a,
     .active a,
     .nav>li>a:hover,
+    .nav>li>a:focus,
     .nav .open>a, 
     .nav .open>a:focus, 
     .nav .open>a:hover {
@@ -748,7 +749,7 @@ select {
         left: 0;
         right: 0;
         top: 0;
-        z-index: 9;
+        z-index: 2000;
     }
     .close {
         line-height: 18px;
@@ -795,6 +796,11 @@ select {
                 padding: 0 29px;
             }
         }
+        .grid-item {
+            .profile-picture {
+                height: 188px;
+            }
+        }
     }
     .grid-item {
         background-color: #fff;
@@ -819,6 +825,8 @@ select {
             }
             img {
                 width: 100%;
+                position: relative;
+                z-index: 1;
             }
         }
         .company-name {

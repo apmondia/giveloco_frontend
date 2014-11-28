@@ -7,7 +7,7 @@
 				<div ng-repeat="cause in featuredCauses | limitTo:4" class="cause grid block">
 					<div class="grid-item">
 						<a ui-sref="profile.cause({id:cause.id})" title="{{cause.company_name}}">
-							<div class="profile-picture"><img ng-src="{{cause.profile_picture}}"></div>
+							<div class="profile-picture"><img ng-src="{{cause.images.profile_picture.medium}}"></div>
 							<div class="company-name">{{cause.company_name | characters:20}}</div>
 						</a>
 						<div class="user-summary">{{cause.summary | characters:140}}</div>

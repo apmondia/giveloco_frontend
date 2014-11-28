@@ -5,6 +5,6 @@ module.exports = function usersProfileBusinessPurchaseStepTwoDirective() {
 		controller: 'UsersProfileBusinessPurchaseCtrl',
 		template: require('./users-profile-business-purchase-step-two.html'),
 		restrict: 'A',
-		scope: true
+		scope: false
 	};
 };

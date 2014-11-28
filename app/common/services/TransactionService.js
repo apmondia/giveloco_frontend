@@ -1,11 +1,11 @@
 'use strict';
 
-var Transactions = function($rootScope, $http, apiConfig) {
+var Transactions = function($http, apiConfig) {
 
 	var tranService = {
 
-	    donation: function(data) {
-			return $http.post(apiConfig.API.transaction.donation, data).then(function(result){
+	    purchaseCertificate: function(data) {
+			return $http.post(apiConfig.API.certificate.purchase, data).then(function(result){
 				console.log(result.data);
 				return result;
 			});
@@ -17,5 +17,5 @@ var Transactions = function($rootScope, $http, apiConfig) {
 
 };
 
-Transactions.$inject = ['$rootScope', '$http', 'apiConfig'];
+Transactions.$inject = ['$http', 'apiConfig'];
 module.exports = Transactions;

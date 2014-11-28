@@ -3,11 +3,22 @@
 var Sponsorships = function(Restangular) {
 
 	var sponsorService = {
-
 		/* =======================================================================
-			Get Lists of Supported Causes
+			Get List of Accepted Sponsorships
 		======================================================================= */
-		getSponsorships: function(user) {
+		getAcceptedSponsorships: function(user) {
+			var sponsorshipList = [];
+			for (var i=0; i < user.sponsorships.length; i++) {
+				if ( user.sponsorships[i].status === 'accepted' ) {
+			        sponsorshipList.push( user.sponsorships[i] );
+			    }
+			}
+			return sponsorshipList;
+		},
+		/* =======================================================================
+			Get List of Sponsored Causes
+		======================================================================= */
+		getSponsoredCauses: function(user) {
 			var causeList = [];
 			for (var i=0; i < user.sponsorships.length; i++) {
 				if (user.sponsorships[i].status === 'accepted') {
@@ -18,7 +29,7 @@ var Sponsorships = function(Restangular) {
 			return causeList;
 		},
 		/* =======================================================================
-			Get Lists of Supporting Businesses
+			Get List of Sponsors (Businesses)
 		======================================================================= */	
 		getSponsors: function(user) {
 			var businessList = [];

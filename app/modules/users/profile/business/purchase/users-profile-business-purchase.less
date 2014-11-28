@@ -32,6 +32,7 @@
 			.animated();
 			transition: max-height 0.2s ease-in;
 			&.active {
+				min-height: 150px;
 				max-height: 1000px;
 				opacity: 1;
 				position: relative;
@@ -39,6 +40,20 @@
 				left: 0px;
 				.bounceInLeft();
 			}
+		}
+	}
+	.step-title {
+		text-align: center;
+		margin: 5px 0 20px;
+		span {
+			display: block;
+		}
+		.big {
+			font-size: 28px;
+			margin-bottom: 5px;
+		}
+		.small {
+			font-size: 12px;
 		}
 	}
 	.purchase-certificate-step-one {
@@ -81,7 +96,99 @@
 		}
 	}
 	.purchase-certificate-step-two {
+		.step-title {
+			.disclaimer {
+				background-color: @lighter-grey;
+				padding: 5px;
+				border-radius: 3px;
+				color: #f00;
+				margin-top: 15px;
+				text-align: center;
+			}
+		}
+		.cause.radio-button {
+			@hover-text-color: #fff;
+			label {
+				cursor: pointer;
+				border: solid 1px #999;
+				font-weight: normal;
+				padding: 10px 0px;
+				border-radius: 5px;
+				position: relative;
+				&:hover {
+					color: #333;
+					background-color: @lighter-grey;
+					.donation-amount-label {
+						color: @brand-teal;
+					}
+				}
+			}
+			input[type=radio] {
+				display: none;
+				&:checked + label {
+					color: @hover-text-color;
+					border: solid 1px @brand-teal;
+					background-color: @brand-teal;
+					.donation-amount-label {
+				    	color: @hover-text-color;
+						border-bottom: solid 1px @hover-text-color;
+				    }
+				    .company-name {
+				    	color: #fff;
+						border-bottom: solid 1px #fff;
+				    }
+				    .icon {
+						display: block;
+					}
+				}
+			}
+			.left-side {
+				.make-xs-column(4);
+			    .make-sm-column(4);
+			    .make-md-column(4);
+			    .make-lg-column(4);
+			    text-align: center;
+			    .donation-amount-label {
+			    	color: @brand-teal;
+					border-bottom: solid 1px #333;
+					padding-bottom: 5px;
+					margin-bottom: 7px;
+			    }
+			    .value {
+			    	font-size: 20px;
+			    	margin-top: 5px;
+			    }
+			    .icon {
+					float: none;
+				    margin-top: 8px;
+					display: none;
+					&:before {
+						font-family: "Taliflo";
+						content: "\e047";
+						.icons(@font-size: 20px);
+						color: #fff;
+						float: none;
+					}
+				}
+			}
+			.right-side {
+				.make-xs-column(8);
+			    .make-sm-column(8);
+			    .make-md-column(8);
+			    .make-lg-column(8);
+				.company-name {
+					font-size: 18px;
+					font-weight: bold;
+					color: @brand-teal;
+					border-bottom: solid 1px #333;
+					padding-bottom: 5px;
+					margin-bottom: 5px;
+				}
+				.user-summary {
 
+				}				
+			}
+		}
 	}
 	.purchase-certificate-step-three {
 
