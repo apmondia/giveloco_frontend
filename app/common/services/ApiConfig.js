@@ -1,7 +1,7 @@
 'use strict';
 
 var apiConfig = function($cookieStore) {
-	
+
 /* =======================================================================
 	Taliflo API Configuration
 ======================================================================= */
@@ -13,7 +13,8 @@ var apiConfig = function($cookieStore) {
 		baseUrl: apiProxy + apiVersion,
 		certificate: {
 			purchase: apiProxy + apiVersion + '/users/certificates',
-			get_token: apiProxy + apiVersion + '/certificates/get_client_token'
+			get_token: apiProxy + apiVersion + '/certificates/get_client_token',
+			redeem: apiProxy + apiVersion + '/certificates/redeem'
 		},
 		sponsorship: {
 

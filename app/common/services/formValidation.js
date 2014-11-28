@@ -2,6 +2,7 @@
 
 var FormValidation = function() {
 
+	this.alphaNumNoWhitespace = /^[a-zA-Z\d]+$/;
 	this.alphaNum = /^[a-z\d\-_\s]+$/i;
 	this.alphaNumComma = /^[a-zA-Z0-9_,\-\s]*$/;
 	this.alphaNumPeriod = /^[a-zA-Z0-9_.\-\s]*$/;

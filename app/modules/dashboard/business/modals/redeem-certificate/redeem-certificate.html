@@ -1,0 +1,30 @@
+<div id="modal-businessRedeemCertificate" class="modal-wrapper">
+  <h2 class="modal-title"></h2>
+  <button class="close" ng-click="redeemCertificateModal.close()"><i class="icon icon-x"></i></button>
+
+  <form class="form" name="redeemCertificateForm" ng-submit="redeemCertificate(redeemCertificateForm.$valid)" novalidate>
+
+    <div class="modal-body">
+
+        <div class="form-section">
+          <div class="form-group" ng-class="{'invalid' : redeemCertificateForm.redemptionCode.$invalid && redeemCertificateForm.redemptionCode.$dirty, 'valid' : signupFormCause.company.$valid && redeemCertificateForm.redemptionCode.$dirty}">
+            <label for="redeemCertificateForm" class="inline">Certificate Code</label>
+            <input type="redemptionCode" name="redemptionCode" id="redemptionCode" class="form-control with-label" placeholder="Certificate Redemption Code" ng-model="redemptionCode" ng-pattern="redemptionCodeRegex" maxlength="60" required auto-focus show-form-errors />
+            <p class="form-helper" ng-if="redeemCertificateForm.redemptionCode.$error.pattern">This field only accepts letters and numbers.</p>
+            <p class="form-helper" ng-if="redeemCertificateForm.redemptionCode.$dirty && redeemCertificateForm.redemptionCode.$error.required && !redeemCertificateForm.redemptionCode.$focused">Certificate code is required!</p>
+          </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <ul class="buttons list-unstyled">
+        <li><button class="btn button button-primary" type="submit" ng-disabled="signupFormCause.$invalid">Redeem</button></li>
+        <li><button class="btn button btn-danger" ng-click="redeemCertificateModal.close()">Cancel</button></li>
+      </ul>
+    </div>
+
+
+  </form>
+
+
+</div>
