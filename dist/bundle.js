@@ -2080,11 +2080,11 @@ module.exports = angular.module('dashboard.admin', [
 },{"./DashboardAdminController":58,"./dashboardAdminDirective":60,"./modals":69,"./summary":73,"./tab-businesses":77,"./tab-causes":81,"./tab-individuals":85,"./tab-sponsorships":89}],62:[function(require,module,exports){
 'use strict';
 
-function ChangeUserStatusCtrl($scope, user) {
-	$scope.user = user;
+function ChangeUserStatusCtrl() {
+	
 }
 
-ChangeUserStatusCtrl.$inject = ['$scope', 'user'];
+ChangeUserStatusCtrl.$inject = [];
 module.exports = ChangeUserStatusCtrl;
 },{}],63:[function(require,module,exports){
 module.exports = '<div id="modal-adminChangeUserStatus" class="modal-wrapper">\n' +
@@ -2305,14 +2305,14 @@ module.exports = '<div class="tab businesses">\n' +
     '				</td>\n' +
     '				<td class="user-field user-actions">\n' +
     '		            <div class="dropdown">\n' +
-    '		              <div dropdown is-open="status.isopen" class="dropdown-wrapper">\n' +
-    '		                <a class="dropdown-toggle">\n' +
-    '		                	<i class="icon icon-gear-setting-1"></i><span class="caret"></span>\n' +
-    '		                </a>\n' +
-    '		                <ul class="dropdown-menu dropdown-menu-right" role="menu">\n' +
-    '		                  <li class="first"><a ng-click="changeUserStatus(user)">Change Status</a></li>\n' +
-    '		                </ul>\n' +
-    '		              </div>\n' +
+    '						<div is-open="status.isopen" class="dropdown-wrapper" dropdown on-toggle="toggled(open)">\n' +
+    '							<a class="dropdown-toggle" dropdown-toggle>\n' +
+    '								<i class="icon icon-gear-setting-1"></i><span class="caret"></span>\n' +
+    '							</a>\n' +
+    '							<ul class="dropdown-menu dropdown-menu-right" role="menu">\n' +
+    '								<li class="first"><a ng-click="changeUserStatus(user)">Change Status</a></li>\n' +
+    '							</ul>\n' +
+    '						</div>\n' +
     '		            </div>\n' +
     '				</td>\n' +
     '			</tr>\n' +
@@ -2409,14 +2409,14 @@ module.exports = '<div class="tab causes">\n' +
     '				</td>\n' +
     '				<td class="user-field user-actions">\n' +
     '		            <div class="dropdown">\n' +
-    '		              <div dropdown is-open="status.isopen" class="dropdown-wrapper">\n' +
-    '		                <a class="dropdown-toggle">\n' +
-    '		                	<i class="icon icon-gear-setting-1"></i><span class="caret"></span>\n' +
-    '		                </a>\n' +
-    '		                <ul class="dropdown-menu dropdown-menu-right" role="menu">\n' +
-    '		                  <li class="first"><a ng-click="changeUserStatus(user)">Change Status</a></li>\n' +
-    '		                </ul>\n' +
-    '		              </div>\n' +
+    '						<div is-open="status.isopen" class="dropdown-wrapper" dropdown on-toggle="toggled(open)">\n' +
+    '							<a class="dropdown-toggle" dropdown-toggle>\n' +
+    '								<i class="icon icon-gear-setting-1"></i><span class="caret"></span>\n' +
+    '							</a>\n' +
+    '							<ul class="dropdown-menu dropdown-menu-right" role="menu">\n' +
+    '								<li class="first"><a ng-click="changeUserStatus(user)">Change Status</a></li>\n' +
+    '							</ul>\n' +
+    '						</div>\n' +
     '		            </div>\n' +
     '				</td>\n' +
     '			</tr>\n' +
@@ -2511,14 +2511,14 @@ module.exports = '<div class="tab individuals">\n' +
     '				</td>\n' +
     '				<td class="user-field user-actions">\n' +
     '		            <div class="dropdown">\n' +
-    '		              <div dropdown is-open="status.isopen" class="dropdown-wrapper">\n' +
-    '		                <a class="dropdown-toggle">\n' +
-    '		                	<i class="icon icon-gear-setting-1"></i><span class="caret"></span>\n' +
-    '		                </a>\n' +
-    '		                <ul class="dropdown-menu dropdown-menu-right" role="menu">\n' +
-    '		                  <li class="first"><a ng-click="changeUserStatus(user)">Change Status</a></li>\n' +
-    '		                </ul>\n' +
-    '		              </div>\n' +
+    '						<div is-open="status.isopen" class="dropdown-wrapper" dropdown on-toggle="toggled(open)">\n' +
+    '							<a class="dropdown-toggle" dropdown-toggle>\n' +
+    '								<i class="icon icon-gear-setting-1"></i><span class="caret"></span>\n' +
+    '							</a>\n' +
+    '							<ul class="dropdown-menu dropdown-menu-right" role="menu">\n' +
+    '								<li class="first"><a ng-click="changeUserStatus(user)">Change Status</a></li>\n' +
+    '							</ul>\n' +
+    '						</div>\n' +
     '		            </div>\n' +
     '				</td>\n' +
     '			</tr>\n' +
