@@ -1,7 +1,16 @@
 'use strict';
 
-function DashboardBusinessSummaryCtrl() {
+function DashboardBusinessSummaryCtrl($scope) {
+/* =======================================================================
+	Modals
+======================================================================= */
+	$scope.openRedeemCertificate = function () {
+		$scope.redeemCertificateModal.open({
+			windowClass: 'redeem-certificate'
+		});
+	};
+
 }
 
-DashboardBusinessSummaryCtrl.$inject = [];
+DashboardBusinessSummaryCtrl.$inject = ['$scope'];
 module.exports = DashboardBusinessSummaryCtrl;

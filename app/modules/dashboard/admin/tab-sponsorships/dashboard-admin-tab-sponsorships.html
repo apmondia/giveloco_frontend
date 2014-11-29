@@ -3,11 +3,11 @@
     <div class="left-section">
       <div class="title">
         <h3 class="tab-title">Total Sponsorships: {{sponsorships.length}}</h3>
-        <a class="btn button button-secondary" ng-click="createSponsorship()" id='create-sponsorship-button'>Create Sponsorship</a>
       </div>
     </div>
     <div class="middle-section">
       <div ajax-spinner class="spinner" ng-show="loading"></div>
+      <a class="btn button button-secondary" id="create-sponsorship-button" ng-click="createSponsorship()" ng-hide="loading">Create Sponsorship</a>
     </div>
     <div class="right-section">
       <div class="utils search-wrapper">

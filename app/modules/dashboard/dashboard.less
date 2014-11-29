@@ -78,10 +78,25 @@ body.dashboard {
 		}
 	}
 	.dashboard.summary {
-		.page-title {
-			margin-bottom: 20px;
-		}
+		.row();
 		.clearfix();
+		.page-title {
+			.clearfix();
+			margin-bottom: 20px;
+			.left-side {
+				.make-xs-column(12);
+				.make-sm-column(9);
+	            .make-md-column(9);
+	            .make-lg-column(9);
+			}
+			.right-side {
+				.make-xs-column(12);
+				.make-sm-column(3);
+	            .make-md-column(3);
+	            .make-lg-column(3);
+	            margin-top: 25px;
+			}
+		}
 		.summary-block {
 			.make-xs-column(12);
 			.make-sm-column(6);

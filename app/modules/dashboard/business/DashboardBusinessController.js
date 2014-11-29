@@ -1,14 +1,8 @@
 'use strict';
 
-function DashboardBusinessCtrl($scope) {
-
-  $scope.openRedeemCertificate = function () {
-    $scope.redeemCertificateModal.open({
-      windowClass: 'redeem-certificate'
-    });
-  };
+function DashboardBusinessCtrl() {
 
 }
 
-DashboardBusinessCtrl.$inject = ['$scope'];
+DashboardBusinessCtrl.$inject = [];
 module.exports = DashboardBusinessCtrl;

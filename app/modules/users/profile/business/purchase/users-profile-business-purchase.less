@@ -28,9 +28,10 @@
 			top: 0;
 			left: -9000px;
 			width: 100%;
+			overflow: hidden;
 			max-height: 0;
 			.animated();
-			transition: max-height 0.2s ease-in;
+			transition: max-height 0.2s ease-in, min-height 0.2s ease-out;
 			&.active {
 				min-height: 150px;
 				max-height: 1000px;

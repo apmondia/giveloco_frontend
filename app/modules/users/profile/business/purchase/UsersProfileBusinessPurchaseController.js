@@ -12,7 +12,7 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
     	email: '',
     	mailing_list_opt_in: true,
     	agree_to_tc: false,
-		certificate: {
+		certificates_attributes: {
 			sponsorship_id: null,
 			amount: 20,
 			stripeToken: null
@@ -56,7 +56,7 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 	$scope.sponsorships = $scope.sponsorshipData();
 
 	$scope.stepTwoNotComplete = function() {
-		return $scope.newUser.certificate.sponsorship_id === null ? true : false;	
+		return $scope.newUser.certificates_attributes.sponsorship_id === null ? true : false;	
     };
 
 
@@ -70,9 +70,9 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
     	}
     };
 
-    $scope.$watch('newUser.certificate.sponsorship_id', function(){
-    	if ($scope.newUser.certificate.sponsorship_id !== null) {
-			Restangular.one('sponsorships', $scope.newUser.certificate.sponsorship_id).get().then(function(sponsorship) {
+    $scope.$watch('newUser.certificates_attributes.sponsorship_id', function(){
+    	if ($scope.newUser.certificates_attributes.sponsorship_id !== null) {
+			Restangular.one('sponsorships', $scope.newUser.certificates_attributes.sponsorship_id).get().then(function(sponsorship) {
 				$scope.causeName = sponsorship.cause.company_name;
 			});
 	    }
@@ -89,9 +89,9 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 		$scope.newUser.email = '';
 		$scope.newUser.mailing_list_opt_in = true;
     	$scope.newUser.agree_to_tc = false;
-		$scope.newUser.certificate.sponsorship_id = null;
-		$scope.newUser.certificate.amount = 20;
-		$scope.newUser.certificate.stripeToken = null;
+		$scope.newUser.certificates_attributes.sponsorship_id = null;
+		$scope.newUser.certificates_attributes.amount = 20;
+		$scope.newUser.certificates_attributes.stripeToken = null;
 		$scope.number = '';
 		$scope.expiry = '';
 		$scope.cvc = '';
@@ -113,7 +113,7 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 		if (response.error) {
 			alertService.showAlert(TRANSACTION_EVENTS.paymentFailure, 'alert-danger');
 		} else {
-			$scope.newUser.certificate.stripeToken = response.id;
+			$scope.newUser.certificates_attributes.stripeToken = response.id;
 			TransactionService.purchaseCertificate($scope.newUser).then(transactionSuccess, transactionError);
 		}
 	};

@@ -1,7 +1,12 @@
 <div class="dashboard business summary">
 	<div class="page-title">
-		<h1 class="dashboard-summary">{{currentUser.company_name}}'s Dashboard</h1>
-		<h5 class="subtitle">Business Performance Snapshot</h5>
+		<div class="left-side">
+			<h1 class="dashboard-summary">{{currentUser.company_name}}'s Dashboard</h1>
+			<h5 class="subtitle">Business Performance Snapshot</h5>
+		</div>
+		<div class="right-side">
+			<a class="btn button button-secondary" ng-click="openRedeemCertificate()" id='redeem-certificate-button'>Redeem Certificate</a>
+		</div>
 	</div>
 
 	<div class="community-investment-rate summary-block">
@@ -37,3 +42,5 @@
 		</div>
 	</div>
 </div>
+
+<div dashboard-business-modals></div>

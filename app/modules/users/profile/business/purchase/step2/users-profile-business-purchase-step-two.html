@@ -6,11 +6,11 @@
 	</div>
 
 	<div ng-repeat="sponsorship in sponsorships" class="cause radio-button">
-		<input type="radio" id="cause-{{$index}}" name="cause-{{$index}}" ng-model="newUser.certificate.sponsorship_id" value="{{sponsorship.id}}">
+		<input type="radio" id="cause-{{$index}}" name="cause-{{$index}}" ng-model="newUser.certificates_attributes.sponsorship_id" value="{{sponsorship.id}}">
 		<label for="cause-{{$index}}" class="cause-details">
 			<div class="donation-amount left-side">
 				<div class="donation-amount-label">Donation Amount</div>
-				<div class="value">{{sponsorship.percentage * 0.01 * newUser.certificate.amount | currency}}</div>
+				<div class="value">{{sponsorship.percentage * 0.01 * newUser.certificates_attributes.amount | currency}}</div>
 				<div class="icon"></div>
 			</div>
 			<div class="right-side">
