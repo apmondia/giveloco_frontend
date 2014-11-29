@@ -33,8 +33,6 @@ function DashboardTasksCtrl($scope) {
 		}
 	};
 
-	console.log($scope.currentUser);
-
 }
 
 DashboardTasksCtrl.$inject = ['$scope'];
