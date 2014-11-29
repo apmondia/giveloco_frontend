@@ -53,28 +53,28 @@ function userAccountRoutes($stateProvider) {
         pageDescription: 'Edit your account information.'
       }
   },
-  accountHistory = {
-      name: 'account.history',
-      url: '/history',
-      template: '<div users-account-history></div>',
-      data: {
-        moduleClasses: 'users account',
-        pageClasses: 'history',
-        pageTitle: 'Account History',
-        pageDescription: 'User account history.'
-      }
-  },
-  accountSponsors = {
-      name: 'account.sponsors',
-      url: '/sponsors',
-      template: '<div users-account-sponsors></div>',
-      data: {
-        moduleClasses: 'users account',
-        pageClasses: 'sponsors',
-        pageTitle: 'Sponsors and Sponsorships',
-        pageDescription: 'Cause sponsors and business sponsorships.'
-      }
-  },
+  // accountHistory = {
+  //     name: 'account.history',
+  //     url: '/history',
+  //     template: '<div users-account-history></div>',
+  //     data: {
+  //       moduleClasses: 'users account',
+  //       pageClasses: 'history',
+  //       pageTitle: 'Account History',
+  //       pageDescription: 'User account history.'
+  //     }
+  // },
+  // accountSponsors = {
+  //     name: 'account.sponsors',
+  //     url: '/sponsors',
+  //     template: '<div users-account-sponsors></div>',
+  //     data: {
+  //       moduleClasses: 'users account',
+  //       pageClasses: 'sponsors',
+  //       pageTitle: 'Sponsors and Sponsorships',
+  //       pageDescription: 'Cause sponsors and business sponsorships.'
+  //     }
+  // },
   accountChangePassword = {
       name: 'account.changePassword',
       url: '/change-password',
@@ -92,8 +92,8 @@ $stateProvider.state(accountBilling);
 $stateProvider.state(accountDetails);
 $stateProvider.state(accountDetailsView);
 $stateProvider.state(accountDetailsEdit);
-$stateProvider.state(accountHistory);
-$stateProvider.state(accountSponsors);
+// $stateProvider.state(accountHistory);
+// $stateProvider.state(accountSponsors);
 $stateProvider.state(accountChangePassword);
 
 }

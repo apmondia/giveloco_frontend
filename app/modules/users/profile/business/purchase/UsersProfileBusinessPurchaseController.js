@@ -20,12 +20,7 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
     };
 
     $scope.stepOneNotComplete = function() {
-    	if (($scope.newUser.first_name === undefined) 
-    		|| ($scope.newUser.last_name === undefined) 
-    		|| ($scope.newUser.email === undefined) 
-    		|| ($scope.number === undefined) 
-    		|| ($scope.expiry === undefined) 
-    		|| ($scope.cvc === undefined)) {
+    	if (($scope.newUser.first_name === undefined) || ($scope.newUser.last_name === undefined) || ($scope.newUser.email === undefined) || ($scope.number === undefined) || ($scope.expiry === undefined) || ($scope.cvc === undefined)) {
     		return true;
     	} else {
     		return false;

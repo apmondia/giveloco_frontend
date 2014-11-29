@@ -147,7 +147,7 @@ gulp.task('prodServer', function() {
 // Clean out dist folder contents on build
 // =======================================================================
 gulp.task('clean-dev', function () {
-    del(['./dist/*.js', './dist/*.css', '!./dist/vendor.js', '!./dist/vendor.css', './dist/*.html', './dist/*.png', './dist/*.ico']);
+    del(['./dist/*.js', './dist/*.js.map', './dist/*.css', '!./dist/vendor.js', '!./dist/vendor.css', './dist/*.html', './dist/*.png', './dist/*.ico']);
 });
 
 gulp.task('clean-full', function () {
@@ -179,7 +179,7 @@ gulp.task('bundle-dev', function() {
             .on("error", handleError)
             .pipe(buffer())
             .pipe(sourcemaps.init({loadMaps: true}))
-            .pipe(sourcemaps.write('./'))
+            .pipe(sourcemaps.write())
             .pipe(gulp.dest(filePath.build.dest))
             .pipe(notify({ message: 'Browserify task complete' }))
             .pipe(connect.reload());
