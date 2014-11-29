@@ -9,7 +9,7 @@ function UsersAuthRegistrationBusinessCtrl($rootScope, $scope, $state, Auth, AUT
 	var user = $scope.user;
 	user.role = 'business';
 	
-	
+
 	/* =======================================================================
 		Form Submission
 	======================================================================= */

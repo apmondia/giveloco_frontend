@@ -1,3 +1,11 @@
-<div class="tasks-to-get-published">
-	Tasks Go Here!
+<div class="tasks-to-publish-profile" ng-if="profileCompleted()">
+	<h4>In order to publish your profile you need to complete the following tasks</h4>
+	<ul class="remaining-tasks">
+		<li class="task" ng-if="profileDescriptionRequired()">Add a description of your company to <a ui-sref="account.details.edit({id:currentUser.id})">your profile</a>.</li>
+		<li class="task" ng-if="profileSummaryRequired()">Add a summary of your company to <a ui-sref="account.details.edit({id:currentUser.id})">your profile</a>.</li>
+		<li class="task" ng-if="addressRequired()">Add a street address to <a ui-sref="account.details.edit({id:currentUser.id})">your profile</a>.</li>
+		<li class="task" ng-if="contactInfoRequired()">Add a phone number to <a ui-sref="account.details.edit({id:currentUser.id})">your profile</a>.</li>
+		<li class="task" ng-if="websiteRequired()">Add a website to <a ui-sref="account.details.edit({id:currentUser.id})">your profile</a>.</li>
+		<li class="task" ng-if="billingInfoRequired()">Link your <a ui-sref="account.billing({id:currentUser.id})">Stripe Account</a> to your profile.</li>
+	</ul>
 </div>

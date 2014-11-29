@@ -6,7 +6,7 @@
 
 
 /* ***********************************************************************
-	Page Styles
+	Module Styles
 *********************************************************************** */
 body.dashboard {
 	.dashboard-layout {
@@ -76,6 +76,12 @@ body.dashboard {
 				}
 			}
 		}
+		.tab-pane {
+			margin-top: 30px;
+			.section-title {
+				display: none;
+			}
+		}
 	}
 	.dashboard.summary {
 		.row();
@@ -139,4 +145,5 @@ body.dashboard {
 @import "admin/dashboard-admin.less";
 @import "business/dashboard-business.less";
 @import "cause/dashboard-cause.less";
+@import "tasks/dashboard-tasks.less";
 @import "user/dashboard-user.less";

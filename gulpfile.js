@@ -17,6 +17,7 @@ var gulp            = require('gulp'),
     notify          = require('gulp-notify'),
     browserify      = require('browserify'),
     watchify        = require('watchify'),
+    exorcist        = require('exorcist'),
     source          = require('vinyl-source-stream'),
     buffer          = require('vinyl-buffer'),
     runSequence     = require('run-sequence');
@@ -175,11 +176,12 @@ gulp.task('bundle-dev', function() {
 
     function rebundle () {
         return bundler.bundle({ debug: true })
+            // .pipe(exorcist(filePath.build.dest + '/bundle.js.map'))
             .pipe(source('bundle.js'))
             .on("error", handleError)
             .pipe(buffer())
-            .pipe(sourcemaps.init({loadMaps: true}))
-            .pipe(sourcemaps.write())
+            // .pipe(sourcemaps.init({loadMaps: true}))
+            // .pipe(sourcemaps.write())
             .pipe(gulp.dest(filePath.build.dest))
             .pipe(notify({ message: 'Browserify task complete' }))
             .pipe(connect.reload());

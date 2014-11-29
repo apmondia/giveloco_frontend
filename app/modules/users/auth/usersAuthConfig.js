@@ -25,6 +25,7 @@ function userAuthRoutes($stateProvider) {
     },
       signupIndividual = {
         name: 'auth.signup.individual',
+        abstract: true, // remove later when individuals can log in
         url: '',
         template: '<div users-auth-registration-individual></div>',
         data: {

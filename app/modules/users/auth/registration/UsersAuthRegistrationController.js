@@ -21,7 +21,9 @@ function UsersAuthRegistrationCtrl($rootScope, $scope) {
 		phone: null,
 		tag_list: null,
 		description: null,
-		summary: null
+		summary: null,
+		mailing_list_opt_in: true,
+    	agree_to_tc: false
 	};
 }
 

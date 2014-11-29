@@ -38,12 +38,16 @@
 				<p class="form-helper" ng-if="signupFormBusiness.password.$dirty && signupFormBusiness.password.$error.required && !signupFormBusiness.password.$focused">Password is required!</p>
 				<p class="form-helper" ng-if="signupFormBusiness.password.$dirty && signupFormBusiness.password.$error.minlength && !signupFormBusiness.password.$focused">Password must contain at least 8 characters.</p>
 			</div>
+			<div class="form-group agree-to-terms checkbox">
+				<input type="checkbox" id="business-registration-terms" name="registration-terms" ng-model="user.agree_to_tc" value="true" required>
+				<label for="business-registration-terms">I agree to the <a ui-sref="terms" target="_blank">Terms &amp; Conditions</a></label>
+			</div>
 		</div>
 
 		<div class="form-group form-buttons">
 			<div ajax-spinner class="spinner" ng-show="showSpinner"></div>
 			<button class="btn button button-primary" type="submit" ng-disabled="signupFormBusiness.$invalid">Sign Up</button>
-			<p class="choose-form">Sign up as a <a ui-sref="auth.signup.individual">Customer</a> or a <a ui-sref="auth.signup.cause">Cause</a></p>
+			<p class="choose-form">or sign up as a <a ui-sref="auth.signup.cause">Cause</a></p>
 		</div>
 
 	</form>

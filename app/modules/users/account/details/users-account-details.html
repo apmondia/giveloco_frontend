@@ -6,8 +6,8 @@
 		</div>
 		<div class="user-actions">
 			<a class="btn button button-secondary edit-buttons" ui-sref="profile.{{currentUser.role}}({id:currentUser.id})" ng-if="userRoleIsNot('individual') && userRoleIsNot('admin')"><i class="icon icon-user-circle-outline"></i>My Profile</a>
-			<a class="btn button button-secondary edit-buttons" ui-sref="account.details.edit" ng-if="$state.current.name == 'account.details.view'"><i class="icon icon-pencil"></i>Edit Details</a>
-    		<a class="btn button button-secondary edit-buttons" ui-sref="account.details.view" ng-if="$state.current.name == 'account.details.edit'"><i class="icon icon-eye-view"></i>View Details</a>
+			<a class="btn button button-secondary edit-buttons" ui-sref="account.details.edit" ng-if="$state.current.name === 'account.details.view'"><i class="icon icon-pencil"></i>Edit Details</a>
+    		<a class="btn button button-secondary edit-buttons" ui-sref="account.details.view" ng-if="$state.current.name === 'account.details.edit'"><i class="icon icon-eye-view"></i>View Details</a>
 		</div>
 	</div>
 	<div class="sub-header">
