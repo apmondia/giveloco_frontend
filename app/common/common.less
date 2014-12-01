@@ -456,6 +456,10 @@ ul.social-links {
         .container();
         text-align: center;
         padding: 20px 0;
+        @media @breakpoint-xs {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
         .left-side {
             .make-xs-column(12);
             .make-sm-column(6);
@@ -476,6 +480,9 @@ ul.social-links {
             @media @breakpoint-sm {
                 margin: 0;
                 text-align: left;
+                span {
+                    display: block;
+                }
             }
         }
         ul.footer-links {

@@ -141,6 +141,8 @@ body.page.home {
 				padding-top: 20px;
 				@media @breakpoint-xs {
 					padding: 30px 5px;
+					background: url("/images/home_header_bg_dark.jpg") no-repeat left top;
+					background-size: cover;
 				}
 				.logo-large {
 					height: 275px;
@@ -157,36 +159,43 @@ body.page.home {
 					.clearfix();
 					width: 470px;
 					margin: 30px auto;
+					@media @breakpoint-xs {
+						width: 310px;
+					}
 					a {
 						display: block;
 						width: 225px;
 						margin: 0 5px;
 						font-size: 20px;
+						font-weight: bold;
 						line-height: 24px;
 						text-transform: uppercase;
-						text-align: left;
+						text-align: center;
 						color: #fff;
 						border-radius: 3px;
-						padding: 15px;
+						padding: 15px 6px 15px 10px;
 						text-shadow: 0px 0px 3px #333;
 						float: left;
 						color: #fff;
 						box-shadow: 0px 0px 10px darken(@brand-orange, 50%);
 						@media @breakpoint-xs {
-							width: 185px;
+							width: 145px;
 							font-size: 16px;
 							line-height: 20px;
 							.icon {
 								.icons(@font-size: 35px, @top-margin: 2px);
 							}
 						}
+						&.causes {
+							padding: 15px 30px;
+						}
 						&:hover {
 							box-shadow: 0px 0px 10px darken(@brand-teal, 50%);
 						}
 						.icon {
 							.icons(@font-size: 45px, @top-margin: 2px);
-							margin-right: 15px;
-							margin-left: 0;
+							margin: -10px 0 10px;
+							float: none;
 						}
 					}
 				}

@@ -68,34 +68,6 @@ body.users.auth.signup {
 		.form-group {
 			label { width: 125px; }
 			input { padding-left: 135px; }
-			@media @breakpoint-md {
-				&.country,
-				&.state,
-				&.city,
-				&.zip {
-					label { width: 75px; }
-					width: 49%;
-					float: left;
-				}
-				&.country,
-				&.city {
-					margin-right: 2%;
-				}
-				&.city {
-					label { width: 50px; }
-					input { padding-left: 60px; }
-				}
-				&.zip {
-					label { width: 100px; }
-					input { padding-left: 110px; }
-				}
-				&.summary {
-					input {
-						background-color: #fff;
-						border-color: #ccc;
-					}
-				}
-			}
 			&.agree-to-terms {
 				.custom-input(@bottom: 0px);
 				margin-top: 20px;
@@ -109,11 +81,32 @@ body.users.auth.signup {
 			.clearfix();
 			.first-name,
 			.last-name {
-				width: 49%;
-				float: left;
+				/*width: 49%;
+				float: left;*/
+				.make-xs-column(12);
+	            .make-sm-column(12);
+	            .make-md-column(6);
+	            .make-lg-column(6);
+	            padding-left: 0;
+	            label {
+	            	@media @breakpoint-md-only {
+		            	width: 110px;
+		            }
+	            }
+	            input {
+	            	@media @breakpoint-md-only {
+		            	padding-left: 120px;
+		            }
+	            }
 			}
 			.first-name {
-				margin-right: 2%;
+				padding-right: 0;
+				@media @breakpoint-md {
+	            	padding-right: 15px;
+	            }
+			}
+			.last-name {
+				padding-right: 0;
 			}
 		}
 		.form-group.output {
