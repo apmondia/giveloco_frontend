@@ -14,12 +14,13 @@ function RedeemCertificateCtrl($scope, formValidation, $http, alertService, TRAN
       })
       .success(function() {
         alertService.showAlert(TRANSACTION_EVENTS.redemptionSuccess, 'alert-success');
+        $scope.redeemCertificateModal.close();
       })
       .error(function() {
         alertService.showAlert(TRANSACTION_EVENTS.redemptionFailure, 'alert-danger');
+        $scope.redeemCertificateModal.close();
       });
 
-    $scope.redeemCertificateModal.close();
   };
 }
 

@@ -26,17 +26,18 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 		});
 	};
 
+	$scope.currentUserName = localStorage.getItem('uname');
+	
 	setCurrentUser();
 
-	$scope.currentUserName = localStorage.getItem('uname');
 	$rootScope.$on('user.data.changed', setCurrentUser);
 	$rootScope.$on('logged-in', setCurrentUser);
-
 
 /* =======================================================================
 	System Notifications
 ======================================================================= */
-	$rootScope.alertVisible = false;
+	// $('body').prepend("<h1>made $rootScope hidden</h1>");
+	// $rootScope.alertVisible = false;
 
 
 /* =======================================================================
