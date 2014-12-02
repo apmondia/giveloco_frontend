@@ -14,7 +14,7 @@ function UsersAccountCtrl($rootScope, $scope) {
 				return $scope.user.country.name;
 			}
 		} else {
-			return "";
+			return '';
 		}
 	};
 
@@ -26,7 +26,7 @@ function UsersAccountCtrl($rootScope, $scope) {
 				return $scope.user.state.code;
 			}
 		} else {
-			return "";
+			return '';
 		}
 	};
 }
