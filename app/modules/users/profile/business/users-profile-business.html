@@ -41,16 +41,16 @@
 					</ul>
 					<ul class="user-action-buttons">
 						<li ng-if="currentUser.role === 'admin'">
-							<a ng-click="changeUserStatus(user)" class="change-status btn button button-secondary"><i class="icon icon-pencil"></i>Change User's Status</a>
+							<a href='#' ng-click="changeUserStatus(user)" class="change-status btn button button-secondary"><i class="icon icon-pencil"></i>Change User's Status</a>
 						</li>
 						<li ng-if="(currentUser.role === 'individual' || currentUser.role === undefined) && user.sponsorships.length > 0">
-							<a ng-click="purchaseGiftCard(user)" class="donate btn button button-primary"><i class="icon icon-shopping-cart"></i>Buy a Gift Certificate</a>
+							<a href='#' ng-click="purchaseGiftCard(user)" class="donate btn button button-primary"><i class="icon icon-shopping-cart"></i>Buy a Gift Certificate</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="meta">
 			<div class="user-role">
 				<i class="icon icon-cash"></i>
@@ -62,7 +62,7 @@
 				</ul>
 			</div>
 		</div>
-		
+
 	    <div class="user-description" ng-bind-html="user.description | linky:'_blank'"></div>
 
 	    <div users-profile-business-sponsored-causes></div>

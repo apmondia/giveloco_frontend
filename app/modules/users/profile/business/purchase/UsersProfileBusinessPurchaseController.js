@@ -26,7 +26,7 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
     		return false;
     	}
     };
-    
+
 
 /* =======================================================================
 	Step 2
@@ -51,7 +51,7 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 	$scope.sponsorships = $scope.sponsorshipData();
 
 	$scope.stepTwoNotComplete = function() {
-		return $scope.newUser.certificates_attributes.sponsorship_id === null ? true : false;	
+		return $scope.newUser.certificates_attributes.sponsorship_id === null ? true : false;
     };
 
 
@@ -74,7 +74,7 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
     });
 
     $scope.stepThreeNotComplete = function() {
-		return $scope.newUser.agree_to_tc === false ? true : false;	
+		return $scope.newUser.agree_to_tc === false ? true : false;
     };
 
     // reset form when the modal is closed or competed submission
@@ -92,7 +92,7 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 		$scope.cvc = '';
 		$scope.purchaseForm.$setPristine();
 	};
-	
+
 
 	var transactionSuccess = function() {
 		alertService.showAlert(TRANSACTION_EVENTS.transactionSuccess, 'alert-success');
@@ -109,7 +109,19 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 			alertService.showAlert(TRANSACTION_EVENTS.paymentFailure, 'alert-danger');
 		} else {
 			$scope.newUser.certificates_attributes.stripeToken = response.id;
-			TransactionService.purchaseCertificate($scope.newUser).then(transactionSuccess, transactionError);
+			var data = {
+				newUser: {
+					first_name: $scope.newUser.first_name,
+					last_name: $scope.newUser.last_name,
+					email: $scope.newUser.email,
+					mailing_list_opt_in: $scope.newUser.mailing_list_opt_in,
+					agree_to_tc: $scope.newUser.agree_to_tc,
+					certificates_attributes: [
+						$scope.newUser.certificates_attributes
+					]
+				}
+			};
+			TransactionService.purchaseCertificate(data).then(transactionSuccess, transactionError);
 		}
 	};
 

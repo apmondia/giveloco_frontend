@@ -8,15 +8,15 @@ function UsersAuthRegistrationCauseCtrl($rootScope, $scope, $state, Auth, AUTH_E
 	======================================================================= */
 	var user = $scope.user;
 	user.role = 'cause';
-	
+
 
 	/* =======================================================================
 		Form Submission
 	======================================================================= */
 	var success = function(user) {
 		$scope.showSpinner = false;
-		$rootScope.$broadcast('logged-in');
 		alertService.showAlert(AUTH_EVENTS.signupSuccess, 'alert-success');
+		$rootScope.$broadcast('logged-in');
 		$state.go('account.details.view', {id:user.data.uid});
 	};
 

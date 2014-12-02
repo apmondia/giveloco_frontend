@@ -6,12 +6,13 @@ function UsersProfileBusinessCtrl($scope) {
 	Modals
 ======================================================================= */
     $scope.purchaseGiftCard = function(userParam) {
+        Stripe.setPublishableKey(userParam.publishable_key);
         $scope.usersProfileBusinessPurchaseModal.open({
         	windowClass: 'transaction-purchase',
         	backdrop: 'static',
         	resolve: {
 		        user: function () {
-					return userParam;
+					    return userParam;
 		        },
 		        sponsoredCauses: function(SponsorService) {
 		        	return SponsorService.getSponsoredCauses(userParam);
