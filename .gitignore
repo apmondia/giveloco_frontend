@@ -2,6 +2,7 @@ bower_components
 node_modules
 libs/*
 .idea/*
+.DS_Store
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
