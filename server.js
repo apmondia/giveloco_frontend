@@ -5,10 +5,12 @@ var server = express();
 var API_URL = process.env.API_URL || 'http://localhost:3000/';
 
 server.set('port', (process.env.PORT || 5000));
+//here we serve static assets
 server.use(express.static(__dirname + '/dist'));
-// server.all('/*', function(req, res) {
-//   res.sendfile('/', { root: './dist' });
-// });
+//here we configure a catch-all to serve the index
+server.use(function (req, res) {
+  res.sendfile(__dirname + '/dist/index.html');
+});
 
 server.listen(server.get('port'), function() {
   console.log("Node app is running at localhost:" + server.get('port'));
