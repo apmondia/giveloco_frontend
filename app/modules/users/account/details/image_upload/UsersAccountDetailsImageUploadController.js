@@ -33,7 +33,7 @@ function UsersAccountDetailsImageUploadCtrl($rootScope, $scope, $cookies, apiCon
     $scope.userImage = user.images.profile_picture.medium;
     var TOKEN = $cookies.auth_token.replace(/^"|"$/g, '');
     var uid = user.id;
-    $scope.uploader.url = apiConfig.API.user.withID(user.id).uploadImage,
+    $scope.uploader.url = apiConfig.API.user.withID(user.id).uploadImage;
     $scope.uploader.headers = {
       'x-session-token' : TOKEN
     };
