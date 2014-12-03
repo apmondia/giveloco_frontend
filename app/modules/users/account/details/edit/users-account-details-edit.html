@@ -3,7 +3,7 @@
     <div class="right-side">
 		<div users-image-upload ng-if="userRoleIsNot('individual')"></div>
 	</div>
-	
+
 	<form class="form" name="updateUserForm" ng-submit="updateUser(updateUserForm.$valid)" novalidate>
 
 	    <div class="form-section basic-info left-side">
@@ -30,7 +30,7 @@
 				<p class="form-helper" ng-if="updateUserForm.company.$error.pattern">This field only accepts letters and numbers</p>
 				<p class="form-helper" ng-if="updateUserForm.company.$dirty && updateUserForm.company.$error.required && !updateUserForm.company.$focused">Cause Name is required!</p>
 			</div>
-			
+
 			<div class="sub-section contact-info">
 				<div class="form-group email" ng-class="{'invalid' : updateUserForm.email.$invalid && updateUserForm.email.$dirty, 'valid' : updateUserForm.email.$valid && updateUserForm.email.$dirty}">
 					<label for="userEmail" class="inline">Email</label>
@@ -58,19 +58,19 @@
 			<div class="sub-section region">
 				<div class="form-group country">
 					<label for="userCountry" class="inline">Country</label>
-					<select name="country" 
-						id="userCountry" 
-						ng-model="user.country" 
-						ng-change="countryChange(user)" 
+					<select name="country"
+						id="userCountry"
+						ng-model="user.country"
+						ng-change="countryChange(user)"
 						ng-options="c.name for c in countryList">
 					</select>
 				</div>
 				<div class="form-group state">
 					<label for="userState" class="inline"><span ng-if="user.country.code == 'US'">State</span><span ng-if="user.country.code == 'CA'">Province</span></label>
-					<select name="state" 
-						id="userState" 
-						ng-model="user.state" 
-						ng-change="stateChange(user)" 
+					<select name="state"
+						id="userState"
+						ng-model="user.state"
+						ng-change="stateChange(user)"
 						ng-options="s.name for s in states">
 					</select>
 				</div>
@@ -113,7 +113,7 @@
 			</div>
 			<div class="form-group summary" ng-class="{'invalid' : updateUserForm.summary.$invalid && updateUserForm.summary.$dirty, 'valid' : updateUserForm.summary.$valid && updateUserForm.summary.$dirty}">
 				<label for="userSummary" class="inline"><span ng-if="userRoleIs('cause')">Cause</span><span ng-if="userRoleIsNot('cause')">Company</span> Summary</label>
-				<input type="text" name="summary" id="userSummary" class="form-control" placeholder="" ng-model="user.summary" ng-maxlength="140" show-form-errors />
+				<input type="text" name="summary" id="userSummary" class="form-control" placeholder="" ng-model="user.summary" ng-maxlength="140" maxlength='140' show-form-errors />
 				<p class="form-helper info" ng-if="updateUserForm.summary.$focused && !updateUserForm.summary.$error.pattern && !updateUserForm.summary.$error.maxlength">Please add a summary for your business in 140 characters or less.</p>
 				<p class="form-helper" ng-if="updateUserForm.summary.$dirty && updateUserForm.summary.$error.required && !updateUserForm.summary.$focused">This field is required!</p>
 				<p class="form-helper" ng-if="updateUserForm.summary.$dirty && updateUserForm.summary.$error.maxlength">Your summary is too long.</p>

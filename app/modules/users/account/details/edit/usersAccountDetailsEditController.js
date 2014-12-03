@@ -12,13 +12,13 @@ function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 		if ($scope.user.country.code === 'CA') {
 			$scope.zipRegex = formValidation.postalCodeRegex;
 			$scope.zipPlaceholder = 'A1B 2C3';
-		} 
+		}
 		if ($scope.user.country.code === 'US') {
 			$scope.zipRegex = formValidation.zipCodeRegex;
 			$scope.zipPlaceholder = '98765';
 		}
 	});
-	
+
 
 	/* =======================================================================
 		Country & State Select Menus
@@ -46,7 +46,7 @@ function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 				}
 			}
 		}
-		
+
 		// Default set of states is defined by the selected country
 		var states = $scope.states = $scope.statesList[$scope.user.country.code];
 		if (user.state === null) {
@@ -92,8 +92,8 @@ function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 	======================================================================= */
 	$scope.setSummary = function(user) {
 		$scope.user.description = user.description;
+		user.summary = user.description.match(/([^.!?]{0,139})/i)[0] + '.';
 		$scope.user.summary = user.summary;
-		user.summary = user.description.match(/[^.!?]*/i)[0] + '.';
 	};
 
 
