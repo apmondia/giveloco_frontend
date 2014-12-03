@@ -7,23 +7,25 @@ function dashboardRoutes($stateProvider) {
             template: '<div dashboard-view></div>',
             url: '/',
             controller: function($state, Auth, DashService, $scope) {
-                // Show Dashboard if user is logged in, or homepage if user is logged out
-            	if ($state.is('dashboard')) { $state.go(Auth.isLoggedIn() ? 'dashboard' : 'home.guest'); }
-                // Show different dashboard based on the user's role
-                if (Auth.isLoggedIn() === true) {
-                    $scope.spinner = true;
-                    if (Auth.currentRole === null) {
-                        // this is used if the user has refreshed the site at any point
-                        Auth.getCurrentUser().then(function(currentUser){
-                            DashService.showDashByRoleFor(currentUser);
-                            $scope.spinner = false;
-                        });
+              // Show Dashboard if user is logged in, or homepage if user is logged out
+            	if ($state.is('dashboard')) {
+                $state.go(Auth.isLoggedIn() ? 'dashboard' : 'home.guest');
+              }
+              // Show different dashboard based on the user's role
+              if (Auth.isLoggedIn() === true) {
+                  $scope.spinner = true;
+                  Auth.getCurrentUser(function(currentUser){
+                    if (!angular.isUndefined(Auth.currentRole)) {
+                      // this is used if the user has refreshed the site at any point
+                      DashService.showDashByRoleFor(currentUser);
+                      $scope.spinner = false;
                     } else {
-                        // This is used if the user is just logging in
-                        DashService.showDashByRole(Auth.currentRole);
-                        $scope.spinner = false;
+                      // This is used if the user is just logging in
+                      DashService.showDashByRole(Auth.currentRole);
+                      $scope.spinner = false;
                     }
-                }
+                  });
+              }
             },
             data: {
                 moduleClasses: 'dashboard',

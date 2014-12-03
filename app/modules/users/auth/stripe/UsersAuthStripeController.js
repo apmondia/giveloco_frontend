@@ -11,11 +11,11 @@ function UsersAuthStripeCtrl($rootScope, $scope, $location, Restangular, $http, 
       $http.get('/api/user/auth/stripe_connect/callback.json?code=' + searchObject.code )
         .success(function () {
           alertService.showAlert(AUTH_EVENTS.stripeConnected, 'alert-success');
-          $state.go('account.details.view', {id:$scope.currentUser.id});
+          $state.go('account.details.view', {id:$rootScope.currentUser.id});
         })
         .error(function () {
           alertService.showAlert(AUTH_EVENTS.stripeConnectionFailed, 'alert-danger');
-          $state.go('account.details.view', {id:$scope.currentUser.id});
+          $state.go('account.details.view', {id:$rootScope.currentUser.id});
         });
     } else {
       //there was an error in Stripe
@@ -25,7 +25,7 @@ function UsersAuthStripeCtrl($rootScope, $scope, $location, Restangular, $http, 
   $scope.$on('set-current-user', function () {
     $scope.doCallback();
   });
-  
+
 }
 
 UsersAuthStripeCtrl.$inject = ['$rootScope', '$scope', '$location', 'Restangular', '$http', 'alertService', 'AUTH_EVENTS', '$state'];

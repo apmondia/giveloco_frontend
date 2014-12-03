@@ -8,16 +8,15 @@ function UsersAuthRegistrationBusinessCtrl($rootScope, $scope, $state, Auth, AUT
 	======================================================================= */
 	var user = $scope.user;
 	user.role = 'business';
-	
+
 
 	/* =======================================================================
 		Form Submission
 	======================================================================= */
 	var success = function(user) {
 		$scope.showSpinner = false;
-		$rootScope.$broadcast('logged-in');
 		alertService.showAlert(AUTH_EVENTS.signupSuccess, 'alert-success');
-		$state.go('account.details.view', {id:user.data.uid});
+		$state.go('account.details.view', {id:user.data.id});
 	};
 
 	var error = function() {

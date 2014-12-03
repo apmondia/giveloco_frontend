@@ -9,30 +9,16 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	$scope.logout = function() {
 		Auth.logout().then(function() {
 			$state.go('auth.login');
-			$scope.currentUser = null;
 		});
 	};
 
-	$scope.currentUser = null;
-	$rootScope.isLoggedIn = Auth.isLoggedIn;
+	//here we should check if there is a current user.
+
 	$scope.userRoles = USER_ROLES;
-
-	var setCurrentUser = function() {
-		Auth.getCurrentUser().then(function(userData){
-			$scope.currentUser = userData;
-			localStorage.setItem('uname', userData.first_name);
-			$scope.currentUserName = userData.first_name;
-			$scope.$broadcast('set-current-user');
-		});
-	};
-
-	$scope.currentUserName = localStorage.getItem('uname');
-	
-	setCurrentUser();
-
-	$rootScope.$on('user.data.changed', setCurrentUser);
-	$rootScope.$on('logged-in', setCurrentUser);
-
+	$rootScope.isLoggedIn = Auth.isLoggedIn;
+	$rootScope.$on('user.data.changed', function( ){
+		Auth.refreshCurrentUser();
+	});
 /* =======================================================================
 	System Notifications
 ======================================================================= */
@@ -105,6 +91,9 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
     	}
     };
 
+		$timeout(function () {
+			Auth.setCurrentUser();
+		}, 0);
 
 }
 

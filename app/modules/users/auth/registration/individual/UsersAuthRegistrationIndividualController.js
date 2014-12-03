@@ -2,7 +2,7 @@
 'use strict';
 
 function UsersAuthRegistrationDonorCtrl($rootScope, $scope, $state, Auth, AUTH_EVENTS, alertService) {
-	
+
 	/* =======================================================================
 		User Data for Form Submission
 	======================================================================= */
@@ -20,7 +20,6 @@ function UsersAuthRegistrationDonorCtrl($rootScope, $scope, $state, Auth, AUTH_E
 	======================================================================= */
 	var success = function() {
 		$scope.showSpinner = false;
-		$rootScope.$broadcast('logged-in');
 		alertService.showAlert(AUTH_EVENTS.signupSuccess, 'alert-success');
 		$state.go('dashboard');
 	};

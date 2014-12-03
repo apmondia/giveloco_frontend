@@ -1,7 +1,7 @@
 'use strict';
 
 function UsersAuthLoginCtrl($rootScope, $scope, $state, $cookieStore, Auth, AUTH_EVENTS, alertService) {
-	
+
 	var success = function() {
 		$rootScope.$broadcast('logged-in');
 		alertService.showAlert(AUTH_EVENTS.loginSuccess, 'alert-success');

@@ -8,23 +8,36 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 
 		currentRole: null,
 
-		setUserData: function(user){
-			$cookieStore.put('uid', user.data.uid);
+		setBasicUserData: function(user) {
+			$cookieStore.put('uid', user.data.id);
 			$cookieStore.put('auth_token', user.data.auth_token);
-			$rootScope.$broadcast('logged-in');
+
+			//Remove this
 			authService.currentRole = user.data.role;
+
+			//setBasicUserData only occurs at signin and login, so trigger broadcast.
+			authService.refreshCurrentUser(function () {
+				$rootScope.$broadcast('logged-in');
+			});
+		},
+
+		updateCurrentUser: function(user){
+			$rootScope.currentUser = user;
+			$rootScope.currentUserName = user.first_name;
+			localStorage.setItem('uname', user.first_name);
+			$rootScope.$broadcast('set-current-user', $rootScope.currentUser);
 		},
 
 		signup: function(data) {
 			return $http.post(apiConfig.API.user.signup, {user:data}).then(function(user){
-				authService.setUserData(user);
+				authService.setBasicUserData(user);
 				return user;
 			});
 		},
 
 		login: function(credentials) {
 			return $http.post(apiConfig.API.user.login, credentials).then(function(user){
-				authService.setUserData(user);
+				authService.setBasicUserData(user);
 				return user;
 			});
 		},
@@ -42,11 +55,31 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 			});
 		},
 
-	    getCurrentUser: function() {
-				var uid = $cookieStore.get('uid');
-				//console.debug('getCurrentUser(): returning: ', Restangular.one('users', uid).get());
-				return Restangular.one('users', uid).get();
-	    },
+		refreshCurrentUser: function (callback) {
+			var uid = $cookieStore.get('uid');
+			Restangular.one('users', uid).get().then(function (userData) {
+				authService.updateCurrentUser(userData);
+				if (angular.isFunction(callback)) {
+					callback(userData);
+				}
+			});
+		},
+
+		setCurrentUser: function () {
+			if (angular.isUndefined($rootScope.currentUser) && !angular.isUndefined($cookieStore.get('uid'))) {
+				authService.refreshCurrentUser();
+			} else {
+				$rootScope.$broadcast('set-current-user', $rootScope.currentUser);
+			}
+		},
+
+		getCurrentUser: function (callback) {
+			if (angular.isUndefined($rootScope.currentUser)) {
+				authService.refreshCurrentUser(callback);
+			} else if (angular.isFunction(callback)) {
+				callback($rootScope.currentUser);
+			}
+		},
 
 	    isAuthenticated: function() {
 	        return !authService.currentUser;
@@ -55,10 +88,9 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 	    updatePassword: function(data) {
 			return $http({
 						method: 'PUT',
-						url: apiConfig.API.user.updatePassword,
+						url: apiConfig.API.user.withID(data.id).updatePassword,
 						data: {user: data}
 					}).then(function(user) {
-						console.log(user);
 						return user;
 					});
 		}

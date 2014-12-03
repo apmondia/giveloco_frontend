@@ -38,20 +38,13 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 ======================================================================= */
 	$rootScope.$on('$stateChangeStart', function (event, next, toState) {
 		if (next.data.restricted) {
-			Auth.getCurrentUser().then(function(user) {
+			Auth.getCurrentUser(function(user) {
 
 				// Validate the user's token
 	    		var user_token = user.auth_token;
 	    		var auth_token = $cookieStore.get('auth_token');
 				var validateAuthToken = (function() {
 					return (auth_token === user_token) ? true : false;
-					// if (auth_token === user_token) {
-		   //  			console.log('Auth Token is valid');
-		   //  			return true;
-		   //  		} else {
-		   //  			console.log('Auth Token is NOT valid');
-		   //  			return false;
-		   //  		}
 				})();
 
 				// Validate the user's ID
@@ -59,13 +52,6 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 				var sid = parseInt(toState.id);
 				var validateUserID = (function() {
 					return (uid === sid) ? true : false;
-					// if (uid === sid) {
-					// 	console.log('User ID is valid');
-					// 	return true;
-					// } else {
-					// 	console.log('User ID is NOT valid');
-					// 	return false;
-					// }
 				})();
 
 				// Restrict access if authorization is required from state data (defined in module config files)

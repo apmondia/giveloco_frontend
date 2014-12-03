@@ -1,13 +1,12 @@
 'use strict';
 
-var apiConfig = function($cookieStore) {
+var apiConfig = function() {
 
 /* =======================================================================
 	Taliflo API Configuration
 ======================================================================= */
 	var apiProxy = '/api',
-		apiVersion = '/v1',
-		userID = $cookieStore.get('uid');
+		apiVersion = '/v1';
 
 	this.API = {
 		baseUrl: apiProxy + apiVersion,
@@ -23,10 +22,12 @@ var apiConfig = function($cookieStore) {
 			login: apiProxy + '/user/login',
 			signup: apiProxy + '/user/signup',
 			logout: apiProxy + '/user/logout',
-			updatePassword: apiProxy + '/user/' + userID + '/change_password',
-			currentUser: apiProxy + apiVersion + '/users/' + userID,
-			uploadImage: apiProxy + apiVersion + '/users/' + userID + '/upload_image',
-			deleteImage: apiProxy + apiVersion + '/users/' + userID + '/delete_image'
+			withID: function (userID) {
+				return {
+					updatePassword: apiProxy + '/user/' + userID + '/change_password',
+					uploadImage: apiProxy + apiVersion + '/users/' + userID + '/upload_image'
+				};
+			}
 		}
 	};
 
@@ -42,5 +43,5 @@ var apiConfig = function($cookieStore) {
 	return this;
 };
 
-apiConfig.$inject = ['$cookieStore'];
+apiConfig.$inject = [];
 module.exports = apiConfig;
