@@ -59,6 +59,17 @@ function userAuthRoutes($stateProvider) {
         pageDescription: 'Log into your account.'
       }
     },
+    confirmation = {
+      name: 'auth.confirmation',
+      url: '/confirmation',
+      template: '<div users-auth-confirmation></div>',
+      data: {
+        moduleClasses: 'users auth confirmation',
+        pageClasses: 'confirmation',
+        pageTitle: 'Confirm your account',
+        pageDescription: 'Confirm your account.'
+      }
+    },
     passwordReset = {
       name: 'auth.passwordReset',
       url: '/password-reset',
@@ -87,6 +98,7 @@ function userAuthRoutes($stateProvider) {
   $stateProvider.state(signupIndividual);
   $stateProvider.state(signupCause);
   $stateProvider.state(signupBusiness);
+  $stateProvider.state(confirmation);
   $stateProvider.state(login);
   $stateProvider.state(passwordReset);
   $stateProvider.state(stripeOAuth);
