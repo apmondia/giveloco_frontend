@@ -1,7 +1,6 @@
 'use strict';
 
 function DashboardCtrl() {
-
 }
 
 DashboardCtrl.$inject = [];

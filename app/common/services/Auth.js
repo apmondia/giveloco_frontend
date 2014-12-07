@@ -51,6 +51,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 				$cookieStore.remove('auth_token');
 				$cookieStore.remove('uid');
 				localStorage.removeItem('uname');
+				authService.currentRole = null;
 				alertService.showAlert(AUTH_EVENTS.logoutSuccess, 'alert-success');
 			});
 		},

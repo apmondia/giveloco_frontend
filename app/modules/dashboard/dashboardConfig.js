@@ -5,14 +5,12 @@ function dashboardRoutes($stateProvider) {
     var dashboard = {
             name: 'dashboard',
             template: '<div dashboard-view></div>',
-            url: '/',
+            url: '/dashboard',
             controller: function($state, Auth, DashService, $scope) {
               // Show Dashboard if user is logged in, or homepage if user is logged out
-            	if ($state.is('dashboard')) {
-                $state.go(Auth.isLoggedIn() ? 'dashboard' : 'home.guest');
-              }
-              // Show different dashboard based on the user's role
-              if (Auth.isLoggedIn() === true) {
+              if (!Auth.isLoggedIn()) {
+                $state.go('home.guest');
+              } else {
                   $scope.spinner = true;
                   Auth.getCurrentUser(function(currentUser){
                     if (!angular.isUndefined(Auth.currentRole)) {
@@ -45,7 +43,7 @@ function dashboardRoutes($stateProvider) {
                 }
             },
             data: {
-                moduleClasses: 'dashboard',
+                moduleClasses: 'dashboard admin',
                 pageClasses: 'admin',
                 pageTitle: 'Dashboard',
                 pageDescription: 'Dashboard for your admin account.'
@@ -62,7 +60,7 @@ function dashboardRoutes($stateProvider) {
                 }
             },
             data: {
-                moduleClasses: 'dashboard',
+                moduleClasses: 'dashboard business',
                 pageClasses: 'business',
                 pageTitle: 'Dashboard',
                 pageDescription: 'Dashboard for your business account.'

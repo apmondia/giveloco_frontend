@@ -1,4 +1,4 @@
-// These routes are to define any app-level paths to modules. 
+// These routes are to define any app-level paths to modules.
 // For module-level route definitions, use the Routes.js files found in the module folders.
 
 'use strict';
@@ -25,8 +25,8 @@ function appRoutes($stateProvider, $urlRouterProvider, $locationProvider, $httpP
 			name: 'home', // state name
 			url: '/', // url path that activates this state
 			template: '<div ui-view></div>',
-			controller: function($state, Auth) {
-	        	if ($state.is('home')) { $state.go(Auth.isLoggedIn() ? 'dashboard' : 'home.guest'); }
+			controller: function($state) {
+				$state.go('home.guest');
 	        },
 	        data: {
 				moduleClasses: '', // assign a module class to the <body> tag

@@ -45,41 +45,20 @@ body.page.home {
 				background: none;
 				border-radius: 0 0 5px 5px;
 				position: relative;
-				li {
+				background: url("/images/blacks/black35.png");
+				&:before {
+					opacity: 0;
+					z-index: 0;
+				}
+				> ul > li {
+					.fadeInDownBig();
+					opacity: 1;
 					.animated();
 					.customAnimated(@duration: 0.2s);
-					opacity: 0;
 					transition: opacity 0.2s linear;
-				}
-				&:before {
-					transition: opacity 0.2s linear;
-					width: 50px;
-					font-family: "Taliflo";
-					font-size: 30px;
-					content: "]";
-					position: absolute;
-					top: 0; bottom: 0; left: 0; right: 0;
-					margin: auto;
-					text-align: center;
-					z-index: 1;
-					color: #fff;
-					padding: 8px 10px 4px;
-					border-radius: 5px;
-					background: url("/images/blacks/black35.png");
-				}
-				&:hover {
-					background: url("/images/blacks/black35.png");
-					li {
-						.fadeInDownBig();
-						opacity: 1;
-					}
-					&:before {
-						opacity: 0;
-						z-index: 0;
-					}
-				}
-				li {
-					a {
+					> a,
+					.dropdown-wrapper > a {
+						text-decoration: none;
 						color: #fff;
 						text-transform: capitalize;
 						&:hover {
@@ -157,14 +136,12 @@ body.page.home {
 				}
 				.explore-links {
 					.clearfix();
-					width: 470px;
-					margin: 30px auto;
+					text-align: center;
+					margin-bottom: 60px;
 					@media @breakpoint-xs {
 						width: 310px;
 					}
 					a {
-						display: block;
-						width: 225px;
 						margin: 0 5px;
 						font-size: 20px;
 						font-weight: bold;
@@ -175,7 +152,7 @@ body.page.home {
 						border-radius: 3px;
 						padding: 15px 6px 15px 10px;
 						text-shadow: 0px 0px 3px #333;
-						float: left;
+						padding: 2rem;
 						color: #fff;
 						box-shadow: 0px 0px 10px darken(@brand-orange, 50%);
 						@media @breakpoint-xs {
