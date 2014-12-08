@@ -92,7 +92,7 @@ function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 	======================================================================= */
 	$scope.setSummary = function(user) {
 		$scope.user.description = user.description;
-		user.summary = user.description.match(/([^.!?]{0,139})/i)[0] + '.';
+		user.summary = user.description.match(/([^.!?]{0,140})/i)[0];
 		$scope.user.summary = user.summary;
 	};
 

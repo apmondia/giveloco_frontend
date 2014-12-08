@@ -43,7 +43,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 		},
 
 		isLoggedIn: function() {
-			return ($cookieStore.get('auth_token')) ? true : false;
+			return $rootScope.currentUser != null;//($cookieStore.get('auth_token')) ? true : false;
 		},
 
 		logout: function() {
@@ -52,6 +52,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 				$cookieStore.remove('uid');
 				localStorage.removeItem('uname');
 				authService.currentRole = null;
+				authService.currentUser = null;
 				alertService.showAlert(AUTH_EVENTS.logoutSuccess, 'alert-success');
 			});
 		},

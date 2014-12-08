@@ -19,13 +19,17 @@
 				<span class="field-label">Phone Number</span>
 				<span class="field-data">{{currentUser.phone}}</span>
 			</div>
+			<div class='user-data twitter'>
+				<span class='field-label'>Twitter</span>
+				<span class='field-data'>{{currentUser.twitter}}</span>
+			</div>
 		</div>
 		<div class="right-side">
 			<div users-image-upload ng-if="userRoleIsNot('individual')"></div>
 		</div>
 	</div>
 	<div ng-if="userRoleIsNot('individual')">
-		<div class="location-info section">
+		<div class="location-info section left-side">
 			<h4 class="section-title">Location Information</h4>
 			<div class="user-data street">
 				<span class="field-label">Street Address</span>
@@ -40,17 +44,17 @@
 				<span class="field-label" ng-if="chosenCountry() === 'United States'">State</span>
 				<span class="field-data">{{chosenState()}}</span>
 			</div>
-			<div class="user-data country">
-				<span class="field-label">Country</span>
-				<span class="field-data">{{chosenCountry()}}</span>
-			</div>
 			<div class="user-data zip">
 				<span class="field-label" ng-if="chosenCountry() === 'Canada' || chosenCountry() === null">Postal Code</span>
 				<span class="field-label" ng-if="chosenCountry() === 'United States'">Zip</span>
 				<span class="field-data">{{currentUser.zip}}</span>
 			</div>
+			<div class="user-data country">
+				<span class="field-label">Country</span>
+				<span class="field-data">{{chosenCountry()}}</span>
+			</div>
 		</div>
-		<div class="company-info section">
+		<div class="company-info section left-side">
 			<h4 class="section-title"><span ng-if="userRoleIs('business')">Company </span><span ng-if="userRoleIs('cause')">Cause </span>Details</h4>
 			<div class="user-data website">
 				<span class="field-label">Website</span>
@@ -68,7 +72,7 @@
 				<span class="field-label">Summary</span>
 				<span class="field-data">{{currentUser.summary}}</span>
 			</div>
-		</div>		
+		</div>
 	</div>
-	
+
 </div>

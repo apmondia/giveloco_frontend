@@ -32,7 +32,7 @@
             <li class="dropdown" ng-if="isLoggedIn()" dropdown on-toggle="toggled(open)">
               <div dropdown is-open="status.isopen" class="dropdown-wrapper">
                 <a href='#' class="dropdown-toggle" dropdown-toggle>
-                  Hi, {{currentUserName}} <span class="caret"></span>
+                  Hi, {{currentUser.first_name}} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
 									<li ng-if="currentUser.role == 'admin'" class="first" ui-sref-active="active">
