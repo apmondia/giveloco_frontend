@@ -13,15 +13,17 @@ function dashboardRoutes($stateProvider) {
               } else {
                   $scope.spinner = true;
                   Auth.getCurrentUser(function(currentUser){
+                    /*
                     if (!angular.isUndefined(Auth.currentRole)) {
                       // this is used if the user has refreshed the site at any point
                       DashService.showDashByRoleFor(currentUser);
                       $scope.spinner = false;
                     } else {
+                    */
                       // This is used if the user is just logging in
-                      DashService.showDashByRole(Auth.currentRole);
+                      DashService.showDashByRole(currentUser.role);
                       $scope.spinner = false;
-                    }
+                    //}
                   });
               }
             },
