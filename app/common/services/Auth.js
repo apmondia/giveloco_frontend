@@ -4,17 +4,11 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 
 	var authService = {
 
-		currentUser: null,
-
-		currentRole: null,
-
 		setBasicUserData: function(user) {
 			$cookieStore.put('uid', user.data.id);
 			$cookieStore.put('auth_token', user.data.auth_token);
-
 			//Remove this
-			authService.currentRole = user.data.role;
-
+			$rootScope.currentRole = user.data.role;
 			//setBasicUserData only occurs at signin and login, so trigger broadcast.
 			authService.refreshCurrentUser(function () {
 				$rootScope.$broadcast('logged-in');
@@ -51,8 +45,8 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 				$cookieStore.remove('auth_token');
 				$cookieStore.remove('uid');
 				localStorage.removeItem('uname');
-				authService.currentRole = null;
-				authService.currentUser = null;
+				$rootScope.currentRole = null;
+				$rootScope.currentUser = null;
 				alertService.showAlert(AUTH_EVENTS.logoutSuccess, 'alert-success');
 			});
 		},
