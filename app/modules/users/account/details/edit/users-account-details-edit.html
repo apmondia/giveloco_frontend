@@ -69,13 +69,15 @@
           <p class="form-helper" ng-if="updateUserForm.city.$dirty && updateUserForm.city.$error.required && !updateUserForm.city.$focused">This field is required!</p>
         </div>
         <div class="form-group state">
+          <div class='select-box'>
+            <select name="state"
+              id="userState"
+              ng-model="user.state"
+              ng-change="stateChange(user)"
+              ng-options="s.name for s in states">
+            </select>
+          </div>
           <label for="userState" class="inline"><span ng-if="user.country.code == 'US'">State</span><span ng-if="user.country.code == 'CA'">Province</span></label>
-          <select name="state"
-            id="userState"
-            ng-model="user.state"
-            ng-change="stateChange(user)"
-            ng-options="s.name for s in states">
-          </select>
         </div>
       </div>
 			<div class="sub-section region">
@@ -86,13 +88,15 @@
           <p class="form-helper" ng-if="updateUserForm.zip.$dirty && updateUserForm.zip.$error.required && !updateUserForm.zip.$focused">This field is required!</p>
         </div>
 				<div class="form-group country">
-					<label for="userCountry" class="inline">Country</label>
-					<select name="country"
-						id="userCountry"
-						ng-model="user.country"
-						ng-change="countryChange(user)"
-						ng-options="c.name for c in countryList">
-					</select>
+          <div class='select-box'>
+  					<select name="country"
+  						id="userCountry"
+  						ng-model="user.country"
+  						ng-change="countryChange(user)"
+  						ng-options="c.name for c in countryList">
+  					</select>
+          </div>
+          <label for="userCountry" class="inline">Country</label>
 				</div>
 			</div>
 
