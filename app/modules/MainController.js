@@ -16,9 +16,9 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 
 	$scope.userRoles = USER_ROLES;
 	$rootScope.isLoggedIn = Auth.isLoggedIn;
-	$rootScope.$on('user.data.changed', function( ){
-		Auth.refreshCurrentUser();
-	});
+	// $rootScope.$on('user.data.changed', function( ){
+	// 	Auth.refreshCurrentUser();
+	// });
 /* =======================================================================
 	System Notifications
 ======================================================================= */

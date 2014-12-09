@@ -102,13 +102,12 @@ function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 	======================================================================= */
 	var userData = $scope.user,
 		updateSuccess = function() {
-			localStorage.setItem('uname', userData.first_name); // Sets the new username for use around the site
-			$rootScope.$broadcast('user.data.changed'); // Updates username on the fly via MainCtrl
+			// localStorage.setItem('uname', userData.first_name); // Sets the new username for use around the site
+			// $scope.$emit('user.data.changed'); // Updates username on the fly via MainCtrl
 			$scope.countries();
+			Auth.refreshCurrentUser();
 			alertService.showAlert(USER_EVENTS.accountUpdateSuccess, 'alert-success');
-			$timeout(function() {
-				location.reload();
-			}, 2000);
+			$state.go('account.details.view');
 		},
 		updateError = function() {
 			alertService.showAlert(USER_EVENTS.accountUpdateFailure, 'alert-danger');
