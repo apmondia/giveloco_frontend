@@ -175,8 +175,8 @@ h5.subtitle {
     .active a,
     .nav>li>a:hover,
     .nav>li>a:focus,
-    .nav .open>a, 
-    .nav .open>a:focus, 
+    .nav .open>a,
+    .nav .open>a:focus,
     .nav .open>a:hover {
         color: #fff;
         background-color: @brand-teal;
@@ -688,6 +688,9 @@ ul.social-links {
         &:before {
             border-right-color: @brand-teal;
         }
+				.error {
+					color: red;
+				}
     }
 }
 select {
@@ -883,11 +886,11 @@ p.no-results {
 /* ==========================================================================
     Pagination
 ========================================================================== */
-.pagination>.active>a, 
-.pagination>.active>a:focus, 
-.pagination>.active>a:hover, 
-.pagination>.active>span, 
-.pagination>.active>span:focus, 
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
 .pagination>.active>span:hover {
     background-color: @brand-teal;
     border-color: @brand-teal;
@@ -992,7 +995,7 @@ p.no-results {
             -moz-transform: rotate(0deg);
             transform: rotate(0deg);
         }
-        to { 
+        to {
             -webkit-transform: rotate(360deg);
             -moz-transform: rotate(360deg);
             transform: rotate(360deg);

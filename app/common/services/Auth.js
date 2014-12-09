@@ -43,7 +43,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 		},
 
 		isLoggedIn: function() {
-			return $rootScope.currentUser != null;//($cookieStore.get('auth_token')) ? true : false;
+			return !angular.isUndefined($rootScope.currentUser) && $rootScope.currentUser !== null;//($cookieStore.get('auth_token')) ? true : false;
 		},
 
 		logout: function() {

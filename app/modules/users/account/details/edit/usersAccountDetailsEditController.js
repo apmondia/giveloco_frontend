@@ -96,6 +96,13 @@ function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 		$scope.user.summary = user.summary;
 	};
 
+	$scope.summaryCharsRemaining = function() {
+		var total = 0;
+		if ($scope.user && $scope.user.summary) {
+			total = $scope.user.summary.length;
+		}
+		return 140 - total;
+	};
 
 	/* =======================================================================
 		Update User (Submit Form)

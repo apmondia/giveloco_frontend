@@ -126,7 +126,7 @@
 			<div class="form-group summary" ng-class="{'invalid' : updateUserForm.summary.$invalid && updateUserForm.summary.$dirty, 'valid' : updateUserForm.summary.$valid && updateUserForm.summary.$dirty}">
 				<label for="userSummary" class="block"><span ng-if="userRoleIs('cause')">Cause</span><span ng-if="userRoleIsNot('cause')">Company</span> Summary</label>
 				<textarea name="summary" id="userSummary" class="form-control with-label-above" placeholder="" ng-model="user.summary" ng-maxlength="140" maxlength='140' show-form-errors />
-				<p class="form-helper info" ng-if="updateUserForm.summary.$focused && !updateUserForm.summary.$error.pattern && !updateUserForm.summary.$error.maxlength">Please add a summary for your business in 140 characters or less.</p>
+				<p class="form-helper info" ng-if="updateUserForm.summary.$focused && !updateUserForm.summary.$error.pattern && !updateUserForm.summary.$error.maxlength">Please add a summary for your business.  <span ng-class="{error: summaryCharsRemaining() == 0}">Add up to {{summaryCharsRemaining()}} more characters.</span></p>
 				<p class="form-helper" ng-if="updateUserForm.summary.$dirty && updateUserForm.summary.$error.required && !updateUserForm.summary.$focused">This field is required!</p>
 				<p class="form-helper" ng-if="updateUserForm.summary.$dirty && updateUserForm.summary.$error.maxlength">Your summary is too long.</p>
 			</div>
