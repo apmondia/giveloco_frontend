@@ -5,8 +5,10 @@ function UsersAuthLoginCtrl($rootScope, $scope, $state, $cookieStore, Auth, AUTH
 	$rootScope.$on('logged-in', function () {
 		if ($rootScope.currentUser.role === 'business') {
 			$state.go('profile.business', $rootScope.currentUser);
-		} else {
+		} else if ($rootScope.currentUser.role === 'cause') {
 			$state.go('profile.cause', $rootScope.currentUser);
+		} else {
+			$state.go('dashboard');
 		}
 	});
 
