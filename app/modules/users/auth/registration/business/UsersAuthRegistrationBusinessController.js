@@ -19,9 +19,10 @@ function UsersAuthRegistrationBusinessCtrl($rootScope, $scope, $state, Auth, AUT
 		$state.go('account.details.view', {id:user.data.id});
 	};
 
-	var error = function() {
+	var error = function(response) {
+		var msg = response.data.errors[0];
 		$scope.showSpinner = false;
-		alertService.showAlert(AUTH_EVENTS.signupFailed, 'alert-danger');
+		alertService.showAlert(msg, 'alert-danger');
 	};
 
 	$scope.signupBusiness = function(isValid) {
