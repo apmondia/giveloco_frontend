@@ -25,14 +25,12 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 	User authentication check on state change (requires authentication)
 ======================================================================= */
 	$rootScope.$on('$stateChangeStart', function (event, next) {
-		/*
 		if (next.data.authRequired && Auth.isLoggedIn() === false) {
 			event.preventDefault();
 			// user is not logged in
 			$state.go('auth.login');
 			alertService.showAlert(AUTH_EVENTS.notAuthenticated, 'alert-danger');
 		}
-		*/
 	});
 
 /* =======================================================================

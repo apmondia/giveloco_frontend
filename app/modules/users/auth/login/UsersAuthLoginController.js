@@ -3,7 +3,7 @@
 function UsersAuthLoginCtrl($rootScope, $scope, $state, $cookieStore, Auth, AUTH_EVENTS, alertService) {
 
 	$rootScope.$on('logged-in', function () {
-		if ($rootScope.currentUser.role == 'business') {
+		if ($rootScope.currentUser.role === 'business') {
 			$state.go('profile.business', $rootScope.currentUser);
 		} else {
 			$state.go('profile.cause', $rootScope.currentUser);
