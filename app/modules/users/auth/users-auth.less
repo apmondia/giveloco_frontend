@@ -36,10 +36,12 @@ body.users.auth {
 			border-bottom: solid 1px #fff;
 			background-color: @brand-teal;
 			span {
+				display: inline;
+				/*
 				display: none;
 				@media @breakpoint-sm {
 					display: inline;
-				}
+				}*/
 			}
 		}
 	}
@@ -85,5 +87,5 @@ body.users.auth {
 ======================================================================= */
 @import "login/users-auth-login.less";
 @import "password-reset/users-auth-password-reset.less";
-@import "stripe/users-auth-stripe.less";	
+@import "stripe/users-auth-stripe.less";
 @import "registration/users-auth-registration.less";

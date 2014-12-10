@@ -2,16 +2,22 @@
 	<nav class="navbar" role="navigation">
     <div class="container">
       <div class="row">
-        <div class="navbar-header">
-          <a class="navbar-brand" ui-sref="home"><img src="/images/logo/logo_color.png" height="50px">Taliflo</a>
-          <ul class="nav navbar-nav navbar-left">
-            <li ui-sref-active="active"><a ui-sref="explore.businesses"><i class="icon icon-cash"></i>Businesses</a></li>
-            <li ui-sref-active="active"><a ui-sref="explore.causes"><i class="icon icon-ribbon"></i>Causes</a></li>
-          </ul>
-        </div>
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" ng-click="navbarCollapsed = !navbarCollapsed">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" ui-sref="home"><img src="/images/logo/logo_color.png" height="50px">Taliflo</a>
+					<ul class="nav navbar-nav navbar-left">
+						<li ui-sref-active="active"><a ui-sref="explore.businesses"><i class="icon icon-cash"></i>Businesses</a></li>
+						<li ui-sref-active="active"><a ui-sref="explore.causes"><i class="icon icon-ribbon"></i>Causes</a></li>
+					</ul>
+				</div>
 
         <!-- Collapsible menu for responsive layouts -->
-        <div id="mobile-menu-nav" class="navbar-collapse navbar-right">
+        <div id="mobile-menu-nav" class="navbar-collapse navbar-right" ng-init="navbarCollapsed = true" collapse="navbarCollapsed">
 
           <ul class="nav navbar-nav">
             <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.login" ng-click="closeNavbar()" class='login'>Log In</a></li>
