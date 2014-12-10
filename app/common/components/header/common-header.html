@@ -19,7 +19,7 @@
 
             <!-- Mobile Menu-->
             <div class="mobile-menu" ng-if="isLoggedIn()">
-              <li ui-sref-active="active"><a ui-sref="dashboard" ng-click="closeNavbar()"><i class="icon icon-speedometer"></i>Dashboard</a></li>
+              <li ng-if="currentUser.role == 'admin'" ui-sref-active="active"><a ui-sref="dashboard" ng-click="closeNavbar()"><i class="icon icon-speedometer"></i>Dashboard</a></li>
               <li ui-sref-active="active" ng-click="closeNavbar()" ng-if="currentUser.role == 'cause'"><a ui-sref="profile.cause({id:currentUser.id})"><i class="icon icon-user-circle-outline"></i>My Profile</a></li>
               <li ui-sref-active="active" ng-click="closeNavbar()" ng-if="currentUser.role == 'business'"><a ui-sref="profile.business({id:currentUser.id})"><i class="icon icon-user-circle-outline"></i>My Profile</a></li>
               <li ui-sref-active="active"><a ui-sref="account.details.view({id:currentUser.id})" ng-click="closeNavbar()"><i class="icon icon-account"></i>My Account</a></li>
@@ -35,15 +35,18 @@
                   Hi, {{currentUser.first_name}} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
+
 									<li ng-if="currentUser.role == 'admin'" class="first" ui-sref-active="active">
 										<a ui-sref="dashboard.admin()"><i class="icon icon-speedometer"></i>Dashboard</a>
 									</li>
+									<!--
 									<li ng-if="currentUser.role == 'cause'" class="first" ui-sref-active="active">
 										<a ui-sref="dashboard.cause()"><i class="icon icon-speedometer"></i>Dashboard</a>
 									</li>
 									<li ng-if="currentUser.role == 'business'" class="first" ui-sref-active="active">
 										<a ui-sref="dashboard.business()"><i class="icon icon-speedometer"></i>Dashboard</a>
 									</li>
+								-->
                   <li ui-sref-active="active" ng-if="currentUser.role == 'cause'"><a ui-sref="profile.cause({id:currentUser.id})"><i class="icon icon-user-circle-outline"></i>My Profile</a></li>
                   <li ui-sref-active="active" ng-if="currentUser.role == 'business'"><a ui-sref="profile.business({id:currentUser.id})"><i class="icon icon-user-circle-outline"></i>My Profile</a></li>
                   <li ui-sref-active="active"><a ui-sref="account.details.view({id:currentUser.id})"><i class="icon icon-account"></i>My Account</a></li>
