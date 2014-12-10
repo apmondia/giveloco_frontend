@@ -5,7 +5,7 @@
 		<div class="form-section basic-info">
 			<div class="form-group company" ng-class="{'invalid' : signupFormCause.company.$invalid && signupFormCause.company.$dirty, 'valid' : signupFormCause.company.$valid && signupFormCause.company.$dirty}">
 				<label for="causeName" class="inline">Cause Name</label>
-				<input type="company" name="company" id="causeName" class="form-control with-label" placeholder="Organization or Cause name" ng-model="user.company_name" ng-pattern="companyRegex" maxlength="60" required auto-focus show-form-errors />
+				<input type="company" name="company" id="causeName" class="form-control with-label" placeholder="Organization or Cause name" ng-model="user.company_name" maxlength="60" required auto-focus show-form-errors />
 				<p class="form-helper" ng-if="signupFormCause.company.$error.pattern">This field only accepts letters, numbers, and periods.</p>
 				<p class="form-helper" ng-if="signupFormCause.company.$dirty && signupFormCause.company.$error.required && !signupFormCause.company.$focused">Cause Name is required!</p>
 			</div>

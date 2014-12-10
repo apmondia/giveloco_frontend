@@ -6,8 +6,6 @@ function UsersCtrl($scope, formValidation) {
 	======================================================================= */
 	// Real Name
 	$scope.nameRegex = formValidation.lettersOnly;
-	// Company Name
-	$scope.companyRegex = formValidation.alphaNumPeriod;
 	// Email Address
 	$scope.emailRegex = formValidation.emailRegex;
 	// Phone Number

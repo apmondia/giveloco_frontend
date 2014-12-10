@@ -5,7 +5,7 @@
 		<div class="form-section basic-info">
 			<div class="form-group company" ng-class="{'invalid' : signupFormBusiness.company.$invalid && signupFormBusiness.company.$dirty, 'valid' : signupFormBusiness.company.$valid && signupFormBusiness.company.$dirty}">
 				<label for="companyName" class="inline">Business Name</label>
-				<input type="company" name="company" id="companyName" class="form-control with-label" placeholder="Business name" ng-model="user.company_name" ng-pattern="companyRegex" maxlength="60" required auto-focus show-form-errors />
+				<input type="company" name="company" id="companyName" class="form-control with-label" placeholder="Business name" ng-model="user.company_name" maxlength="60" required auto-focus show-form-errors />
 				<p class="form-helper" ng-if="signupFormBusiness.company.$error.pattern">This field only accepts letters, numbers, and periods.</p>
 				<p class="form-helper" ng-if="signupFormBusiness.company.$dirty && signupFormBusiness.company.$error.required && !signupFormBusiness.company.$focused">Business Name is required!</p>
 			</div>
