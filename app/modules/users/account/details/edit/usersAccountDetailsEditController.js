@@ -107,8 +107,7 @@ function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 	/* =======================================================================
 		Update User (Submit Form)
 	======================================================================= */
-	var userData = $scope.user,
-		updateSuccess = function() {
+	var updateSuccess = function() {
 			// localStorage.setItem('uname', userData.first_name); // Sets the new username for use around the site
 			// $scope.$emit('user.data.changed'); // Updates username on the fly via MainCtrl
 			$scope.countries();
