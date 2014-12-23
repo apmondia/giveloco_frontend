@@ -112,7 +112,7 @@
 			</div>
 
 			<div class="form-group tags" ng-class="{'invalid' : updateUserForm.tags.$invalid && updateUserForm.tags.$dirty, 'valid' : updateUserForm.tags.$valid && updateUserForm.tags.$dirty}">
-				<label for="userTags" class="block">Tags</label>
+				<label for="userTags" class="block">Search Tags</label>
 				<tags-input ng-model="user.tags" name="tags" id="userTags" class="tags-input" add-on-space='true' allowed-tags-pattern="^[^!@#$%&\*:;.?]*$" min-length='3' max-length='25' show-form-errors></tags-input>
 				<p class="form-helper info" ng-if="updateUserForm.tags.$focused">Please add a few tags that describe your business. Tags can be up to 25 characters long and consist of numbers and letters.</p>
 				<p class="form-helper" ng-if="!updateUserForm.tags.$valid && !updateUserForm.tags.$focused">Please enter a valid tag!</p>
