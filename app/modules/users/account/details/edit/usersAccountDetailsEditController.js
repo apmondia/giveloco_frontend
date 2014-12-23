@@ -1,9 +1,9 @@
 /*jshint camelcase: false */
 'use strict';
 
-function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth, formValidation, regions, USER_EVENTS, alertService) {
+function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth, formValidation, regions, USER_EVENTS, alertService, Restangular) {
 
-	var user = $scope.user;
+	$scope.user = angular.copy($rootScope.currentUser);
 
 	/* =======================================================================
 		Zip / Postal Code Validation
@@ -34,13 +34,13 @@ function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 			$scope.countryList.push(regions.countries[i]);
 		}
 
-		if (user.country === null) {
+		if ($scope.user.country === null) {
 			// Default country is Canada
 			$scope.user.country = $scope.countryList[0];
 		} else {
 			var country;
 			for (country in countryList) {
-				if (user.country === countryList[country].name) {
+				if ($scope.user.country === countryList[country].name) {
 					// Set the user's selected country
 					$scope.user.country = countryList[country];
 				}
@@ -49,13 +49,13 @@ function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 
 		// Default set of states is defined by the selected country
 		var states = $scope.states = $scope.statesList[$scope.user.country.code];
-		if (user.state === null) {
+		if ($scope.user.state === null) {
 			// Default state is the first in the list
 			$scope.user.state = $scope.states[0];
 		} else {
 			var state;
 			for (state in states) {
-				if (user.state === states[state].code) {
+				if ($scope.user.state === states[state].code) {
 					// Set the user's selected state / province
 					$scope.user.state = states[state];
 				}
@@ -121,13 +121,14 @@ function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 		};
 
 	$scope.updateUser = function(isValid) {
-		// Convert tags object into an array and set all tags to lowercase for submission
-		var tags = user.tags.map(function(tag) {return tag.text.toLowerCase(); });
 		if (isValid) {
-			user.country = $scope.user.country.name;
-			user.state = $scope.user.state.code;
-			user.tag_list = tags;
-			userData.put().then(updateSuccess, updateError);
+			// Convert tags object into an array and set all tags to lowercase for submission
+			var tags = $scope.user.tags.map(function(tag) {return tag.text.toLowerCase(); });
+			var saveCopy = Restangular.copy($scope.user);
+			saveCopy.country = $scope.user.country.name;
+			saveCopy.state = $scope.user.state.code;
+			saveCopy.tag_list = tags;
+			saveCopy.put().then(updateSuccess, updateError);
 		} else {
 			alertService.showAlert(USER_EVENTS.formContainsErrors, 'alert-danger');
 		}
@@ -135,5 +136,5 @@ function UsersAccountDetailsEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 
 }
 
-UsersAccountDetailsEditCtrl.$inject = ['$rootScope', '$scope', '$timeout', '$state', 'Auth', 'formValidation', 'regions', 'USER_EVENTS', 'alertService'];
+UsersAccountDetailsEditCtrl.$inject = ['$rootScope', '$scope', '$timeout', '$state', 'Auth', 'formValidation', 'regions', 'USER_EVENTS', 'alertService','Restangular'];
 module.exports = UsersAccountDetailsEditCtrl;
