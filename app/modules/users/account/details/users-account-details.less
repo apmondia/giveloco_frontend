@@ -204,12 +204,13 @@ body.account.details {
 	}
 	.user-profile-image-upload {
 		.image-upload {
+			text-align: left;
 			width: 100%;
 			overflow: hidden;
 			margin-top: 6px;
 			.file-input {
 				height: 34px;
-				position: relative;
+				position: absolute;
 				z-index: 2;
 				opacity: 0.01;
 				cursor: pointer;
@@ -233,15 +234,13 @@ body.account.details {
 			}
 			.fake-uploader-container {
 				position: relative;
-				top: -34px;
+				.clearfix();
 			}
 		}
 		ul.file-uploads {
 			width: 100%;
 			padding: 0 15px 0 0;
-			margin: 0px;
-			bottom: 68px;
-			position: absolute;
+			margin: 5px 0px 5px 0px;
 			z-index: 3;
 			.animated();
 		    &.ng-enter {
@@ -252,15 +251,14 @@ body.account.details {
 		    }
 		    li {
 		    	list-style: none;
-		    	border-top: solid 1px @border-color;
+		    	//border-top: solid 1px @border-color;
 		    	.file-actions {
 		    		margin-top: 0px;
-					padding: 5px;
-					border-radius: 0 0 5px 5px;
-					background:url("./images/whites/white75.png");
-					.file-name {
-						margin-bottom: 5px;
-					}
+						border-radius: 0 0 5px 5px;
+						//background:url("./images/whites/white75.png");
+						.file-name {
+							margin-bottom: 5px;
+						}
 		    	}
 		    	.progress {
 		    		height: 34px;
@@ -268,8 +266,8 @@ body.account.details {
 		    		width: calc(~'100% - 100px');
 		    		float: right;
 		    		position: relative;
-					bottom: -34px;
-					border-radius: 0 5px 5px 0;
+						bottom: -34px;
+						border-radius: 0 5px 5px 0;
 		    	}
 		    }
 		}

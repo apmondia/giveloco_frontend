@@ -14,15 +14,15 @@ function UsersAccountDetailsImageUploadCtrl($rootScope, $scope, $cookies, apiCon
     alertService.showAlert(USER_EVENTS.imageUploadInProgress, 'alert-warning');
   };
 
-  $scope.uploader.onSuccessItem = function() {
+  $scope.uploader.onSuccessItem = function(arg1, arg2) {
     $scope.showSpinner = false;
     alertService.showAlert(USER_EVENTS.imageUploadSuccess, 'alert-success');
     Auth.refreshCurrentUser();
   };
 
-  $scope.uploader.onErrorItem = function() {
+  $scope.uploader.onErrorItem = function(arg1, arg2) {
     $scope.showSpinner = false;
-    alertService.showAlert(USER_EVENTS.imageUploadFailure, 'alert-danger');
+    alertService.showAlert(arg2.full_messages.join(' and '), 'alert-danger');
   };
 
   $scope.getUploader = function () {
