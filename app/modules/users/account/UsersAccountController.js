@@ -1,17 +1,15 @@
 'use strict';
 
 function UsersAccountCtrl($rootScope, $scope) {
-	$scope.user = $scope.currentUser;
-
 // =======================================================================
 //	Display state and country properly on state change
 // =======================================================================
 	$scope.chosenCountry = function() {
-		if ($scope.user && $scope.user.country) {
-			if ($scope.user.country.name === undefined) {
-				return $scope.user.country;
+		if ($scope.currentUser && $scope.currentUser.country) {
+			if ($scope.currentUser.country.name === undefined) {
+				return $scope.currentUser.country;
 			} else {
-				return $scope.user.country.name;
+				return $scope.currentUser.country.name;
 			}
 		} else {
 			return '';
@@ -19,11 +17,11 @@ function UsersAccountCtrl($rootScope, $scope) {
 	};
 
 	$scope.chosenState = function() {
-		if ($scope.user && $scope.user.state) {
-			if ($scope.user.state.name === undefined) {
-				return $scope.user.state;
+		if ($scope.currentUser && $scope.currentUser.state) {
+			if ($scope.currentUser.state.name === undefined) {
+				return $scope.currentUser.state;
 			} else {
-				return $scope.user.state.code;
+				return $scope.currentUser.state.code;
 			}
 		} else {
 			return '';
