@@ -21,7 +21,7 @@
 
           <ul class="nav navbar-nav">
             <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.login" ng-click="closeNavbar()" class='login'>Log In</a></li>
-            <li ui-sref-active="active" ng-if="!isLoggedIn()"><a ui-sref="auth.signup.business" ng-click="closeNavbar()">Sign Up</a></li>
+            <li ng-if="!isLoggedIn()"><a ui-sref="auth.signup.business" ng-click="closeNavbar()">Sign Up</a></li>
 
             <!-- Mobile Menu-->
             <div class="mobile-menu" ng-if="isLoggedIn()">

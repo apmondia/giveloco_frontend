@@ -113,7 +113,7 @@
 
 			<div class="form-group tags" ng-class="{'invalid' : updateUserForm.tags.$invalid && updateUserForm.tags.$dirty, 'valid' : updateUserForm.tags.$valid && updateUserForm.tags.$dirty}">
 				<label for="userTags" class="block">Tags</label>
-				<tags-input ng-model="user.tags" name="tags" id="userTags" class="tags-input" allowed-tags-pattern="^[^!@#$%&*:;.?]*$" show-form-errors></tags-input>
+				<tags-input ng-model="user.tags" name="tags" id="userTags" class="tags-input" add-on-space='true' allowed-tags-pattern="^[^!@#$%&*:;.?]*$" show-form-errors></tags-input>
 				<p class="form-helper info" ng-if="updateUserForm.tags.$focused">Please add a few comma-separated tags that describe your business. Only letters, numbers, and commas are accepted.</p>
 				<p class="form-helper" ng-if="updateUserForm.tags.$dirty && updateUserForm.tags.$error.minTags && !updateUserForm.tags.$focused">This field is required!</p>
 			</div>
