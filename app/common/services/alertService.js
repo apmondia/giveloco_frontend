@@ -3,6 +3,12 @@
 var Alert = function($rootScope, $timeout) {
 
 	var service = {
+		showSuccess: function (message) {
+			service.showAlert(message, 'alert-success');
+		},
+		showDanger: function (message) {
+			service.showAlert(message, 'alert-danger');
+		},
 		showAlert: function(message, alertClasses) {
 
 			$rootScope.alertVisible = true;

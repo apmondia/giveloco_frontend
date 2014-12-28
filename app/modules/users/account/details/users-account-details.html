@@ -10,7 +10,9 @@
 	</div>
 	<div class="sub-header">
 		<h5>User Type: <span>{{currentUser.role}}</span></h5>
-		<h5>Account Status: <span class="status {{accountStatus()}}">{{accountStatus()}}</span></h5>
+		<h5>Account Status: <span class="status {{accountStatus()}}">{{accountStatus()}}</span>
+			<a href='#' ng-if="!confirmationResent && accountStatus() == 'unconfirmed'" ng-click='resendInstructions()'>Resend Instructions</a>
+		</h5>
 	</div>
 
     <div ui-view></div>

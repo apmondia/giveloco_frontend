@@ -359,9 +359,10 @@ span.edit {
     padding: 40px 0;
     background-color: @brand-purple;
     border-bottom: solid 1px darken(@brand-purple, 10%);
+		text-align: center;
 }
 ul.social-links {
-    width: 278px;
+		display: inline-block;
     margin: auto;
     .clearfix();
     &:hover {
@@ -371,6 +372,7 @@ ul.social-links {
     }
     li {
         transition: opacity 0.3s;
+				display: inline-block;
         &:hover {
             opacity: 1;
         }

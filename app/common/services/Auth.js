@@ -54,9 +54,17 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 		refreshCurrentUser: function (callback) {
 			var uid = $cookieStore.get('uid');
 			Restangular.one('users', uid).get().then(function (userData) {
-				authService.updateCurrentUser(userData);
-				if (angular.isFunction(callback)) {
-					callback(userData);
+				if (userData.email) {
+					authService.updateCurrentUser(userData);
+					if (angular.isFunction(callback)) {
+						callback(userData);
+					}
+				} else { //we must be stale
+					authService.logout().then(function () {
+						if (angular.isFunction(callback)) {
+							callback(null);
+						}
+					});
 				}
 			});
 		},

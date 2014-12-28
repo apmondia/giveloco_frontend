@@ -22,6 +22,7 @@ var apiConfig = function() {
 			login: apiProxy + '/user/login',
 			signup: apiProxy + '/user/signup',
 			logout: apiProxy + '/user/logout',
+			resendConfirmation: apiProxy + apiVersion + '/users/confirmations',
 			withID: function (userID) {
 				return {
 					updatePassword: apiProxy + '/user/' + userID + '/change_password',
