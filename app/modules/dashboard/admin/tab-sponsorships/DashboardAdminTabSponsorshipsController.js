@@ -10,6 +10,10 @@ function DashboardAdminTabSponsorshipsCtrl($scope, Restangular) {
 
   $scope.loadSponsorships();
 
+  $scope.$on('newSponsorship',function() {
+    $scope.loadSponsorships();
+  });
+
 }
 
 DashboardAdminTabSponsorshipsCtrl.$inject = ['$scope', 'Restangular'];

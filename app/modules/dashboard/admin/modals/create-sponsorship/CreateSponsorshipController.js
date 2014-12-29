@@ -1,6 +1,6 @@
 'use strict';
 
-function CreateSponsorshipCtrl($scope, SponsorService, SPONSORSHIP_EVENTS, alertService) {
+function CreateSponsorshipCtrl($rootScope, $scope, SponsorService, SPONSORSHIP_EVENTS, alertService) {
 
 	$scope.sponsorship = {
 		business_id: null,
@@ -23,6 +23,7 @@ function CreateSponsorshipCtrl($scope, SponsorService, SPONSORSHIP_EVENTS, alert
 	var success = function() {
 		alertService.showAlert(SPONSORSHIP_EVENTS.creationSuccess, 'alert-success');
 		$scope.createSponsorshipModal.close();
+		$rootScope.$broadcast('newSponsorship');
 	};
 
 	var error = function() {
@@ -35,8 +36,8 @@ function CreateSponsorshipCtrl($scope, SponsorService, SPONSORSHIP_EVENTS, alert
 			SponsorService.createSponsorship($scope.sponsorship).then(success, error);
 		}
 	};
-	
+
 }
 
-CreateSponsorshipCtrl.$inject = ['$scope', 'SponsorService', 'SPONSORSHIP_EVENTS', 'alertService'];
+CreateSponsorshipCtrl.$inject = ['$rootScope', '$scope', 'SponsorService', 'SPONSORSHIP_EVENTS', 'alertService'];
 module.exports = CreateSponsorshipCtrl;
