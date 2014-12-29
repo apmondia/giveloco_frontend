@@ -19,31 +19,17 @@ var Sponsorships = function(Restangular, $http, apiConfig) {
 			Get List of Sponsored Causes
 		======================================================================= */
 		getSponsoredCauses: function(user) {
-			var causeList = [];
-			for (var i=0; i < user.sponsorships.length; i++) {
-				if (user.sponsorships[i].status === 'accepted') {
-					var supportedCause = Restangular.one('users', user.sponsorships[i].cause.id).get().$object;
-					causeList.push(supportedCause);
-				}
-			}
-			return causeList;
+			return Restangular.one('users', user.id).getList('sponsorships');
 		},
 		/* =======================================================================
 			Get List of Sponsors (Businesses)
-		======================================================================= */	
+		======================================================================= */
 		getSponsors: function(user) {
-			var businessList = [];
-			for (var i=0; i < user.sponsors.length; i++) {
-				if (user.sponsors[i].status === 'accepted') {
-					var sponsors = Restangular.one('users', user.sponsors[i].business.id).get().$object;
-					businessList.push(sponsors);
-				}
-			}
-			return businessList;
+			return Restangular.one('users', user.id).getList('sponsors');
 		},
 		/* =======================================================================
 			Create Sponsorship
-		======================================================================= */	
+		======================================================================= */
 		createSponsorship: function(data) {
 			return $http.post(apiConfig.API.sponsorship.create, data).then(function(data){
 				return data;

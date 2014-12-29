@@ -1,8 +1,8 @@
 <div class="users-profile cause" ng-class="{'my-profile': user.id === currentUser.id}">
 	<div class="sidebar">
 		<div class="user-profile-picture">
-			<div class="default-image" ng-if="user.images.profile_picture.original === ''"><i class="icon icon-photos-pictures"></i></div>
-			<img ng-src="{{userImage}}" ng-if="user.images.profile_picture.original !== ''" />
+			<div class="default-image" ng-if="hasDefaultImage(user)"><i class="icon icon-photos-pictures"></i></div>
+			<img ng-src="{{userImage}}" ng-if="!hasDefaultImage(user)" />
 		</div>
 
 		<div class="contact-info">
@@ -45,7 +45,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="meta">
 			<div class="user-role">
 				<i class="icon icon-ribbon"></i>
@@ -57,7 +57,7 @@
 				</ul>
 			</div>
 		</div>
-		
+
 	    <div class="user-description" ng-bind-html="user.description | linky:'_blank'"></div>
 
 	    <div users-profile-cause-sponsors></div>

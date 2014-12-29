@@ -1,8 +1,8 @@
 <div class="users-profile business" ng-class="{'my-profile': user.id === currentUser.id}">
 	<div class="sidebar">
 		<div class="user-profile-picture">
-			<div class="default-image" ng-if="user.images.profile_picture.original === ''"><i class="icon icon-photos-pictures"></i></div>
-			<img ng-src="{{userImage}}" ng-if="user.images.profile_picture.original !== ''" />
+			<div class="default-image" ng-if="hasDefaultImage(user)"><i class="icon icon-photos-pictures"></i></div>
+			<img ng-src="{{userImage}}" ng-if="!hasDefaultImage(user)" />
 		</div>
 
 		<div class="contact-info">

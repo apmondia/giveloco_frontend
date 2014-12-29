@@ -2,7 +2,9 @@
 
 function UsersProfileBusinessSupportedCausesCtrl($scope, SponsorService) {
 
-	$scope.sponsorships = SponsorService.getSponsoredCauses($scope.user);
+	SponsorService.getSponsoredCauses($scope.user).then(function (data) {
+		$scope.sponsorships = data;
+	});
 
 }
 

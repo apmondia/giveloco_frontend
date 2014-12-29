@@ -53,6 +53,12 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
     };
 
 
+		$scope.hasDefaultImage = function (user) {
+			return user.images.profile_picture.original.indexOf('default.png') >= 0
+		};
+		
+
+
 /* =======================================================================
 	Pluralized Tooltip / Popover for Grid Items
 ======================================================================= */

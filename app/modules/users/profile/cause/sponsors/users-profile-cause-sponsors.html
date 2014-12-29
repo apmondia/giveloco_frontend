@@ -2,17 +2,17 @@
 	<hr />
 	<h3 class="supporters-title">Sponsors</h3>
 	<div class="row">
-	    <div ng-repeat="business in sponsors" class="business small-grid grid block">
-	    	<div class="grid-item" ng-hide="loading">
-		    	<a ui-sref="profile.business({id:business.id, role:business.role})" title="{{business.company_name}}">
-					<div class="profile-picture"><img ng-src="{{business.images.profile_picture.medium}}"></div>
-					<div class="company-name">{{business.company_name | characters:24}}</div>
-				</a>
-				<div class="user-summary">{{business.summary | characters:140}}</div>
-				<div class="supporters" popover-placement="top" popover-trigger="mouseenter" popover="{{pluralizedUserTooltip(business)}}">
-					<i class="icon icon-ribbon" ng-repeat="sponsor in business.sponsorships | filter: { status: 'accepted' } | limitTo : 3"></i>
+	    <div ng-repeat="sponsor in sponsors" class="business small-grid grid block">
+				<div class="grid-item" ng-hide="loading">
+						<a ui-sref="profile.business({id:sponsor.business.id, role:sponsor.business.role})" title="{{sponsor.business.company_name}}">
+						<div class="profile-picture" ng-class="{ default: hasDefaultImage(sponsor.business) }">
+							<i ng-if="hasDefaultImage(sponsor.business)" class='icon icon-photos-pictures'></i>
+							<img ng-if="!hasDefaultImage(sponsor.business)" ng-src="{{sponsor.business.images.profile_picture.medium}}" />
+						</div>
+						<div class="company-name">{{sponsor.business.company_name | characters:24}}</div>
+						<div class="user-summary">{{sponsor.business.summary | characters:140}}</div>
+					</a>
 				</div>
-			</div>
 	    </div>
     </div>
     <div ajax-spinner class="spinner" ng-show="loading"></div>

@@ -16,20 +16,19 @@
 			<div dir-paginate="user in causes | filter: search | itemsPerPage: 12" class="cause grid block">
 		    	<div class="grid-item">
 			    	<a ui-sref="profile.cause({id:user.id})" title="{{user.company_name}}">
-						<div class="profile-picture"><img ng-src="{{user.images.profile_picture.medium}}"></div>
-						<div class="company-name">{{user.company_name | characters:20}}</div>
-					</a>
+							<div class="profile-picture" ng-class="{ default: hasDefaultImage(user) }">
+								<i ng-if="hasDefaultImage(user)" class='icon icon-photos-pictures'></i>
+								<img ng-if='!hasDefaultImage(user)' ng-src="{{user.images.profile_picture.medium}}">
+							</div>
+							<div class="company-name">{{user.company_name | characters:20}}</div>
+						</a>
 					<div class="user-summary">{{user.summary | characters:140}}</div>
-					<div class="supporters" popover-placement="top" popover-trigger="mouseenter" popover="{{pluralizedUserTooltip(user)}}">
-						<i class="icon icon-cash" ng-repeat="sponsor in user.sponsors | filter: { status: 'accepted' } | limitTo: 3"></i>
-						<i class="icon icon-more-2" ng-if="user.sponsors.length > 3"></i>
-					</div>
 				</div>
 		    </div>
 		    <div ajax-spinner class="spinner" ng-show="loading"></div>
 		    <p ng-hide="(causes | filter: search).length || loading" class="no-results">Sorry, No Results</p>
 		</div>
-		
+
 		<div dir-pagination-controls boundary-links="true" class="pagination-controls bottom"></div>
 	</div>
 </div>

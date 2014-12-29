@@ -1,9 +1,11 @@
 'use strict';
 
 function UsersProfileCauseSponsorsCtrl($scope, SponsorService) {
-	
-	$scope.sponsors = SponsorService.getSponsors($scope.user);
 
+	SponsorService.getSponsors($scope.user).then(function (data) {
+		$scope.sponsors = data;
+	});
+	
 }
 
 UsersProfileCauseSponsorsCtrl.$inject = ['$scope', 'SponsorService'];
