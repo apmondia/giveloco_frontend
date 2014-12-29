@@ -10,6 +10,9 @@ function UsersAccountChangePasswordCtrl($scope, $http, Auth, alertService, AUTH_
 	};
 
 	var	updateSuccess = function() {
+		$scope.user.current_password = '';
+		$scope.user.password = '';
+		$scope.user.password_confirmation = '';
 		alertService.showAlert(AUTH_EVENTS.passwordUpdated, 'alert-success');
 	},
 		updateError = function() {
@@ -20,10 +23,7 @@ function UsersAccountChangePasswordCtrl($scope, $http, Auth, alertService, AUTH_
 		if (isValid) {
 			Auth.updatePassword($scope.user).then(updateSuccess, updateError);
 			$scope.changePasswordForm.$setPristine();
-			$scope.user.current_password = '';
-			$scope.user.password = '';
-			$scope.user.password_confirmation = '';
-		} 
+		}
 	};
 }
 
