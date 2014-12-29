@@ -14,7 +14,7 @@ function UsersAccountDetailsImageUploadCtrl($rootScope, $scope, $cookies, apiCon
     alertService.showAlert(USER_EVENTS.imageUploadInProgress, 'alert-warning');
   };
 
-  $scope.uploader.onSuccessItem = function(arg1, arg2) {
+  $scope.uploader.onSuccessItem = function() {
     $scope.showSpinner = false;
     alertService.showAlert(USER_EVENTS.imageUploadSuccess, 'alert-success');
     Auth.refreshCurrentUser();

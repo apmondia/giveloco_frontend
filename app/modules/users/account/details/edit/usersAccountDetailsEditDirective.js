@@ -6,7 +6,7 @@ module.exports = function usersAccountDetailsEditDirective() {
 		template: require('./users-account-details-edit.html'),
 		restrict: 'A',
 		scope: false,
-		link: function(scope, element, attrs) {
+		link: function(scope, element) {
 			$(element).on('focus','#userTags', function () {
 				scope.updateUserForm.tags.$focused = true;
 			});

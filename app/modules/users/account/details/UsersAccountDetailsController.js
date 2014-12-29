@@ -16,7 +16,7 @@ function UsersAccountDetailsCtrl($rootScope, $scope, $http, apiConfig, alertServ
 		return $http.post(apiConfig.API.user.resendConfirmation,
 			{
 				'format': 'json'
-				}).then(function(user){
+				}).then(function(){
 			$scope.confirmationSent = true;
 			alertService.showSuccess(AUTH_EVENTS.confirmationResent);
 		});

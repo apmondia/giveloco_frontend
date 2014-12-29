@@ -1,11 +1,11 @@
 <div id="modalSponsorshipRequest" class="modal-wrapper">
 	<h2 class="modal-title"><span>Sponsor</span> {{user.company_name}}</h2>
 	<button class="close" ng-click="usersProfileSponsorshipRequestModal.close()"><i class="icon icon-x"></i></button>
-	
-	<form class="form" id="sponsorshipForm" name="sponsorshipForm" novalidate autocomplete="off">
+
+	<form ng-submit='submitSponsorshipRequest(sponsorshipForm.$valid)' class="form" id="sponsorshipForm" name="sponsorshipForm" novalidate autocomplete="off">
 		<div class="modal-body">
 	    	<div class="form-section request">
-	            
+
 	        </div>
 		</div>
 

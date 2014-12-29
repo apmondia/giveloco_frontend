@@ -54,9 +54,9 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 
 
 		$scope.hasDefaultImage = function (user) {
-			return user.images.profile_picture.original.indexOf('default.png') >= 0
+			return user.images.profile_picture.original.indexOf('default.png') >= 0;
 		};
-		
+
 
 
 /* =======================================================================
