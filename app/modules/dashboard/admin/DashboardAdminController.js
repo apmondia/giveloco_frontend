@@ -6,7 +6,7 @@ function DashboardAdminCtrl($scope, Restangular) {
 ======================================================================= */
 	// Get all users from server
 	var users = Restangular.all('users');
-	
+
 	$scope.setLoading = function(b) {
 		$scope.loading = b;
 	};
@@ -67,6 +67,14 @@ function DashboardAdminCtrl($scope, Restangular) {
             windowClass: 'create-sponsorship'
         });
     };
+
+		$scope.deleteSponsorship = function (sponsorship) {
+			$scope.selectedSponsorship = sponsorship;
+			$scope.deleteSponsorshipModal.open({
+				windowClass: 'delete-sponsorship'
+			});
+		};
+		
 }
 
 DashboardAdminCtrl.$inject = ['$scope', 'Restangular'];

@@ -23,7 +23,7 @@ function CreateSponsorshipCtrl($rootScope, $scope, SponsorService, SPONSORSHIP_E
 	var success = function() {
 		alertService.showAlert(SPONSORSHIP_EVENTS.creationSuccess, 'alert-success');
 		$scope.createSponsorshipModal.close();
-		$rootScope.$broadcast('newSponsorship');
+		$rootScope.$broadcast('sponsorshipsChanged');
 	};
 
 	var error = function() {

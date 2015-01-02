@@ -42,12 +42,12 @@
         </td>
         <td class="user-field user-actions">
           <div class="dropdown">
-            <div dropdown class="dropdown-wrapper">
-              <a class="dropdown-toggle">
+            <div is-open="status.isopen" class="dropdown-wrapper" dropdown on-toggle="toggled(open)">
+              <a class="dropdown-toggle" dropdown-toggle>
                 <i class="icon icon-gear-setting-1"></i><span class="caret"></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                <li class="first"><a>Delete</a></li>
+                <li class="first"><a href='#' ng-click='deleteSponsorship(sponsorship)'>Delete</a></li>
               </ul>
             </div>
           </div>

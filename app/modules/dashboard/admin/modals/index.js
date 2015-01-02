@@ -3,7 +3,8 @@
 module.exports = angular.module('dashboard.admin.modals',
     [
         require('./change-user-status').name,
-        require('./create-sponsorship').name
+        require('./create-sponsorship').name,
+        require('./delete-sponsorship').name
     ])
     .directive('dashboardAdminModals', function () {
         return {

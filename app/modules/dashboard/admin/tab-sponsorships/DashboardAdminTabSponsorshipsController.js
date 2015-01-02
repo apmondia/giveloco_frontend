@@ -10,7 +10,7 @@ function DashboardAdminTabSponsorshipsCtrl($scope, Restangular) {
 
   $scope.loadSponsorships();
 
-  $scope.$on('newSponsorship',function() {
+  $scope.$on('sponsorshipsChanged',function() {
     $scope.loadSponsorships();
   });
 

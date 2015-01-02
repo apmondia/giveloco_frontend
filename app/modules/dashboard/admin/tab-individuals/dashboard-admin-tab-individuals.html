@@ -38,23 +38,23 @@
 					{{user.first_name}} {{user.last_name}}
 				</td>
 				<td class="user-field purchases-made">
-					
+
 				</td>
 				<td class="user-field value-of-purchases">
-					
+
 				</td>
 				<td class="user-field unused-gift-certificates">
-					
+
 				</td>
 				<td class="user-field last-purchase-made">
-					
+
 				</td>
 				<td class="user-field status">
 					<div class="status-active" ng-if="user.is_active === true">Active</div>
 					<div class="status-not-active" ng-if="user.is_active === false">Inactive</div>
 				</td>
 				<td class="user-field user-actions">
-		            <div class="dropdown">
+          <div class="dropdown">
 						<div is-open="status.isopen" class="dropdown-wrapper" dropdown on-toggle="toggled(open)">
 							<a class="dropdown-toggle" dropdown-toggle>
 								<i class="icon icon-gear-setting-1"></i><span class="caret"></span>
@@ -63,7 +63,7 @@
 								<li class="first"><a ng-click="changeUserStatus(user)">Change Status</a></li>
 							</ul>
 						</div>
-		            </div>
+          </div>
 				</td>
 			</tr>
 			<tr ng-hide="(individuals | filter: searchIndividuals).length || loading" class="no-results">
