@@ -16,7 +16,7 @@ function UsersAuthRegistrationCauseCtrl($rootScope, $scope, $state, Auth, AUTH_E
 	var success = function(user) {
 		$scope.showSpinner = false;
 		alertService.showAlert(AUTH_EVENTS.signupSuccess, 'alert-success');
-		$state.go('account.details.view', {id:user.data.id});
+		$state.go('account.profile.view', {id:user.data.id});
 	};
 
 	var error = function(response) {

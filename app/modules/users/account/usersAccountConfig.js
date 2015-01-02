@@ -24,33 +24,33 @@ function userAccountRoutes($stateProvider) {
         pageDescription: 'Add and update billing and credit card information.'
       }
   },
-  accountDetails = {
-      name: 'account.details',
+  accountProfile = {
+      name: 'account.profile',
       abstract: true,
       url: '',
-      template: '<div users-account-details></div>',
+      template: '<div users-account-profile></div>',
       data: {
         moduleClasses: 'users account'
       }
   },
-  accountDetailsView = {
-      name: 'account.details.view',
-      url: '/details',
-      template: '<div users-account-details-view></div>',
+  accountProfileView = {
+      name: 'account.profile.view',
+      url: '/profile',
+      template: '<div users-account-profile-view></div>',
       data: {
-        pageClasses: 'details view',
-        pageTitle: 'Account Details',
+        pageClasses: 'profile view',
+        pageTitle: 'Profile',
         pageDescription: 'Your account information.'
       }
   },
-  accountDetailsEdit = {
-      name: 'account.details.edit',
-      url: '/details/edit',
-      template: '<div users-account-details-edit></div>',
+  accountProfileEdit = {
+      name: 'account.profile.edit',
+      url: '/profile/edit',
+      template: '<div users-account-profile-edit></div>',
       data: {
-        pageClasses: 'details edit',
-        pageTitle: 'Edit Account Details',
-        pageDescription: 'Edit your account information.'
+        pageClasses: 'profile edit',
+        pageTitle: 'Edit Profile',
+        pageDescription: 'Edit your account profile.'
       }
   },
   // accountHistory = {
@@ -89,9 +89,9 @@ function userAccountRoutes($stateProvider) {
 
 $stateProvider.state(account);
 $stateProvider.state(accountBilling);
-$stateProvider.state(accountDetails);
-$stateProvider.state(accountDetailsView);
-$stateProvider.state(accountDetailsEdit);
+$stateProvider.state(accountProfile);
+$stateProvider.state(accountProfileView);
+$stateProvider.state(accountProfileEdit);
 // $stateProvider.state(accountHistory);
 // $stateProvider.state(accountSponsors);
 $stateProvider.state(accountChangePassword);
