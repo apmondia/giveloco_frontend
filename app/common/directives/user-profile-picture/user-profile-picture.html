@@ -1,4 +1,5 @@
-<div class="profile-picture" ng-class="{ default: hasDefaultImage(user) }">
-  <i ng-if="hasDefaultImage(user)" class='icon icon-photos-pictures'></i>
+<div class="profile-picture {{user.role}}" ng-class="{ icons: !hasDefaultImage(user) }">
+  <i ng-if="hasDefaultImage(user) && user.role == 'business'" class='icon icon-store'></i>
+  <i ng-if="hasDefaultImage(user) && user.role == 'cause'" class='icon icon-ribbon'></i>
   <img ng-if="!hasDefaultImage(user)" ng-src="{{user.images.profile_picture.medium}}" />
 </div>

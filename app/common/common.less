@@ -831,39 +831,6 @@ select {
 						margin-top: -18px;
 					}
 				}*/
-        .profile-picture {
-            height: 192px;
-            overflow: hidden;
-            border-bottom: solid 1px @border-color;
-						position: relative;
-						padding: 15px 10px;
-            &:before {
-							font-size: 32px;
-							font-family: 'Taliflo';
-							position: absolute;
-							height: 30px;
-							width: 30px;
-							line-height: 32px;
-							left: 17px;
-							top: 10px;
-							color: #000;
-							z-index: 2;
-            }
-            img {
-                width: 100%;
-                position: relative;
-                z-index: 1;
-            }
-						.icon {
-							display: block;
-							float: none;
-							text-align: center;
-							font-size: 100px;
-							color: @brand-teal;
-							top: 50%;
-							margin-top: -0.5em;
-						}
-        }
         .company-name {
             text-align: center;
             font-weight: 400;
@@ -893,15 +860,7 @@ select {
             }
         }
     }
-    &.cause {
-        .profile-picture:before {
-            content:'a';
-        }
-    }
     &.business {
-        .profile-picture:before {
-            content:'\e07c';
-        }
         .supporters {
             padding: 0 33px;
         }
