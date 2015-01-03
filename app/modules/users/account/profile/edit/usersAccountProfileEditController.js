@@ -128,6 +128,7 @@ function UsersAccountProfileEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 	var updateSuccess = function() {
 			// localStorage.setItem('uname', userData.first_name); // Sets the new username for use around the site
 			// $scope.$emit('user.data.changed'); // Updates username on the fly via MainCtrl
+			$scope.updateUserForm.$setPristine();
 			$scope.countries();
 			Auth.refreshCurrentUser();
 			alertService.showAlert(USER_EVENTS.accountUpdateSuccess, 'alert-success');
