@@ -4,12 +4,12 @@
 		<div ng-repeat="sp in currentUser.sponsorships" class="cause grid block">
 			<div class="grid-item" ng-hide="loading">
 				<a ui-sref="profile.cause({id:sp.cause.id, role:sp.cause.role})" title="{{sp.cause.company_name}}">
-					<div class="profile-picture"><img ng-if='!hasDefaultImage(sp.cause)' ng-src="{{sp.cause.profile_picture}}"></div>
-					<div class="company-name">{{sp.cause.company_name | characters:24}}</div>
+					<div user-profile-picture user='sp.cause'></div>
+					<div class="user-summary">{{sp.cause.summary | characters:140}}</div>
+					<div class="percentage">Donation Percentage: <span>{{sp.donation_percentage}}%</span></div>
+					<div class="status {{sp.status}}">{{sp.status}}</div>
 				</a>
-				<div class="user-summary">{{sp.cause.summary | characters:140}}</div>
-				<div class="percentage">Donation Percentage: <span>{{sp.donation_percentage}}%</span></div>
-				<div class="status {{sp.status}}">{{sp.status}}</div>
+
 			</div>
 		</div>
 	</div>

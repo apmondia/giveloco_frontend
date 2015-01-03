@@ -1,0 +1,4 @@
+<div class="profile-picture" ng-class="{ default: hasDefaultImage(user) }">
+  <i ng-if="hasDefaultImage(user)" class='icon icon-photos-pictures'></i>
+  <img ng-if="!hasDefaultImage(user)" ng-src="{{user.images.profile_picture.medium}}" />
+</div>

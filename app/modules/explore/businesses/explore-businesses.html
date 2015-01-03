@@ -17,15 +17,12 @@
 
 	    	<div class="grid-item">
 					<a ui-sref="profile.business({id:user.id})" title="{{user.company_name}}">
-						<div class="profile-picture" ng-class="{ default: hasDefaultImage(user) }">
-							<i ng-if="hasDefaultImage(user)" class='icon icon-photos-pictures'></i>
-							<img ng-if='!hasDefaultImage(user)' ng-src="{{user.images.profile_picture.medium}}">
-						</div>
+						<div user-profile-picture user='user'></div>
 						<div class="company-name">{{user.company_name | characters:20}}</div>
 						<div class="user-summary">{{user.summary | characters:140}}</div>
 					</a>
 				</div>
-				
+
 	    </div>
 	    <div ajax-spinner class="spinner" ng-show="loading"></div>
 	    <p ng-hide="(businesses | filter: search).length || loading" class="no-results">Sorry, No Results</p>

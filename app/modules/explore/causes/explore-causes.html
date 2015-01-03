@@ -16,10 +16,7 @@
 			<div dir-paginate="user in causes | filter: search | itemsPerPage: 12" class="cause grid block">
 		    	<div class="grid-item">
 			    	<a ui-sref="profile.cause({id:user.id})" title="{{user.company_name}}">
-							<div class="profile-picture" ng-class="{ default: hasDefaultImage(user) }">
-								<i ng-if="hasDefaultImage(user)" class='icon icon-photos-pictures'></i>
-								<img ng-if='!hasDefaultImage(user)' ng-src="{{user.images.profile_picture.medium}}">
-							</div>
+							<div user-profile-picture user='user'></div>
 							<div class="company-name">{{user.company_name | characters:20}}</div>
 						</a>
 					<div class="user-summary">{{user.summary | characters:140}}</div>

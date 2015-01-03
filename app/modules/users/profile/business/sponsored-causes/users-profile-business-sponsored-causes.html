@@ -5,10 +5,7 @@
 	    <div ng-repeat="sponsorship in sponsorships" class="cause small-grid grid block">
 	    	<div class="grid-item" ng-hide="loading">
 					<a ui-sref="profile.cause({id:sponsorship.cause.id, role:sponsorship.cause.role})" title="{{sponsorship.cause.company_name}}">
-						<div class="profile-picture" ng-class="{ default: hasDefaultImage(sponsorship.cause) }">
-							<i ng-if="hasDefaultImage(sponsorship.cause)" class='icon icon-photos-pictures'></i>
-							<img ng-if="!hasDefaultImage(sponsorship.cause)" ng-src="{{sponsorship.cause.images.profile_picture.medium}}" />
-						</div>
+						<div user-profile-picture user='sponsorship.cause'></div>
 						<div class="company-name">{{sponsorship.cause.company_name | characters:24}}</div>
 						<div class="user-summary">{{sponsorship.cause.summary | characters:140}}</div>
 					</a>
