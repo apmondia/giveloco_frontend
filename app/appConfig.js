@@ -27,11 +27,11 @@ function appRoutes($stateProvider, $urlRouterProvider, $locationProvider, $httpP
 			template: '<div ui-view></div>',
 			controller: function($state) {
 				$state.go('home.guest');
-	        },
-	        data: {
+	    },
+      data: {
 				moduleClasses: '', // assign a module class to the <body> tag
 				pageClasses: '', // assign a page-specific class to the <body> tag
-				pageTitle: '', // set the title in the <head> section of the index.html file
+				pageTitle: 'Welcome', // set the title in the <head> section of the index.html file
 				pageDescription: 'Taliflo helps you invest in your community with your everyday purchases. A portion of every gift certificate purchased goes towards a good cause.' // meta description in <head>
 			}
 		},
