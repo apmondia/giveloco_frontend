@@ -20,6 +20,25 @@ function UsersAccountProfileEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 	});
 
 
+	$scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+		console.debug("got here:",event,toState,toParams,fromState,fromParams);
+		if ($scope.updateUserForm.$dirty) {
+			$scope.nextState = toState;
+			$scope.nextStateParams = toParams;
+			$scope.usersAccountProfileEditConfirmModal.open({
+				windowClass: 'confirm'
+			});
+			event.preventDefault();
+		}
+	});
+
+	$scope.gotoNextState = function () {
+		$scope.updateUserForm.$setPristine();
+		$state.go($scope.nextState.name, $scope.nextStateParams);
+		$scope.usersAccountProfileEditConfirmModal.close();
+	};
+
+
 	/* =======================================================================
 		Country & State Select Menus
 	======================================================================= */

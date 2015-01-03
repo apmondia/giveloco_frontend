@@ -15,7 +15,8 @@ var AUTH_EVENTS = (function() {
     stripeConnected: 'Your Stripe account has been connected.',
     stripeConnectionFailed: 'Your Stripe account could not be connected',
     confirmationSuccess: 'Your account has been confirmed! Welcome to Taliflo.',
-    confirmationResent: 'An account confirmation has been sent to you.  Please check your email.'
+    confirmationResent: 'An account confirmation has been sent to you.  Please check your email.',
+    updateSuccess: 'Your account has been updated.'
     };
 }());
 

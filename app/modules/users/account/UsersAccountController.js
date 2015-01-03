@@ -1,6 +1,6 @@
 'use strict';
 
-function UsersAccountCtrl($rootScope, $scope) {
+function UsersAccountCtrl($rootScope, $scope, alertService, apiConfig, $http, AUTH_EVENTS) {
 // =======================================================================
 //	Display state and country properly on state change
 // =======================================================================
@@ -27,7 +27,27 @@ function UsersAccountCtrl($rootScope, $scope) {
 			return '';
 		}
 	};
+
+	$scope.confirmationSent = false;
+
+	$scope.resendInstructions = function () {
+		return $http.post(apiConfig.API.user.resendConfirmation,
+		{
+			'format': 'json'
+		}).then(function(){
+			$scope.confirmationSent = true;
+			alertService.showSuccess(AUTH_EVENTS.confirmationResent);
+		});
+	};
+
+	$scope.accountStatus = function() {
+		if ($scope.currentUser.confirmed_at === null) {
+			return 'unconfirmed';
+		} else {
+			return 'confirmed';
+		}
+	};
 }
 
-UsersAccountCtrl.$inject = ['$rootScope', '$scope'];
+UsersAccountCtrl.$inject = ['$rootScope', '$scope', 'alertService', 'apiConfig', '$http', 'AUTH_EVENTS'];
 module.exports = UsersAccountCtrl;

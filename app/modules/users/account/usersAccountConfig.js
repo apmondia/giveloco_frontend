@@ -76,13 +76,13 @@ function userAccountRoutes($stateProvider) {
   //     }
   // },
   accountChangePassword = {
-      name: 'account.changePassword',
-      url: '/change-password',
-      template: '<div users-account-change-password></div>',
+      name: 'account.info',
+      url: '/info',
+      template: '<div users-account-info></div>',
       data: {
         moduleClasses: 'users account',
-        pageClasses: 'change-password',
-        pageTitle: 'Change Account Password',
+        pageClasses: 'info',
+        pageTitle: 'Change Account Information',
         pageDescription: 'User account settings.'
       }
   };

@@ -3,18 +3,10 @@
 	<div class="left-side">
 		<div class="basic-info section">
 			<h4 class="section-title">Basic Information</h4>
-			<div class="user-data contact-name">
-				<span class="field-label"><span ng-if="userRoleIs('individual')">Full</span><span ng-if="userRoleIsNot('individual')">Contact</span> Name</span>
-				<span class="field-data">{{currentUser.first_name}} {{currentUser.last_name}}</span>
-			</div>
 			<div class="user-data full-name" ng-if="userRoleIsNot('individual')">
 				<span class="field-label" ng-if="userRoleIs('cause')">Cause Name</span>
 				<span class="field-label" ng-if="userRoleIsNot('cause') && userRoleIsNot('individual')">Company Name</span>
 				<span class="field-data">{{currentUser.company_name}}</span>
-			</div>
-			<div class="user-data email">
-				<span class="field-label">Email Address</span>
-				<span class="field-data">{{currentUser.email}}</span>
 			</div>
 			<div class="user-data phone" ng-if="userRoleIsNot('individual')">
 				<span class="field-label">Phone Number</span>

@@ -2,11 +2,11 @@
 	<div class="module-view">
 		<div class="account-sidebar">
 			<ul>
-				<li ui-sref-active="active"><a ui-sref="account.profile.view" class="details">Account Details</a></li>
+				<li ui-sref-active="active"><a ui-sref="account.profile.view" class="details">Account Profile</a></li>
 				<!--
 				<li ui-sref-active="active" ng-if="userRoleIs('business')"><a ui-sref="account.billing" class="billing-info">Banking Information</a></li>
 			-->
-				<li ui-sref-active="active"><a ui-sref="account.changePassword" class="password">Change Password</a></li>
+				<li ui-sref-active="active"><a ui-sref="account.info" class="password">Account Settings</a></li>
 			</ul>
 			<div class="output address" ng-if="($state.current.name.indexOf('account.details') != -1) && (currentUser.role !== 'individual')">
 				<i class="icon icon-mark-map"></i>

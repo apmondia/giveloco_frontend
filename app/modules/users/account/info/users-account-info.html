@@ -1,0 +1,67 @@
+<div class="users-account-info">
+	<h1>Account Settings</h1>
+	<div class="sub-header">
+		<div class="sub-header">
+			<h5>User Type: <span>{{user.role}}</span></h5>
+			<h5>Account Status: <span class="status {{accountStatus()}}">{{accountStatus()}}</span>
+				<a href='#' ng-if="!confirmationResent && accountStatus() == 'unconfirmed'" ng-click='resendInstructions()'>Resend Instructions</a>
+			</h5>
+		</div>
+	</div>
+
+	<div class="left-side">
+
+		<form class="form" name="infoForm" ng-submit="updateInfo(infoForm.$valid)" novalidate>
+
+			<div class="sub-section name">
+				<div class="form-group first-name" ng-class="{'invalid' : infoForm.first_name.$invalid && infoForm.first_name.$dirty, 'valid' : infoForm.first_name.$valid && infoForm.first_name.$dirty}">
+					<label for="first_name" class="inline">First Name</label>
+					<input type="text" name="first_name" id="first_name" class="form-control" placeholder="Given Name" ng-model="user.first_name" ng-pattern="nameRegex" maxlength="26" show-form-errors auto-focus />
+					<p class="form-helper" ng-if="infoForm.first_name.$error.pattern && !infoForm.first_name.$focused">Your name can only contain letters.</p>
+					<p class="form-helper" ng-if="infoForm.first_name.$dirty && infoForm.first_name.$error.required && !infoForm.first_name.$focused">First Name is required!</p>
+				</div>
+				<div class="form-group last-name" ng-class="{'invalid' : infoForm.last_name.$invalid && infoForm.last_name.$dirty, 'valid' : infoForm.last_name.$valid && infoForm.last_name.$dirty}">
+					<label for="last_name" class="inline">Last Name</label>
+					<input type="text" name="last_name" id="last_name" class="form-control" placeholder="Surname" ng-model="user.last_name" ng-pattern="nameRegex" maxlength="26" show-form-errors />
+					<p class="form-helper" ng-if="infoForm.last_name.$error.pattern && !infoForm.last_name.$focused">Your name can only contain letters.</p>
+					<p class="form-helper" ng-if="infoForm.last_name.$dirty && infoForm.last_name.$error.required && !infoForm.last_name.$focused">Last Name is required!</p>
+				</div>
+			</div>
+
+			<div class="sub-section contact-info">
+				<div class="form-group email" ng-class="{'invalid' : updateUserForm.email.$invalid && updateUserForm.email.$dirty, 'valid' : updateUserForm.email.$valid && updateUserForm.email.$dirty}">
+					<label for="userEmail" class="inline">Email</label>
+					<input type="email" name="email" id="userEmail" class="form-control" placeholder="email@address.com" ng-model="user.email" ng-pattern="emailRegex" show-form-errors />
+					<p class="form-helper" ng-if="updateUserForm.email.$error.pattern && !updateUserForm.email.$focused">Invalid Email Address</p>
+					<p class="form-helper" ng-if="updateUserForm.email.$dirty && updateUserForm.email.$error.required && !updateUserForm.email.$focused">Email Address is required!</p>
+				</div>
+			</div>
+
+			<div class="form-group current-password" ng-class="{'invalid' : infoForm.currentPassword.$invalid && infoForm.currentPassword.$dirty, 'valid' : infoForm.currentPassword.$valid && infoForm.currentPassword.$dirty}">
+				<label for="currentPassword" class="inline">Current Password</label>
+				<input type="password" name="currentPassword" id="currentPassword" class="form-control" placeholder="" ng-model="user.current_password" required ng-minlength=8 show-form-errors />
+				<p class="form-helper" ng-if="infoForm.currentPassword.$dirty && infoForm.currentPassword.$error.minlength && !infoForm.currentPassword.$focused">Password must contain at least 8 characters.</p>
+			</div>
+
+			<div class="form-group new-password" ng-class="{'invalid' : infoForm.newPassword.$invalid && infoForm.newPassword.$dirty, 'valid' : infoForm.newPassword.$valid && infoForm.newPassword.$dirty}">
+				<label for="newPassword" class="inline">New Password</label>
+				<input type="password" name="newPassword" id="newPassword" class="form-control" placeholder="" ng-model="user.password" ng-minlength=8 show-form-errors password-equals="{{user.password_confirmation}}" />
+				<p class="form-helper" ng-if="infoForm.newPassword.$dirty && infoForm.newPassword.$error.minlength && !infoForm.newPassword.$focused">Your new password must contain at least 8 characters.</p>
+				<p class="form-helper" ng-if="infoForm.newPassword.$dirty && infoForm.newPassword.$invalid && !infoForm.newPassword.$focused">Your password confirmation must match your new password!</p>
+			</div>
+
+			<div class="form-group confirm-password" ng-class="{'invalid' : infoForm.confirmPassword.$invalid && infoForm.confirmPassword.$dirty, 'valid' : infoForm.confirmPassword.$valid && infoForm.confirmPassword.$dirty}">
+				<label for="confirmPassword" class="inline">Confirm Password</label>
+				<input type="password" name="confirmPassword" id="confirmPassword" class="form-control" placeholder="" ng-model="user.password_confirmation" ng-minlength=8 show-form-errors password-equals="{{user.password}}" />
+				<p class="form-helper" ng-if="infoForm.confirmPassword.$dirty && infoForm.confirmPassword.$error.required">You must confirm your new password!</p>
+				<p class="form-helper" ng-if="infoForm.confirmPassword.$dirty && infoForm.confirmPassword.$error.minlength && !infoForm.confirmPassword.$focused">Your new password must contain at least 8 characters.</p>
+				<p class="form-helper" ng-if="infoForm.confirmPassword.$dirty && infoForm.confirmPassword.$invalid && !infoForm.confirmPassword.$focused">Your password confirmation must match your new password!</p>
+			</div>
+
+			<div class="form-group form-buttons">
+		        <button class="btn button button-primary" type="submit" ng-disabled="infoForm.$invalid">Update</button>
+		    </div>
+
+		</form>
+	</div>
+</div>
