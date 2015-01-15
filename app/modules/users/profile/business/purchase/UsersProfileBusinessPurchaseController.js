@@ -24,7 +24,9 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 	$scope.newUser = angular.copy(EMPTY_NEW_USER);
 
 	$scope.calculateDonationAmount = function () {
-		return parseFloat($scope.newUser.certificates_attributes.amount) *
+		console.debug("Amount: ", $scope.getGiftCardAmount());
+		console.debug("Rate: ", $scope.user.sponsorship_rate);
+		return parseFloat($scope.getGiftCardAmount()) *
 			(parseFloat($scope.user.sponsorship_rate) / 100.0);
 	};
 
@@ -80,13 +82,21 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 		alertService.showAlert(TRANSACTION_EVENTS.transactionFailure, 'alert-danger');
 	};
 
+	$scope.getGiftCardAmount = function () {
+		var value = 0;
+		if ($scope.registrationForm.amount.$valid) {
+			var matcher = $scope.newUser.certificates_attributes.amount.match( $scope.amountRegex );
+			value = parseFloat(matcher[1]);
+		}
+		return value;
+	};
+
 	$scope.registerCertificate = function (valid) {
 		if ($scope.registrationForm.$valid) {
 			var data = {
 				newUser: angular.copy($scope.newUser)
 			};
-			var amountMatch = data.newUser.certificates_attributes.amount.match( $scope.amountRegex );
-			data.newUser.certificates_attributes.amount = amountMatch[1];
+			data.newUser.certificates_attributes.amount = $scope.getGiftCardAmount();
 			data.newUser.certificates_attributes = [ data.newUser.certificates_attributes ];
 			TransactionService.purchaseCertificate(data).then(transactionSuccess, transactionError);
 		} else {
