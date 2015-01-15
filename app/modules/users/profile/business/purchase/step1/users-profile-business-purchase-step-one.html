@@ -1,66 +1,24 @@
-<div class="purchase-certificate-step-one">
-	<div class="form-section purchase-amount">
+
+<div class="left-side">
+<div class="register-certificate-step-one">
+	<div class="form-section">
 		<div class="section-title">
-			<h3 class="form-section-title">Purchase Amount</h3>
+			<h3 class="form-section-title">Enter your gift card information</h3>
 		</div>
 
-		<div class="form-group amount">
-			<span class="radio-button">
-				<input type="radio" id="amount20" name="amount" ng-model="newUser.certificates_attributes.amount" value="20">
-				<label for="amount20" class="radio-inline">$20</label>
-			</span>
-			<span class="radio-button">
-				<input type="radio" id="amount50" name="amount" ng-model="newUser.certificates_attributes.amount" value="50">
-				<label for="amount50" class="radio-inline">$50</label>
-			</span>
-			<span class="radio-button">
-				<input type="radio" id="amount100" name="amount" ng-model="newUser.certificates_attributes.amount" value="100">
-				<label for="amount100" class="radio-inline">$100</label>
-			</span>
+		<div class='form-group serial-number' ng-class="{'invalid' : registrationForm.serial_number.$invalid && registrationForm.serial_number.$dirty, 'valid' : registrationForm.serial_number.$valid && registrationForm.serial_number.$dirty}">
+			<label for="amount" class="inline">Serial Number</label>
+			<input type='text' id='serial_number' name='serial_number' class='form-control with-label' placeholder='$10' ng-minlength='1' ng-model='newUser.certificates_attributes.serial_number' required  show-form-errors />
+			<p class="form-helper" ng-if="registrationForm.serial_number.$invalid && !registrationForm.serial_number.$focused">Please enter the serial number of the gift card.</p>
 		</div>
+
+		<div class='form-group amount' ng-class="{'invalid' : registrationForm.amount.$invalid && registrationForm.amount.$dirty, 'valid' : registrationForm.amount.$valid && registrationForm.amount.$dirty}">
+			<label for="amount" class="inline">Value</label>
+			<input type='text' id='amount' name='amount' class='form-control with-label' placeholder='$10' ng-model='newUser.certificates_attributes.amount' ng-pattern='amountRegex' required show-form-errors />
+			<p class="form-helper" ng-if="registrationForm.amount.$invalid && !registrationForm.amount.$focused">Please enter the dollar value of the gift card.</p>
+		</div>
+
 	</div>
 
-	<div class="form-section name">
-        <div class="form-group first-name" ng-class="{'invalid' : purchaseForm.first_name.$invalid && purchaseForm.first_name.$dirty, 'valid' : purchaseForm.first_name.$valid && purchaseForm.first_name.$dirty}">
-            <label for="first_name" class="inline">First Name</label>
-            <input type="text" name="first_name" id="first_name" class="form-control with-label" placeholder="First" ng-model="newUser.first_name" ng-pattern="nameRegex" maxlength="26" required auto-focus show-form-errors />
-            <p class="form-helper" ng-if="purchaseForm.first_name.$error.pattern && !purchaseForm.first_name.$focused">Your name can only contain letters.</p>
-            <p class="form-helper" ng-if="purchaseForm.first_name.$dirty && purchaseForm.first_name.$error.required && !purchaseForm.first_name.$focused">First Name is required!</p>
-        </div>
-        <div class="form-group last-name" ng-class="{'invalid' : purchaseForm.last_name.$invalid && purchaseForm.last_name.$dirty, 'valid' : purchaseForm.last_name.$valid && purchaseForm.last_name.$dirty}">
-            <label for="last_name" class="inline">Last Name</label>
-            <input type="text" name="last_name" id="last_name" class="form-control with-label" placeholder="Last" ng-model="newUser.last_name" ng-pattern="nameRegex" maxlength="26" required show-form-errors />
-            <p class="form-helper" ng-if="purchaseForm.last_name.$error.pattern && !purchaseForm.last_name.$focused">Your name can only contain letters.</p>
-            <p class="form-helper" ng-if="purchaseForm.last_name.$dirty && purchaseForm.last_name.$error.required && !purchaseForm.last_name.$focused">Last Name is required!</p>
-        </div>
-    </div>
-
-    <div class="form-section basic-info">
-    	<div class="form-group email" ng-class="{'invalid' : purchaseForm.email.$invalid && purchaseForm.email.$dirty, 'valid' : purchaseForm.email.$valid && purchaseForm.email.$dirty}">
-            <label for="email" class="inline">Email</label>
-            <input type="email" name="email" id="email" class="form-control with-label" placeholder="email@address.com" ng-model="newUser.email" ng-pattern="emailRegex" required show-form-errors />
-            <p class="form-helper" ng-if="purchaseForm.email.$error.pattern && !purchaseForm.email.$focused">Invalid Email Address</p>
-            <p class="form-helper" ng-if="purchaseForm.email.$dirty && purchaseForm.email.$error.required && !purchaseForm.email.$focused">Email Address is required!</p>
-        </div>
-	</div>
-
-	<div class="form-section credit-card-info">
-		<div class="section-title">
-			<h5 class="form-section-title">Billing Info</h5>
-		</div>
-		<div class="credit-card-number form-group">
-			<label for="creditCard" class="inline">Credit Card #</label>
-			<input type="text" name="creditCard" id="creditCard" class="form-control with-label" placeholder="xxxx xxxx xxxx xxxx" ng-model="number" payments-validate="card" payments-format="card" required show-form-errors />
-		</div>
-		<div class="expiry">
-			<div class="expiration form-group">
-				<label for="expiry" class="inline">Expiration</label>
-				<input type="text" name="expiry" id="expiry" class="form-control with-label" placeholder="MM / YYYY" ng-model="expiry" payments-validate="expiry" payments-format="expiry" required show-form-errors />
-			</div>
-			<div class="cvc form-group">
-				<label for="cvc" class="inline">CVC</label>
-				<input type="text" name="cvc" id="cvc" class="form-control with-label" placeholder="123" ng-model="cvc" payments-validate="cvc" payments-format="cvc" required show-form-errors />
-			</div>
-		</div>
-	</div>
+</div>
 </div>

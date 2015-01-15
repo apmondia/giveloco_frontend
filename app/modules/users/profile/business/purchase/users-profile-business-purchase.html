@@ -1,8 +1,8 @@
 <div id="modalTransactionPurchase" class="modal-wrapper">
-	<h2 class="modal-title"><span>Buy a {{newUser.certificate.amount | currency}} Gift Certificate from:</span>{{user.company_name}}</h2>
+	<h2 class="modal-title"><span>Gift Card</h2>
 	<button class="close" ng-click="usersProfileBusinessPurchaseModal.close()"><i class="icon icon-x"></i></button>
 
-	<form class="form" id="purchaseForm" name="purchaseForm" stripe-form="stripeCallBack" novalidate autocomplete="off">
+	<form class="form" id="registrationForm" name="registrationForm" ng-submit='registerCertificate($event)' novalidate autocomplete="off">
 		<div class="modal-body">
 			<div class="form-slider">
 				<div class="billing-info slide one" ng-class="{'active': activeSlide === 'one'}" ng-init="activeSlide = 'one'">
@@ -22,19 +22,19 @@
 
 	        <ul class="slide-one buttons list-unstyled" ng-show="activeSlide === 'one'">
 	            <li><a href='#' class="btn button btn-danger" ng-click="usersProfileBusinessPurchaseModal.close()">Cancel</a></li>
-	            <li><a href='#' class="btn button button-secondary" ng-click="activeSlide = 'two'" ng-disabled="stepOneNotComplete()">Choose a Cause</a></li>
+	            <li><a href='#' class="btn button button-secondary" ng-click="activeSlide = 'two'" ng-disabled="stepOneNotComplete()">Choose Charity</a></li>
 	        </ul>
 
 	        <ul class="slide-two buttons list-unstyled" ng-show="activeSlide === 'two'">
 	            <li><a href='#' class="btn button btn-danger" ng-click="usersProfileBusinessPurchaseModal.close()">Cancel</a></li>
 	            <li><a href='#' class="btn btn-default" ng-click="activeSlide = 'one'">Back</a></li>
-	            <li><a href='#' class="btn button button-secondary" ng-click="activeSlide = 'three'" ng-disabled="stepTwoNotComplete()">Checkout</a></li>
+	            <li><a href='#' class="btn button button-secondary" ng-click="activeSlide = 'three'" ng-disabled="stepTwoNotComplete()">Donate</a></li>
 	        </ul>
 
 	        <ul class="slide-three buttons list-unstyled" ng-show="activeSlide === 'three'">
 	        	<li><a class="btn button btn-danger" ng-click="usersProfileBusinessPurchaseModal.close()">Cancel</a></li>
 	        	<li><a class="btn btn-default" ng-click="activeSlide = 'two'">Back</a></li>
-	            <li><button class="btn button button-secondary" type="submit" ng-disabled="stepThreeNotComplete()">Confirm Purchase</button></li>
+	          <li><button class="btn button button-secondary" type="submit" ng-disabled="stepThreeNotComplete()">Confirm</button></li>
 	        </ul>
 	    </div>
     </form>

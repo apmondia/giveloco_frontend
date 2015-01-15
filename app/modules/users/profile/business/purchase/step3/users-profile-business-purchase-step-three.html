@@ -1,7 +1,16 @@
-<div class="purchase-certificate-step-three">
+<div class="register-certificate-step-three">
 	<div class="step-title">
 		<span class="big">Checkout</span>
 		<span class="small">Summary</span>
+	</div>
+
+	<div class="form-section basic-info">
+		<div class="form-group email" ng-class="{'invalid' : registrationForm.email.$invalid && registrationForm.email.$dirty, 'valid' : registrationForm.email.$valid && registrationForm.email.$dirty}">
+			<label for="email" class="inline">Email</label>
+			<input type="email" name="email" id="email" class="form-control with-label" placeholder="email@address.com" ng-model="newUser.email" ng-pattern="emailRegex" required show-form-errors />
+			<p class="form-helper" ng-if="registrationForm.email.$error.pattern && !registrationForm.email.$focused">Invalid Email Address</p>
+			<p class="form-helper" ng-if="registrationForm.email.$dirty && registrationForm.email.$error.required && !registrationForm.email.$focused">Email Address is required!</p>
+		</div>
 	</div>
 
 	<div class="step-body">
@@ -29,21 +38,9 @@
 			</div>
 		</div>
 		<div class="right-side">
-			<div class="section billing-info">
-				<h3 class="checkout-section-title">Billing Details</h3>
-				<div class="credit-card">
-					<span class="field-label">Credit Card</span> {{lastFourDigits()}}
-				</div>
-				<div class="expiration">
-					<span class="field-label">Expiration</span> {{expiry}}
-				</div>
-				<div class="cvc">
-					<span class="field-label">CVC</span> {{cvc}}
-				</div>
-			</div>
 			<div class="section checkboxes">
 				<div class="group opt-in checkbox">
-					<input type="checkbox" id="mail-opt-in" name="mailing_list_opt_in" ng-model="newUser.mailing_list_opt_in" value="true">
+					<input type="checkbox" id="mail-opt-in" name="mailing_list_opt_in" ng-model="newUser.mailing_list_opt_in" value="false">
 					<label for="mail-opt-in">Subscribe to the Taliflo mailing list for a chance to win free gift certificates</label>
 				</div>
 				<div class="group terms checkbox">
@@ -52,6 +49,6 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 </div>

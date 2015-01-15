@@ -9,18 +9,36 @@
 	Module Styles
 *********************************************************************** */
 .modal.transaction-purchase {
+
+	.form {
+		overflow: hidden;
+	}
+
+	.form-section-title {
+		text-align: center;
+	}
+
+	.form-group {
+		width: 400px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.form-group + .form-group {
+		margin-top: 20px;
+	}
+
+	.form-helper {
+		left: 80%;
+		top: 0;
+	}
+
 	.form-section {
 		.clearfix();
-		h3.form-section-title {
-			margin: 0 0 10px;
-		}
-		h5.form-section-title {
-			margin: 30px 0 10px;
-			text-align: center;
-		}
 	}
 	.form-slider {
-		overflow: hidden;
+		.clearfix();
+		overflow: visible;
 		position: relative;
 		.slide {
 			opacity: 0;
@@ -28,7 +46,7 @@
 			top: 0;
 			left: -9000px;
 			width: 100%;
-			overflow: hidden;
+			overflow: visible;
 			max-height: 0;
 			.animated();
 			transition: max-height 0.2s ease-in, min-height 0.2s ease-out;
@@ -57,7 +75,7 @@
 			font-size: 12px;
 		}
 	}
-	.purchase-certificate-step-one {
+	.register-certificate-step-one {
 		.purchase-amount {
 			text-align: center;
 			margin-bottom: 20px;
@@ -99,7 +117,7 @@
 			}
 		}
 	}
-	.purchase-certificate-step-two {
+	.register-certificate-step-two {
 		.step-title {
 			.disclaimer {
 				background-color: @lighter-grey;
@@ -190,11 +208,11 @@
 				}
 				.user-summary {
 
-				}				
+				}
 			}
 		}
 	}
-	.purchase-certificate-step-three {
+	.register-certificate-step-three {
 		.step-body {
 			text-align: center;
 			.section {

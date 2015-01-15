@@ -5,8 +5,7 @@ function UsersProfileBusinessCtrl($scope) {
 /* =======================================================================
 	Modals
 ======================================================================= */
-    $scope.purchaseGiftCard = function(userParam) {
-        Stripe.setPublishableKey(userParam.publishable_key);
+    $scope.enterGiftCard = function(userParam) {
         $scope.usersProfileBusinessPurchaseModal.open({
         	windowClass: 'transaction-purchase',
         	backdrop: 'static',
