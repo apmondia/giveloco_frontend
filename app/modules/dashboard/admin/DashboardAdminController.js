@@ -1,6 +1,6 @@
 'use strict';
 
-function DashboardAdminCtrl($scope, Restangular) {
+function DashboardAdminCtrl($scope, Restangular, alertService) {
 /* =======================================================================
 	Get Lists of Users by role
 ======================================================================= */
@@ -74,8 +74,28 @@ function DashboardAdminCtrl($scope, Restangular) {
 				windowClass: 'delete-sponsorship'
 			});
 		};
-		
+
+		$scope.cancelSponsorship = function (sponsorship) {
+			Restangular.one('sponsorships', sponsorship.id).customPUT({ status: 'cancelled'}, 'resolve').then(
+				function () {
+					sponsorship.status = 'cancelled';
+				},
+				function () {
+					alertService.showDanger("Could not update the sponsorship status.");
+				});
+		};
+
+		$scope.acceptSponsorship = function (sponsorship) {
+			Restangular.one('sponsorships', sponsorship.id).customPUT({ status: 'accepted'}, 'resolve').then(
+				function () {
+					sponsorship.status = 'accepted';
+				},
+				function () {
+					alertService.showDanger("Could not update the sponsorship status.");
+				});
+			};
+
 }
 
-DashboardAdminCtrl.$inject = ['$scope', 'Restangular'];
+DashboardAdminCtrl.$inject = ['$scope', 'Restangular', 'alertService'];
 module.exports = DashboardAdminCtrl;

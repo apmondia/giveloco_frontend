@@ -3,6 +3,7 @@ node_modules
 libs/*
 .idea/*
 .DS_Store
+*.log
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

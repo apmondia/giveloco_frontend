@@ -20,6 +20,7 @@
     <thead>
       <tr>
         <th class="user-header id">Sponsorship ID</th>
+        <th class="user-header status">Status</th>
         <th class="user-header business-name">Business Name</th>
         <th class="user-header cause-name">Cause Name</th>
         <th class="user-header investment-rate">Investment Rate</th>
@@ -30,6 +31,9 @@
       <tr dir-paginate="sponsorship in sponsorships | orderBy: 'created_at' : true | filter: searchSponsorships | itemsPerPage: 25 : 'sponsorshipTab'" pagination-id="sponsorshipTab" class="user sponsorship">
         <td class="user-field id">
           {{sponsorship.id}}
+        </td>
+        <td class='user-field status'>
+          {{sponsorship.status}}
         </td>
         <td class="user-field business-name">
           {{sponsorship.business.company_name}}
@@ -47,6 +51,8 @@
                 <i class="icon icon-gear-setting-1"></i><span class="caret"></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                <li ng-if='sponsorship.status == "pending"'><a href='#' ng-click='acceptSponsorship(sponsorship)'>Accept</a></li>
+                <li ng-if='sponsorship.status == "pending"'><a href='#' ng-click='cancelSponsorship(sponsorship)'>Cancel</a></li>
                 <li class="first"><a href='#' ng-click='deleteSponsorship(sponsorship)'>Delete</a></li>
               </ul>
             </div>

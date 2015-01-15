@@ -38,7 +38,14 @@
 						<li><a ui-sref="account.profile.edit" class="edit-profile btn button button-secondary"><i class="icon icon-pencil"></i>Edit Profile</a></li>
 					</ul>
 					<ul class="user-action-buttons" ng-if="currentUser.role === 'business'">
-						<li><a ng-click="sponsorCause(user)" href='#' class="pledge btn button button-secondary"><i class="icon icon-donate"></i>Sponsor This Cause</a></li>
+						<li>
+							<a ng-if='!isSponsoring(user)' ng-click="sponsorCause(user)" href='#' class="pledge btn button button-secondary">
+								<i class="icon icon-donate"></i>Request Sponsorship
+							</a>
+							<a ng-if='isSponsoring(user)' href='#' class='pledge btn button button-secondary disabled'>
+								<i class='icon icon-donate'></i>Sponsorship Requested
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>

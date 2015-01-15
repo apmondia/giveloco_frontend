@@ -16,7 +16,12 @@ var apiConfig = function() {
 			redeem: apiProxy + apiVersion + '/certificates/redeem'
 		},
 		sponsorship: {
-			create: apiProxy + apiVersion + '/sponsorships'
+			create: apiProxy + apiVersion + '/sponsorships',
+			withID: function (sponsorshipID) {
+				return {
+					resolve: apiProxy + '/sponsorships/' + sponsorshipID + '/resolve'
+				};
+			}
 		},
 		user: {
 			login: apiProxy + '/user/login',

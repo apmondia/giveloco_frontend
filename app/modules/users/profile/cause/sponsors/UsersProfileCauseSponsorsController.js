@@ -3,9 +3,11 @@
 function UsersProfileCauseSponsorsCtrl($scope, SponsorService) {
 
 	SponsorService.getSponsors($scope.user).then(function (data) {
-		$scope.sponsors = data;
+		$scope.sponsors = _.filter(data, function(sponsorship){
+			return sponsorship.status == 'accepted';
+		});
 	});
-	
+
 }
 
 UsersProfileCauseSponsorsCtrl.$inject = ['$scope', 'SponsorService'];
