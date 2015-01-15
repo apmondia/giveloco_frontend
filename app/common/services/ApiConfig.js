@@ -31,7 +31,6 @@ var apiConfig = function() {
 			resendConfirmation: apiProxy + apiVersion + '/users/confirmations',
 			withID: function (userID) {
 				return {
-					updatePassword: apiProxy + '/user/' + userID + '/change_password',
 					uploadImage: apiProxy + apiVersion + '/users/' + userID + '/upload_image'
 				};
 			}

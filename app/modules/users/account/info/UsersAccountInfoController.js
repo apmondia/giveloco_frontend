@@ -10,15 +10,19 @@ function UsersAccountInfoCtrl($rootScope, $scope, $http, Auth, alertService, AUT
 		$scope.user.current_password = null;
 		$scope.user.password = null;
 		$scope.user.password_confirmation = null;
+		$scope.submitAttempted = false;
 	},
 		updateError = function() {
 		alertService.showAlert(AUTH_EVENTS.passwordUpdateFailed, 'alert-danger');
+		$scope.submitAttempted = false;
 	};
 
 	$scope.updateInfo = function(isValid) {
 		if (isValid) {
-			Auth.updatePassword($scope.user).then(updateSuccess, updateError);
+			Auth.putUser($scope.user).then(updateSuccess, updateError);
 			$scope.infoForm.$setPristine();
+		} else {
+			$scope.submitAttempted = true;
 		}
 	};
 }

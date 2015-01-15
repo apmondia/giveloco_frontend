@@ -28,6 +28,14 @@
 				</div>
 			</div>
 
+			<div class='sub-section sponsorship-rate'>
+				<div class='form-group sponsorship-rate' ng-class="{'invalid': infoForm.sponsorship_rate.$invalid && infoForm.sponsorship_rate.$dirty, 'valid': infoForm.sponsorship_rate.$valid && $infoForm.sponsorship_rate.$dirty }">
+					<label for='sponsorship_rate' class='inline'>Sponsorship Rate</label>
+					<input type='text' name='sponsorship_rate' id='sponsorship_rate' class='form-control' placeholder='10%' ng-model='user.sponsorship_rate' ng-pattern='sponsorshipRateRegex' maxlength='5' show-form-errors />
+					<p class="form-helper" ng-if="infoForm.sponsorship_rate.$error.pattern && !infoForm.sponsorship_rate.$focused">The sponsorship rate must be a number.</p>
+				</div>
+			</div>
+
 			<div class="sub-section contact-info">
 				<div class="form-group email" ng-class="{'invalid' : updateUserForm.email.$invalid && updateUserForm.email.$dirty, 'valid' : updateUserForm.email.$valid && updateUserForm.email.$dirty}">
 					<label for="userEmail" class="inline">Email</label>
@@ -37,10 +45,10 @@
 				</div>
 			</div>
 
-			<div class="form-group current-password" ng-class="{'invalid' : infoForm.currentPassword.$invalid && infoForm.currentPassword.$dirty, 'valid' : infoForm.currentPassword.$valid && infoForm.currentPassword.$dirty}">
+			<div class="form-group current-password" ng-class="{'invalid' : infoForm.currentPassword.$invalid && (submitAttempted || infoForm.currentPassword.$dirty), 'valid' : infoForm.currentPassword.$valid && infoForm.currentPassword.$dirty}">
 				<label for="currentPassword" class="inline">Current Password</label>
 				<input type="password" name="currentPassword" id="currentPassword" class="form-control" placeholder="" ng-model="user.current_password" required ng-minlength=8 show-form-errors />
-				<p class="form-helper" ng-if="infoForm.currentPassword.$dirty && infoForm.currentPassword.$error.minlength && !infoForm.currentPassword.$focused">Password must contain at least 8 characters.</p>
+				<p class="form-helper" ng-if="(infoForm.currentPassword.$dirty || submitAttempted) && infoForm.currentPassword.$invalid">You must provide your password.</p>
 			</div>
 
 			<div class="form-group new-password" ng-class="{'invalid' : infoForm.newPassword.$invalid && infoForm.newPassword.$dirty, 'valid' : infoForm.newPassword.$valid && infoForm.newPassword.$dirty}">
@@ -59,7 +67,7 @@
 			</div>
 
 			<div class="form-group form-buttons">
-		        <button class="btn button button-primary" type="submit" ng-disabled="infoForm.$invalid">Update</button>
+		        <button class="btn button button-primary" type="submit">Update</button>
 		    </div>
 
 		</form>
