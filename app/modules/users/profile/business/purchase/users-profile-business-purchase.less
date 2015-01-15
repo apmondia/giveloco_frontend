@@ -10,6 +10,36 @@
 *********************************************************************** */
 .modal.transaction-purchase {
 
+	.modal-dialog {
+		width: 800px;
+		max-width: 100%;
+		margin: 10px auto;
+	}
+
+	ul.steps-indicator {
+		list-style: none;
+		text-align: center;
+		padding:0;
+		@size: 10px;
+		li {
+			display: inline-block;
+			width: @size;
+			height: @size;
+			border-radius: 50%;
+			box-shadow: inset 0 1px 3px #000000;
+			background-color: none;
+			&.complete {
+				background-color: @brand-teal;
+			}
+			&.active:not(.complete) {
+				background-color: lightGray;
+			}
+		}
+		li + li {
+			margin-left: 2rem;
+		}
+	}
+
 	.form {
 		overflow: hidden;
 	}
@@ -52,7 +82,7 @@
 			transition: max-height 0.2s ease-in, min-height 0.2s ease-out;
 			&.active {
 				min-height: 150px;
-				max-height: 1000px;
+				max-height: 4000px;
 				opacity: 1;
 				position: relative;
 				float: left;
@@ -132,6 +162,7 @@
 			@hover-text-color: #fff;
 			label {
 				cursor: pointer;
+				/*
 				border: solid 1px #999;
 				font-weight: normal;
 				padding: 10px 0px;
@@ -144,9 +175,16 @@
 						color: @brand-teal;
 					}
 				}
+				*/
 			}
 			input[type=radio] {
 				display: none;
+				&:checked + label {
+					.grid-item {
+						box-shadow: 0px 0px 7px 2px rgba(50, 50, 50, 0.3);
+					}
+				}
+				/*
 				&:checked + label {
 					color: @hover-text-color;
 					border: solid 1px @brand-teal;
@@ -163,96 +201,44 @@
 						display: block;
 					}
 				}
+				*/
 			}
-			.left-side {
-				.make-xs-column(4);
-			    .make-sm-column(4);
-			    .make-md-column(4);
-			    .make-lg-column(4);
-			    text-align: center;
-			    .donation-amount-label {
-			    	color: @brand-teal;
-					border-bottom: solid 1px #333;
-					padding-bottom: 5px;
-					margin-bottom: 7px;
-			    }
-			    .value {
-			    	font-size: 20px;
-			    	margin-top: 5px;
-			    }
-			    .icon {
-					float: none;
-				    margin-top: 8px;
-					display: none;
-					&:before {
-						font-family: "Taliflo";
-						content: "\e047";
-						.icons(@font-size: 20px);
-						color: #fff;
-						float: none;
-					}
-				}
+	/*
+			.company-name {
+				font-size: 18px;
+				font-weight: bold;
+				color: @brand-teal;
+				border-bottom: solid 1px #333;
+				padding-bottom: 5px;
+				margin-bottom: 5px;
 			}
-			.right-side {
-				.make-xs-column(8);
-			    .make-sm-column(8);
-			    .make-md-column(8);
-			    .make-lg-column(8);
-				.company-name {
-					font-size: 18px;
-					font-weight: bold;
-					color: @brand-teal;
-					border-bottom: solid 1px #333;
-					padding-bottom: 5px;
-					margin-bottom: 5px;
-				}
-				.user-summary {
+			.user-summary {
 
-				}
-			}
+			}*/
 		}
 	}
 	.register-certificate-step-three {
-		.step-body {
-			text-align: center;
-			.section {
-				margin-top: 30px;
-				&.checkboxes {
-					margin-top: 10px;
-				}
-				.amount {
-					font-size: 30px;
-					line-height: 30px;
-				}
+		text-align: center;
+		.section {
+			margin-top: 30px;
+			&.checkboxes {
+				margin-top: 10px;
 			}
-			.left-side {
-				.make-xs-column(6);
-			    .make-sm-column(6);
-			    .make-md-column(6);
-			    .make-lg-column(6);
+			.amount {
+				font-size: 30px;
+				line-height: 30px;
 			}
-			.right-side {
-				.make-xs-column(6);
-			    .make-sm-column(6);
-			    .make-md-column(6);
-			    .make-lg-column(6);
-			    .amount {
-			    	font-size: 30px;
-					line-height: 30px;
-					margin-bottom: 20px;
-			    }
-			}
-			.checkbox {
-				.custom-input();
-				padding-left: 0;
-				label {
-					display: block;
-					font-size: 12px;
-					text-align: left;
-					padding-left: 25px;
-					&:before {
-						top: 2px;
-					}
+		}
+		.checkbox {
+			.custom-input();
+			padding-left: 0;
+			label {
+				display: block;
+				font-size: 12px;
+				text-align: left;
+				padding-left: 25px;
+				&:before {
+					top: 2px;
 				}
 			}
 		}

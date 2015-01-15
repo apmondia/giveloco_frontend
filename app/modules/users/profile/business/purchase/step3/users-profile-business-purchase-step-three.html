@@ -1,54 +1,33 @@
 <div class="register-certificate-step-three">
-	<div class="step-title">
-		<span class="big">Checkout</span>
-		<span class="small">Summary</span>
+
+	<div class="section-title">
+		<h3 class="form-section-title">{{calculateDonationAmount() | currency}} will be donated to {{causeName}}. Thanks!</h3>
+		<ul class='steps-indicator'>
+			<li ng-class="{ 'complete': !stepOneNotComplete() }"></li>
+			<li ng-class="{ 'complete': !stepTwoNotComplete() }"></li>
+			<li class='active' ng-class="{ 'complete': !stepThreeNotComplete() }"></li>
+		</ul>
 	</div>
 
 	<div class="form-section basic-info">
 		<div class="form-group email" ng-class="{'invalid' : registrationForm.email.$invalid && registrationForm.email.$dirty, 'valid' : registrationForm.email.$valid && registrationForm.email.$dirty}">
 			<label for="email" class="inline">Email</label>
 			<input type="email" name="email" id="email" class="form-control with-label" placeholder="email@address.com" ng-model="newUser.email" ng-pattern="emailRegex" required show-form-errors />
-			<p class="form-helper" ng-if="registrationForm.email.$error.pattern && !registrationForm.email.$focused">Invalid Email Address</p>
-			<p class="form-helper" ng-if="registrationForm.email.$dirty && registrationForm.email.$error.required && !registrationForm.email.$focused">Email Address is required!</p>
+			<p class="form-helper" ng-if="registrationForm.email.$error.pattern && registrationForm.email.$touched">Invalid Email Address</p>
+			<p class="form-helper" ng-if="(registrationForm.email.$touched || submitAttempted) && registrationForm.email.$error.required && !registrationForm.email.$valid">Your email address is required.</p>
+		</div>
+	</div>
+	<div class='form-section checkboxes'>
+		<div class="form-group checkboxes">
+			<div class="group opt-in checkbox">
+				<input type="checkbox" id="mail-opt-in" name="mailing_list_opt_in" ng-model="newUser.mailing_list_opt_in" value="false">
+				<label for="mail-opt-in">Get notified when this business and cause have new sponsorships</label>
+			</div>
+			<div class="group terms checkbox">
+				<input type="checkbox" id="agree_to_tc" name="agree_to_tc" ng-model="newUser.agree_to_tc" value="true" required>
+				<label for="agree_to_tc">I agree to the <a ui-sref="terms" target="_blank">Terms &amp; Conditions</a></label>
+			</div>
 		</div>
 	</div>
 
-	<div class="step-body">
-		<div class="section purchase-amount">
-			<h3 class="checkout-section-title">Purchase Amount</h3>
-			<div class="amount">
-				<span class="field-label"></span> {{newUser.certificates_attributes.amount | currency}}
-			</div>
-		</div>
-		<div class="left-side">
-			<div class="section user-info">
-				<h3 class="checkout-section-title">Customer Details</h3>
-				<div class="full-name">
-					<span class="field-label">Full Name</span> {{newUser.first_name}} {{newUser.last_name}}
-				</div>
-				<div class="email">
-					<span class="field-label">Email Address</span> {{newUser.email}}
-				</div>
-			</div>
-			<div class="section cause">
-				<h3 class="checkout-section-title">Chosen Cause</h3>
-				<div class="chosen-cause">
-					<span class="field-label">Cause Name</span> {{causeName}}
-				</div>
-			</div>
-		</div>
-		<div class="right-side">
-			<div class="section checkboxes">
-				<div class="group opt-in checkbox">
-					<input type="checkbox" id="mail-opt-in" name="mailing_list_opt_in" ng-model="newUser.mailing_list_opt_in" value="false">
-					<label for="mail-opt-in">Subscribe to the Taliflo mailing list for a chance to win free gift certificates</label>
-				</div>
-				<div class="group terms checkbox">
-					<input type="checkbox" id="agree_to_tc" name="agree_to_tc" ng-model="newUser.agree_to_tc" value="true">
-					<label for="agree_to_tc">I agree to the <a ui-sref="terms" target="_blank">Terms &amp; Conditions</a></label>
-				</div>
-			</div>
-		</div>
-
-	</div>
 </div>
