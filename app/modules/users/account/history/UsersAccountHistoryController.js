@@ -10,6 +10,10 @@ function UsersAccountHistoryCtrl($rootScope, $scope, TransactionService, alertSe
 		alertService.showDanger("Could not load certificate history.");
 	});
 
+	$scope.downloadLink = function () {
+		return TransactionService.getCertificateCSVDownloadLink($rootScope.currentUser);
+	};
+
 // =======================================================================
 //	View Configurations
 // =======================================================================

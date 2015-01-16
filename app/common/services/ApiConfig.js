@@ -30,8 +30,10 @@ var apiConfig = function() {
 			path: apiProxy + '/user.json',
 			resendConfirmation: apiProxy + apiVersion + '/users/confirmations',
 			withID: function (userID) {
+				var json = apiProxy + apiVersion + '/users/' + userID + '/sponsorships/certificates';
 				return {
-					sponsorships_certificates: apiProxy + apiVersion + '/users/' + userID + '/sponsorships/certificates',
+					sponsorships_certificates: json,
+					sponsorships_certificates_csv: json + '/csv',
 					uploadImage: apiProxy + apiVersion + '/users/' + userID + '/upload_image'
 				};
 			}
