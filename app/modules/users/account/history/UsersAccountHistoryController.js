@@ -1,7 +1,14 @@
 /*jshint camelcase: false */
 'use strict';
 
-function UsersAccountHistoryCtrl($rootScope, $scope) {
+function UsersAccountHistoryCtrl($rootScope, $scope, TransactionService, alertService, Auth) {
+
+	TransactionService.getCertificates($rootScope.currentUser).then(function (response) {
+		$scope.certificates = response.data;
+	}, function (response) {
+		console.error(response);
+		alertService.showDanger("Could not load certificate history.");
+	});
 
 // =======================================================================
 //	View Configurations
@@ -36,5 +43,5 @@ function UsersAccountHistoryCtrl($rootScope, $scope) {
 	};
 }
 
-UsersAccountHistoryCtrl.$inject = ['$rootScope', '$scope'];
+UsersAccountHistoryCtrl.$inject = ['$rootScope', '$scope', 'TransactionService', 'alertService', 'Auth'];
 module.exports = UsersAccountHistoryCtrl;
