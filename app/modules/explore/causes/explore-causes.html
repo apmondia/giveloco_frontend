@@ -6,14 +6,14 @@
 			</div>
 			<div class="right utils search-wrapper">
 				<i class="icon icon-search-2"></i>
-				<input type="search" class="search" ng-model="search" placeholder="Search Causes" typeahead="user.company_name for user in causes | filter:$viewValue | limitTo:8">
+				<input type="search" class="search" ng-model="search" placeholder="Search Causes" typeahead="tag for tag in allTags(causes) | filter:$viewValue | limitTo:8">
 			</div>
 		</div>
 
 		<div dir-pagination-controls max-size="3" boundary-links="true" class="pagination-controls top"></div>
 
 		<div class="page-content">
-			<div dir-paginate="user in causes | filter: search | itemsPerPage: 12" class="cause grid block">
+			<div dir-paginate="user in causes | userSearch: search | itemsPerPage: 12" class="cause grid block">
 		    	<div class="grid-item">
 			    	<a ui-sref="profile.cause({id:user.id})" title="{{user.company_name}}">
 							<div user-profile-picture user='user'></div>
