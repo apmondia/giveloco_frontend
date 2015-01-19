@@ -2,7 +2,7 @@
 
 var withTag = function() {
   return function(users, tag){
-    console.debug("entered: ",users," ",tag);
+    //console.debug("entered: ",users," ",tag);
     var results = [];
     angular.forEach(users, function (user) {
       var found_tag = (tag == null) || (tag == ""); //to match if tag is empty
@@ -10,13 +10,13 @@ var withTag = function() {
         if (user_tag === tag) {
           found_tag = true;
         }
-        console.debug("check user tag: ",user," ",user_tag," ",tag);
+      //  console.debug("check user tag: ",user," ",user_tag," ",tag);
       });
       if (found_tag) {
         results.push(user);
       }
     });
-    console.debug("returning: ", results);
+    //console.debug("returning: ", results);
     return results;
   };
 };

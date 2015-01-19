@@ -24,8 +24,8 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 	$scope.newUser = angular.copy(EMPTY_NEW_USER);
 
 	$scope.calculateDonationAmount = function () {
-		console.debug("Amount: ", $scope.getGiftCardAmount());
-		console.debug("Rate: ", $scope.user.sponsorship_rate);
+		// console.debug("Amount: ", $scope.getGiftCardAmount());
+		// console.debug("Rate: ", $scope.user.sponsorship_rate);
 		return parseFloat($scope.getGiftCardAmount()) *
 			(parseFloat($scope.user.sponsorship_rate) / 100.0);
 	};

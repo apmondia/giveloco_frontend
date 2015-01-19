@@ -1,6 +1,6 @@
 'use strict';
 
-function ExploreCtrl($scope) {
+function ExploreCtrl($scope, $stateParams) {
 
   $scope.allTags = function(user_array) {
       var tags = {};
@@ -10,11 +10,12 @@ function ExploreCtrl($scope) {
           });
       });
       var allTags = _.keys(tags);
-      console.debug("allTags: ", allTags)
       return allTags;
   };
 
+  $scope.search = $stateParams.q;
+
 }
 
-ExploreCtrl.$inject = ['$scope'];
+ExploreCtrl.$inject = ['$scope', '$stateParams'];
 module.exports = ExploreCtrl;
