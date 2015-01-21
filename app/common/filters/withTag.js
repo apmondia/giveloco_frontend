@@ -12,6 +12,11 @@ var withTag = function() {
         }
       //  console.debug("check user tag: ",user," ",user_tag," ",tag);
       });
+      angular.forEach(user.campaigns, function (campaign_tag) {
+        if (campaign_tag === tag) {
+          found_tag = true;
+        }
+      });
       if (found_tag) {
         results.push(user);
       }

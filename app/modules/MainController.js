@@ -108,6 +108,9 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 				angular.forEach(user.tags, function(tag) {
 					tags[tag] = true;
 				});
+				angular.forEach(user.campaigns, function (tag) {
+					tags[tag] = true;
+				});
 			});
 			var allTags = _.keys(tags);
 			return allTags;
