@@ -40,32 +40,32 @@
 					</a>
 				</td>
 				<td class="user-field total-vouchers-sold">
-					
+
 				</td>
 				<td class="user-field value-vouchers-sold">
-					
+
 				</td>
 				<td class="user-field total-unredeemed-vouchers">
-					
+
 				</td>
 				<td class="user-field last-voucher-sold">
-					
+
 				</td>
 				<td class="user-field status">
 					<div class="status-active" ng-if="user.is_active === true">Active</div>
 					<div class="status-not-active" ng-if="user.is_active === false">Inactive</div>
 				</td>
 				<td class="user-field user-actions">
-		            <div class="dropdown">
+          <div class="dropdown">
 						<div is-open="status.isopen" class="dropdown-wrapper" dropdown on-toggle="toggled(open)">
 							<a class="dropdown-toggle" dropdown-toggle>
 								<i class="icon icon-gear-setting-1"></i><span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-right" role="menu">
-								<li class="first"><a ng-click="changeUserStatus(user)">Change Status</a></li>
+								<li class="first"><a ui-sref='account.profile.edit({id:user.id})'>Edit Profile</a></li>
 							</ul>
 						</div>
-		            </div>
+          </div>
 				</td>
 			</tr>
 			<tr ng-hide="(businesses | filter: searchBusinesses).length || loading" class="no-results">

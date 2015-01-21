@@ -40,22 +40,11 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 		if (next.data.restricted) {
 			Auth.getCurrentUser(function(user) {
 
-				// Validate the user's token
-	    		var user_token = user.auth_token;
-	    		var auth_token = $cookieStore.get('auth_token');
-				var validateAuthToken = (function() {
-					return (auth_token === user_token) ? true : false;
-				})();
-
 				// Validate the user's ID
-				var uid = $cookieStore.get('uid');
 				var sid = parseInt(toState.id);
-				var validateUserID = (function() {
-					return (uid === sid) ? true : false;
-				})();
 
-				// Restrict access if authorization is required from state data (defined in module config files)
-				if (validateAuthToken && validateUserID === false) {
+				// Restrict access if user is not allowed.
+				if ( !(sid === user.id || user.role === 'admin') ) {
 					event.preventDefault();
 					if (Auth.isLoggedIn() === true) {
 						// user is not allowed

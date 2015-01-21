@@ -3,69 +3,73 @@
 	<div class="left-side">
 		<div class="basic-info section">
 			<h4 class="section-title">Basic Information</h4>
-			<div class="user-data full-name" ng-if="userRoleIsNot('individual')">
-				<span class="field-label" ng-if="userRoleIs('cause')">Cause Name</span>
-				<span class="field-label" ng-if="userRoleIsNot('cause') && userRoleIsNot('individual')">Company Name</span>
-				<span class="field-data">{{currentUser.company_name}}</span>
+			<div class="user-data full-name" ng-if="user.role != 'individual'">
+				<span class="field-label" ng-if="user.role == 'cause'">Cause Name</span>
+				<span class="field-label" ng-if="user.role == 'business'">Company Name</span>
+				<span class="field-data">{{user.company_name}}</span>
 			</div>
-			<div class="user-data phone" ng-if="userRoleIsNot('individual')">
+			<div class="user-data phone" ng-if="user.role != 'individual'">
 				<span class="field-label">Phone Number</span>
-				<span class="field-data">{{currentUser.phone}}</span>
+				<span class="field-data">{{user.phone}}</span>
 			</div>
 			<div class='user-data twitter'>
 				<span class='field-label'>Twitter</span>
-				<span class='field-data'>{{currentUser.twitter}}</span>
+				<span class='field-data'>{{user.twitter}}</span>
 			</div>
 		</div>
-		<div ng-if="userRoleIsNot('individual')">
+		<div ng-if="user.role != 'individual'">
 			<div class="location-info section">
 				<h4 class="section-title">Location Information</h4>
 				<div class="user-data street">
 					<span class="field-label">Street Address</span>
-					<span class="field-data">{{currentUser.street_address}}</span>
+					<span class="field-data">{{user.street_address}}</span>
 				</div>
 				<div class="user-data city">
 					<span class="field-label">City</span>
-					<span class="field-data">{{currentUser.city}}</span>
+					<span class="field-data">{{user.city}}</span>
 				</div>
 				<div class="user-data state">
-					<span class="field-label" ng-if="chosenCountry() === 'Canada' || chosenCountry() === null">Province</span>
-					<span class="field-label" ng-if="chosenCountry() === 'United States'">State</span>
-					<span class="field-data">{{chosenState()}}</span>
+					<span class="field-label" ng-if="user.country !== 'United States'">Province</span>
+					<span class="field-label" ng-if="user.country === 'United States'">State</span>
+					<span class="field-data">{{user.state}}</span>
 				</div>
 				<div class="user-data zip">
-					<span class="field-label" ng-if="chosenCountry() === 'Canada' || chosenCountry() === null">Postal Code</span>
-					<span class="field-label" ng-if="chosenCountry() === 'United States'">Zip</span>
-					<span class="field-data">{{currentUser.zip}}</span>
+					<span class="field-label" ng-if="user.country !== 'United States'">Postal Code</span>
+					<span class="field-label" ng-if="user.country === 'United States'">Zip</span>
+					<span class="field-data">{{user.zip}}</span>
 				</div>
 				<div class="user-data country">
 					<span class="field-label">Country</span>
-					<span class="field-data">{{chosenCountry()}}</span>
+					<span class="field-data">{{user.country}}</span>
 				</div>
 			</div>
 			<div class="company-info section">
-				<h4 class="section-title"><span ng-if="userRoleIs('business')">Company </span><span ng-if="userRoleIs('cause')">Cause </span>Details</h4>
+				<h4 class="section-title"><span ng-if="user.role == 'business'">Company </span><span ng-if="user.role == 'cause'">Cause </span>Details</h4>
 				<div class="user-data website">
 					<span class="field-label">Website</span>
-					<span class="field-data">{{currentUser.website}}</span>
+					<span class="field-data">{{user.website}}</span>
 				</div>
 				<div class="user-data tags">
 					<span class="field-label">Tags</span>
-					<span class="field-data">{{tagList()}}</span>
+					<span class="field-data">{{user.tags.join(', ')}}</span>
+				</div>
+				<div class="user-data campaigns">
+					<span class="field-label">Campaigns</span>
+					<span class="field-data">{{user.campaigns.join(', ')}}</span>
 				</div>
 				<div class="user-data description">
 					<span class="field-label">Description</span>
-					<span class="field-data" ng-bind-html="currentUser.description | linky:'_blank'"></span>
+					<span class="field-data" ng-bind-html="user.description | linky:'_blank'"></span>
 				</div>
 				<div class="user-data summary">
 					<span class="field-label">Summary</span>
-					<span class="field-data">{{currentUser.summary}}</span>
+					<span class="field-data">{{user.summary}}</span>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="right-side">
-		<div users-image-upload ng-if="userRoleIsNot('individual')"></div>
+		<div users-image-upload ng-if="user.role != 'individual'"></div>
 	</div>
 
 

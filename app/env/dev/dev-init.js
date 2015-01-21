@@ -12,7 +12,7 @@ function devInit($rootScope, Restangular, apiConfig, ENV, $window) {
 /* =======================================================================
 	Stripe Configuration
 ======================================================================= */
-	$window.Stripe.setPublishableKey(apiConfig.Stripe.DEV.public_key);
+	// $window.Stripe.setPublishableKey(apiConfig.Stripe.DEV.public_key);
 	
 }
 

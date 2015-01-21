@@ -101,6 +101,30 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 			Auth.setCurrentUser();
 		}, 0);
 
+
+		$scope.allTags = function(user_array) {
+			var tags = {};
+			angular.forEach(user_array, function (user) {
+				angular.forEach(user.tags, function(tag) {
+					tags[tag] = true;
+				});
+			});
+			var allTags = _.keys(tags);
+			return allTags;
+		};
+
+		$scope.allCampaigns = function(user_array) {
+			var tags = {};
+			angular.forEach(user_array, function (user) {
+				angular.forEach(user.campaigns, function(tag) {
+					tags[tag] = true;
+				});
+			});
+			var allTags = _.keys(tags);
+			return allTags;
+		};
+
+
 }
 
 // $inject is necessary for minification. See http://bit.ly/1lNICde for explanation.

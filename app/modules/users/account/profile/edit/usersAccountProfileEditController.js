@@ -3,25 +3,27 @@
 
 function UsersAccountProfileEditCtrl($rootScope, $scope, $timeout, $state, Auth, formValidation, regions, USER_EVENTS, alertService, Restangular) {
 
-	$scope.user = angular.copy($rootScope.currentUser);
-
 	/* =======================================================================
 		Zip / Postal Code Validation
 	======================================================================= */
-	$scope.$watch('user.country', function() {
-		if ($scope.user.country.code === 'CA') {
-			$scope.zipRegex = formValidation.postalCodeRegex;
-			$scope.zipPlaceholder = 'A1B 2C3';
-		}
-		if ($scope.user.country.code === 'US') {
-			$scope.zipRegex = formValidation.zipCodeRegex;
-			$scope.zipPlaceholder = '98765';
+	$scope.$watch('country.code', function() {
+		if ($scope.country) {
+			if ($scope.country.code === 'CA') {
+				$scope.zipRegex = formValidation.postalCodeRegex;
+				$scope.zipPlaceholder = 'A1B 2C3';
+			}
+			if ($scope.country.code === 'US') {
+				$scope.zipRegex = formValidation.zipCodeRegex;
+				$scope.zipPlaceholder = '98765';
+			}
 		}
 	});
 
 
 	$scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+		//console.debug('stateChangeStart');
 		if ($scope.updateUserForm.$dirty) {
+			//console.debug('stateChangeStart dirty');
 			$scope.nextState = toState;
 			$scope.nextStateParams = toParams;
 			$scope.usersAccountProfileEditConfirmModal.open({
@@ -32,6 +34,7 @@ function UsersAccountProfileEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 	});
 
 	$scope.gotoNextState = function () {
+	//	console.debug('gotoNextState');
 		$scope.updateUserForm.$setPristine();
 		$state.go($scope.nextState.name, $scope.nextStateParams);
 		$scope.usersAccountProfileEditConfirmModal.close();
@@ -52,55 +55,40 @@ function UsersAccountProfileEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 			$scope.countryList.push(regions.countries[i]);
 		}
 
-		if ($scope.user.country === null) {
-			// Default country is Canada
-			$scope.user.country = $scope.countryList[0];
-		} else {
-			var country;
-			for (country in countryList) {
-				if ($scope.user.country === countryList[country].name) {
-					// Set the user's selected country
-					$scope.user.country = countryList[country];
-				}
-			}
+		$scope.country = _.find(countryList, function (c) {
+			return c.name == $scope.draftUser.country;
+		});
+		if (angular.isUndefined($scope.country)) {
+				$scope.country = $scope.countryList[0];
 		}
 
-		// Default set of states is defined by the selected country
-		var states = $scope.states = $scope.statesList[$scope.user.country.code];
-		if ($scope.user.state === null) {
-			// Default state is the first in the list
-			$scope.user.state = $scope.states[0];
-		} else {
-			var state;
-			for (state in states) {
-				if ($scope.user.state === states[state].code) {
-					// Set the user's selected state / province
-					$scope.user.state = states[state];
-				}
-			}
+		var states = $scope.states = $scope.statesList[$scope.country.code];
+		$scope.state = _.find(states, function (s) {
+			return s.code == $scope.draftUser.state;
+		});
+		if (angular.isUndefined($scope.state)) {
+			$scope.state = $scope.states[0];
 		}
+
 	};
 
-	$scope.countries();
-
-	$scope.countryChange = function(user) {
-		$scope.user.country = user.country;
-		$scope.states = $scope.statesList[$scope.user.country.code];
-		$scope.user.state = $scope.states[0];
+	$scope.countryChange = function() {
+		$scope.country = $scope.updateUserForm.country.$viewValue;
+		$scope.states = $scope.statesList[ $scope.country.code ];
+		$scope.state = $scope.states[0];
 	};
 
-	$scope.stateChange = function(user) {
-		$scope.user.state = user.state;
+	$scope.stateChange = function() {
+		$scope.state = $scope.updateUserForm.state.$viewValue;
 	};
-
 
 	/* =======================================================================
 		Format Phone Number
 	======================================================================= */
 	$scope.formatNumber = function() {
-		if ($scope.user.phone !== null && $scope.user.phone !== undefined) {
-			var phoneNum = $scope.user.phone.match(formValidation.phoneRegex);
-			$scope.user.phone = '(' + phoneNum[1] + ') ' + phoneNum[2] + '-' + phoneNum[3];
+		if ($scope.draftUser.phone !== null && $scope.draftUser.phone !== undefined) {
+			var phoneNum = $scope.draftUser.phone.match(formValidation.phoneRegex);
+			$scope.draftUser.phone = '(' + phoneNum[1] + ') ' + phoneNum[2] + '-' + phoneNum[3];
 		}
 	};
 
@@ -109,15 +97,13 @@ function UsersAccountProfileEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 		Set Cause Summary
 	======================================================================= */
 	$scope.setSummary = function(user) {
-		$scope.user.description = user.description;
-		user.summary = user.description.match(/([^.!?]{0,140})/i)[0];
-		$scope.user.summary = user.summary;
+		$scope.draftUser.description = $scope.draftUser.description.match(/([^.!?]{0,140})/i)[0];
 	};
 
 	$scope.summaryCharsRemaining = function() {
 		var total = 0;
-		if ($scope.user && $scope.user.summary) {
-			total = $scope.user.summary.length;
+		if ($scope.draftUser && $scope.draftUser.summary) {
+			total = $scope.draftUser.summary.length;
 		}
 		return 140 - total;
 	};
@@ -130,8 +116,8 @@ function UsersAccountProfileEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 			// $scope.$emit('user.data.changed'); // Updates username on the fly via MainCtrl
 			$scope.updateUserForm.$setPristine();
 			$scope.countries();
-			Auth.refreshCurrentUser();
 			alertService.showAlert(USER_EVENTS.accountUpdateSuccess, 'alert-success');
+			$scope.$emit('refresh-profile-user');
 			$state.go('account.profile.view');
 		},
 		updateError = function() {
@@ -141,16 +127,37 @@ function UsersAccountProfileEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 	$scope.updateUser = function(isValid) {
 		if (isValid) {
 			// Convert tags object into an array and set all tags to lowercase for submission
-			var tags = $scope.user.tags.map(function(tag) {return tag.text.toLowerCase(); });
-			var saveCopy = Restangular.copy($scope.user);
-			saveCopy.country = $scope.user.country.name;
-			saveCopy.state = $scope.user.state.code;
+	//	console.debug("tarting: ", $scope.tags, $scope.campaigns, $scope.draftUser);
+			var tags = $scope.draftUser.tags.map(function(tag) { return (angular.isDefined(tag.text) ? tag.text.toLowerCase() : tag); });
+			var campaigns = $scope.draftUser.campaigns.map(function(tag) { return (angular.isDefined(tag.text) ? tag.text.toLowerCase() : tag); });
+			var saveCopy = Restangular.copy($scope.draftUser);
+			saveCopy.country = $scope.country.name;
+			saveCopy.state = $scope.state.code;
 			saveCopy.tag_list = tags;
+			saveCopy.campaign_list = campaigns;
+		//	console.debug("Saving: ", saveCopy);
 			saveCopy.put().then(updateSuccess, updateError);
 		} else {
 			alertService.showAlert(USER_EVENTS.formContainsErrors, 'alert-danger');
 		}
 	};
+
+	$scope.draftUser = {}; // <= needed to trigger Angular digest.  Dunno why.
+	$scope.init = function () {
+		$scope.draftUser = angular.copy($scope.user);
+		$scope.countries();
+		//console.debug("copied: ", $scope.draftUser);
+	};
+
+	$scope.$on('set-profile-user', function (event, user) {
+		$scope.init();
+	});
+
+	if ($scope.user) {
+		$scope.init();
+	} else {
+		$scope.$emit('refresh-profile-user');
+	}
 
 }
 
