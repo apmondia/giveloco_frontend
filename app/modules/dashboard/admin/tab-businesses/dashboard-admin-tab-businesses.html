@@ -21,10 +21,7 @@
 			<tr>
 				<th class="user-header id">ID</th>
 				<th class="user-header name">Company Name</th>
-				<th class="user-header total-vouchers-sold">GCs Sold</th>
-				<th class="user-header value-vouchers-sold">Value of GCs Sold</th>
-				<th class="user-header total-unredeemed-vouchers">GCs Outstanding</th>
-				<th class="user-header last-voucher-sold">Last GC Sold</th>
+				<th class="user-header campaign-tags">Tags</th>
 				<th class="user-header status">Status</th>
 				<th class="user-header user-actions"></th>
 			</tr>
@@ -39,17 +36,11 @@
 						{{user.company_name}}
 					</a>
 				</td>
-				<td class="user-field total-vouchers-sold">
-
-				</td>
-				<td class="user-field value-vouchers-sold">
-
-				</td>
-				<td class="user-field total-unredeemed-vouchers">
-
-				</td>
-				<td class="user-field last-voucher-sold">
-
+				<td class="user-field campaign-tags">
+					<ul class="tagList">
+						<li class="list-tag" ng-repeat="tag in user.tags"><a class="tag" ui-sref="explore.businesses({q: tag})">#{{tag}}</a></li>
+						<li class="campaign list-tag" ng-repeat="tag in user.campaigns"><a class="tag" ui-sref="explore.businesses({q: tag})">#{{tag}}</a></li>
+					</ul>
 				</td>
 				<td class="user-field status">
 					<div class="status-active" ng-if="user.is_active === true">Active</div>

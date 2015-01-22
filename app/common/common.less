@@ -1129,6 +1129,30 @@ p.no-results {
     }
 }
 
+ul.tagList {
+	float: left;
+	margin: 4px 0;
+	padding: 0;
+	.clearfix();
+	li {
+		list-style: none;
+		float: left;
+		margin: 3px 5px 0 0;
+		.tag {
+			font-size: 12px;
+			padding: 2px 7px;
+			border-radius: 3px;
+			color: #fff;
+			background-color: @brand-purple;
+		}
+		&.campaign {
+			.tag {
+				background-color: @brand-orange;
+			}
+		}
+	}
+}
+
 .ie-upgrade {
 	padding: 2rem;
 	text-align: center;

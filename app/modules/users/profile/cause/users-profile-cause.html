@@ -59,6 +59,7 @@
 			<div class="tags" ng-if="user.tags.length > 0">
 				<ul class="tagList">
 					<li class="list-tag" ng-repeat="tag in user.tags"><a class="tag" ui-sref='explore.causes({q: tag})'>#{{tag}}</a></li>
+					<li class="campaign list-tag" ng-repeat="tag in user.campaigns"><a class="tag" ui-sref="explore.causes({q: tag})">#{{tag}}</a></li>
 				</ul>
 			</div>
 		</div>
