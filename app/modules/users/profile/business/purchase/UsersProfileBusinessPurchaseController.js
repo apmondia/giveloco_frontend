@@ -59,7 +59,7 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
     });
 
     $scope.stepThreeNotComplete = function() {
-			return $scope.registrationForm.agree_to_tc.$invalid || $scope.registrationForm.email.$invalid;
+			return /*$scope.registrationForm.agree_to_tc.$invalid ||*/ $scope.registrationForm.email.$invalid;
     };
 
     // reset form when the modal is closed or competed submission
