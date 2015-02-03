@@ -97,17 +97,17 @@
 			<div class="form-group tags" ng-class="{'invalid' : updateUserForm.tags.$invalid && updateUserForm.tags.$dirty, 'valid' : updateUserForm.tags.$valid && updateUserForm.tags.$dirty}">
 				<label for="userTags" class="block">Search Tags</label>
 				<tags-input ng-model="draftUser.tags" name="tags" id="userTags" class="tags-input" add-on-space='true' allowed-tags-pattern="^[^!@#$%&\*:;.?]*$" min-length='3' max-length='25' show-form-errors></tags-input>
-				<p class="form-helper info" ng-if="updateUserForm.tags.$focused">Please add a few tags that describe your business. Tags can be up to 25 characters long and consist of numbers and letters.</p>
+				<p class="form-helper info" ng-if="updateUserForm.tags.$focused">Please add a few tags that describe your organization. Tags can be up to 25 characters long and consist of numbers and letters.</p>
 				<p class="form-helper" ng-if="!updateUserForm.tags.$valid && !updateUserForm.tags.$focused">Please enter a valid tag!</p>
 			</div>
 
       <div ng-if="currentUser.role === 'admin'" class="form-group tags" ng-class="{'invalid' : updateUserForm.campaigns.$invalid && updateUserForm.campaigns.$dirty, 'valid' : updateUserForm.campaigns.$valid && updateUserForm.campaigns.$dirty}">
         <label for="userCampaigns" class="block">Campaign Tags</label>
         <tags-input ng-model="draftUser.campaigns" name="campaigns" id="userCampaigns" class="tags-input" add-on-space='true' allowed-campaigns-pattern="^[^!@#$%&\*:;.?]*$" min-length='3' max-length='25' show-form-errors></tags-input>
-        <p class="form-helper info" ng-if="updateUserForm.campaigns.$focused">Please add a few campaigns that describe your business. Tags can be up to 25 characters long and consist of numbers and letters.</p>
+        <p class="form-helper info" ng-if="updateUserForm.campaigns.$focused">Please add a few campaigns that the organization is a part of.  Tags can be up to 25 characters long and consist of numbers and letters.</p>
         <p class="form-helper" ng-if="!updateUserForm.campaigns.$valid && !updateUserForm.campaigns.$focused">Please enter a valid campaign!</p>
       </div>
-      
+
 			<div class="form-group company-description" ng-class="{'invalid' : updateUserForm.companyDescription.$invalid && updateUserForm.companyDescription.$dirty, 'valid' : updateUserForm.companyDescription.$valid && updateUserForm.companyDescription.$dirty}">
 				<label for="userDescription" class="block"><span ng-if="draftUser.role == 'cause'">Cause</span><span ng-if="draftUser.role != 'cause'">Company</span> Description</label>
 				<textarea name="description" id="userDescription" class="form-control with-label-above" placeholder="The first 140 characters will be used as your summary." ng-model="draftUser.description" ng-change="setSummary()" show-form-errors></textarea>
