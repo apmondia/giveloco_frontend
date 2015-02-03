@@ -28,7 +28,7 @@
 				</div>
 			</div>
 
-			<div class='sub-section sponsorship-rate'>
+			<div class='sub-section sponsorship-rate' ng-if='user.role == "business"'>
 				<div class='form-group sponsorship-rate' ng-class="{'invalid': infoForm.sponsorship_rate.$invalid && infoForm.sponsorship_rate.$dirty, 'valid': infoForm.sponsorship_rate.$valid && $infoForm.sponsorship_rate.$dirty }">
 					<label for='sponsorship_rate' class='inline'>Sponsorship Rate</label>
 					<input type='text' name='sponsorship_rate' id='sponsorship_rate' class='form-control' placeholder='10%' ng-model='user.sponsorship_rate' ng-pattern='sponsorshipRateRegex' maxlength='5' show-form-errors />
