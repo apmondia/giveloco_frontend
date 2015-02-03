@@ -15,7 +15,7 @@ function UsersCtrl($scope, formValidation) {
 	// Text Area
 	$scope.textAreaRegex = formValidation.textAreaRegex;
 	//
-	$scope.sponsorshipRateRegex = /\d+(\.\d+)?/;
+	$scope.sponsorshipRateRegex = /\d+/;
 
 
 	/* =======================================================================
