@@ -3,14 +3,23 @@
 function UsersProfileCtrl($rootScope, $scope) {
 
 	// Define the user's image
-	$scope.userImage = $scope.user.images.profile_picture.medium;
+	
+	$scope.shortURL = "";
+	$scope.userImage = "";
+	$scope.$on('set-profile-user', function () {
+		if ($scope.user.images && $scope.user.images.profile_picture) {
+			$scope.userImage = $scope.user.images.profile_picture.medium;
+		}
+		// Strip protocol from website for profile page presentation
+		if ($scope.user.website) {
+			$scope.shortURL = $scope.user.website.replace(/.*?:\/\//g, '');
+		} else {
+			$scope.shortURL = '';
+		}
+	});
 
-	// Strip protocol from website for profile page presentation
-	if ($scope.user.website) {
-		$scope.shortURL = $scope.user.website.replace(/.*?:\/\//g, '');
-	} else {
-		$scope.shortURL = '';
-	}
+
+
 
 	/* =======================================================================
 		Modals

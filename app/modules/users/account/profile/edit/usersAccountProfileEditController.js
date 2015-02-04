@@ -119,6 +119,10 @@ function UsersAccountProfileEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 			alertService.showAlert(USER_EVENTS.accountUpdateSuccess, 'alert-success');
 			$scope.$emit('refresh-profile-user');
 			$state.go('account.profile.view');
+			if ($scope.currentUser.id == $scope.draftUser.id) {
+				//need to update global user
+				Auth.refreshCurrentUser();
+			}
 		},
 		updateError = function() {
 			alertService.showAlert(USER_EVENTS.accountUpdateFailure, 'alert-danger');

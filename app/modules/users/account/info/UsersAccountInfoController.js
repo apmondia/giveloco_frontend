@@ -32,20 +32,6 @@ function UsersAccountInfoCtrl($rootScope, $scope, $state, $http, Auth, alertServ
 		}
 	};
 
-	$scope.user = {};
-	function refreshProfileUser() {
-		Restangular.one('users', $state.params["id"]).get().then(function (user) {
-			$scope.user = user;
-			$scope.$broadcast('set-profile-user', user);
-		});
-	}
-
-	$scope.$on('refresh-profile-user', function(event) {
-		refreshProfileUser();
-	});
-
-	refreshProfileUser();
-
 }
 
 UsersAccountInfoCtrl.$inject = ['$rootScope', '$scope', '$state', '$http', 'Auth', 'alertService', 'AUTH_EVENTS', 'Restangular'];
