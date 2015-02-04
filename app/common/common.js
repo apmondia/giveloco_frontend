@@ -20,6 +20,7 @@ require('lodash');
 require('ng-idle');
 require('ng-tags-input');
 require('restangular');
+require('ng-parallax');
 
 module.exports = angular.module('common',
 	[
@@ -36,6 +37,7 @@ module.exports = angular.module('common',
         'ngTagsInput',
         'ngTouch',
         'restangular',
+				'duParallax',
         require('./components').name,
         require('./constants').name,
         require('./directives').name,

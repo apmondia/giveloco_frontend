@@ -1,25 +1,48 @@
 <footer class="footer">
-	<div class="bottom">
-		<div class="row">
-			<div class="right-side">
-				<ul class="footer-links">
-					<li ui-sref-active="active" ng-if="!isLoggedIn()">
-						<a ui-sref="auth.login" class='login'>Log In</a>
-					</li>
-	            	<li ui-sref-active="active" ng-if="!isLoggedIn()">
-	            		<a ui-sref="auth.signup.business" id='footer-sign-up'>Sign Up</a>
-	            	</li>
-					<li>
-						<a class="footer-link" ui-sref="terms">Terms of Service</a>
-					</li>
-					<li>
-						<a class="footer-link" ui-sref="policy">Privacy Policy</a>
-					</li>
-				</ul>
-			</div>
-			<div class="left-side copyright">
-				Taliflo is a trademark of Taliflo Inc. <span>&copy; 2014 Taliflo Inc. All rights reserved.</span>
-			</div>
-		</div>
+
+	<ul class="social list-unstyled">
+		<li>
+			<a class="social-link email" href="mailto:community@taliflo.com"><i class="icon icon-mail-letter"></i></a>
+		</li>
+		<li>
+			<a class="social-link facebook" target="_blank" href="https://www.facebook.com/TalifloInc"><i class="icon icon-facebook"></i></a>
+		</li>
+		<li>
+			<a class="social-link twitter" target="_blank" href="https://twitter.com/TalifloInc"><i class="icon icon-twitter"></i></a>
+		</li>
+	</ul>
+
+	<ul class='links'>
+		<li>
+			<a href='#'>How it Works</a>
+		</li>
+		<li>
+			<a href='#'>Why Taliflo?</a>
+		</li>
+		<li>
+			<a href='#'>Blog</a>
+		</li>
+		<li ui-sref-active="active" ng-if="!isLoggedIn()">
+			<a ui-sref="auth.signup.business" id='footer-sign-up'>Sign Up</a>
+		</li>
+		<li ui-sref-active="active" ng-if="!isLoggedIn()">
+			<a ui-sref="auth.login" class='login'>Log In</a>
+		</li>
+		<li>
+			<a href='#'>Contact</a>
+		</li>
+	</ul>
+
+	<div class='dark-marquis'>
+
+		<p>
+			Taliflo is a trademark of Taliflo Inc <span>&copy; 2015 Taliflo Inc.</span> <span>All Rights Reserved.</span>
+		</p>
+		<p class='space'>
+			<a ui-sref="terms">Terms of Service</a>
+			<a ui-sref="policy">Privacy Policy</a>
+		</p>
+
 	</div>
+
 </footer>

@@ -66,7 +66,8 @@ var filePath = {
             './libs/bootstrap/dist/js/bootstrap.js', // v3.1.1
             './app/assets/vendor/modernizr.js',
             './app/assets/vendor/webshim/js-webshim/dev/polyfiller.js', // v1.14.5
-            './libs/spin.js/spin.js'
+            './libs/spin.js/spin.js'/*,
+            './libs/ng-parallax/angular-parallax.js'*/
         ]
     },
     vendorCSS: {
