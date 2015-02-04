@@ -17,7 +17,7 @@ function exploreRoutes($stateProvider) {
                 moduleClasses: 'explore',
                 pageClasses: 'businesses',
                 pageTitle: 'Collect Your Vouchers',
-                pageDescription: 'Explore Businesses on Taliflo and donate to their supported causes and be rewarded with store credit.'
+                pageDescription: 'Explore Businesses on GiveLoco and donate to their supported causes and be rewarded with store credit.'
             }
         },
         exploreCauses = {
@@ -28,7 +28,7 @@ function exploreRoutes($stateProvider) {
                 moduleClasses: 'explore',
                 pageClasses: 'causes',
                 pageTitle: 'Explore Causes',
-                pageDescription: 'Explore Causes on Taliflo and donate to receive store credit that can be redeemed at the cause\'s sponsors.'
+                pageDescription: 'Explore Causes on GiveLoco and donate to receive store credit that can be redeemed at the cause\'s sponsors.'
             }
         },
         redeemCredits = {
@@ -39,7 +39,7 @@ function exploreRoutes($stateProvider) {
                 moduleClasses: 'explore',
                 pageClasses: 'redeem-credits',
                 pageTitle: 'Redeem Credits',
-                pageDescription: 'Choose businesses on Taliflo in which to redeem your store credit.'
+                pageDescription: 'Choose businesses on GiveLoco in which to redeem your store credit.'
             }
         };
 

@@ -22,7 +22,7 @@ function pageRoutes($stateProvider) {
         moduleClasses: 'page',
         pageClasses: 'policy',
         pageTitle: 'Privacy Policy',
-        pageDescription: 'Taliflo Privacy Policy.'
+        pageDescription: 'GiveLoco Privacy Policy.'
       }
   },
   terms = {
@@ -33,7 +33,7 @@ function pageRoutes($stateProvider) {
         moduleClasses: 'page',
         pageClasses: 'terms',
         pageTitle: 'Terms of Service',
-        pageDescription: 'Taliflo Terms of Service.'
+        pageDescription: 'GiveLoco Terms of Service.'
       }
   };
 

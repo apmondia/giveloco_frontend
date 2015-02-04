@@ -3,7 +3,7 @@
 var apiConfig = function() {
 
 /* =======================================================================
-	Taliflo API Configuration
+	GiveLoco API Configuration
 ======================================================================= */
 	var apiProxy = '/api',
 		apiVersion = '/v1';

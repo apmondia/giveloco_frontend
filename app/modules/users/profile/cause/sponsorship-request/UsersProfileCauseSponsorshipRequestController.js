@@ -6,7 +6,7 @@ function UsersProfileCauseSponsorshipRequestCtrl($rootScope, $scope, Restangular
       business_id: $scope.currentUser.id,
       cause_id: $scope.user.id
     }).then(function () {
-      alertService.showSuccess('Your request has been sent to the Taliflo Community Administrator');
+      alertService.showSuccess('Your request has been sent to the GiveLoco Community Administrator');
       $scope.usersProfileSponsorshipRequestModal.close();
       $rootScope.$broadcast('sponsorships-changed');
     }, function (status) {
