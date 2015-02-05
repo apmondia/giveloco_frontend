@@ -66,19 +66,28 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	Get Lists of Causes and Businesses (for Explore pages)
 ======================================================================= */
 	// Get all users from server
-	var users = Restangular.all('users');
 
-	$scope.loading = true;
-	// Filter users to populate list of Causes
-	users.getList().then(function(user) {
-        $scope.causes = _.filter(user, function(user){
-            return user.role === USER_ROLES.cause && user.is_published === true && user.is_activated === true;
-        });
-        $scope.businesses = _.filter(user, function(user){
-            return user.role === USER_ROLES.business && user.is_published === true && user.is_activated === true && user.sponsorships.length > 0;
-        });
-        $scope.loading = false;
-    });
+
+	function reloadUsers() {
+		$scope.loading = true;
+		// Filter users to populate list of Causes
+		var users = Restangular.all('users');
+		users.getList().then(function(user) {
+					$scope.causes = _.filter(user, function(user){
+							return user.role === USER_ROLES.cause && user.is_published === true && user.is_activated === true;
+					});
+					$scope.businesses = _.filter(user, function(user){
+							return user.role === USER_ROLES.business && user.is_published === true && user.is_activated === true && user.sponsorships.length > 0;
+					});
+					$scope.loading = false;
+			});
+	}
+
+	reloadUsers();
+
+	$scope.$on('sponsorshipsChanged', function () {
+		reloadUsers();
+	});
 
 
 /* =======================================================================
