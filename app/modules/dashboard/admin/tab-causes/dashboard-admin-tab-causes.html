@@ -21,11 +21,8 @@
 			<tr>
 				<th class="user-header id">ID</th>
 				<th class="user-header name">Cause Name</th>
-				<th class="user-header number-of-sponsors">Total Sponsors</th>
-				<th class="user-header total-donations-received">Donations Received</th>
-				<th class="user-header value-of-donations">Value of Donations</th>
-				<th class="user-header last-donation-received">Last Donation Received</th>
-				<th class="user-header status">Status</th>
+				<th class="user-header status">Published</th>
+				<th class="user-header status">Activated</th>
 				<th class="user-header user-actions"></th>
 			</tr>
 		</thead>
@@ -39,21 +36,13 @@
 						{{user.company_name}}
 					</a>
 				</td>
-				<td class="user-field number-of-sponsors">
-					
-				</td>
-				<td class="user-field total-donations-received">
-					
-				</td>
-				<td class="user-field value-of-donations">
-					
-				</td>
-				<td class="user-field last-donation-received">
-					
+				<td class="user-field status">
+					<div class="status-active" ng-if="user.is_published === true">Published</div>
+					<div class="status-not-active" ng-if="user.is_published === false">Unpublished</div>
 				</td>
 				<td class="user-field status">
-					<div class="status-active" ng-if="user.is_active === true">Active</div>
-					<div class="status-not-active" ng-if="user.is_active === false">Inactive</div>
+					<div class="status-active" ng-if="user.is_activated === true">Activated</div>
+					<div class="status-not-active" ng-if="user.is_activated === false">Not Activated</div>
 				</td>
 				<td class="user-field user-actions">
 		            <div class="dropdown">
