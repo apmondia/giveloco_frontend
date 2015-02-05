@@ -14,14 +14,16 @@
 
 	<ul class='links'>
 		<li>
-			<a href='#'>How it Works</a>
+			<a ui-sref='home({goto:"how-it-works-step-1"})' ui-sref-opts='{reload: true}'>How it Works</a>
 		</li>
 		<li>
-			<a href='#'>Why GiveLoco?</a>
+			<a ui-sref='home({goto:"why-give-loco"})' ui-sref-opts='{reload: true}'>Why GiveLoco?</a>
 		</li>
+		<!--
 		<li>
 			<a href='#'>Pricing</a>
 		</li>
+	-->
 		<li ui-sref-active="active" ng-if="!isLoggedIn()">
 			<a ui-sref="auth.signup.business" id='footer-sign-up'>Sign Up</a>
 		</li>
@@ -29,7 +31,7 @@
 			<a ui-sref="auth.login" class='login'>Log In</a>
 		</li>
 		<li>
-			<a href='#'>About</a>
+			<a href='http://blog.taliflo.com/' target="_blank">About</a>
 		</li>
 	</ul>
 

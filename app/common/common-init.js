@@ -1,7 +1,7 @@
 /*jshint camelcase: false */
 'use strict';
 
-function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertService) {
+function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertService, $location, $anchorScroll) {
 	$rootScope.$state = $state;
 
 	// Set bodyClasses, pageTitle, and pageDescription on state change (ui-router)
@@ -75,7 +75,8 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 			}
 		}
 	});
+
 }
 
-commonInit.$inject = ['$rootScope', '$state', 'Auth', 'AUTH_EVENTS', '$cookieStore', 'alertService'];
+commonInit.$inject = ['$rootScope', '$state', 'Auth', 'AUTH_EVENTS', '$cookieStore', 'alertService', '$location', '$anchorScroll'];
 module.exports = commonInit;

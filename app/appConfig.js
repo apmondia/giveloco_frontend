@@ -23,7 +23,7 @@ function appRoutes($stateProvider, $urlRouterProvider, $locationProvider, $httpP
 ========================================================================== */
 	var home = {
 			name: 'home', // state name
-			url: '/', // url path that activates this state
+			url: '/?goto', // url path that activates this state
 			template: '<div ui-view></div>',
 			controller: function($state) {
 				$state.go('home.guest');
