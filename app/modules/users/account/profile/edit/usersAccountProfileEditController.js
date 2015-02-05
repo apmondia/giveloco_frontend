@@ -34,13 +34,15 @@ function UsersAccountProfileEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 	});
 
 	$scope.gotoNextState = function () {
-	//	console.debug('gotoNextState');
 		$scope.updateUserForm.$setPristine();
 		$state.go($scope.nextState.name, $scope.nextStateParams);
 		$scope.usersAccountProfileEditConfirmModal.close();
 	};
 
-
+	$scope.cancelNextState = function () {
+		$scope.usersAccountProfileEditConfirmModal.close();
+	};
+	
 	/* =======================================================================
 		Country & State Select Menus
 	======================================================================= */

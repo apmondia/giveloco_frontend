@@ -26,7 +26,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	};
 
 	function updateSponsorships(user) {
-		console.error(user);
+		//console.error(user);
 		SponsorService.getSponsoredCauses(user).then(function (data) {
 			$rootScope.sponsorships = data;
 		}, function () {

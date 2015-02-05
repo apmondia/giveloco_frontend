@@ -2,7 +2,8 @@
 
 module.exports = angular.module('common.directives', [
 		require('./ajaxSpinner').name,
-		require('./user-profile-picture').name
+		require('./user-profile-picture').name,
+		require('./confirm').name
 	])
 	.directive('autoFocus', require('./autoFocus.js'))
 	.directive('modal', require('./dynamicModals.js'))

@@ -17,7 +17,7 @@ function UsersAccountInfoCtrl($rootScope, $scope, $state, $http, Auth, alertServ
 
 	$scope.updateInfo = function(isValid) {
 		if (isValid) {
-			Auth.putUser($scope.user).then(updateSuccess, updateError);
+			Auth.putUser($scope.draftUser).then(updateSuccess, updateError);
 			$scope.infoForm.$setPristine();
 		} else {
 			$scope.submitAttempted = true;
@@ -31,6 +31,45 @@ function UsersAccountInfoCtrl($rootScope, $scope, $state, $http, Auth, alertServ
 			return 'confirmed';
 		}
 	};
+
+
+	$scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+		//console.debug('stateChangeStart');
+		if ($scope.infoForm.$dirty) {
+			//console.debug('stateChangeStart dirty');
+			$scope.nextState = toState;
+			$scope.nextStateParams = toParams;
+			$scope.userAccountInfoConfirm.open({
+				windowClass: 'confirm'
+			});
+			event.preventDefault();
+		}
+	});
+
+	$scope.gotoNextState = function () {
+		$scope.infoForm.$setPristine();
+		$state.go($scope.nextState.name, $scope.nextStateParams);
+		$scope.userAccountInfoConfirm.close();
+	};
+
+	$scope.cancelNextState = function () {
+		$scope.userAccountInfoConfirm.close();
+	};
+
+	$scope.draftUser = {}; // <= needed to trigger Angular digest.  Dunno why.
+	$scope.init = function () {
+		$scope.draftUser = angular.copy($scope.user);
+	};
+
+	$scope.$on('set-profile-user', function (event, user) {
+		$scope.init();
+	});
+
+	if ($scope.user) {
+		$scope.init();
+	} else {
+		$scope.$emit('refresh-profile-user');
+	}
 
 }
 
