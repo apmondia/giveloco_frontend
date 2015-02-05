@@ -97,7 +97,7 @@ function UsersAccountProfileEditCtrl($rootScope, $scope, $timeout, $state, Auth,
 		Set Cause Summary
 	======================================================================= */
 	$scope.setSummary = function(user) {
-		$scope.draftUser.description = $scope.draftUser.description.match(/([^.!?]{0,140})/i)[0];
+		$scope.draftUser.summary = $scope.draftUser.description.match(/([^.!?]{0,140})/i)[0];
 	};
 
 	$scope.summaryCharsRemaining = function() {
