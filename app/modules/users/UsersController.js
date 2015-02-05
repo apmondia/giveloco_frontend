@@ -1,6 +1,6 @@
 'use strict';
 
-function UsersCtrl($scope, $state, formValidation, Restangular) {
+function UsersCtrl($scope, $state, $stateParams, formValidation, Restangular) {
 	/* =======================================================================
 		Form Validation Regex
 	======================================================================= */
@@ -33,7 +33,7 @@ function UsersCtrl($scope, $state, formValidation, Restangular) {
 	function refreshProfileUser() {
 		Restangular.one('users', $state.params["id"]).get().then(function (user) {
 			$scope.user = user;
-			//console.debug("User: ", user);
+			console.debug("broadcast: set-profile-user: ", user);
 			$scope.$broadcast('set-profile-user', user);
 		});
 	}
@@ -46,5 +46,5 @@ function UsersCtrl($scope, $state, formValidation, Restangular) {
 
 }
 
-UsersCtrl.$inject = ['$scope', '$state', 'formValidation', 'Restangular'];
+UsersCtrl.$inject = ['$scope', '$state', '$stateParams', 'formValidation', 'Restangular'];
 module.exports = UsersCtrl;

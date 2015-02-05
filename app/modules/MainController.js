@@ -1,7 +1,7 @@
 /*jshint camelcase: false */
 'use strict';
 // MainCtrl is set in the index.html file
-function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_ROLES) {
+function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_ROLES, SponsorService, alertService) {
 
 /* =======================================================================
 	Session Control
@@ -11,6 +11,39 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 			$state.go('auth.login');
 		});
 	};
+
+	$scope.isSponsoring = function(user) {
+		if (!user.id) {
+			return false;
+		}
+		var result = false;
+		angular.forEach($rootScope.sponsorships, function (value) {
+			if (value.cause.id == user.id) {
+				result = true;
+			}
+		});
+		return result;
+	};
+
+	function updateSponsorships(user) {
+		SponsorService.getSponsoredCauses(user).then(function (data) {
+			$rootScope.sponsorships = data;
+		}, function () {
+			alertService.showDanger("Could not retrieve list of sponsorships");
+		});
+	};
+
+	$rootScope.$on('set-current-user', function (event, user) {
+		if (!$rootScope.sponsorships) {
+			//load up here
+			updateSponsorships(user);
+		}
+	});
+
+	$rootScope.$on('sponsorships-changed', function (event) {
+		updateSponsorships($rootScope.currentUser);
+	});
+
 
 	//here we should check if there is a current user.
 
@@ -135,5 +168,5 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 }
 
 // $inject is necessary for minification. See http://bit.ly/1lNICde for explanation.
-MainCtrl.$inject = ['$rootScope', '$scope', '$timeout', '$state', 'Restangular', 'Auth', 'USER_ROLES'];
+MainCtrl.$inject = ['$rootScope', '$scope', '$timeout', '$state', 'Restangular', 'Auth', 'USER_ROLES', 'SponsorService', 'alertService'];
 module.exports = MainCtrl;

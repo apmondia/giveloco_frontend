@@ -14,12 +14,13 @@ function userRoutes($stateProvider) {
             abstract: true,
             url: '/:id',
             template: '<div ui-view></div>',
-            controller: 'UsersCtrl',
+            controller: 'UsersCtrl'/*,
             resolve: {
                 user: function(Restangular, $stateParams) {
                     return Restangular.one('users', $stateParams.id).get();
                 }
             }
+            */
         };
 
     $stateProvider.state(user);
