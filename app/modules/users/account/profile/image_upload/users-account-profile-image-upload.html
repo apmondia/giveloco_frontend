@@ -7,8 +7,8 @@
 	</div>
 	<div class="image-upload">
 		<div>Please upload a .png image larger than 1000px by 800px</div>
-    <input ng-if="getUploader() != null" id='profile-picture-upload' type="file" class="file-input" nv-file-select uploader="getUploader()" multiple />
     <div class="fake-uploader-container">
+			<input ng-if="getUploader() != null" id='profile-picture-upload' type="file" class="file-input" nv-file-select uploader="getUploader()" multiple />
 	    <div class="btn button button-primary fake-upload-button">Choose File</div>
 	    <span class="fake-file-input"><span ng-if="!showSpinner">Upload Photo</span><span ng-if="showSpinner">Uploading...</span></span>
 		</div>
@@ -16,8 +16,8 @@
 			<li ng-repeat="item in getUploader().queue">
 				<div class="file-actions">
 					<div class="file-name" ng-bind="item.file.name"></div>
-					<button type="button" class="btn btn-success btn-xs" ng-click="item.upload()">upload</button>
-					<button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">Cancel</button>
+					<button type="button" class="btn btn-success btn-xs" ng-click="getUploader().uploadAll()">upload</button>
+					<button type="button" class="btn btn-danger btn-xs" ng-click="getUploader().clearQueue()">Cancel</button>
 				</div>
 				<div class="progress">
 					<div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>

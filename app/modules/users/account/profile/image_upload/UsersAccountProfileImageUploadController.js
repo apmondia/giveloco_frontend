@@ -9,12 +9,12 @@ function UsersAccountProfileImageUploadCtrl($rootScope, $scope, $cookies, apiCon
     removeAfterUpload: true
   });
 
-  $scope.uploader.onProgressItem = function() {
+  $scope.uploader.onProgressItem = function(arg1, arg2) {
     $scope.showSpinner = true;
     alertService.showAlert(USER_EVENTS.imageUploadInProgress, 'alert-warning');
   };
 
-  $scope.uploader.onSuccessItem = function() {
+  $scope.uploader.onSuccessItem = function(arg1, arg2) {
     $scope.showSpinner = false;
     alertService.showAlert(USER_EVENTS.imageUploadSuccess, 'alert-success');
     Auth.refreshCurrentUser();

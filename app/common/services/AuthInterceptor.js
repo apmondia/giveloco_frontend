@@ -5,6 +5,7 @@ var AuthInterceptor = function($q, $cookies, $injector) {
 	return {
 		request: function(config) {
 			config.headers = config.headers || {};
+			//console.warn("request inject ", $cookies.auth_token);
 			if ($cookies.auth_token) {
 				var TOKEN = $cookies.auth_token.replace(/^"|"$/g, ''); // Remove quotes for header requests
 				config.headers['x-session-token'] = TOKEN;
