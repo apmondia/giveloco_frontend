@@ -72,7 +72,7 @@ var Auth = function($rootScope, $http, Restangular, $cookieStore, AUTH_EVENTS, a
 		setCurrentUser: function () {
 			if (angular.isUndefined($rootScope.currentUser) && !angular.isUndefined($cookieStore.get('uid'))) {
 				authService.refreshCurrentUser();
-			} else {
+			} else if ( angular.isDefined($rootScope.currentUser) ) {
 				$rootScope.$broadcast('set-current-user', $rootScope.currentUser);
 			}
 		},

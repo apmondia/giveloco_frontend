@@ -33,7 +33,7 @@ function UsersCtrl($scope, $state, $stateParams, formValidation, Restangular) {
 	function refreshProfileUser() {
 		Restangular.one('users', $state.params["id"]).get().then(function (user) {
 			$scope.user = user;
-			console.debug("broadcast: set-profile-user: ", user);
+			//console.debug("broadcast: set-profile-user: ", user);
 			$scope.$broadcast('set-profile-user', user);
 		});
 	}

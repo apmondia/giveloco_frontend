@@ -4,6 +4,7 @@ function DashboardAdminTabSponsorshipsCtrl($scope, Restangular) {
 
   $scope.loadSponsorships = function () {
     Restangular.all('sponsorships').getList().then(function (data) {
+      //console.debug("loadedSponsorships: ", data);
       $scope.sponsorships = data;
     });
   };

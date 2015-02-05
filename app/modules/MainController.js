@@ -26,6 +26,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	};
 
 	function updateSponsorships(user) {
+		console.error(user);
 		SponsorService.getSponsoredCauses(user).then(function (data) {
 			$rootScope.sponsorships = data;
 		}, function () {
@@ -34,6 +35,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	};
 
 	$rootScope.$on('set-current-user', function (event, user) {
+	//	console.debug("set-current-user with",user);
 		if (!$rootScope.sponsorships) {
 			//load up here
 			updateSponsorships(user);
@@ -41,6 +43,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	});
 
 	$rootScope.$on('sponsorships-changed', function (event) {
+	//	console.debug("sponsorships changed ",$rootScope.currentUser);
 		updateSponsorships($rootScope.currentUser);
 	});
 
