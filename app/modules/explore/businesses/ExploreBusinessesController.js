@@ -1,10 +1,10 @@
 'use strict';
 
-function ExploreBusinessesCtrl($scope) {
-  $scope.$on('$stateChangeStart', function () {
-    $scope.search = "";
-  });
+function ExploreBusinessesCtrl($scope, $state) {
+  if ($state.params['reset']) {
+    $state.search = "";
+  }
 }
 
-ExploreBusinessesCtrl.$inject = ['$scope'];
+ExploreBusinessesCtrl.$inject = ['$scope', '$state'];
 module.exports = ExploreBusinessesCtrl;

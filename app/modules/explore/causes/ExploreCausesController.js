@@ -1,6 +1,6 @@
 'use strict';
 
-function ExploreCausesCtrl($scope) {
+function ExploreCausesCtrl($scope, $state) {
   /*
   $scope.$on('$stateChangeStart', function () {
     $scope.search = "";
@@ -9,7 +9,11 @@ function ExploreCausesCtrl($scope) {
     console.debug("state chnage success");
   });
   */
+  if ($state.params['reset']) {
+    $state.search = "";
+  }
+
 }
 
-ExploreCausesCtrl.$inject = ['$scope'];
+ExploreCausesCtrl.$inject = ['$scope', '$state'];
 module.exports = ExploreCausesCtrl;
