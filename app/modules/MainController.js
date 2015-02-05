@@ -42,7 +42,7 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 		}
 	});
 
-	$rootScope.$on('sponsorships-changed', function (event) {
+	$rootScope.$on('refresh-current-user-sponsorships', function (event) {
 	//	console.debug("sponsorships changed ",$rootScope.currentUser);
 		updateSponsorships($rootScope.currentUser);
 	});
@@ -72,20 +72,25 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 		$scope.loading = true;
 		// Filter users to populate list of Causes
 		var users = Restangular.all('users');
-		users.getList().then(function(user) {
-					$scope.causes = _.filter(user, function(user){
+		users.getList().then(function(users) {
+					$scope.all_users = users;
+					$scope.causes = _.filter(users, function(user){
 							return user.role === USER_ROLES.cause && user.is_published === true && user.is_activated === true;
 					});
-					$scope.businesses = _.filter(user, function(user){
+					$scope.businesses = _.filter(users, function(user){
 							return user.role === USER_ROLES.business && user.is_published === true && user.is_activated === true && user.sponsorships.length > 0;
 					});
 					$scope.loading = false;
+					$scope.$broadcast('set-all-users');
 			});
 	}
 
 	reloadUsers();
 
 	$scope.$on('sponsorshipsChanged', function () {
+		reloadUsers();
+	});
+	$scope.$on('refresh-all-users', function () {
 		reloadUsers();
 	});
 

@@ -8,7 +8,7 @@ function UsersProfileCauseSponsorshipRequestCtrl($rootScope, $scope, Restangular
     }).then(function () {
       alertService.showSuccess('Your request has been sent to the GiveLoco Community Administrator');
       $scope.usersProfileSponsorshipRequestModal.close();
-      $rootScope.$broadcast('sponsorships-changed');
+      $rootScope.$broadcast('refresh-current-user-sponsorships');
     }, function (status) {
       alertService.showDanger('Could not create sponsorship request.');
       console.error(status);

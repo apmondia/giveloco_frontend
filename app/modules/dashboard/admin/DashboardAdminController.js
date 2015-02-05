@@ -11,38 +11,49 @@ function DashboardAdminCtrl($scope, Restangular, alertService) {
 		$scope.loading = b;
 	};
 
-	$scope.loading = true;
-	// Filter users by role
-	users.getList().then(function(user) {
-        $scope.causesAll = _.filter(user, function(user){
-            return user.role === 'cause';
-        });
-        $scope.causesActive = _.filter(user, function(user){
-            return user.role === 'cause' && user.is_active === true;
-        });
-        $scope.causesInactive = _.filter(user, function(user){
-            return user.role === 'cause' && user.is_active === false;
-        });
-        $scope.businessesAll = _.filter(user, function(user){
-            return user.role === 'business';
-        });
-        $scope.businessesActive = _.filter(user, function(user){
-            return user.role === 'business' && user.is_active === true;
-        });
-        $scope.businessesInactive = _.filter(user, function(user){
-            return user.role === 'business' && user.is_active === false;
-        });
-        $scope.individualsAll = _.filter(user, function(user){
-            return user.role === 'individual';
-        });
-        $scope.individualsActive = _.filter(user, function(user){
-            return user.role === 'individual' && user.is_active === true;
-        });
-        $scope.individualsInactive = _.filter(user, function(user){
-            return user.role === 'individual' && user.is_active === false;
-        });
-        $scope.loading = false;
-    });
+	function rebuildFilteredList() {
+		// Filter users by role
+		var user = $scope.all_users;
+		$scope.causesAll = _.filter(user, function(user){
+				return user.role === 'cause';
+		});
+		$scope.causesActive = _.filter(user, function(user){
+				return user.role === 'cause' && user.is_active === true;
+		});
+		$scope.causesInactive = _.filter(user, function(user){
+				return user.role === 'cause' && user.is_active === false;
+		});
+		$scope.businessesAll = _.filter(user, function(user){
+				return user.role === 'business';
+		});
+		$scope.businessesActive = _.filter(user, function(user){
+				return user.role === 'business' && user.is_active === true;
+		});
+		$scope.businessesInactive = _.filter(user, function(user){
+				return user.role === 'business' && user.is_active === false;
+		});
+		$scope.individualsAll = _.filter(user, function(user){
+				return user.role === 'individual';
+		});
+		$scope.individualsActive = _.filter(user, function(user){
+				return user.role === 'individual' && user.is_active === true;
+		});
+		$scope.individualsInactive = _.filter(user, function(user){
+				return user.role === 'individual' && user.is_active === false;
+		});
+		$scope.loading = false;
+	}
+
+	$scope.$on('set-all-users', function () {
+		rebuildFilteredList();
+	});
+
+	if ($scope.all_users) {
+		rebuildFilteredList();
+	} else {
+		$scope.loading = true;
+		$scope.$emit('refresh-all-users');
+	}
 
 
 /* =======================================================================
@@ -79,6 +90,7 @@ function DashboardAdminCtrl($scope, Restangular, alertService) {
 			Restangular.one('sponsorships', sponsorship.id).customPUT({ status: 'cancelled'}, 'resolve').then(
 				function () {
 					sponsorship.status = 'cancelled';
+					$scope.$emit('refresh-all-users');
 				},
 				function () {
 					alertService.showDanger("Could not update the sponsorship status.");
@@ -89,6 +101,7 @@ function DashboardAdminCtrl($scope, Restangular, alertService) {
 			Restangular.one('sponsorships', sponsorship.id).customPUT({ status: 'accepted'}, 'resolve').then(
 				function () {
 					sponsorship.status = 'accepted';
+					$scope.$emit('refresh-all-users');
 				},
 				function () {
 					alertService.showDanger("Could not update the sponsorship status.");
