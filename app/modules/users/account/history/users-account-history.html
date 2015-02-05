@@ -16,9 +16,9 @@
 				<tr>
 					<th class="transaction-header date">Date</th>
 					<th class="transaction-header serial-number">Serial Number</th>
+					<th class="transaction-header amount">Value</th>
+					<th class="transaction-header rate">Donation Rate</th>
 					<th class="transaction-header cause">Cause</th>
-					<th class="transaction-header amount">Amount</th>
-					<th class="transaction-header rate">Sponsorship Rate</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -29,9 +29,6 @@
 					<td class="transaction-field serial-number">
 						<div>{{c.serial_number}}</div>
 					</td>
-					<td class="transaction-field cause">
-						<div>{{c.sponsorship.cause.company_name}}</div>
-					</td>
 					<td class="transaction-field amount">
 						<div>
 							<span class='debit'>{{c.amount | customCurrency: ''}}</span>
@@ -39,6 +36,9 @@
 					</td>
 					<td class="transaction-field rate">
 						{{ c.donation_percentage }}%
+					</td>
+					<td class="transaction-field cause">
+						<div>{{c.sponsorship.cause.company_name}}</div>
 					</td>
 				</tr>
 			</tbody>
