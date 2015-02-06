@@ -44,7 +44,7 @@ function commonInit($rootScope, $state, Auth, AUTH_EVENTS, $cookieStore, alertSe
 				var sid = parseInt(toState.id);
 
 				// Restrict access if user is not allowed.
-				if ( angular.isUndefined(user) || !(sid === user.id || user.role === 'admin') ) {
+				if ( user == null || angular.isUndefined(user) || !(sid === user.id || user.role === 'admin') ) {
 					event.preventDefault();
 					if (Auth.isLoggedIn() === true) {
 						// user is not allowed
