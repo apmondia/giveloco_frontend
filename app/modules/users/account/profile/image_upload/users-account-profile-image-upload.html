@@ -7,11 +7,6 @@
 	</div>
 	<div class="image-upload">
 		<div>Please upload a .png image larger than 1000px by 800px</div>
-    <div class="fake-uploader-container">
-			<input ng-if="getUploader() != null" id='profile-picture-upload' type="file" class="file-input" nv-file-select uploader="getUploader()" multiple />
-	    <div class="btn button button-primary fake-upload-button">Choose File</div>
-	    <span class="fake-file-input"><span ng-if="!showSpinner">Upload Photo</span><span ng-if="showSpinner">Uploading...</span></span>
-		</div>
 		<ul class="file-uploads" ng-if="!removeItem && getUploader() != null">
 			<li ng-repeat="item in getUploader().queue">
 				<div class="file-actions">
@@ -24,5 +19,10 @@
 				</div>
 			</li>
 		</ul>
+    <div class="fake-uploader-container">
+			<input ng-if="getUploader() != null" id='profile-picture-upload' type="file" class="file-input" nv-file-select uploader="getUploader()" multiple />
+	    <div class="btn button button-primary fake-upload-button">Choose File</div>
+	    <span class="fake-file-input"><span ng-if="!showSpinner">Upload Photo</span><span ng-if="showSpinner">Uploading...</span></span>
+		</div>
 	</div>
 </div>
