@@ -16,7 +16,7 @@ function exploreRoutes($stateProvider) {
             data: {
                 moduleClasses: 'explore',
                 pageClasses: 'businesses',
-                pageTitle: 'Collect Your Vouchers',
+                pageTitle: 'Explore Businesses',
                 pageDescription: 'Explore Businesses on GiveLoco and donate to their supported causes and be rewarded with store credit.'
             }
         },
