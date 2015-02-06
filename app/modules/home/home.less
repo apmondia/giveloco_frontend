@@ -239,6 +239,12 @@ body.page.home {
 
 
 
+	
+	.navbar #mobile-menu-nav {
+		padding-bottom: 0;
+		display: block !important;
+		height: auto !important;
+	}
 
 	.header {
 		/*
@@ -260,6 +266,7 @@ body.page.home {
 				border-radius: 0 0 5px 5px;
 				position: relative;
 				background: url("/images/blacks/black35.png");
+				float: right!important;
 				&:before {
 					opacity: 0;
 					z-index: 0;
@@ -270,6 +277,8 @@ body.page.home {
 					.animated();
 					.customAnimated(@duration: 0.2s);
 					transition: opacity 0.2s linear;
+					border-bottom: none;
+					float: left;
 					> a,
 					.dropdown-wrapper > a {
 						text-decoration: none;
