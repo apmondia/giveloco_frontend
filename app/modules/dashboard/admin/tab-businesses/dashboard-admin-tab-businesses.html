@@ -58,6 +58,8 @@
 							</a>
 							<ul class="dropdown-menu dropdown-menu-right" role="menu">
 								<li class="first"><a ui-sref='account.profile.edit({id:user.id})'>Edit Profile</a></li>
+								<li ng-if="user.is_activated"><a ng-click='deactivateUser(user)' href='#'>Deactivate</a></li>
+								<li ng-if="!user.is_activated"><a ng-click='activateUser(user)' href='#'>Activate</a></li>
 							</ul>
 						</div>
           </div>
