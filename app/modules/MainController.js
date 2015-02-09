@@ -90,6 +90,9 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 	$scope.$on('sponsorshipsChanged', function () {
 		reloadUsers();
 	});
+	$scope.$on('logged-in', function () {
+		reloadUsers();
+	});
 	$scope.$on('refresh-all-users', function () {
 		reloadUsers();
 	});
