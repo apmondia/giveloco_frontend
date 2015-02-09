@@ -52,7 +52,7 @@
 
 			<div class="form-group current-password" ng-class="{'invalid' : infoForm.currentPassword.$invalid && (submitAttempted || infoForm.currentPassword.$dirty), 'valid' : infoForm.currentPassword.$valid && infoForm.currentPassword.$dirty}">
 				<label for="currentPassword" class="inline">Current Password</label>
-				<input type="password" name="currentPassword" id="currentPassword" class="form-control" placeholder="" ng-model="draftUser.current_password" required ng-minlength=8 show-form-errors />
+				<input type="password" name="currentPassword" id="currentPassword" class="form-control" placeholder="" ng-model="draftUser.current_password" required ng-minlength='8' show-form-errors />
 				<p class="form-helper" ng-if="(infoForm.currentPassword.$dirty || submitAttempted) && infoForm.currentPassword.$invalid">You must provide your password.</p>
 			</div>
 

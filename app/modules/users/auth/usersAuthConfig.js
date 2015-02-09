@@ -23,31 +23,31 @@ function userAuthRoutes($stateProvider) {
         pageDescription: 'User Registration.'
       }
     },
-      signupIndividual = {
-        name: 'auth.signup.individual',
-        abstract: true, // remove later when individuals can log in
-        url: '',
-        template: '<div users-auth-registration-individual></div>',
-        data: {
-          moduleClasses: 'users auth individual'
-        }
-      },
-      signupCause = {
-        name: 'auth.signup.cause',
-        url: '/cause',
-        template: '<div users-auth-registration-cause></div>',
-        data: {
-          moduleClasses: 'users auth cause'
-        }
-      },
-      signupBusiness = {
-        name: 'auth.signup.business',
-        url: '/business',
-        template: '<div users-auth-registration-business></div>',
-        data: {
-          moduleClasses: 'users auth business'
-        }
-      },
+    signupIndividual = {
+      name: 'auth.signup.individual',
+      abstract: true, // remove later when individuals can log in
+      url: '',
+      template: '<div users-auth-registration-individual></div>',
+      data: {
+        moduleClasses: 'users auth individual'
+      }
+    },
+    signupCause = {
+      name: 'auth.signup.cause',
+      url: '/cause',
+      template: '<div users-auth-registration-cause></div>',
+      data: {
+        moduleClasses: 'users auth cause'
+      }
+    },
+    signupBusiness = {
+      name: 'auth.signup.business',
+      url: '/business',
+      template: '<div users-auth-registration-business></div>',
+      data: {
+        moduleClasses: 'users auth business'
+      }
+    },
     login = {
       name: 'auth.login',
       url: '/login',
@@ -81,6 +81,17 @@ function userAuthRoutes($stateProvider) {
         pageDescription: 'Reset your account password.'
       }
     },
+    completePasswordReset = {
+      name: 'auth.completePasswordReset',
+      url: '/complete-password-reset?reset_password_token',
+      template: '<div users-auth-complete-password-reset></div>',
+      data: {
+        moduleClasses: 'users auth',
+        pageClasses: 'complete-password-reset',
+        pageTitle: 'Reset Your Password',
+        pageDescription: 'Reset the password on your account'
+      }
+    },
     stripeOAuth = {
       name: 'auth.stripe',
       url: '^/auth/stripe',
@@ -100,6 +111,7 @@ function userAuthRoutes($stateProvider) {
   $stateProvider.state(signupBusiness);
   $stateProvider.state(confirmation);
   $stateProvider.state(login);
+  $stateProvider.state(completePasswordReset);
   $stateProvider.state(passwordReset);
   $stateProvider.state(stripeOAuth);
 

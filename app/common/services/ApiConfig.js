@@ -9,6 +9,7 @@ var apiConfig = function() {
 		apiVersion = '/v1';
 
 	this.API = {
+		apiProxy: apiProxy,
 		baseUrl: apiProxy + apiVersion,
 		certificate: {
 			purchase: apiProxy + apiVersion + '/users/certificates',

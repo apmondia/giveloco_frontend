@@ -12,4 +12,5 @@ module.exports = angular.module('common.services', [])
 	.factory('DashService', require('./DashboardService.js'))
 	.service('regions', require('./regions.js'))
 	.factory('SponsorService', require('./SponsorService.js'))
-	.factory('TransactionService', require('./TransactionService.js'));
+	.factory('TransactionService', require('./TransactionService.js'))
+	.factory('BaseRestangular', require('./BaseRestangular.js'));
