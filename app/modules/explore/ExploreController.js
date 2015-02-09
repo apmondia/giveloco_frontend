@@ -3,6 +3,7 @@
 function ExploreCtrl($scope, $stateParams) {
 
   $scope.search = $stateParams.q;
+  $scope.$emit('refresh-all-users');
 
 }
 
