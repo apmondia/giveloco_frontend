@@ -1,8 +1,8 @@
 'use strict';
 
-function DashboardAdminSummaryCtrl() {
-    
+function DashboardAdminSummaryCtrl($scope, apiConfig) {
+    $scope.certificateDownloadLink = apiConfig.API.user.sponsorships.certificates.csv;
 }
 
-DashboardAdminSummaryCtrl.$inject = [];
+DashboardAdminSummaryCtrl.$inject = ['$scope', 'apiConfig'];
 module.exports = DashboardAdminSummaryCtrl;

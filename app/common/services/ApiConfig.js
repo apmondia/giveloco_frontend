@@ -37,6 +37,11 @@ var apiConfig = function() {
 					sponsorships_certificates_csv: json + '/csv',
 					uploadImage: apiProxy + apiVersion + '/users/' + userID + '/upload_image'
 				};
+			},
+			sponsorships: {
+				certificates: {
+					csv: apiProxy + apiVersion + '/users/sponsorships/certificates/csv'
+				}
 			}
 		}
 	};
