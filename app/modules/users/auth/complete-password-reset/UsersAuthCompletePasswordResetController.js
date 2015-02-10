@@ -6,7 +6,7 @@ function UsersAuthCompletePasswordResetCtrl($rootScope, $scope, $state, Restangu
   $scope.confirmResetPassword = function() {
 
     if ($scope.completePasswordResetForm.$valid) {
-      var user = Restangular.one('users')
+      var user = Restangular.one('users');
       user.singleOne = true;
       user.customPUT({
         reset_password_token: $scope.token,
