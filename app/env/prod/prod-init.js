@@ -12,8 +12,8 @@ function prodInit($rootScope, Restangular, apiConfig, ENV, $window) {
 /* =======================================================================
 	Stripe Configuration
 ======================================================================= */
-	$window.Stripe.setPublishableKey(apiConfig.Stripe.PROD.public_key);
-	
+	//$window.Stripe.setPublishableKey(apiConfig.Stripe.PROD.public_key);
+
 }
 
 prodInit.$inject = ['$rootScope', 'Restangular', 'apiConfig', 'ENV', '$window'];
