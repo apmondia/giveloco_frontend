@@ -18,6 +18,9 @@
 
 		<form class="form" name="infoForm" ng-submit="updateInfo(infoForm.$valid)" novalidate>
 
+			<div class="form-section">
+			<h4 class="section-title">Account Information</h4>
+
 			<div class="sub-section name">
 				<div class="form-group first-name" ng-class="{'invalid' : infoForm.first_name.$invalid && infoForm.first_name.$dirty, 'valid' : infoForm.first_name.$valid && infoForm.first_name.$dirty}">
 					<label for="first_name" class="inline">First Name</label>
@@ -49,12 +52,10 @@
 					<p class="form-helper" ng-if="updateUserForm.email.$dirty && updateUserForm.email.$error.required && !updateUserForm.email.$focused">Email Address is required!</p>
 				</div>
 			</div>
+		</div>
 
-			<div class="form-group current-password" ng-class="{'invalid' : infoForm.currentPassword.$invalid && (submitAttempted || infoForm.currentPassword.$dirty), 'valid' : infoForm.currentPassword.$valid && infoForm.currentPassword.$dirty}">
-				<label for="currentPassword" class="inline">Current Password</label>
-				<input type="password" name="currentPassword" id="currentPassword" class="form-control" placeholder="" ng-model="draftUser.current_password" required ng-minlength='8' show-form-errors />
-				<p class="form-helper" ng-if="(infoForm.currentPassword.$dirty || submitAttempted) && infoForm.currentPassword.$invalid">You must provide your password.</p>
-			</div>
+		<div class="form-section">
+			<h4 class="section-title">Change Password</h4>
 
 			<div class="form-group new-password" ng-class="{'invalid' : infoForm.newPassword.$invalid && infoForm.newPassword.$dirty, 'valid' : infoForm.newPassword.$valid && infoForm.newPassword.$dirty}">
 				<label for="newPassword" class="inline">New Password</label>
@@ -70,6 +71,17 @@
 				<p class="form-helper" ng-if="infoForm.confirmPassword.$dirty && infoForm.confirmPassword.$error.minlength && !infoForm.confirmPassword.$focused">Your new password must contain at least 8 characters.</p>
 				<p class="form-helper" ng-if="infoForm.confirmPassword.$dirty && infoForm.confirmPassword.$invalid && !infoForm.confirmPassword.$focused">Your password confirmation must match your new password!</p>
 			</div>
+		</div>
+
+		<div class="form-section">
+			<h4 class="section-title">Confirm Changes</h4>
+
+			<div class="form-group current-password" ng-class="{'invalid' : infoForm.currentPassword.$invalid && (submitAttempted || infoForm.currentPassword.$dirty), 'valid' : infoForm.currentPassword.$valid && infoForm.currentPassword.$dirty}">
+				<label for="currentPassword" class="inline">Current Password</label>
+				<input type="password" name="currentPassword" id="currentPassword" class="form-control" placeholder="" ng-model="draftUser.current_password" required ng-minlength='8' show-form-errors />
+				<p class="form-helper" ng-if="(infoForm.currentPassword.$dirty || submitAttempted) && infoForm.currentPassword.$invalid">You must provide your password.</p>
+			</div>
+		</div>
 
 			<div class="form-group form-buttons">
         <button class="btn button button-primary" type="submit">Update</button>
