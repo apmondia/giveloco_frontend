@@ -45,16 +45,18 @@
 					<div class="status-not-active" ng-if="user.is_activated === false">Not Activated</div>
 				</td>
 				<td class="user-field user-actions">
-		            <div class="dropdown">
+          <div class="dropdown">
 						<div is-open="status.isopen" class="dropdown-wrapper" dropdown on-toggle="toggled(open)">
 							<a class="dropdown-toggle" dropdown-toggle>
 								<i class="icon icon-gear-setting-1"></i><span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-right" role="menu">
-								<li class="first"><a ng-click="changeUserStatus(user)">Change Status</a></li>
+								<li class="first"><a ui-sref='account.profile.edit({id:user.id})'>Edit Profile</a></li>
+								<li ng-if="user.is_activated"><a ng-click='deactivateUser(user)' href='#'>Deactivate</a></li>
+								<li ng-if="!user.is_activated"><a ng-click='activateUser(user)' href='#'>Activate</a></li>
 							</ul>
 						</div>
-		            </div>
+          </div>
 				</td>
 			</tr>
 			<tr ng-hide="(causes | filter: searchCauses).length || loading" class="no-results">
