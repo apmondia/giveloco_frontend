@@ -5,7 +5,7 @@ function exploreRoutes($stateProvider) {
     var explore = {
             name: 'explore',
             abstract: true,
-            url: '/explore?q',
+            url: '/explore?q&reset',
             template: '<div ui-view></div>',
             controller:'ExploreCtrl'
         },

@@ -1,7 +1,7 @@
 /*jshint camelcase: false */
 'use strict';
 // MainCtrl is set in the index.html file
-function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_ROLES, SponsorService, alertService) {
+function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_ROLES, SponsorService, alertService, $interval) {
 
 /* =======================================================================
 	Session Control
@@ -184,9 +184,12 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 			return allTags;
 		};
 
+		$interval(function () {
+			$scope.$emit('refresh-all-users');
+		},  5 * 60 * 1000); //every five minutes
 
 }
 
 // $inject is necessary for minification. See http://bit.ly/1lNICde for explanation.
-MainCtrl.$inject = ['$rootScope', '$scope', '$timeout', '$state', 'Restangular', 'Auth', 'USER_ROLES', 'SponsorService', 'alertService'];
+MainCtrl.$inject = ['$rootScope', '$scope', '$timeout', '$state', 'Restangular', 'Auth', 'USER_ROLES', 'SponsorService', 'alertService', '$interval'];
 module.exports = MainCtrl;

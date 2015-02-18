@@ -1,11 +1,10 @@
 'use strict';
 
-function ExploreCtrl($scope, $stateParams) {
+function ExploreCtrl($scope, $stateParams, $rootScope) {
 
   $scope.search = $stateParams.q;
-  $scope.$emit('refresh-all-users');
 
 }
 
-ExploreCtrl.$inject = ['$scope', '$stateParams'];
+ExploreCtrl.$inject = ['$scope', '$stateParams', '$rootScope'];
 module.exports = ExploreCtrl;
