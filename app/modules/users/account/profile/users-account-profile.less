@@ -69,13 +69,17 @@ body.account.profile {
 			}
 		}
 		.right-side {
-			display: none;
+			// display: none;
 			.make-sm-column(5);
 			.make-md-column(5);
 			.make-lg-column(4);
+			@media @breakpoint-xs {
+				padding-left: 0 ;
+				padding-right: 0;
+			}
 			@media @breakpoint-sm {
-		        display: block;
-		        padding-right: 0;
+        display: block;
+        padding-right: 0;
 				text-align: right;
 				float: right;
 				min-height: 200px;
@@ -87,14 +91,14 @@ body.account.profile {
 						border-radius: 5px;
 					}
 				}
-		    }
-		    @media @breakpoint-md {
-		    	.user-profile-picture {
+	    }
+	    @media @breakpoint-md {
+	    	.user-profile-picture {
 					margin-top: 39px;
 					height: 200px;
 					overflow: hidden;
-		    	}
-		    }
+	    	}
+	    }
 		}
 	}
 	.users-account-profile-view {

@@ -22,13 +22,13 @@
 			<h4 class="section-title">Account Information</h4>
 
 			<div class="sub-section name">
-				<div class="form-group first-name" ng-class="{'invalid' : infoForm.first_name.$invalid && infoForm.first_name.$dirty, 'valid' : infoForm.first_name.$valid && infoForm.first_name.$dirty}">
+				<div class="form-group first-name" ng-class="{'invalid' : infoForm.first_name.$invalid && infoForm.first_name.$dirty, 'valid' : infoForm.first_name.$valid && infoForm.first_name.$dirty, 'dirty' : infoForm.first_name.$dirty}">
 					<label for="first_name" class="inline">First Name</label>
 					<input type="text" name="first_name" id="first_name" class="form-control" placeholder="Given Name" ng-model="draftUser.first_name" ng-pattern="nameRegex" maxlength="26" show-form-errors auto-focus />
 					<p class="form-helper" ng-if="infoForm.first_name.$error.pattern && !infoForm.first_name.$focused">Your name can only contain letters.</p>
 					<p class="form-helper" ng-if="infoForm.first_name.$dirty && infoForm.first_name.$error.required && !infoForm.first_name.$focused">First Name is required!</p>
 				</div>
-				<div class="form-group last-name" ng-class="{'invalid' : infoForm.last_name.$invalid && infoForm.last_name.$dirty, 'valid' : infoForm.last_name.$valid && infoForm.last_name.$dirty}">
+				<div class="form-group last-name" ng-class="{'invalid' : infoForm.last_name.$invalid && infoForm.last_name.$dirty, 'valid' : infoForm.last_name.$valid && infoForm.last_name.$dirty, 'dirty' : infoForm.last_name.$dirty}">
 					<label for="last_name" class="inline">Last Name</label>
 					<input type="text" name="last_name" id="last_name" class="form-control" placeholder="Surname" ng-model="draftUser.last_name" ng-pattern="nameRegex" maxlength="26" show-form-errors />
 					<p class="form-helper" ng-if="infoForm.last_name.$error.pattern && !infoForm.last_name.$focused">Your name can only contain letters.</p>
@@ -37,7 +37,7 @@
 			</div>
 
 			<div class='sub-section sponsorship-rate' ng-if='draftUser.role == "business"'>
-				<div class='form-group sponsorship-rate' ng-class="{'invalid': infoForm.sponsorship_rate.$invalid && infoForm.sponsorship_rate.$dirty, 'valid': infoForm.sponsorship_rate.$valid && $infoForm.sponsorship_rate.$dirty }">
+				<div class='form-group sponsorship-rate' ng-class="{'invalid': infoForm.sponsorship_rate.$invalid && infoForm.sponsorship_rate.$dirty, 'valid': infoForm.sponsorship_rate.$valid && $infoForm.sponsorship_rate.$dirty, 'dirty' : $infoForm.sponsorship_rate.$dirty }">
 					<label for='sponsorship_rate' class='inline'>Sponsorship Rate</label>
 					<input type='text' name='sponsorship_rate' id='sponsorship_rate' class='form-control' placeholder='10%' ng-model='draftUser.sponsorship_rate' ng-pattern='sponsorshipRateRegex' maxlength='5' show-form-errors />
 					<p class="form-helper" ng-if="infoForm.sponsorship_rate.$error.pattern && !infoForm.sponsorship_rate.$focused">The sponsorship rate must be a number.</p>
@@ -45,11 +45,11 @@
 			</div>
 
 			<div class="sub-section contact-info">
-				<div class="form-group email" ng-class="{'invalid' : updateUserForm.email.$invalid && updateUserForm.email.$dirty, 'valid' : updateUserForm.email.$valid && updateUserForm.email.$dirty}">
+				<div class="form-group email" ng-class="{'invalid' : infoForm.email.$invalid && infoForm.email.$dirty, 'valid' : infoForm.email.$valid && infoForm.email.$dirty, }">
 					<label for="userEmail" class="inline">Email</label>
 					<input type="email" name="email" id="userEmail" class="form-control" placeholder="email@address.com" ng-model="draftUser.email" ng-pattern="emailRegex" show-form-errors />
-					<p class="form-helper" ng-if="updateUserForm.email.$error.pattern && !updateUserForm.email.$focused">Invalid Email Address</p>
-					<p class="form-helper" ng-if="updateUserForm.email.$dirty && updateUserForm.email.$error.required && !updateUserForm.email.$focused">Email Address is required!</p>
+					<p class="form-helper" ng-if="infoForm.email.$error.pattern && !infoForm.email.$focused">Invalid Email Address</p>
+					<p class="form-helper" ng-if="infoForm.email.$dirty && infoForm.email.$error.required && !infoForm.email.$focused">Email Address is required!</p>
 				</div>
 			</div>
 		</div>
@@ -57,14 +57,14 @@
 		<div class="form-section">
 			<h4 class="section-title">Change Password</h4>
 
-			<div class="form-group new-password" ng-class="{'invalid' : infoForm.newPassword.$invalid && infoForm.newPassword.$dirty, 'valid' : infoForm.newPassword.$valid && infoForm.newPassword.$dirty}">
+			<div class="form-group new-password" ng-class="{'invalid' : infoForm.newPassword.$invalid && infoForm.newPassword.$dirty, 'valid' : infoForm.newPassword.$valid && infoForm.newPassword.$dirty, 'dirty' : infoForm.newPassword.$dirty}">
 				<label for="newPassword" class="inline">New Password</label>
 				<input type="password" name="newPassword" id="newPassword" class="form-control" placeholder="" ng-model="draftUser.password" ng-minlength=8 show-form-errors password-equals="{{draftUser.password_confirmation}}" />
 				<p class="form-helper" ng-if="infoForm.newPassword.$dirty && infoForm.newPassword.$error.minlength && !infoForm.newPassword.$focused">Your new password must contain at least 8 characters.</p>
 				<p class="form-helper" ng-if="infoForm.newPassword.$dirty && infoForm.newPassword.$invalid && !infoForm.newPassword.$focused">Your password confirmation must match your new password!</p>
 			</div>
 
-			<div class="form-group confirm-password" ng-class="{'invalid' : infoForm.confirmPassword.$invalid && infoForm.confirmPassword.$dirty, 'valid' : infoForm.confirmPassword.$valid && infoForm.confirmPassword.$dirty}">
+			<div class="form-group confirm-password" ng-class="{'invalid' : infoForm.confirmPassword.$invalid && infoForm.confirmPassword.$dirty, 'valid' : infoForm.confirmPassword.$valid && infoForm.confirmPassword.$dirty, 'dirty' : infoForm.confirmPassword.$dirty}">
 				<label for="confirmPassword" class="inline">Confirm Password</label>
 				<input type="password" name="confirmPassword" id="confirmPassword" class="form-control" placeholder="" ng-model="draftUser.password_confirmation" ng-minlength=8 show-form-errors password-equals="{{draftUser.password}}" />
 				<p class="form-helper" ng-if="infoForm.confirmPassword.$dirty && infoForm.confirmPassword.$error.required">You must confirm your new password!</p>
