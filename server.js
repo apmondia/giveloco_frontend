@@ -1,7 +1,7 @@
 var express = require('express');
 var url = require('url');
 var proxy = require('proxy-middleware');
-var bodyParser = require('body-parser');
+
 var server = express();
 var API_URL = process.env.API_URL || 'http://localhost:3000/';
 
@@ -14,9 +14,6 @@ server.use('/api', proxy(url.parse(API_URL)));
 server.use(function (req, res) {
   res.sendfile(__dirname + '/dist/index.html');
 });
-
-server.use(bodyParser.json({limit: '50mb'}));
-server.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 server.listen(server.get('port'), function() {
   console.log("Node app is running at localhost:" + server.get('port'));
