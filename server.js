@@ -12,7 +12,7 @@ server.use(express.static(__dirname + '/dist'));
 server.use('/api', proxy(url.parse(API_URL)));
 //here we configure a catch-all to serve the index
 server.use(function (req, res) {
-  res.sendfile(__dirname + '/dist/index.html');
+  res.sendFile(__dirname + '/dist/index.html');
 });
 
 server.listen(server.get('port'), function() {

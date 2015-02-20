@@ -22,7 +22,7 @@ function UsersAccountProfileImageUploadCtrl($rootScope, $scope, $cookies, apiCon
 
   $scope.uploader.onErrorItem = function(arg1, arg2) {
     $scope.showSpinner = false;
-    alertService.showAlert(arg2.full_messages.join(' and '), 'alert-danger');
+    alertService.showAlert(arg2, 'alert-danger');
   };
 
   $scope.getUploader = function () {

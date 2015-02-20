@@ -57,7 +57,7 @@ body.account.profile {
 	.content-area {
 		.left-side {
 			.make-xs-column(12);
-			.make-sm-column(7);
+			.make-sm-column(8);
 			.make-md-column(7);
 			.make-lg-column(8);
 			padding-left: 0;
@@ -70,12 +70,14 @@ body.account.profile {
 		}
 		.right-side {
 			// display: none;
-			.make-sm-column(5);
+			.make-xs-column(12);
+			.make-sm-column(4);
 			.make-md-column(5);
 			.make-lg-column(4);
 			@media @breakpoint-xs {
 				padding-left: 0 ;
 				padding-right: 0;
+				padding-top: 3rem;
 			}
 			@media @breakpoint-sm {
         display: block;
