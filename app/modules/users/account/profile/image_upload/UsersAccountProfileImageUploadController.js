@@ -18,6 +18,7 @@ function UsersAccountProfileImageUploadCtrl($rootScope, $scope, $cookies, apiCon
     $scope.showSpinner = false;
     alertService.showAlert(USER_EVENTS.imageUploadSuccess, 'alert-success');
     $scope.$emit('refresh-profile-user');
+    $scope.$emit('refresh-all-users');
   };
 
   $scope.uploader.onErrorItem = function(arg1, arg2) {
