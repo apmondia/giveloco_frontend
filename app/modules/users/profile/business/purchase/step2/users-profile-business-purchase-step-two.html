@@ -15,7 +15,7 @@
 				<label for="cause-{{$index}}" class="cause-details" data-sponsorship-id="{{sponsorship.id}}">
 					<div class="grid-item">
 						<div user-profile-picture user='sponsorship.cause'></div>
-						<div class="company-name">{{sponsorship.cause.company_name | characters:20}}</div>
+						<div class="company-name">{{sponsorship.cause.company_name}}</div>
 						<div class="user-summary">{{sponsorship.cause.summary | characters:140}}</div>
 					</div>
 				</label>

@@ -5,7 +5,7 @@
 			<div class="grid-item" ng-hide="loading">
 				<a ui-sref="profile.cause({id:sp.cause.id, role:sp.cause.role})" title="{{sp.cause.company_name}}">
 					<div user-profile-picture user='sp.cause'></div>
-					<div class="company-name">{{sp.cause.company_name | characters:20}}</div>
+					<div class="company-name">{{sp.cause.company_name}}</div>
 					<div class="user-summary">{{sp.cause.summary | characters:140}}</div>
 					<div class="status {{sp.status}}">{{sp.status}}</div>
 				</a>
