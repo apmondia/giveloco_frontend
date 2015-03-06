@@ -2,7 +2,7 @@
 	<div class="sidebar">
 		<div class="user-profile-picture">
 			<div class="default-image" ng-if="hasDefaultImage(user)"><i class="icon icon-photos-pictures"></i></div>
-			<img ng-src="{{userImage}}" ng-if="!hasDefaultImage(user)" />
+			<div ng-if="!hasDefaultImage(user)" style='background-image: url({{userImage}})' class='profile-image'></div>
 		</div>
 
 		<div class="contact-info">
