@@ -1,8 +1,8 @@
 <div class="user-profile-image-upload">
 	<div class="user-profile-picture">
 		<div class="loading-spinner" ng-if="showSpinner"></div>
-		<div class="default-image" ng-if="currentUser.images.profile_picture.original === ''"><i class="icon icon-photos-pictures"></i></div>
-		<img ng-src="{{userImage}}" ng-if="currentUser.images.profile_picture.original !== ''" />
+		<div class="default-image" ng-if="user.images.profile_picture.original === ''"><i class="icon icon-photos-pictures"></i></div>
+		<img ng-src="{{userImage}}" ng-if="user.images.profile_picture.original !== ''" />
 
 	</div>
 	<div class="image-upload">

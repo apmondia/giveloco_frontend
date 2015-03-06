@@ -17,7 +17,7 @@ function UsersAccountProfileImageUploadCtrl($rootScope, $scope, $cookies, apiCon
   $scope.uploader.onSuccessItem = function(arg1, arg2) {
     $scope.showSpinner = false;
     alertService.showAlert(USER_EVENTS.imageUploadSuccess, 'alert-success');
-    Auth.refreshCurrentUser();
+    $scope.$emit('refresh-profile-user');
   };
 
   $scope.uploader.onErrorItem = function(arg1, arg2) {
@@ -40,12 +40,12 @@ function UsersAccountProfileImageUploadCtrl($rootScope, $scope, $cookies, apiCon
     $scope.uploader.formData = [{id: uid}];
   }
 
-  $rootScope.$on('set-current-user', function (event, user) {
+  $scope.$on('set-profile-user', function (event, user) {
     setUser(user);
   });
-  Auth.getCurrentUser(function (user) {
-    setUser(user);
-  });
+  if ($scope.user && $scope.user.images) {
+    setUser($scope.user);
+  }
 }
 
 UsersAccountProfileImageUploadCtrl.$inject = ['$rootScope', '$scope', '$cookies', 'apiConfig', 'FileUploader', 'alertService', 'USER_EVENTS', 'Auth'];
