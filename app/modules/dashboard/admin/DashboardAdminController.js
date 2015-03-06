@@ -97,6 +97,17 @@ function DashboardAdminCtrl($scope, Restangular, alertService) {
 				});
 		};
 
+		$scope.pendingSponsorship = function (sponsorship) {
+			Restangular.one('sponsorships', sponsorship.id).customPUT({ status: 'pending'}, 'resolve').then(
+				function () {
+					sponsorship.status = 'pending';
+					$scope.$emit('refresh-all-users');
+				},
+				function () {
+					alertService.showDanger("Could not update the sponsorship status.");
+				});
+			};
+
 		$scope.acceptSponsorship = function (sponsorship) {
 			Restangular.one('sponsorships', sponsorship.id).customPUT({ status: 'accepted'}, 'resolve').then(
 				function () {
