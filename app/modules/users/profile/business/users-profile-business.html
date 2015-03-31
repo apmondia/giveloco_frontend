@@ -4,6 +4,10 @@
 			<div class="default-image" ng-if="hasDefaultImage(user)"><i class="icon icon-photos-pictures"></i></div>
 			<div ng-if="!hasDefaultImage(user)" style='background-image: url({{userImage}})' class='profile-image'></div>
 		</div>
+		
+		<div ng-if="(currentUser.role === 'individual' || currentUser.role === undefined) && user.sponsorships.length > 0" class='gift-card-button-container'>
+			<a href='#' ng-click="enterGiftCard(user)" class="donate btn button button-primary"><i class="icon icon-ribbon"></i>Enter Gift Card</a>
+		</div>
 
 		<div class="contact-info">
 			<div class="contact-info-title">
@@ -57,10 +61,6 @@
 		</div>
 
 	    <div class="user-description" ng-bind-html="user.description | linky:'_blank'"></div>
-
-			<div ng-if="(currentUser.role === 'individual' || currentUser.role === undefined) && user.sponsorships.length > 0" class='gift-card-button-container'>
-				<a href='#' ng-click="enterGiftCard(user)" class="donate btn button button-primary"><i class="icon icon-ribbon"></i>Enter Gift Card</a>
-			</div>
 
 	    <div users-profile-business-sponsored-causes></div>
 	</div>
