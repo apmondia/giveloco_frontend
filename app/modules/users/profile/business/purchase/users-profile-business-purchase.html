@@ -1,5 +1,9 @@
 <div id="modalTransactionPurchase" class="modal-wrapper">
-	<h2 class="modal-title"><span>Gift Card</span></h2>
+	<h2 class="modal-title">
+		<span ng-if='activeSlide === "one"'>Enter your Gift Card</span>
+		<span ng-if='activeSlide === "two"'>Choose Your Cause</span>
+		<span ng-if='activeSlide === "three"'>Subscribe</span>
+	</h2>
 	<button class="close" ng-click="closeRegistrationForm()"><i class="icon icon-x"></i></button>
 
 	<form class="form" id="registrationForm" name="registrationForm" ng-submit='registerCertificate($event)' novalidate autocomplete="off">
