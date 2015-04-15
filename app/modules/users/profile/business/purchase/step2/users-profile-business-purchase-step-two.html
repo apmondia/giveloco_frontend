@@ -1,17 +1,8 @@
 <div class="register-certificate-step-two">
 	<div class="form-section">
-		<div class="section-title">
-			<h3 class="form-section-title">Choose Your Cause</h3>
-			<ul class='steps-indicator'>
-				<li ng-class="{ 'complete': !stepOneNotComplete() }"></li>
-				<li class='active' ng-class="{ 'complete': !stepTwoNotComplete() }"></li>
-				<li ng-class="{ 'complete': !stepThreeNotComplete() }"></li>
-			</ul>
-		</div>
-
 		<div class='row'>
 			<div ng-repeat="sponsorship in sponsorships" class="cause radio-button small-grid grid block">
-				<input type="radio" id="cause-{{$index}}" name="cause-{{$index}}" ng-model="newUser.certificates_attributes.sponsorship_id" value="{{sponsorship.id}}" />
+				<input type="radio" id="cause-{{$index}}" name="cause-{{$index}}" ng-model="newUser.certificates_attributes.sponsorship_id" value="{{sponsorship.id}}" ng-change='registerCertificate()'/>
 				<label for="cause-{{$index}}" class="cause-details" data-sponsorship-id="{{sponsorship.id}}">
 					<div class="grid-item">
 						<div user-profile-picture user='sponsorship.cause'></div>
@@ -22,4 +13,13 @@
 	    </div>
 		</div>
 	</div>
+</div>
+
+<div class="modal-footer">
+	<div ng-show="registrationForm.agree_to_tc.$invalid && activeSlide === 'three'" class="disclaimer">To complete your purchase you must agree to the Terms &amp; Conditions</div>
+  <ul class="slide-three buttons list-unstyled" ng-show="activeSlide === 'three'">
+  	<li><a class="btn button btn-danger" ng-click="closeRegistrationForm()">Cancel</a></li>
+  	<li><a class="btn btn-default" ng-click="activeSlide = 'two'">Back</a></li>
+    <li><button class="btn button button-secondary" type="submit">Confirm</button></li>
+  </ul>
 </div>

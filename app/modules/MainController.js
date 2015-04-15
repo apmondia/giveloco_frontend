@@ -80,8 +80,11 @@ function MainCtrl($rootScope, $scope, $timeout, $state, Restangular, Auth, USER_
 					$scope.businesses = _.filter(users, function(user){
 							return user.role === USER_ROLES.business && user.is_published === true && user.is_activated === true && user.sponsorships.length > 0;
 					});
+					//console.debug('set-all-businesses: ', $scope.businesses);
 					$scope.loading = false;
 					$scope.$broadcast('set-all-users');
+			}, function (response) {
+				console.error(response);
 			});
 	}
 

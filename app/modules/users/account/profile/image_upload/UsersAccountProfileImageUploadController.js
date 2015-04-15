@@ -30,6 +30,10 @@ function UsersAccountProfileImageUploadCtrl($rootScope, $scope, $cookies, apiCon
     return $scope.uploader;
   };
 
+  $scope.imageIsDefault = function () {
+    return !$scope.userImage || $scope.userImage === '' || $scope.userImage.indexOf('default.png') > -1;
+  };
+
   function setUser(user) {
     $scope.userImage = user.images.profile_picture.medium;
     var TOKEN = $cookies.auth_token.replace(/^"|"$/g, '');
@@ -42,6 +46,7 @@ function UsersAccountProfileImageUploadCtrl($rootScope, $scope, $cookies, apiCon
   }
 
   $scope.$on('set-profile-user', function (event, user) {
+    console.debug("setting user to be ", user);
     setUser(user);
   });
   if ($scope.user && $scope.user.images) {

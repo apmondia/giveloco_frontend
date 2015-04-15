@@ -10,4 +10,5 @@ module.exports = angular.module('common.directives', [
 	.directive('passwordEquals', require('./passwordEquals.js'))
 	.directive('scrollDisplay', require('./scrollDisplay.js'))
 	.directive('showFormErrors', require('./showFormErrors.js'))
-	.directive('systemNotifications', require('./systemNotifications.js'));
+	.directive('systemNotifications', require('./systemNotifications.js'))
+	.directive('onEnter', require('./onEnter.js'));

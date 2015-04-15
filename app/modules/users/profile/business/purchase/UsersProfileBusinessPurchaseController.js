@@ -1,6 +1,6 @@
 'use strict';
 
-function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertService, Restangular, SponsorService, TransactionService) {
+function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertService, Restangular, SponsorService, TransactionService, $cookies) {
 
 	$scope.amountRegex = /^\$?(\d+(\.\d+)?)$/;
 
@@ -50,17 +50,13 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 	Step 3
 ======================================================================= */
 
-    $scope.$watch('newUser.certificates_attributes.sponsorship_id', function(){
-    	if ($scope.newUser.certificates_attributes.sponsorship_id !== null) {
-			Restangular.one('sponsorships', $scope.newUser.certificates_attributes.sponsorship_id).get().then(function(sponsorship) {
-				$scope.causeName = sponsorship.cause.company_name;
-			});
-	    }
-    });
-
-    $scope.stepThreeNotComplete = function() {
-			return /*$scope.registrationForm.agree_to_tc.$invalid ||*/ $scope.registrationForm.email.$invalid;
-    };
+  $scope.$watch('newUser.certificates_attributes.sponsorship_id', function(){
+  	if ($scope.newUser.certificates_attributes.sponsorship_id !== null) {
+		Restangular.one('sponsorships', $scope.newUser.certificates_attributes.sponsorship_id).get().then(function(sponsorship) {
+			$scope.causeName = sponsorship.cause.company_name;
+		});
+    }
+  });
 
     // reset form when the modal is closed or competed submission
 	var resetForm = function() {
@@ -73,13 +69,15 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 		resetForm();
 	};
 
-	var transactionSuccess = function() {
-		$scope.closeRegistrationForm();
-		alertService.showAlert(TRANSACTION_EVENTS.transactionSuccess, 'alert-success');
+	var transactionSuccess = function(response) {
+		$scope.createdUser = response.data;
+		$cookies.auth_token = $scope.createdUser.auth_token;
+		$scope.activeSlide = "three"
 	};
 
 	var transactionError = function() {
 		alertService.showAlert(TRANSACTION_EVENTS.transactionFailure, 'alert-danger');
+		$scope.closeRegistrationForm();
 	};
 
 	$scope.getGiftCardAmount = function () {
@@ -91,7 +89,14 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 		return value;
 	};
 
-	$scope.registerCertificate = function (valid) {
+	$scope.suppressSubmission = function ($event) {
+		if ($event.keyCode == 13) {
+			$event.stopPropagation();
+			$event.preventDefault();
+		}
+	};
+
+	$scope.registerCertificate = function () {
 		if ($scope.registrationForm.$valid) {
 			var data = {
 				newUser: angular.copy($scope.newUser)
@@ -104,7 +109,22 @@ function UsersProfileBusinessPurchaseCtrl($scope, TRANSACTION_EVENTS, alertServi
 		}
 	};
 
+	$scope.signupForNews = function () {
+
+		Restangular.one('users', $scope.createdUser.id).put(
+			{ email: $scope.signupUserEmail, mailing_list_opt_in: true }
+			)
+			.then(function () {
+				alertService.showSuccess("Thank you for giving local!");
+			}, function () {
+				alertService.showDanger("Could not subscribe.");
+			}).finally(function () {
+				$scope.closeRegistrationForm();
+			});
+
+	};
+
 }
 
-UsersProfileBusinessPurchaseCtrl.$inject = ['$scope', 'TRANSACTION_EVENTS', 'alertService', 'Restangular', 'SponsorService', 'TransactionService'];
+UsersProfileBusinessPurchaseCtrl.$inject = ['$scope', 'TRANSACTION_EVENTS', 'alertService', 'Restangular', 'SponsorService', 'TransactionService', '$cookies'];
 module.exports = UsersProfileBusinessPurchaseCtrl;
