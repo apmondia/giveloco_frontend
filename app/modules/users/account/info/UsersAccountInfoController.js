@@ -16,6 +16,7 @@ function UsersAccountInfoCtrl($rootScope, $scope, $state, $http, Auth, alertServ
 	};
 
 	$scope.updateInfo = function(isValid) {
+		console.debug("is avlid?", isValid, $scope.draftUser);
 		if (isValid) {
 			Auth.putUser($scope.draftUser).then(updateSuccess, updateError);
 			$scope.infoForm.$setPristine();
