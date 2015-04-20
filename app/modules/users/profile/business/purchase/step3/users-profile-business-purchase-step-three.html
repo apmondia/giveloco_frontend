@@ -1,10 +1,15 @@
 <div class="register-certificate-step-three">
 
 	<div class="section-title">
-		<h3 class="form-section-title">${{createdUser.certificates[0].donated_amount}} will be donated to {{causeName}}. Thanks!</h3>
+		<h3 class="form-section-title">You spent ${{createdUser.certificates[0].donated_amount}} forward to {{causeName}}!</h3>
 	</div>
 
 	<div class="form-section basic-info">
+		<div class="form-group">
+			<p>
+				Do you want to receive updates from this cause and business on their social mission?
+			</p>
+		</div>
 		<div class="form-group email" ng-class="{'invalid' : mailingListForm.email.$invalid && mailingListForm.email.$dirty, 'valid' : mailingListForm.email.$valid && mailingListForm.email.$dirty}">
 			<label for="email" class="inline">Email</label>
 			<input type="email" name="email" id="email" class="form-control with-label" placeholder="email@address.com" ng-model="signupUserEmail" ng-pattern="emailRegex" required show-form-errors />
