@@ -8,44 +8,83 @@ The front end for the Taliflo app is built with AngularJS. Gulp is used for the 
 
 To understand how this application is structured, have a look at the README for this github repository: https://github.com/goodbomb/angular-gulp-browserify-starter
 
-###Instructions
+###Setup
 
-1) Node Modules and Bower Components are not included in this repository by default. After cloning or pulling changes from this repository, always make sure to run the following commands in terminal to ensure that you have all of the necessary package dependencies:
+Clone this repository
 
-```npm install``` and ```bower install```
-
-2) Once everything is installed all you have to do is navigate to this folder on your computer in terminal and run ```gulp```. Your new server will be running at ```http://localhost:5000```.
-
-###Application Modules
-The following is the file structure found inside of ```app/modules```
 ```
-Home
-
-Pages (static)
-——— About Page (how it works)
-——— Privacy Policy
-——— Terms of Service
-
-Explore
-——— Causes (grid)
-——— Businesses (grid)
-
-Forms
-——— Donate
-——— Pledge
-——— Claim Vouchers
-——— Redeem Vouchers
-
-Users
-——— Auth
-—————— Registration
-—————— Login
-——— Account
-—————— Vouchers List
-—————— Transaction History (Account History)
-—————— Basic Info
-——— Profile
-—————— Cause
-—————— Business
-————————— Vouchers List
+git clone (repo)
 ```
+
+Install the dependencies
+
+```
+npm install
+bower install
+```
+
+And you're ready to go.
+
+### Getting Started
+
+The front end has three build tasks: build-test, build-dev and build-prod.  These tasks will compile the source, start a watch on the source files (except prod) and start a Node JS server to serve the assets.
+
+The tasks use the test, development and production environments, respectively.
+
+#### The Test Environment
+
+```
+gulp build-test
+```
+
+The front end will be served at:
+
+```
+http://localhost:6999/
+```
+
+And it will proxy back-end API requests to:
+
+```
+localhost:4999
+```
+
+#### The Development Environment
+
+```
+gulp build-dev
+```
+
+The front end will be served at:
+
+```
+http://localhost:3000
+```
+
+And it will proxy back-end API requests to:
+
+```
+localhost:5000
+```
+
+#### The Production Environment
+
+```
+gulp build-prod
+```
+
+The front end will be served at:
+
+```
+http://localhost:5050
+```
+
+And it will proxy back-end API requests to:
+
+```
+http://api.taliflo.com
+```
+
+### Committing Your Code
+
+If you are going to deploy your code to production, you must first compile the assets using the ```gulp build-prod``` task.  This task will compile, concatenate and minify the SASS and JavaScript files.  Once you've created your production copies, commit them to the repository and push the new commit into production.
