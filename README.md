@@ -87,4 +87,4 @@ http://api.taliflo.com
 
 ### Committing Your Code
 
-If you are going to deploy your code to production, you must first compile the assets using the ```gulp build-prod``` task.  This task will compile, concatenate and minify the SASS and JavaScript files.  Once you've created your production copies, commit them to the repository and push the new commit into production.
+If you are going to deploy your code to production, you must first compile the assets using the ```gulp build-prod``` task.  This task will compile, concatenate and minify the SASS and JavaScript files.  Once you've compiled your production assets, commit them to the repository and push the new commit into production.
