@@ -1,6 +1,6 @@
-# Taliflo Front End
+# Giveloco Front End
 
-The front end for the Taliflo app is built with AngularJS. Gulp is used for the development pipeline and Browserify is used for Modular Dependency Injection.
+The front end for the Giveloco app is built with AngularJS. Gulp is used for the development pipeline and Browserify is used for Modular Dependency Injection.
 
 - https://angularjs.org/
 - http://gulpjs.com/
@@ -82,7 +82,7 @@ http://localhost:5050
 And it will proxy back-end API requests to:
 
 ```
-http://api.taliflo.com
+http://api.giveloco.com
 ```
 
 ### Committing Your Code

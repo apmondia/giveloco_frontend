@@ -1,11 +1,11 @@
 {
-  "name": "Taliflo",
+  "name": "giveloco",
   "version": "1.0.0",
-  "description": "Taliflo Front End Application",
+  "description": "giveloco Front End Application",
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Taliflo/taliflo_front_end"
+    "url": "https://github.com/giveloco/giveloco_front_end"
   },
   "private": true,
   "devDependencies": {},

@@ -6,7 +6,7 @@ var ENV = (function() {
         	serverUrl: 'http://localhost:3000/'
         },
         PROD: {
-        	serverUrl: 'http://api.taliflo.com/'
+        	serverUrl: 'http://api.giveloco.com/'
         }
     };
 }());

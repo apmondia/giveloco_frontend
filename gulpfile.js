@@ -114,7 +114,7 @@ server.all('/*', function(req, res) {
 function buildProxy(path, host) {
   var url = require('url');
   var proxy = require('proxy-middleware');
-  // var options = url.parse('http://api-dev.taliflo.com/');
+  // var options = url.parse('http://api-dev.giveloco.com/');
   var options = url.parse(host);
   options.route = path;
   return proxy(options);
@@ -141,7 +141,7 @@ gulp.task('devServer', function() {
 });
 
 gulp.task('prodServer', function() {
-  connect.server( buildServerOptions(5050, 'https://api.taliflo.com/') );
+  connect.server( buildServerOptions(5050, 'https://api.giveloco.com/') );
 });
 
 

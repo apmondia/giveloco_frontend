@@ -1,19 +1,19 @@
 @charset "UTF-8";
 
 @font-face {
-  font-family: "taliflo";
-  src:url("fonts/taliflo.eot");
-  src:url("fonts/taliflo.eot?#iefix") format("embedded-opentype"),
-    url("fonts/taliflo.woff") format("woff"),
-    url("fonts/taliflo.ttf") format("truetype"),
-    url("fonts/taliflo.svg#taliflo") format("svg");
+  font-family: "giveloco";
+  src:url("fonts/giveloco.eot");
+  src:url("fonts/giveloco.eot?#iefix") format("embedded-opentype"),
+    url("fonts/giveloco.woff") format("woff"),
+    url("fonts/giveloco.ttf") format("truetype"),
+    url("fonts/giveloco.svg#giveloco") format("svg");
   font-weight: normal;
   font-style: normal;
 
 }
 
 [data-icon]:before {
-  font-family: "taliflo" !important;
+  font-family: "giveloco" !important;
   content: attr(data-icon);
   font-style: normal !important;
   font-weight: normal !important;
@@ -27,7 +27,7 @@
 
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
-  font-family: "taliflo" !important;
+  font-family: "giveloco" !important;
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;

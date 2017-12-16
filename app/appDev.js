@@ -4,7 +4,7 @@
 
 require('angular');
 
-module.exports = angular.module('taliflo',
+module.exports = angular.module('giveloco',
 	[
 		require('./common/common').name,
 		require('./env/dev').name, // Development Environment Configuration
